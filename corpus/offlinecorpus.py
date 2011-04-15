@@ -1,5 +1,6 @@
 """Module to search for all occurrences of a string in a corpus."""
 
+import itertools
 import operator
 import os
 import re
@@ -14,12 +15,16 @@ class OfflineCorpus:
 
     def __init__(self, corpusfilename=DEFAULT_CORPUS):
         self._corpus_files = self._get_corpus_files(corpusfilename)
+        self._lines = []
+        for f in self._corpus_files:
+            for l in open(f, 'r'):
+                if not self._should_ignore_line(l):
+                    self._lines.append(l)
 
-    def get_contexts(self, query, corpusfilename=DEFAULT_CORPUS):
+    def get_contexts(self, query):
         """returns all contexts in which a query appears in a corpus."""
-        return reduce(operator.concat,
-                      [self._get_contexts_in_file(query, x)
-                       for x in self._corpus_files])
+        return itertools.chain(*[self._get_contexts_in_line(query, l)
+                                 for l in self._lines])
 
     def get_unique_words(self):
         """returns a set of unique words. Performs some normalization."""
@@ -37,16 +42,9 @@ class OfflineCorpus:
         return [fname]
 
     def __iter__(self):
-        for f in self._corpus_files:
-            for l in open(f, 'r'):
-                if self._should_ignore_line(l): continue
-                yield l
+        for l in self._lines:
+            yield l
         
-    def _get_contexts_in_file(self, query, filename):
-        return reduce(operator.concat,
-                      [self._get_contexts_in_line(query, line)
-                       for line in open(filename, 'r')])
-
     def _get_contexts_in_line(self, query, line):
         """might mangle the whitespace a bit but that shouldn't matter"""
         if self._should_ignore_line(line): return []
@@ -67,6 +65,7 @@ class OfflineCorpus:
     def _get_ind_context(self, words, ind):
         lb = max(0, ind - CONTEXT_SIZE)
         ub = min(len(words), ind + CONTEXT_SIZE)
+        #TODO i think there's a performance bottleneck here?
         return ' '.join(words[lb:ub])
 
 
