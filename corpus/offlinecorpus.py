@@ -19,27 +19,27 @@ class OfflineCorpus:
                           [self.get_contexts(query, x)
                            for x in os.listdir(corpusfilename)])
         return reduce(operator.concat,
-                      [self.__contexts_in_line(query, line)
+                      [self._contexts_in_line(query, line)
                        for line in open(corpusfilename, 'r')])
 
-    def __contexts_in_line(self, query, line):
+    def _contexts_in_line(self, query, line):
         """might mangle the whitespace a bit but that shouldn't matter"""
-        if self.__should_ignore_line(line): return []
-        cleanq = self.__cleanword(query)
+        if self._should_ignore_line(line): return []
+        cleanq = self._cleanword(query)
         words = line.split()
         res = []
         for i in range(len(words)):
-            if self.__cleanword(words[i]) == cleanq:
-                res.append(self.__get_ind_context(words, i))
+            if self._cleanword(words[i]) == cleanq:
+                res.append(self._get_ind_context(words, i))
         return res
 
-    def __should_ignore_line(self, line):
+    def _should_ignore_line(self, line):
         return line.strip() == '.START'
 
-    def __cleanword(self, w):
+    def _cleanword(self, w):
         return re.sub(r'\W', '', w.lower())
 
-    def __get_ind_context(self, words, ind):
+    def _get_ind_context(self, words, ind):
         lb = max(0, ind - CONTEXT_SIZE)
         ub = min(len(words), ind + CONTEXT_SIZE)
         return ' '.join(words[lb:ub])
