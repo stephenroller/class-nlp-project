@@ -8,7 +8,7 @@ import time
 
 # actually half the context size--the lengh in either direction we go
 CONTEXT_SIZE = 10
-DEFAULT_CORPUS = '../corpora/wsj_untokenized.txt'
+DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 
 def get_contexts(query, corpusfilename=DEFAULT_CORPUS):
     """returns all contexts in which a query appears in a corpus."""
@@ -22,6 +22,7 @@ def get_contexts(query, corpusfilename=DEFAULT_CORPUS):
 
 def __contexts_in_line(query, line):
     """might mangle the whitespace a bit but that shouldn't matter"""
+    if __should_ignore_line(line): return []
     cleanq = __cleanword(query)
     words = line.split()
     res = []
@@ -29,6 +30,9 @@ def __contexts_in_line(query, line):
         if __cleanword(words[i]) == cleanq:
             res.append(__get_ind_context(words, i))
     return res
+
+def __should_ignore_line(line):
+    return line.strip() == '.START'
 
 def __cleanword(w):
     return re.sub(r'\W', '', w.lower())
