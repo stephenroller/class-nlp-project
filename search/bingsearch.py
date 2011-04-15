@@ -27,4 +27,4 @@ if __name__ == '__main__':
     li = BingSearch().get_contexts('coffee')
     print '%d contexts returned.' % len(li)
     #pprint.pprint(li)
-    print 'Took %d seconds.' % (time.time() - t)
+    print 'Took %f seconds.' % (time.time() - t)
