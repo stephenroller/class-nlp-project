@@ -23,7 +23,7 @@ def prepro(corpname):
     _mkdirs(corpname)
     lines = _get_all_lines(_get_corpus_files(corpname))
     cname = offlinecorpus.canonicalize_corpus_name(corpname)
-    words = _mkwordlist(cname, lines)
+    words = _mkwordset(cname, lines)
     _mkcontextlist(words, cname, lines)
 
 def _mkdirs(corpname):
@@ -48,8 +48,8 @@ def _get_corpus_files(fname):
         return [x for x in os.walk(fname)]
     return [fname]
 
-def _mkwordlist(corpname, lines):
-    """makes word list, returns list of words"""
+def _mkwordset(corpname, lines):
+    """makes word list, returns frozenset of words"""
     f = open(offlinecorpus.get_word_list_filename(corpname), 'w')
     words = _get_unique_words(lines)
     f.writelines([w + '\n' for w in words])
@@ -57,10 +57,24 @@ def _mkwordlist(corpname, lines):
     return words
 
 def _mkcontextlist(words, corpname, lines):
-    for w in words:
-        print('getting/writing context for %s' % w)
-        ctxs = _get_contexts(w, lines)
-        _write_contexts(w, corpname, ctxs)
+    ctxdict = dict.fromkeys(words)
+    print('reading through corpus and compiling contexts...')
+    for line in lines:
+        tokenized = line.split()
+        for i in range(len(tokenized)):
+            if offlinecorpus.clean_word(tokenized[i]) in words:
+                _add_ctx_to_dict(tokenized, i, ctxdict)
+    print('writing contexts to file...')
+    for w in ctxdict.iterkeys():
+        _write_contexts(w, corpname, ctxdict[w])
+
+def _add_ctx_to_dict(tokenizedline, index, contextdict):
+    lb = max(0, index - offlinecorpus.HALF_CONTEXT_SIZE)
+    ub = min(len(tokenizedline), index + offlinecorpus.HALF_CONTEXT_SIZE)
+    cleanword = offlinecorpus.clean_word(tokenizedline[index])
+    if not contextdict[cleanword]:
+        contextdict[cleanword] = []
+    contextdict[cleanword].append(' '.join(tokenizedline[lb:ub]))
 
 def _write_contexts(word, corpname, contexts):
     if len(word) == 0 or not word[0].isalpha(): return
@@ -71,27 +85,27 @@ def _write_contexts(word, corpname, contexts):
 def _filter_out_hapax_legomena(words):
     return [w for w in words if words.count(w) > 1]
 
-def _get_contexts(word, lines):
-    """returns all contexts in which a word appears."""
-    return itertools.chain(*[_get_contexts_in_line(word, l)
-                             for l in lines])
+#def _get_contexts(word, lines):
+#    """returns all contexts in which a word appears."""
+#    return itertools.chain(*[_get_contexts_in_line(word, l)
+#                             for l in lines])
 
-def _get_contexts_in_line(word, line):
-    """might mangle the whitespace a bit but that shouldn't matter"""
-    if _should_ignore_line(line): return []
-    cleanw = offlinecorpus.clean_word(word)
-    words = line.split()
-    res = []
-    for i in range(len(words)):
-        if offlinecorpus.clean_word(words[i]) == cleanw:
-            res.append(_get_ind_context(words, i))
-    return res
+#def _get_contexts_in_line(word, line):
+#    """might mangle the whitespace a bit but that shouldn't matter"""
+#    if _should_ignore_line(line): return []
+#    cleanw = offlinecorpus.clean_word(word)
+#    words = line.split()
+#    res = []
+#    for i in range(len(words)):
+#        if offlinecorpus.clean_word(words[i]) == cleanw:
+#            res.append(_get_ind_context(words, i))
+#    return res
 
-def _get_ind_context(words, ind):
-    lb = max(0, ind - offlinecorpus.CONTEXT_SIZE)
-    ub = min(len(words), ind + offlinecorpus.CONTEXT_SIZE)
-    #TODO i think there's a performance bottleneck here?
-    return ' '.join(words[lb:ub])
+#def _get_ind_context(words, ind):
+#    lb = max(0, ind - offlinecorpus.HALF_CONTEXT_SIZE)
+#    ub = min(len(words), ind + offlinecorpus.HALF_CONTEXT_SIZE)
+#    #TODO i think there's a performance bottleneck here?
+#    return ' '.join(words[lb:ub])
 
 def _get_unique_words(lines):
     """returns a set of unique words. Performs some normalization."""
@@ -116,6 +130,6 @@ def _should_ignore_line(line):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        sys.stderr.write('Usage: python offlinecorpuspreprocess.py corpusname')
+        sys.stderr.write('Usage: python offlinecorpuspreprocess.py corpusname\n')
         sys.exit(1)
     prepro(sys.argv[1])

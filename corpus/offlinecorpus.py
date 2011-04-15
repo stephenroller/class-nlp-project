@@ -8,7 +8,7 @@ import sys
 import time
 
 # actually half the context size--the lengh in either direction we go
-CONTEXT_SIZE = 10
+HALF_CONTEXT_SIZE = 10
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 PREPRO_FILE_DIR = 'prepro-corpus/'
 
