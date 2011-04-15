@@ -1,3 +1,5 @@
+"""Module to search for all occurrences of a string in a corpus."""
+
 import operator
 import os
 import re
@@ -9,6 +11,7 @@ CONTEXT_SIZE = 10
 DEFAULT_CORPUS = '../corpora/wsj_untokenized.txt'
 
 def get_contexts(query, corpusfilename=DEFAULT_CORPUS):
+    """returns all contexts in which a query appears in a corpus."""
     if os.path.isdir(corpusfilename):
         return reduce(operator.concat,
                       [get_contexts(query, x)
@@ -18,8 +21,7 @@ def get_contexts(query, corpusfilename=DEFAULT_CORPUS):
                    for line in open(corpusfilename, 'r')])
 
 def __contexts_in_line(query, line):
-    '''might mangle the whitespace a bit but that shouldn't matter.
-    '''
+    """might mangle the whitespace a bit but that shouldn't matter"""
     cleanq = __cleanword(query)
     words = line.split()
     res = []
