@@ -10,7 +10,7 @@ import time
 # actually half the context size--the lengh in either direction we go
 CONTEXT_SIZE = 10
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
-PREPRO_FILE_DIR = 'prepro_corpus/'
+PREPRO_FILE_DIR = 'prepro-corpus/'
 
 class OfflineCorpus:
 
