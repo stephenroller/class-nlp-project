@@ -1,6 +1,6 @@
-
 import operator
 import os
+import re
 import sys
 import time
 
@@ -20,14 +20,17 @@ def get_contexts(query, corpusfilename=DEFAULT_CORPUS):
 def __contexts_in_line(query, line):
     '''might mangle the whitespace a bit but that shouldn't matter.
     '''
-    lowerq = query.lower()
+    cleanq = __cleanword(query)
     words = line.split()
     res = []
     for i in range(len(words)):
-        if words[i].lower() == lowerq:
+        if __cleanword(words[i]) == cleanq:
             res.append(__get_ind_context(words, i))
     return res
-    
+
+def __cleanword(w):
+    return re.sub(r'\W', '', w.lower())
+
 def __get_ind_context(words, ind):
     lb = max(0, ind - CONTEXT_SIZE)
     ub = min(len(words), ind + CONTEXT_SIZE)
@@ -35,7 +38,10 @@ def __get_ind_context(words, ind):
 
 if __name__ == '__main__':
     t = time.time()
-    cxts = get_contexts('coffee')
+    q = 'coffee'
+    if len(sys.argv) > 1:
+        q = sys.argv[1]
+    cxts = get_contexts(q)
     print('Search took %f seconds' % (time.time() - t))
     print('Found %d contexts:' % len(cxts))
     for c in cxts:
