@@ -1,5 +1,6 @@
 from corpus import offlinecorpus
 import gensim
+import itertools
 import operator
 import re
 
@@ -12,10 +13,13 @@ class Lexicon:
         words = set([self._clean_word(w) for w in offlinecorp.get_unique_words()
                                          if self._clean_word(w) != ''])
         self._dict= gensim.corpora.Dictionary()
+        i = 0
+        print('populating dictionary with %d words.' % len(words))
         for w in words:
-            print 'getting contexts for %s' % w
+            i += 1
+            if i % 1000 == 0:
+                print('adding the %dth word to the dictionary...' % i)
             cxts = offlinecorp.get_contexts(w)
-            print 'adding to dict...'
             self._dict.doc2bow(self._contexts_to_token_list(cxts, w),
                                allowUpdate=True)
         print self._dict.token2id
@@ -32,8 +36,8 @@ class Lexicon:
         at most CONTEXT_LENGTH tokens.
         """
         li = [self._get_cleaned_tokenized_str(c) for c in contexts]
-        li = [self._trim_context_and_remove_word(c, word) for x in li]
-        return reduce(operator.concat, li)
+        li = [self._trim_context_and_remove_word(x, word) for x in li]
+        return itertools.chain(*li)
 
     def _get_cleaned_tokenized_str(self, line):
         """takes a line, returns a list of the cleaned tokens in that line"""
