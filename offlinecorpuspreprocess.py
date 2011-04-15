@@ -85,28 +85,6 @@ def _write_contexts(word, corpname, contexts):
 def _filter_out_hapax_legomena(words):
     return [w for w in words if words.count(w) > 1]
 
-#def _get_contexts(word, lines):
-#    """returns all contexts in which a word appears."""
-#    return itertools.chain(*[_get_contexts_in_line(word, l)
-#                             for l in lines])
-
-#def _get_contexts_in_line(word, line):
-#    """might mangle the whitespace a bit but that shouldn't matter"""
-#    if _should_ignore_line(line): return []
-#    cleanw = offlinecorpus.clean_word(word)
-#    words = line.split()
-#    res = []
-#    for i in range(len(words)):
-#        if offlinecorpus.clean_word(words[i]) == cleanw:
-#            res.append(_get_ind_context(words, i))
-#    return res
-
-#def _get_ind_context(words, ind):
-#    lb = max(0, ind - offlinecorpus.HALF_CONTEXT_SIZE)
-#    ub = min(len(words), ind + offlinecorpus.HALF_CONTEXT_SIZE)
-#    #TODO i think there's a performance bottleneck here?
-#    return ' '.join(words[lb:ub])
-
 def _get_unique_words(lines):
     """returns a set of unique words. Performs some normalization."""
     # clean and tokenize
