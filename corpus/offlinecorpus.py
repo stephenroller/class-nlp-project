@@ -47,8 +47,10 @@ class OfflineCorpus:
 
     def get_contexts(self, query):
         """returns all contexts in which a query appears in a corpus."""
-        f = open(get_context_list_filename(self._corpus_name,clean_word(query)),
-                 'r')
+        fname = get_context_list_filename(self._corpus_name, clean_word(query))
+        if not os.path.isfile(fname):
+            return []
+        f = open(fname, 'r')
         li = [x.strip() for x in f.readlines()]
         f.close()
         return li
@@ -70,6 +72,4 @@ if __name__ == '__main__':
     print('Found %d contexts:' % len(cxts))
     for c in cxts:
         print c
-    for w in OfflineCorpus().get_unique_words():
-        print w
 
