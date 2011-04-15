@@ -10,16 +10,35 @@ import time
 # actually half the context size--the lengh in either direction we go
 CONTEXT_SIZE = 10
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
+PREPRO_FILE_DIR = 'prepro_corpus/'
 
 class OfflineCorpus:
 
     def __init__(self, corpusfilename=DEFAULT_CORPUS):
+        self._corpus_name = self._canonicalize_corpus_name(corpusfilename)
+        if not self._all_necessary_files_present():
+            sys.stderr.write("ERROR! The necessary preprocesed corpus files were not found.\n")
+            sys.stderr.write("run offlinecorpuspreprocess.py on the corpus first!\n")
+            sys.exit(1)
         self._corpus_files = self._get_corpus_files(corpusfilename)
         self._lines = []
         for f in self._corpus_files:
             for l in open(f, 'r'):
                 if not self._should_ignore_line(l):
                     self._lines.append(l)
+
+    def _all_necessary_files_present(self):
+        return os.path.isfile(self._get_word_list_filename()) and \
+               os.path.isdir(self._get_context_list_dirname())
+
+    def _canonicalize_corpus_name(self, cname):
+        return os.path.basename(os.path.normcase(cname))
+
+    def _get_word_list_filename(self):
+        return os.path.join(PREPRO_FILE_DIR, self._corpus_name + '_WORDS')
+
+    def _get_context_list_dirname(self):
+        return os.path.join(PREPRO_FILE_DIR, self._corpus_name + '_CONTEXTS/')
 
     def get_contexts(self, query):
         """returns all contexts in which a query appears in a corpus."""
