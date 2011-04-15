@@ -12,7 +12,14 @@ class Lexicon:
     def __init__(self, offlinecorp):
         words = set([self._clean_word(w) for w in offlinecorp.get_unique_words()
                                          if self._clean_word(w) != ''])
+        words = list(words)
         self._dict= gensim.corpora.Dictionary()
+        # following 2 dicts maintain an index between 
+        # word <-> document-index pairs. That is, in self._dict, each
+        # word is represented as a document at a certain index, and
+        # that correspondence is represented by these 2 dicts:
+        self._word2docindex = self._get_word2docindex(words)
+        self._dicindex2word = dict((v,k) for k,v in self._word2docindex.iteritems())
         i = 0
         print('populating dictionary with %d words.' % len(words))
         for w in words:
@@ -24,6 +31,12 @@ class Lexicon:
                                allowUpdate=True)
         print self._dict.token2id
 
+    def _get_word2docindex(self, words):
+        d = dict()
+        for i in range(len(words)):
+            d[words[i]] = i
+        return d
+
     def _contexts_to_token_list(self, contexts, word):
         """tokenizes a list of contexts, returns a list of normalized tokens.
         
@@ -33,7 +46,7 @@ class Lexicon:
 
         Two important things: (1) an occurrence of 'word' will be
         removed from each context, and (2) we trim each context to
-        at most CONTEXT_LENGTH tokens.
+        at most 2*HALF_CONTEXT_LENGTH tokens.
         """
         li = [self._get_cleaned_tokenized_str(c) for c in contexts]
         li = [self._trim_context_and_remove_word(x, word) for x in li]
