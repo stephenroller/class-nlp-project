@@ -22,8 +22,20 @@ class OfflineCorpus:
         return [fname]
 
     def get_normalized_sent_list(self):
-        return []
+        return reduce(operator.concat,
+                      [self._get_cleaned_document_list(x)
+                       for x in self._corpus_files])
         
+    def _get_cleaned_document_list(self, fname):
+        return [self._get_cleaned_tokenized_line(l)
+                for l in open(fname, 'r') 
+                if len(l.strip()) > 0]
+
+    def _get_cleaned_tokenized_line(self, line):
+        """takes a line, returns a list of the cleaned tokens in that line"""
+        return [self._cleanword(w) for w in line.split()
+                if len(self._cleanword(w)) > 0]
+
     def get_contexts(self, query, corpusfilename=DEFAULT_CORPUS):
         """returns all contexts in which a query appears in a corpus."""
         return reduce(operator.concat,
