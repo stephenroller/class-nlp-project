@@ -12,17 +12,30 @@ DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 
 class OfflineCorpus:
 
+    def __init__(self, corpusfilename=DEFAULT_CORPUS):
+        self._corpus_files = self._get_corpus_files(corpusfilename)
+
+    def _get_corpus_files(self, fname):
+        """takes a filename (optionally a dir), returns list of filenames"""
+        if os.path.isdir(fname):
+            return [x for x in os.walk(fname)]
+        return [fname]
+
+    def get_normalized_sent_list(self):
+        return []
+        
     def get_contexts(self, query, corpusfilename=DEFAULT_CORPUS):
         """returns all contexts in which a query appears in a corpus."""
-        if os.path.isdir(corpusfilename):
-            return reduce(operator.concat,
-                          [self.get_contexts(query, x)
-                           for x in os.listdir(corpusfilename)])
         return reduce(operator.concat,
-                      [self._contexts_in_line(query, line)
-                       for line in open(corpusfilename, 'r')])
+                      [self._get_contexts_in_file(query, x)
+                       for x in self._corpus_files])
 
-    def _contexts_in_line(self, query, line):
+    def _get_contexts_in_file(self, query, filename):
+        return reduce(operator.concat,
+                      [self._get_contexts_in_line(query, line)
+                       for line in open(filename, 'r')])
+
+    def _get_contexts_in_line(self, query, line):
         """might mangle the whitespace a bit but that shouldn't matter"""
         if self._should_ignore_line(line): return []
         cleanq = self._cleanword(query)
