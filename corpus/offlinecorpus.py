@@ -1,4 +1,8 @@
-"""Module to search for all occurrences of a string in a corpus."""
+"""Module to search for all occurrences of a string in a corpus.
+
+Note that if you're calling this directly to test it, you need to call
+it from the  project root directory (so it can find prepro-corpus/)
+"""
 
 import itertools
 import operator
