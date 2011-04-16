@@ -33,7 +33,6 @@ def clean_word(w):
 
 
 class OfflineCorpus:
-
     def __init__(self, corpusfilename=DEFAULT_CORPUS):
         self._corpus_name = canonicalize_corpus_name(corpusfilename)
         if not self._all_necessary_files_present():
