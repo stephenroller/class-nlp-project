@@ -56,11 +56,11 @@ class CorpusSimilarityFinder(object):
 
     def load(self):
         self.dictionary = gensim.corpora.Dictionary.load(self.storepath + '.dict')
-        print self.dictionary
         self.corpus = gensim.corpora.MmCorpus(self.storepath + '.corpus')
-        self.sim = gensim.similarities.SparseMatrixSimilarity.load(self.storepath + '.sms')
         self.docid2word = StorableDictionary.load(self.storepath + '.id2wrd')
         self.word2docid = StorableDictionary.load(self.storepath + '.wrd2id')
+        self.tfidf = gensim.models.TfidfModel.load(self.storepath + '.tfidf')
+        self.sim = gensim.similarities.SparseMatrixSimilarity.load(self.storepath + '.sms')
 
     def save(self):
         # create the corpus
@@ -77,8 +77,11 @@ class CorpusSimilarityFinder(object):
         self.docid2word.save(self.storepath + '.id2wrd')
         self.word2docid = corpus_reader.word2docid
         self.word2docid.save(self.storepath + '.wrd2id')
+        # ... transformation of the corpus
+        self.tfidf = gensim.models.TfidfModel(self.corpus, id2word=self.dictionary, normalize=True)
+        self.tfidf.save(self.storepath + '.tfidf')
         # ... and of the similarity matrix
-        self.sim = gensim.similarities.SparseMatrixSimilarity(self.corpus)
+        self.sim = gensim.similarities.SparseMatrixSimilarity(self.tfidf[self.corpus])
         self.sim.save(self.storepath + '.sms')
     
     def similar_to(self, word):
