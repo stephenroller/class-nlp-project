@@ -75,8 +75,6 @@ class PennCorpus(object):
             self.word2docid[word] = i
             yield self._get_word_context_vector(word)
 
-def create_index(filename, savedir=PREPRO_DIR):
-    basename = os.path.basename(filename)
 
 class CorpusSimilarityFinder(object):
     def __init__(self, filename, store_dir=PREPRO_DIR):
@@ -136,7 +134,7 @@ class CorpusSimilarityFinder(object):
             doc = self.corpus[docid]
             docword = self.docid2word[docid]
             retval.append(docword)
-            #print docid, docword, score
+
         return retval
 
 if __name__ == '__main__':
