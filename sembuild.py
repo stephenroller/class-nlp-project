@@ -6,34 +6,11 @@ import gensim
 
 from nltk.corpus import WordNetCorpusReader
 
-from corpus.offlinecorpus import clean_word, OfflineCorpus
+from corpus.offlinecorpus import OfflineCorpus
+from util import StorableDictionary, WordTransformer, STOP_WORDS
 
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 PREPRO_DIR = 'prepro-corpus/'
-STOP_WORDS = ['the', 'an', 'a', '.start', 'to', 'of', 'and', 'in']
-
-
-class WordTransformer(object):
-    def __init__(self, stemming=False):
-        self.stem_enabled = stemming
-        if stemming:
-            from nltk.stem.porter import PorterStemmer
-            self.stemmer = PorterStemmer()
-
-    def transform(self, word):
-        # stems, lowercases and checks if stopword
-        # returns None if the word should be ignored.
-        w = word.lower().strip()
-        w = clean_word(w)
-        if self.stem_enabled:
-            w = self.stemmer.stem(w)
-        if w in STOP_WORDS:
-            return None
-        return w
-
-
-class StorableDictionary(dict, gensim.utils.SaveLoad):
-    pass
 
 
 class PennCorpus(object):
@@ -42,7 +19,7 @@ class PennCorpus(object):
         self.offline = offline
         self.docid2word = StorableDictionary()
         self.word2docid = StorableDictionary()
-        self.dictionary = gensim.corpora.dictionary.Dictionary([self._words_iter()])
+        self.dictionary = gensim.corpora.dictionary.Dictionary()
 
     def _words_iter(self):
         for word in self.offline.get_unique_words():
@@ -52,13 +29,12 @@ class PennCorpus(object):
                yield word
 
     def _context_to_vector(self, word, context, ignore_word=False):
-        context = context.lower().strip().split(' ')
-        context = [clean_word(w) for w in context]
+        context = context.lower().strip().split()
         if ignore_word:
             # optionally, we can exclude the word itself from the context
             # vector
-            context = [w for w in context if w != word]
-        context = [self.transformer.transform(w) for w in context]
+            context = (w for w in context if w != word)
+        context = (self.transformer.transform(w) for w in context)
         # filter out words we're supposed to ignore
         context = [w for w in context if w]
         return context
@@ -67,7 +43,7 @@ class PennCorpus(object):
         all_contexts = []
         for context in self.offline.get_contexts(word):
             all_contexts += self._context_to_vector(word, context)
-        return self.dictionary.doc2bow(all_contexts)
+        return self.dictionary.doc2bow(all_contexts, allowUpdate=True)
 
     def __iter__(self):
         for i, word in enumerate(self._words_iter()):
@@ -96,7 +72,6 @@ class CorpusSimilarityFinder(object):
         corpus_reader = PennCorpus(offline)
         self.dictionary = corpus_reader.dictionary
         self.dictionary.save(self.storepath + '.dict')
-        print self.dictionary
         # ... of the corpus
         gensim.corpora.MmCorpus.serialize(self.storepath + '.corpus', corpus_reader, id2word=corpus_reader.dictionary)
         self.corpus = gensim.corpora.MmCorpus(self.storepath + '.corpus')
