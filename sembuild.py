@@ -7,7 +7,7 @@ import gensim
 from nltk.corpus import WordNetCorpusReader
 
 from corpus.offlinecorpus import OfflineCorpus
-from corpus.searchenginecorpus import SearchEngineCorpus
+from corpus.searchenginecorpus import factory as search_engine_factory
 from util import StorableDictionary, WordTransformer, STOP_WORDS
 
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
@@ -58,7 +58,7 @@ class VectorCorpus(object):
 
 class WebVectorCorpus(VectorCorpus):
     def __init__(self, preload_terms):
-        search_corpus = SearchEngineCorpus()
+        search_corpus = search_engine_factory()
         VectorCorpus.__init__(self, search_corpus)
         self.terms = preload_terms
         for term in preload_terms:
@@ -106,7 +106,7 @@ class CorpusSimilarityFinder(object):
         # ... and the similarity matrix
         self.sim.save(self.storepath + '.sms')
     
-    def similar_to(self, word):
+    def similar_to(self, word, n=10):
         def _max_dim(vec):
             return max(vec, key=lambda x: x[1])
 
@@ -118,7 +118,6 @@ class CorpusSimilarityFinder(object):
 
         wt = WordTransformer()
         word = wt.transform(word)
-        n = 10
         self.sim.numBest = n
         vec = self.corpus[self.word2docid[word]]
         vec = self.tfidf[vec]
