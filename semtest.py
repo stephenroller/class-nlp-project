@@ -23,7 +23,11 @@ def calc_correct(corpus, word):
 
 if __name__ == '__main__':
     word = sys.argv[1]
-    corpus = CorpusSimilarityFinder(DEFAULT_CORPUS)
+    corpus_path = DEFAULT_CORPUS
+    offline = OfflineCorpus(corpus_path)
+    vector_corpus = VectorCorpus(offline)
+    store_path = os.path.join(PREPRO_DIR, os.path.basename(corpus_path))
+    corpus = CorpusSimilarityFinder(store_path)
     try:
         corpus.load()
     except IOError:

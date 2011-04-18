@@ -7,22 +7,26 @@ import gensim
 from nltk.corpus import WordNetCorpusReader
 
 from corpus.offlinecorpus import OfflineCorpus
+from corpus.searchenginecorpus import SearchEngineCorpus
 from util import StorableDictionary, WordTransformer, STOP_WORDS
 
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 PREPRO_DIR = 'prepro-corpus/'
 
-
-class PennCorpus(object):
-    def __init__(self, offline):
+class VectorCorpus(object):
+    """
+    A class which takes a corpus object and turns it into
+    an iterator of vectors.
+    """
+    def __init__(self, corpus):
         self.transformer = WordTransformer()
-        self.offline = offline
+        self.corpus = corpus 
         self.docid2word = StorableDictionary()
         self.word2docid = StorableDictionary()
         self.dictionary = gensim.corpora.dictionary.Dictionary()
 
     def _words_iter(self):
-        for word in self.offline.get_unique_words():
+        for word in self.corpus.get_unique_words():
             # words should already be transformed
             #word = self.transformer.transform(word)
             if word:
@@ -41,7 +45,7 @@ class PennCorpus(object):
 
     def _get_word_context_vector(self, word):
         all_contexts = []
-        for context in self.offline.get_contexts(word):
+        for context in self.corpus.get_contexts(word):
             all_contexts += self._context_to_vector(word, context)
         return self.dictionary.doc2bow(all_contexts, allowUpdate=True)
 
@@ -52,11 +56,21 @@ class PennCorpus(object):
             yield self._get_word_context_vector(word)
 
 
+class WebVectorCorpus(VectorCorpus):
+    def __init__(self, preload_terms):
+        search_corpus = SearchEngineCorpus()
+        VectorCorpus.__init__(self, search_corpus)
+        self.terms = preload_terms
+        for term in preload_terms:
+            search_corpus.get_contexts(term)
+
+    def _words_iter(self):
+        return self.terms
+
+
 class CorpusSimilarityFinder(object):
-    def __init__(self, filename, store_dir=PREPRO_DIR):
-        self.filename = filename
-        basename = os.path.basename(filename)
-        self.storepath = os.path.join(store_dir, basename)
+    def __init__(self, store_path):
+        self.storepath = store_path
 
     def load(self):
         self.dictionary = gensim.corpora.Dictionary.load(self.storepath + '.dict')
@@ -66,25 +80,30 @@ class CorpusSimilarityFinder(object):
         self.tfidf = gensim.models.TfidfModel.load(self.storepath + '.tfidf')
         self.sim = gensim.similarities.SparseMatrixSimilarity.load(self.storepath + '.sms')
 
-    def save(self):
-        # create the corpus
-        offline = OfflineCorpus()
-        corpus_reader = PennCorpus(offline)
-        self.dictionary = corpus_reader.dictionary
-        self.dictionary.save(self.storepath + '.dict')
-        # ... of the corpus
-        gensim.corpora.MmCorpus.serialize(self.storepath + '.corpus', corpus_reader, id2word=corpus_reader.dictionary)
+    def create(self, vector_corpus):
+        # create the dictionary
+        self.dictionary = vector_corpus.dictionary
+        # ... the corpus
+        gensim.corpora.MmCorpus.serialize(self.storepath + '.corpus', vector_corpus, id2word=self.dictionary)
         self.corpus = gensim.corpora.MmCorpus(self.storepath + '.corpus')
-        # ... of the mappings from docids to words
-        self.docid2word = corpus_reader.docid2word
-        self.docid2word.save(self.storepath + '.id2wrd')
-        self.word2docid = corpus_reader.word2docid
-        self.word2docid.save(self.storepath + '.wrd2id')
-        # ... transformation of the corpus
+        # ... the mappings from docids to words
+        self.docid2word = vector_corpus.docid2word
+        self.word2docid = vector_corpus.word2docid
+        # ... the transformation of the corpus
         self.tfidf = gensim.models.TfidfModel(self.corpus, id2word=self.dictionary, normalize=True)
-        self.tfidf.save(self.storepath + '.tfidf')
-        # ... and of the similarity matrix
+        # ... and the similarity matrix
         self.sim = gensim.similarities.SparseMatrixSimilarity(self.tfidf[self.corpus])
+
+    def save(self):
+        # save the corpus
+        self.dictionary.save(self.storepath + '.dict')
+        # ... the corpus
+        # ... the mappings from docids to words
+        self.docid2word.save(self.storepath + '.id2wrd')
+        self.word2docid.save(self.storepath + '.wrd2id')
+        # ... the transformation of the corpus
+        self.tfidf.save(self.storepath + '.tfidf')
+        # ... and the similarity matrix
         self.sim.save(self.storepath + '.sms')
     
     def similar_to(self, word):
@@ -113,6 +132,11 @@ class CorpusSimilarityFinder(object):
         return retval
 
 if __name__ == '__main__':
-    corpus = CorpusSimilarityFinder(DEFAULT_CORPUS)
+    corpus_path = DEFAULT_CORPUS
+    offline = OfflineCorpus(corpus_path)
+    vector_corpus = VectorCorpus(offline)
+    store_path = os.path.join(PREPRO_DIR, os.path.basename(corpus_path))
+    corpus = CorpusSimilarityFinder(store_path)
+    corpus.create(vector_corpus)
     corpus.save()
 
