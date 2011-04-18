@@ -8,6 +8,18 @@ import time
 from gensim.utils import SaveLoad
 
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
+STORE_FILENAME = 'bing.pickle'
+
+search_engine_corpus = None
+
+def factory():
+    global search_engine_corpus
+    if not search_engine_corpus:
+        try:
+            search_engine_corpus = SearchEngineCorpus.load(STORE_FILENAME)
+        except IOError:
+            search_engine_corpus = SearchEngineCorpus()
+    return search_engine_corpus
 
 class SearchEngineCorpus(SaveLoad):
     def __init__(self):
@@ -33,6 +45,7 @@ class SearchEngineCorpus(SaveLoad):
                 pass
 
         self.cache[query] = res
+        self.save(STORE_FILENAME)
         return res
 
 if __name__ == '__main__':
