@@ -12,12 +12,13 @@ make it smart enough to chdir as needed, and didn't want to hardcode the
 absolute path of the corpus preprocessing files in.
 """
 
-from corpus import offlinecorpus
 import itertools
 import os
 import string
 import sys
 
+from corpus import offlinecorpus
+from sembuild import WordTransformer
 
 def prepro(corpname):
     _mkdirs(corpname)
@@ -52,17 +53,20 @@ def _mkwordset(corpname, lines):
     """makes word list, returns frozenset of words"""
     f = open(offlinecorpus.get_word_list_filename(corpname), 'w')
     words = _get_unique_words(lines)
-    f.writelines([w + '\n' for w in words])
+    for word in words:
+        if word:
+            f.write(word + '\n')
     f.close()
     return words
 
 def _mkcontextlist(words, corpname, lines):
     ctxdict = dict.fromkeys(words)
+    word_trans = WordTransformer() 
     print('reading through corpus and compiling contexts...')
     for line in lines:
         tokenized = line.split()
         for i in range(len(tokenized)):
-            if offlinecorpus.clean_word(tokenized[i]) in words:
+            if word_trans.transform(tokenized[i]) in words:
                 _add_ctx_to_dict(tokenized, i, ctxdict)
     print('writing contexts to file...')
     for w in ctxdict.iterkeys():
@@ -71,13 +75,17 @@ def _mkcontextlist(words, corpname, lines):
 def _add_ctx_to_dict(tokenizedline, index, contextdict):
     lb = max(0, index - offlinecorpus.HALF_CONTEXT_SIZE)
     ub = min(len(tokenizedline), index + offlinecorpus.HALF_CONTEXT_SIZE)
-    cleanword = offlinecorpus.clean_word(tokenizedline[index])
+    wt = WordTransformer()
+    cleanword = wt.transform(tokenizedline[index])
+    if not cleanword:
+        return
     if not contextdict[cleanword]:
         contextdict[cleanword] = []
     contextdict[cleanword].append(' '.join(tokenizedline[lb:ub]))
 
 def _write_contexts(word, corpname, contexts):
-    if len(word) == 0 or not word[0].isalpha(): return
+    if not word or not word[0].isalpha():
+        return
     f = open(offlinecorpus.get_context_list_filename(corpname, word), 'w')
     f.writelines([x + '\n' for x in contexts])
     f.close()
@@ -88,7 +96,8 @@ def _filter_out_hapax_legomena(words):
 def _get_unique_words(lines):
     """returns a set of unique words. Performs some normalization."""
     # clean and tokenize
-    cleanlines = [[offlinecorpus.clean_word(w) for w in l.split()]
+    t = WordTransformer()
+    cleanlines = [[t.transform(w) for w in l.split()]
                   for l in lines]
     # uniquify
     return frozenset().union(*[frozenset(x) for x in cleanlines])

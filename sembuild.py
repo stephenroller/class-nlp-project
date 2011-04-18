@@ -5,25 +5,28 @@ import os
 import gensim
 
 from nltk.corpus import WordNetCorpusReader
-from nltk.stem.porter import PorterStemmer
 
 from corpus.offlinecorpus import clean_word, OfflineCorpus
 
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 PREPRO_DIR = 'prepro-corpus/'
-STOP_WORDS = ['the', 'an', 'a', '.start', 'to', 'of', 'and']
+STOP_WORDS = ['the', 'an', 'a', '.start', 'to', 'of', 'and', 'in']
 
 
 class WordTransformer(object):
-    def __init__(self):
-        self.stemmer = PorterStemmer()
+    def __init__(self, stemming=False):
+        self.stem_enabled = stemming
+        if stemming:
+            from nltk.stem.porter import PorterStemmer
+            self.stemmer = PorterStemmer()
 
     def transform(self, word):
         # stems, lowercases and checks if stopword
         # returns None if the word should be ignored.
         w = word.lower().strip()
         w = clean_word(w)
-        #w = self.stemmer.stem(w)
+        if self.stem_enabled:
+            w = self.stemmer.stem(w)
         if w in STOP_WORDS:
             return None
         return w
@@ -43,7 +46,8 @@ class PennCorpus(object):
 
     def _words_iter(self):
         for word in self.offline.get_unique_words():
-            word = self.transformer.transform(word)
+            # words should already be transformed
+            #word = self.transformer.transform(word)
             if word:
                yield word
 
@@ -58,7 +62,6 @@ class PennCorpus(object):
         # filter out words we're supposed to ignore
         context = [w for w in context if w]
         return context
-
 
     def _get_word_context_vector(self, word):
         all_contexts = []
