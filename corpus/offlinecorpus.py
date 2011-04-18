@@ -29,6 +29,7 @@ def get_context_list_filename(cname, word):
     return os.path.join(get_context_list_dirname(cname), word[0], word)
 
 def clean_word(w):
+    w = w.replace('-', '_')
     return re.sub(r'\W', '', w.lower())
 
 

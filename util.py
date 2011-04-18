@@ -29,5 +29,6 @@ class StorableDictionary(dict, gensim.utils.SaveLoad):
 
 
 def clean_word(w):
+    w = w.replace('-', '_')
     return re.sub(r'\W', '', w.lower())
 
