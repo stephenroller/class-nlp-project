@@ -9,6 +9,7 @@ from gensim.utils import SaveLoad
 
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
 STORE_FILENAME = 'bing.pickle'
+SAVE_RATE = 20
 
 search_engine_corpus = None
 
@@ -24,6 +25,7 @@ def factory():
 class SearchEngineCorpus(SaveLoad):
     def __init__(self):
         self.cache = dict()
+        self._queries_made = 0
 
     def get_contexts(self, query):
         """returns a list of contexts in which a query appears.
@@ -45,7 +47,10 @@ class SearchEngineCorpus(SaveLoad):
                 pass
 
         self.cache[query] = res
-        self.save(STORE_FILENAME)
+
+        self._queries_made += 1
+        if self._queries_made % SAVE_RATE == 0:
+            self.save(STORE_FILENAME)
         return res
 
 if __name__ == '__main__':
