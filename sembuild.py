@@ -6,12 +6,13 @@ import gensim
 
 from nltk.corpus import WordNetCorpusReader
 
-from corpus.offlinecorpus import OfflineCorpus
+from corpus.indexedcorpus import IndexedCorpus
 from corpus.searchenginecorpus import factory as search_engine_factory
 from util import StorableDictionary, WordTransformer, STOP_WORDS
 
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
-PREPRO_DIR = 'prepro-corpus/'
+#PREPRO_DIR = 'prepro-corpus/'
+PREPRO_DIR = '/tmp/prepro-corpus/'
 
 class VectorCorpus(object):
     """
@@ -132,9 +133,9 @@ class CorpusSimilarityFinder(object):
 
 if __name__ == '__main__':
     corpus_path = DEFAULT_CORPUS
-    offline = OfflineCorpus(corpus_path)
-    vector_corpus = VectorCorpus(offline)
     store_path = os.path.join(PREPRO_DIR, os.path.basename(corpus_path))
+    offline = IndexedCorpus(store_path + '.sqlite', corpus_path)
+    vector_corpus = VectorCorpus(offline)
     corpus = CorpusSimilarityFinder(store_path)
     corpus.create(vector_corpus)
     corpus.save()
