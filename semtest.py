@@ -2,21 +2,36 @@
 
 from sembuild import * 
 
-def calc_correct(corpus, word):
+# k = number of web similar words
+K = 5
+# n = number of small corpus similar words
+N = 20
+
+def get_test_set(r=0.10):
+    words = []
+    with open('wordnet/single_testset.16') as f:
+        for line in f:
+            word = line.strip()
+            words.append(word)
+    return sorted(words)
+
+def calc_correct(corpus, word, exclude_words=[]):
+    print "Attempting to classify '%s'" % word
     wn = WordNetCorpusReader('wordnet/1.6/')
     votes = dict()
-    similar_words = corpus.similar_to(word, n=20)
+    word = WordTransformer().transform(word)
+    similar_words = corpus.similar_to(word, n=N)
     print "Similar words: " + ', '.join(similar_words)
-    print
+    if not similar_words:
+        return None
 
     print "Fetching online corpuses..."
     wvc = WebVectorCorpus(similar_words)
     webcorp = CorpusSimilarityFinder('/tmp/webcorpus.txt')
     webcorp.create(wvc)
 
-    similar_words = webcorp.similar_to(word, n=5)
+    similar_words = webcorp.similar_to(word, n=K)
     print "Web similar words: " + ', '.join(similar_words)
-    print
 
     for near_word in similar_words[1:]:
         for synset in wn.synsets(near_word):
@@ -27,13 +42,42 @@ def calc_correct(corpus, word):
         print votes[guess], guess
 
     synsets = [ss.lexname for ss in wn.synsets(word)]
-    print "correct answer:", ", ".join(synsets)
     guesses = ranked[:len(synsets)]
-    numcorrect = len([True for g in guesses if g in synsets])
-    print "% correct:", 100*float(numcorrect)/len(synsets)
+    return guesses and guesses[0] or None
+
+def test_categorizer(corpus):
+    wn = WordNetCorpusReader('wordnet/1.6/')
+    test_words = get_test_set()
+    num_correct = 0
+    num_guessed = 0
+    num_total = 0
+    for test_word in test_words:
+        try:
+            synsets = wn.synsets(test_word)
+            if len(synsets) != 1:
+                continue
+            correct_answer = synsets[0].lexname
+            print "Looking for '%s'" % test_word
+            guess = calc_correct(corpus, test_word, test_words)
+            print "%s: %s (correct: %s)" % (test_word, guess or "??", correct_answer)
+            print 
+            if guess == correct_answer:
+                num_correct += 1
+            if guess != None:
+                num_guessed += 0
+            num_total += 1
+        except KeyError:
+            # wordnet word didn't appear in our corpus
+            print "...'%s' not in the corpus" % test_word
+            continue
+
+    print "-" * 60
+    print "Precision: %.2f%%" % (100 * float(num_correct) / num_guessed)
+    print "Recall: %.2f%%" % (100 * float(num_correct) / num_total)
+
+
 
 if __name__ == '__main__':
-    word = sys.argv[1]
     corpus_path = DEFAULT_CORPUS
     store_path = os.path.join(PREPRO_DIR, os.path.basename(corpus_path))
     corpus = CorpusSimilarityFinder(store_path)
@@ -42,5 +86,5 @@ if __name__ == '__main__':
     except IOError:
         print "io error. did you run sembuild.py first?"
         sys.exit(1)
-    calc_correct(corpus, word)
+    test_categorizer(corpus)
 
