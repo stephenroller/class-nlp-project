@@ -24,7 +24,7 @@ class VectorCorpus(object):
         self.corpus = corpus 
         self.docid2word = StorableDictionary()
         self.word2docid = StorableDictionary()
-        self.dictionary = gensim.corpora.dictionary.Dictionary()
+        self.dictionary = gensim.corpora.dictionary.Dictionary([self._words_iter()])
 
     def _words_iter(self):
         for word in self.corpus.get_unique_words():
@@ -34,21 +34,19 @@ class VectorCorpus(object):
                yield word
 
     def _context_to_vector(self, word, context, ignore_word=False):
-        context = context.lower().strip().split()
+        context = self.transformer.tokenize(context)
         if ignore_word:
             # optionally, we can exclude the word itself from the context
             # vector
-            context = (w for w in context if w != word)
-        context = (self.transformer.transform(w) for w in context)
-        # filter out words we're supposed to ignore
-        context = [w for w in context if w]
+            context = [w for w in context if w != word]
         return context
 
-    def _get_word_context_vector(self, word):
+    def _get_word_context_vector(self, word, allowUpdate=False):
         all_contexts = []
         for context in self.corpus.get_contexts(word):
             all_contexts += self._context_to_vector(word, context)
-        return self.dictionary.doc2bow(all_contexts, allowUpdate=True)
+        return self.dictionary.doc2bow(all_contexts, allowUpdate=allowUpdate)
+        #return self.dictionary.doc2bow(all_contexts)
 
     def __iter__(self):
         for i, word in enumerate(self._words_iter()):
@@ -60,13 +58,16 @@ class VectorCorpus(object):
 class WebVectorCorpus(VectorCorpus):
     def __init__(self, preload_terms):
         search_corpus = search_engine_factory()
-        VectorCorpus.__init__(self, search_corpus)
         self.terms = preload_terms
+        VectorCorpus.__init__(self, search_corpus)
         for term in preload_terms:
             search_corpus.get_contexts(term)
 
     def _words_iter(self):
         return self.terms
+
+    def _get_word_context_vector(self, word):
+        return VectorCorpus._get_word_context_vector(self, word, allowUpdate=True)
 
 
 class CorpusSimilarityFinder(object):
@@ -132,7 +133,9 @@ class CorpusSimilarityFinder(object):
         return retval
 
 if __name__ == '__main__':
-    corpus_path = DEFAULT_CORPUS
+    corpus_path = sys.argv[1]
+    if corpus_path.endswith('/'):
+        corpus_path = corpus_path[:-1]
     store_path = os.path.join(PREPRO_DIR, os.path.basename(corpus_path))
     offline = IndexedCorpus(store_path + '.sqlite', corpus_path)
     vector_corpus = VectorCorpus(offline)
