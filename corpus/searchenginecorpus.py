@@ -6,7 +6,7 @@ import os
 import sys
 import time
 
-from gensim.utils import SaveLoad
+#from gensim.utils import SaveLoad
 
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
 DB_FILENAME = '/tmp/webcorpus.sqlite'
