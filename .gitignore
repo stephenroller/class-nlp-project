@@ -1,3 +1,3 @@
 *.pyc
 prepro-corpus/
-.bing.pickle
+bing.pickle
