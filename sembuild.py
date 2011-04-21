@@ -8,7 +8,7 @@ from nltk.corpus import WordNetCorpusReader
 
 from corpus.indexedcorpus import IndexedCorpus
 from corpus.searchenginecorpus import factory as search_engine_factory
-from util import StorableDictionary, WordTransformer, STOP_WORDS
+from util import StorableDictionary, WordTransformer, STOP_WORDS, context_windows
 
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 #PREPRO_DIR = 'prepro-corpus/'
@@ -33,20 +33,28 @@ class VectorCorpus(object):
             if word:
                yield word
 
-    def _context_to_vector(self, word, context, ignore_word=False):
-        context = self.transformer.tokenize(context)
-        if ignore_word:
-            # optionally, we can exclude the word itself from the context
-            # vector
-            context = [w for w in context if w != word]
-        return context
+    def _context_to_vector(self, word, large_context, ignore_word=False):
+        large_context = self.transformer.tokenize(large_context)
+        small_context = []
+        for left, mid, right in context_windows(large_context, n=5):
+            if mid == word:
+                small_context += left + right
+                if not ignore_word:
+                    small_context.append(mid)
+
+        return small_context
 
     def _get_word_context_vector(self, word, allowUpdate=False):
         all_contexts = []
         for context in self.corpus.get_contexts(word):
             all_contexts += self._context_to_vector(word, context)
         return self.dictionary.doc2bow(all_contexts, allowUpdate=allowUpdate)
-        #return self.dictionary.doc2bow(all_contexts)
+
+    def __len__(self):
+        return len(self.corpus)
+
+    def __getitem__(self, query):
+        return self._get_word_context_vector(query)
 
     def __iter__(self):
         for i, word in enumerate(self._words_iter()):
@@ -69,32 +77,35 @@ class WebVectorCorpus(VectorCorpus):
     def _get_word_context_vector(self, word):
         return VectorCorpus._get_word_context_vector(self, word, allowUpdate=True)
 
+    def __len__(self):
+        return len(self.terms)
+
 
 class CorpusSimilarityFinder(object):
     def __init__(self, store_path):
         self.storepath = store_path
 
-    def load(self):
+    def load(self, vector_corpus):
+        self.vector_corpus = vector_corpus
         self.dictionary = gensim.corpora.Dictionary.load(self.storepath + '.dict')
-        self.corpus = gensim.corpora.MmCorpus(self.storepath + '.corpus')
         self.docid2word = StorableDictionary.load(self.storepath + '.id2wrd')
         self.word2docid = StorableDictionary.load(self.storepath + '.wrd2id')
         self.tfidf = gensim.models.TfidfModel.load(self.storepath + '.tfidf')
         self.sim = gensim.similarities.SparseMatrixSimilarity.load(self.storepath + '.sms')
 
     def create(self, vector_corpus):
+        self.vector_corpus = vector_corpus
         # create the dictionary
         self.dictionary = vector_corpus.dictionary
         # ... the corpus
-        gensim.corpora.MmCorpus.serialize(self.storepath + '.corpus', vector_corpus, id2word=self.dictionary)
-        self.corpus = gensim.corpora.MmCorpus(self.storepath + '.corpus')
+        #gensim.corpora.MmCorpus.serialize(self.storepath + '.corpus', vector_corpus, id2word=self.dictionary)
         # ... the mappings from docids to words
         self.docid2word = vector_corpus.docid2word
         self.word2docid = vector_corpus.word2docid
         # ... the transformation of the corpus
-        self.tfidf = gensim.models.TfidfModel(self.corpus, id2word=self.dictionary, normalize=True)
+        self.tfidf = gensim.models.TfidfModel(vector_corpus, id2word=self.dictionary, normalize=True)
         # ... and the similarity matrix
-        self.sim = gensim.similarities.SparseMatrixSimilarity(self.tfidf[self.corpus])
+        self.sim = gensim.similarities.SparseMatrixSimilarity(self.tfidf[vector_corpus])
 
     def save(self):
         # save the corpus
@@ -115,20 +126,16 @@ class CorpusSimilarityFinder(object):
         def _unvec(vec):
             return dict((self.dictionary[a], b) for a,b in vec)
 
-        if not self.corpus:
-            raise Exception("You must load() or save() first.")
-
         wt = WordTransformer()
         word = wt.transform(word)
         self.sim.numBest = n
-        vec = self.corpus[self.word2docid[word]]
+        vec = self.vector_corpus[word]
         vec = self.tfidf[vec]
 
         retval = []
         for docid, score in self.sim[vec]:
-            doc = self.corpus[docid]
             docword = self.docid2word[docid]
-            retval.append(docword)
+            retval.append((docword, score))
 
         return retval
 
