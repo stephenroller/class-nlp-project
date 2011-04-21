@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
+import sys
+
 from sembuild import * 
 
 # k = number of web similar words
-K = 5
+K = 3
 # n = number of small corpus similar words
-N = 20
+N = 6
 
 def get_test_set(r=0.10):
     words = []
@@ -20,7 +22,7 @@ def calc_correct(corpus, word, exclude_words=[]):
     wn = WordNetCorpusReader('wordnet/1.6/')
     votes = dict()
     word = WordTransformer().transform(word)
-    similar_words = corpus.similar_to(word, n=N)
+    similar_words = [w for w,s in corpus.similar_to(word, n=N+1)]
     print "Similar words: " + ', '.join(similar_words)
     if not similar_words:
         return None
@@ -30,19 +32,19 @@ def calc_correct(corpus, word, exclude_words=[]):
     webcorp = CorpusSimilarityFinder('/tmp/webcorpus.txt')
     webcorp.create(wvc)
 
-    similar_words = webcorp.similar_to(word, n=K)
-    print "Web similar words: " + ', '.join(similar_words)
+    similar_words = webcorp.similar_to(word, n=K+1)
+    print "Web similar words: " + ', '.join(w for w,s in similar_words[1:])
 
-    for near_word in similar_words[1:]:
+    for near_word, score in similar_words[1:]:
+        print near_word
         for synset in wn.synsets(near_word):
-            votes[synset.lexname] = votes.get(synset.lexname, 0) + 1
+            print "\t" + str(synset)
+            votes[synset.lexname] = votes.get(synset.lexname, 0) + score
 
-    ranked = sorted(votes.keys(), key=votes.__getitem__, reverse=True)
-    for guess in ranked:
+    guesses = sorted(votes.keys(), key=votes.__getitem__, reverse=True)
+    for guess in guesses:
         print votes[guess], guess
 
-    synsets = [ss.lexname for ss in wn.synsets(word)]
-    guesses = ranked[:len(synsets)]
     return guesses and guesses[0] or None
 
 def test_categorizer(corpus):
@@ -78,13 +80,18 @@ def test_categorizer(corpus):
 
 
 if __name__ == '__main__':
-    corpus_path = DEFAULT_CORPUS
+    corpus_path = sys.argv[1]
     store_path = os.path.join(PREPRO_DIR, os.path.basename(corpus_path))
     corpus = CorpusSimilarityFinder(store_path)
     try:
-        corpus.load()
+        offline = IndexedCorpus(store_path + '.sqlite', corpus_path)
+        vector_corpus = VectorCorpus(offline)
+        corpus.load(vector_corpus)
     except IOError:
         print "io error. did you run sembuild.py first?"
         sys.exit(1)
-    test_categorizer(corpus)
+    if len(sys.argv) == 3:
+        print calc_correct(corpus, sys.argv[2])
+    else:
+        test_categorizer(corpus)
 
