@@ -92,6 +92,13 @@ def index_database(corpus_file_or_folder, index_file, remove_once=True):
     total_offset = 0
     total_bytes = sum(float(os.stat(f).st_size) for f in filenames)
 
+
+    from datetime import datetime
+    from terminal import ProgressBar
+    pb = ProgressBar(width=20, color='green')
+    start = datetime.now()
+    
+
     print "Beginning indexing..."
     for fileid, filename in enumerate(filenames):
         offset = 0
@@ -120,7 +127,10 @@ def index_database(corpus_file_or_folder, index_file, remove_once=True):
                 offset += line_bytes
                 total_offset += line_bytes
                 if j % 5000 == 0:
-                    print "overall progress: % 7.3f%%" % (100 * total_offset / total_bytes)
+                    pct = 100 * total_offset / total_bytes
+                    eta = ((datetime.now() - start) / total_offset) * int(total_bytes - total_offset)
+                    msg = "Indexing... ETA %s" % (str(eta)[:8])
+                    pb.render(int(pct), msg)
         
     if remove_once:
         print "filtering words appearing only once..."
