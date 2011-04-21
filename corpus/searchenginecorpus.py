@@ -16,13 +16,10 @@ search_engine_corpus = None
 def factory():
     global search_engine_corpus
     if not search_engine_corpus:
-        try:
-            search_engine_corpus = SearchEngineCorpus.load(STORE_FILENAME)
-        except IOError:
-            search_engine_corpus = SearchEngineCorpus()
+        search_engine_corpus = SearchEngineCorpus()
     return search_engine_corpus
 
-class SearchEngineCorpus(SaveLoad):
+class SearchEngineCorpus(object):
     def __init__(self):
         self._conn = self._init_conn()
         self._queries_made = 0
@@ -54,7 +51,7 @@ class SearchEngineCorpus(SaveLoad):
         """returns a (possibly empty) list of results if we've done this query"""
         c = self._conn.cursor()
         c.execute('''SELECT result FROM search_results WHERE word=?''', (query,))
-        res = c.fetchall()
+        res = [x[0] for x in c.fetchall()]
         c.close()
         return res
 
