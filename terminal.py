@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*0
 # Copyright: 2009 Nadia Alramli
 # License: BSD
 
@@ -9,6 +11,7 @@ Example of usage:
 """
 
 import sys
+import curses
 
 # The current module
 MODULE = sys.modules[__name__]
@@ -73,6 +76,8 @@ def render(text):
     return text % MODULE.__dict__
 
 
+setup()
+
 class ProgressBar(object):
     """Terminal progress bar class"""
     TEMPLATE = (
@@ -88,14 +93,14 @@ class ProgressBar(object):
         empty -- bar display character (default ' ')
         """
         if color:
-            self.color = getattr(terminal, color.upper())
+            self.color = globals()[color.upper()]
         else:
             self.color = ''
-        if width and width < terminal.COLUMNS - self.PADDING:
+        if width and width < COLUMNS - self.PADDING:
             self.width = width
         else:
             # Adjust to the width of the terminal
-            self.width = terminal.COLUMNS - self.PADDING
+            self.width = COLUMNS - self.PADDING
         self.block = block
         self.empty = empty
         self.progress = None
@@ -110,10 +115,10 @@ class ProgressBar(object):
         if message:
             # The length of the first line in the message
             inline_msg_len = len(message.splitlines()[0])
-        if inline_msg_len + self.width + self.PADDING > terminal.COLUMNS:
+        if inline_msg_len + self.width + self.PADDING > COLUMNS:
             # The message is too long to fit in one line.
             # Adjust the bar width to fit.
-            bar_width = terminal.COLUMNS - inline_msg_len -self.PADDING
+            bar_width = COLUMNS - inline_msg_len -self.PADDING
         else:
             bar_width = self.width
  
@@ -125,7 +130,7 @@ class ProgressBar(object):
             'percent': percent,
             'color': self.color,
             'progress': self.block * self.progress,
-            'normal': terminal.NORMAL,
+            'normal': NORMAL,
             'empty': self.empty * (bar_width - self.progress),
             'message': message
         }
@@ -137,5 +142,5 @@ class ProgressBar(object):
     def clear(self):
         """Clear all printed lines"""
         sys.stdout.write(
-            self.lines * (terminal.UP + terminal.BOL + terminal.CLEAR_EOL)
+            self.lines * (UP + BOL + CLEAR_EOL)
         )
