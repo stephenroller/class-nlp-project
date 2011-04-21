@@ -25,6 +25,7 @@ class VectorCorpus(object):
         self.docid2word = StorableDictionary()
         self.word2docid = StorableDictionary()
         self.dictionary = gensim.corpora.dictionary.Dictionary([self._words_iter()])
+        self.passes = 0
 
     def _words_iter(self):
         for word in self.corpus.get_unique_words():
@@ -57,9 +58,23 @@ class VectorCorpus(object):
         return self._get_word_context_vector(query)
 
     def __iter__(self):
+        from datetime import datetime
+        from terminal import ProgressBar
+        pb = ProgressBar('green', width=20)
+        self.passes += 1
+        
+        start = datetime.now()
+
+        num_docs = float(len(self))
         for i, word in enumerate(self._words_iter()):
             self.docid2word[i] = word
             self.word2docid[word] = i
+            if (i+1) % 10 == 0:
+                eta = (datetime.now() - start) * int((num_docs - i)) / (i + 1)
+                pct = int(100*i/num_docs)
+                msg = "corpus pass #%d / ETA %s" % (self.passes, str(eta)[:8])
+                pb.render(pct, msg)
+
             yield self._get_word_context_vector(word)
 
 
