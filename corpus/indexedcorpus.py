@@ -3,6 +3,7 @@
 import sqlite3
 import os
 
+from itertools import groupby
 from util import context_windows
 
 WINDOW_SIZE = 5
@@ -30,13 +31,16 @@ class IndexedCorpus(object):
             JOIN word_appearances as WA ON (W.id = WA.word)
             JOIN filenames AS F ON (WA.file = F.id)
             WHERE W.word = ?
+            ORDER BY WA.file, WA.pos
             ''', 
             [query]
         )
-        for filename, position in c:
+
+        for filename, positions in groupby(c, lambda x: x[0]):
             f = open(os.path.join(self.corpus_directory, filename))
-            f.seek(position)
-            line = f.readline().strip()
+            for filename, position in positions:
+                f.seek(position)
+                line = f.readline().strip()
             
             yield line
 
