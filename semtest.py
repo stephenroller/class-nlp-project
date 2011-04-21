@@ -22,7 +22,7 @@ def calc_correct(corpus, word, exclude_words=[]):
     wn = WordNetCorpusReader('wordnet/1.6/')
     votes = dict()
     word = WordTransformer().transform(word)
-    similar_words = [w for w,s in corpus.similar_to(word, n=N+1)]
+    similar_words = [w for w,s in corpus.similar_to(word, n=N+1, should_enrich_with_web=True)]
     print "Similar words: " + ', '.join(similar_words)
     if not similar_words:
         return None

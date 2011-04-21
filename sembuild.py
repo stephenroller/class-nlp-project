@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import itertools
 import sys
 import os
 import gensim
@@ -13,6 +14,19 @@ from util import StorableDictionary, WordTransformer, STOP_WORDS, context_window
 DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
 #PREPRO_DIR = 'prepro-corpus/'
 PREPRO_DIR = '/tmp/prepro-corpus/'
+
+
+def _context_to_vector(word, large_context, ignore_word=False):
+    large_context = WordTransformer().tokenize(large_context)
+    small_context = []
+    for left, mid, right in context_windows(large_context, n=5):
+        if mid == word:
+            small_context += left + right
+            if not ignore_word:
+                small_context.append(mid)
+
+    return small_context
+
 
 class VectorCorpus(object):
     """
@@ -33,21 +47,10 @@ class VectorCorpus(object):
             if word:
                yield word
 
-    def _context_to_vector(self, word, large_context, ignore_word=False):
-        large_context = self.transformer.tokenize(large_context)
-        small_context = []
-        for left, mid, right in context_windows(large_context, n=5):
-            if mid == word:
-                small_context += left + right
-                if not ignore_word:
-                    small_context.append(mid)
-
-        return small_context
-
     def _get_word_context_vector(self, word, allowUpdate=False):
         all_contexts = []
         for context in self.corpus.get_contexts(word):
-            all_contexts += self._context_to_vector(word, context)
+            all_contexts += _context_to_vector(word, context)
         return self.dictionary.doc2bow(all_contexts, allowUpdate=allowUpdate)
 
     def __len__(self):
@@ -119,7 +122,7 @@ class CorpusSimilarityFinder(object):
         # ... and the similarity matrix
         self.sim.save(self.storepath + '.sms')
     
-    def similar_to(self, word, n=10):
+    def similar_to(self, word, n=10, should_enrich_with_web=False):
         def _max_dim(vec):
             return max(vec, key=lambda x: x[1])
 
@@ -130,6 +133,7 @@ class CorpusSimilarityFinder(object):
         word = wt.transform(word)
         self.sim.numBest = n
         vec = self.vector_corpus[word]
+        if(should_enrich_with_web): self._enrich_vec_with_web(vec, word)
         vec = self.tfidf[vec]
 
         retval = []
@@ -138,6 +142,22 @@ class CorpusSimilarityFinder(object):
             retval.append((docword, score))
 
         return retval
+
+    def _enrich_vec_with_web(self, vec, word):
+        webctxs = [_context_to_vector(word, c, True)
+                   for c in search_engine_factory().get_contexts(word)]
+        print 'adding %d contexts from web to query vector.' % len(webctxs)
+        webbowvec = self.vector_corpus.dictionary.doc2bow(itertools.chain(*webctxs),
+                                                          allowUpdate=False)
+        return self._combine_bow_vecs(vec, webbowvec)
+
+    def _combine_bow_vecs(self, v1, v2):
+        resdict = dict(v1)
+        for w,c in v2:
+            if w not in resdict: resdict[w] = 0
+            resdict[w] += c
+        return resdict.items()
+        
 
 if __name__ == '__main__':
     corpus_path = sys.argv[1]
