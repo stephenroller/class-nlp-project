@@ -44,4 +44,12 @@ class IndexedCorpus(object):
 
         c.close()
 
+    def __len__(self):
+        c = self.conn.cursor()
+        c.execute('select count(*) from words');
+        for row in c:
+            count = row[0]
+            c.close()
+            return count
+
 
