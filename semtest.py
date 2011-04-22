@@ -51,8 +51,9 @@ def calc_correct(corpus, word, exclude_words=[]):
     guesses = sorted(votes.keys(), key=votes.__getitem__, reverse=True)
     for guess in guesses:
         print votes[guess], guess
-
-    return guesses and guesses[0] or None
+    for g in guesses:
+        if 'noun' in g: return g
+    return None
 
 def _get_similar_nouns(corpus, word):
     # get sufficiently more than N similar words:
