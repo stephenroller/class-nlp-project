@@ -102,6 +102,8 @@ def test_categorizer(corpus):
 
 if __name__ == '__main__':
     corpus_path = sys.argv[1]
+    if corpus_path.endswith('/'):
+        corpus_path = corpus_path[:-1]
     store_path = os.path.join(PREPRO_DIR, os.path.basename(corpus_path))
     corpus = CorpusSimilarityFinder(store_path)
     try:
