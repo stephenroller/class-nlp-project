@@ -142,6 +142,8 @@ def index_database(corpus_file_or_folder, index_file, remove_once=True):
 
 if __name__ == '__main__':
     path = sys.argv[1]
+    if path.endswith('/'):
+        path = path[:-1]
     indexpath = os.path.join(PREPRO_DIR, os.path.basename(path) + '.sqlite')
     index_database(path, indexpath)
 
