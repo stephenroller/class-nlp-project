@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from nltk.corpus import WordNetCorpusReader
 import sys
 
 from sembuild import * 
@@ -8,6 +9,12 @@ from sembuild import *
 K = 3
 # n = number of small corpus similar words
 N = 6
+# should we enrich our query vector with web search results?
+ENRICH_WITH_WEB = True
+
+
+_wn = WordNetCorpusReader('wordnet/1.6/')
+
 
 def get_test_set(r=0.10):
     words = []
@@ -22,7 +29,7 @@ def calc_correct(corpus, word, exclude_words=[]):
     wn = WordNetCorpusReader('wordnet/1.6/')
     votes = dict()
     word = WordTransformer().transform(word)
-    similar_words = [w for w,s in corpus.similar_to(word, n=N+1, should_enrich_with_web=True)]
+    similar_words = _get_similar_nouns(corpus, word)
     print "Similar words: " + ', '.join(similar_words)
     if not similar_words:
         return None
@@ -46,6 +53,19 @@ def calc_correct(corpus, word, exclude_words=[]):
         print votes[guess], guess
 
     return guesses and guesses[0] or None
+
+def _get_similar_nouns(corpus, word):
+    # get sufficiently more than N similar words:
+    sims = sorted(corpus.similar_to(word, n=2*N+1, should_enrich_with_web=ENRICH_WITH_WEB),
+                  key=lambda x: x[1],
+                  reverse=True)
+    sims = filter(_has_noun_sense, [w for w,s in sims])
+    return sims[:N+1]
+
+def _has_noun_sense(word):
+    for synset in list(_wn.synsets(word)):
+        if 'noun' in synset.lexname: return True
+    return False
 
 def test_categorizer(corpus):
     wn = WordNetCorpusReader('wordnet/1.6/')
