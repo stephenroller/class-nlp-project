@@ -31,8 +31,9 @@ def calc_correct(corpus, word, exclude_words=[]):
     word = WordTransformer().transform(word)
     similar_words = _get_similar_nouns(corpus, word)
     print "Similar words: " + ', '.join(similar_words)
-    if not similar_words:
+    if not similar_words[1:]:
         return None
+
 
     print "Fetching online corpuses..."
     wvc = WebVectorCorpus(similar_words)
