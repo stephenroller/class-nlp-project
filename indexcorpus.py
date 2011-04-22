@@ -127,11 +127,13 @@ def index_database(corpus_file_or_folder, index_file, remove_once=True):
                 offset += line_bytes
                 total_offset += line_bytes
                 if j % 5000 == 0:
-                    pct = 100 * total_offset / total_bytes
+                    pct = float(total_offset) / total_bytes
                     eta = ((datetime.now() - start) / total_offset) * int(total_bytes - total_offset)
-                    msg = "Indexing... ETA %s" % (str(eta)[:8])
-                    pb.render(int(pct), msg)
+                    msg = "indexing  -  ETA %s" % (str(eta)[:10])
+                    pb.render(pct, msg)
         
+    msg = "completed in %s" % (datetime.now() - start)
+    pb.render(1, msg)
     if remove_once:
         print "filtering words appearing only once..."
         remove_singletons(conn)

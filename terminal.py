@@ -81,7 +81,7 @@ setup()
 class ProgressBar(object):
     """Terminal progress bar class"""
     TEMPLATE = (
-     '%(percent)-2s%% %(color)s%(progress)s%(normal)s%(empty)s %(message)s\n'
+     '%(percent)6.2f%% [%(color)s%(progress)s%(normal)s%(empty)s] %(message)s\n'
     )
     PADDING = 7
  
@@ -125,9 +125,9 @@ class ProgressBar(object):
         # Check if render is called for the first time
         if self.progress != None:
             self.clear()
-        self.progress = (bar_width * percent) / 100
+        self.progress = int(bar_width * percent)
         data = self.TEMPLATE % {
-            'percent': percent,
+            'percent': percent * 100,
             'color': self.color,
             'progress': self.block * self.progress,
             'normal': NORMAL,

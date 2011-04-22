@@ -73,12 +73,16 @@ class VectorCorpus(object):
             self.docid2word[i] = word
             self.word2docid[word] = i
             if (i+1) % 10 == 0:
-                eta = (datetime.now() - start) * int((num_docs - i)) / (i + 1)
-                pct = int(100*i/num_docs)
-                msg = "corpus pass #%d / ETA %s" % (self.passes, str(eta)[:8])
+                eta = (datetime.now() - start) * int((num_docs - i)) // (i + 1)
+                pct = i/num_docs
+                msg = "corpus pass #%d / ETA %s" % (self.passes, eta)
                 pb.render(pct, msg)
 
             yield self._get_word_context_vector(word)
+
+        runtime = datetime.now() - start
+        msg = "completed pass #%d in %s" % (self.passes, runtime)
+        pb.render(1, msg)
 
 
 class WebVectorCorpus(VectorCorpus):
