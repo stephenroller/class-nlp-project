@@ -17,7 +17,7 @@ class IndexedCorpus(object):
 
     def get_unique_words(self):
         c = self.conn.cursor()
-        c.execute('select word from words');
+        c.execute('select word from words order by word');
         for row in c:
             yield row[0]
         c.close()
