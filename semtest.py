@@ -18,7 +18,7 @@ _wn = WordNetCorpusReader('wordnet/1.6/')
 
 def get_test_set(r=0.10):
     words = []
-    with open('small-testset') as f:
+    with open('teststs/small-testset') as f:
         for line in f:
             word = line.strip()
             words.append(word)
