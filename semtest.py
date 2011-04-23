@@ -8,7 +8,7 @@ from sembuild import *
 # k = number of web similar words
 K = 3
 # n = number of small corpus similar words
-N = 6
+N = 10
 # should we enrich our query vector with web search results?
 ENRICH_WITH_WEB = True
 
@@ -18,7 +18,7 @@ _wn = WordNetCorpusReader('wordnet/1.6/')
 
 def get_test_set(r=0.10):
     words = []
-    with open('wordnet/single_testset.16') as f:
+    with open('small-testset') as f:
         for line in f:
             word = line.strip()
             words.append(word)
@@ -34,7 +34,6 @@ def calc_correct(corpus, word, exclude_words=[]):
     if not similar_words[1:]:
         return None
 
-
     print "Fetching online corpuses..."
     wvc = WebVectorCorpus(similar_words)
     webcorp = CorpusSimilarityFinder('/tmp/webcorpus.txt')
@@ -46,7 +45,8 @@ def calc_correct(corpus, word, exclude_words=[]):
     for near_word, score in similar_words[1:]:
         print near_word
         for synset in wn.synsets(near_word):
-            print "\t" + str(synset)
+            print "\t%s (%s)" % (str(synset), synset.lexname)
+        for supersense in set([x.lexname for x in wn.synsets(near_word)]):
             votes[synset.lexname] = votes.get(synset.lexname, 0) + score
 
     guesses = sorted(votes.keys(), key=votes.__getitem__, reverse=True)
@@ -77,10 +77,10 @@ def test_categorizer(corpus):
     num_total = 0
     for test_word in test_words:
         try:
-            synsets = wn.synsets(test_word)
-            if len(synsets) != 1:
+            supersenses = list(set([x.lexname for x in wn.synsets(test_word)]))
+            if len(supersenses) != 1:
                 continue
-            correct_answer = synsets[0].lexname
+            correct_answer = supersenses[0]
             print "Looking for '%s'" % test_word
             guess = calc_correct(corpus, test_word, test_words)
             print "%s: %s (correct: %s)" % (test_word, guess or "??", correct_answer)
