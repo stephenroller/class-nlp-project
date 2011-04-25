@@ -11,6 +11,9 @@ K = 3
 N = 10
 # should we enrich our query vector with web search results?
 ENRICH_WITH_WEB = True
+# how much to discount each progressive synset (so the nth vote will be
+# discounted by VOTE_DAMPING_COEFF ** n).
+VOTE_DAMPING_COEFF = 0.7
 
 
 _wn = WordNetCorpusReader('wordnet/1.6/')
@@ -18,7 +21,7 @@ _wn = WordNetCorpusReader('wordnet/1.6/')
 
 def get_test_set(r=0.10):
     words = []
-    with open('teststs/small-testset') as f:
+    with open('testsets/small-testset') as f:
         for line in f:
             word = line.strip()
             words.append(word)
@@ -46,8 +49,10 @@ def calc_correct(corpus, word, exclude_words=[]):
         print near_word
         for synset in wn.synsets(near_word):
             print "\t%s (%s)" % (str(synset), synset.lexname)
-        for supersense in set([x.lexname for x in wn.synsets(near_word)]):
-            votes[synset.lexname] = votes.get(synset.lexname, 0) + score
+        curCoeff = 1.0
+        for supersense in filter(_is_noun_synset, wn.synsets(near_word)):
+            votes[supersense.lexname] = votes.get(supersense.lexname, 0) + (curCoeff * score)
+            curCoeff *= VOTE_DAMPING_COEFF
 
     guesses = sorted(votes.keys(), key=votes.__getitem__, reverse=True)
     for guess in guesses:
@@ -55,6 +60,9 @@ def calc_correct(corpus, word, exclude_words=[]):
     for g in guesses:
         if 'noun' in g: return g
     return None
+
+def _is_noun_synset(synset):
+    return 'noun' in synset.lexname
 
 def _get_similar_nouns(corpus, word):
     # get sufficiently more than N similar words:
