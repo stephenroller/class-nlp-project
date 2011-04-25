@@ -8,12 +8,14 @@ from sembuild import *
 # k = number of web similar words
 K = 3
 # n = number of small corpus similar words
-N = 10
-# should we enrich our query vector with web search results?
-ENRICH_WITH_WEB = True
+N = 15
 # how much to discount each progressive synset (so the nth vote will be
 # discounted by VOTE_DAMPING_COEFF ** n).
 VOTE_DAMPING_COEFF = 0.7
+# set to false if you don't wanna use the web to go from N -> K vectors
+SHOULD_USE_WEB_FOR_PARING=True
+# set to false if you don't wanna use the web for initial vector enrichment.
+SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
 
 
 _wn = WordNetCorpusReader('wordnet/1.6/')
@@ -32,18 +34,20 @@ def calc_correct(corpus, word, exclude_words=[]):
     wn = WordNetCorpusReader('wordnet/1.6/')
     votes = dict()
     word = WordTransformer().transform(word)
-    similar_words = _get_similar_nouns(corpus, word)
-    print "Similar words: " + ', '.join(similar_words)
-    if not similar_words[1:]:
-        return None
-
-    print "Fetching online corpuses..."
-    wvc = WebVectorCorpus(similar_words)
-    webcorp = CorpusSimilarityFinder('/tmp/webcorpus.txt')
-    webcorp.create(wvc)
-
-    similar_words = webcorp.similar_to(word, n=K+1)
-    print "Web similar words: " + ', '.join(w for w,s in similar_words[1:])
+    similar_words = _get_similar_noun_conf_pairs(corpus, word)
+    if SHOULD_USE_WEB_FOR_PARING:
+        justwords = [x[0] for x in similar_words]
+        print "Similar words: " + ', '.join(justwords)
+        if not similar_words[1:]:
+            return None
+        print "Fetching online corpuses..."
+        wvc = WebVectorCorpus(justwords)
+        webcorp = CorpusSimilarityFinder('/tmp/webcorpus.txt')
+        webcorp.create(wvc)
+        similar_words = webcorp.similar_to(word, n=K+1)
+        print "Web similar words: " + ', '.join(w for w,s in similar_words[1:])
+    else:
+        similar_words = similar_words[:K+1]
 
     for near_word, score in similar_words[1:]:
         print near_word
@@ -64,16 +68,18 @@ def calc_correct(corpus, word, exclude_words=[]):
 def _is_noun_synset(synset):
     return 'noun' in synset.lexname
 
-def _get_similar_nouns(corpus, word):
-    # get sufficiently more than N similar words:
-    sims = sorted(corpus.similar_to(word, n=2*N+1, should_enrich_with_web=ENRICH_WITH_WEB),
+def _get_similar_noun_conf_pairs(corpus, word):
+    # if we're using the web, get sufficiently more than N similar words:
+    sims = sorted(corpus.similar_to(word,
+                                    n=2*N+1,
+                                    should_enrich_with_web=SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT),
                   key=lambda x: x[1],
                   reverse=True)
-    sims = filter(_has_noun_sense, [w for w,s in sims])
+    sims = filter(_has_noun_sense, sims)
     return sims[:N+1]
 
-def _has_noun_sense(word):
-    for synset in list(_wn.synsets(word)):
+def _has_noun_sense(word_conf_pair):
+    for synset in list(_wn.synsets(word_conf_pair[0])):
         if 'noun' in synset.lexname: return True
     return False
 
