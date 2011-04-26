@@ -14,6 +14,7 @@ N = 15
 VOTE_DAMPING_COEFF = 0.7
 # set to false if you don't wanna use the web to go from N -> K vectors
 SHOULD_USE_WEB_FOR_PARING=True
+SHOULD_USE_WEB_FOR_PARING=False
 # set to false if you don't wanna use the web for initial vector enrichment.
 SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
 
@@ -101,8 +102,8 @@ def test_categorizer(corpus):
             print 
             if guess == correct_answer:
                 num_correct += 1
-            if guess != None:
-                num_guessed += 0
+            if guess is not None:
+                num_guessed += 1
             num_total += 1
         except KeyError:
             # wordnet word didn't appear in our corpus
@@ -110,8 +111,8 @@ def test_categorizer(corpus):
             continue
 
     print "-" * 60
-    print "Precision: %.2f%%" % (100 * float(num_correct) / num_guessed)
-    print "Recall: %.2f%%" % (100 * float(num_correct) / num_total)
+    print "Precision: %.2f%% (%d/%d)" % (100 * float(num_correct) / num_guessed, num_correct, num_guessed)
+    print "Recall: %.2f%% (%d/%d)" % (100 * float(num_correct) / num_total, num_correct, num_total)
 
 
 
