@@ -2,6 +2,7 @@
 
 import re
 import gensim
+import nltk
 
 STOP_WORDS = ['the', 'an', 'a', 'to', 'of', 'and', 'in']
 LARGE_STOP_WORDS = [
@@ -32,16 +33,34 @@ STOP_WORDS = LARGE_STOP_WORDS
 
 class WordTransformer(object):
     def __init__(self, stemming=False):
+        self.sent_tokenizer = nltk.data.load('file:dist/punkt_english.pickle')
         self.stem_enabled = stemming
         if stemming:
             from nltk.stem.porter import PorterStemmer
             self.stemmer = PorterStemmer()
+    
+    def _underscore_proper_nouns(self, line):
+        sentences = self.sent_tokenizer.tokenize(line)
+        regex = r'(?!^)([A-Z]\w*)\.? ([A-Z]\w*)'
+        sub = lambda s: re.sub(regex, r'\1_\2', s)
+        
+        sent_s = []
+        for sent in sentences:
+            while True:
+                sent2 = sub(sent)
+                if sent == sent2:
+                    break
+                sent = sent2
+            sent_s.append(sent)
+        return ' '.join(sent_s)
 
     def tokenize(self, line):
         "Used for converting from a string of text to a list of tokens"
         if line == '.start\n':
             return []
+
         line = line.strip()
+        line = self._underscore_proper_nouns(line)
         words = line.split()
         words = [self.transform(w) for w in words]
         words = [w for w in words if w]
@@ -65,7 +84,8 @@ class StorableDictionary(dict, gensim.utils.SaveLoad):
 
 def clean_word(w):
     w = w.replace('-', '_')
-    return re.sub(r'\W', '', w.lower())
+    w = w.replace(' ', '_')
+    return re.sub(r'\W', '', w)
 
 
 def context_windows(wordlist, n=11):
