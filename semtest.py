@@ -8,7 +8,7 @@ from sembuild import *
 # k = number of web similar words
 K = 3
 # n = number of small corpus similar words
-N = 15
+N = 9
 # how much to discount each progressive synset (so the nth vote will be
 # discounted by VOTE_DAMPING_COEFF ** n).
 VOTE_DAMPING_COEFF = 0.7
