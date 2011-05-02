@@ -41,8 +41,7 @@ class IndexedCorpus(object):
             for filename, position in positions:
                 f.seek(position)
                 line = f.readline().strip()
-            
-            yield line
+                yield line
 
             f.close()
 
