@@ -102,7 +102,6 @@ def index_database(corpus_file_or_folder, index_file, remove_once=True):
     print "Beginning indexing..."
     for fileid, filename in enumerate(filenames):
         offset = 0
-        print "Processing %s..." % filename
         with open(filename) as f:
             add_file(conn, filename, fileid)
             for j, line in enumerate(f):
@@ -126,7 +125,7 @@ def index_database(corpus_file_or_folder, index_file, remove_once=True):
 
                 offset += line_bytes
                 total_offset += line_bytes
-                if j % 5000 == 0:
+                if j % 2500 == 0:
                     pct = float(total_offset) / total_bytes
                     eta = ((datetime.now() - start) / total_offset) * int(total_bytes - total_offset)
                     msg = "indexing  -  ETA %s" % (str(eta)[:10])
