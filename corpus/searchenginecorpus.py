@@ -2,6 +2,7 @@
 
 from BeautifulSoup import BeautifulSoup
 from pybing.query import WebQuery
+import socket
 import sqlite3
 import os
 import re
@@ -20,6 +21,10 @@ NUM_PAGES_TO_SCRAPE = 50
 CONTEXT_WORD_WIDTH = 20
 
 search_engine_corpus = None
+
+#set timeout for urllib2 calls
+timeout = 10
+socket.setdefaulttimeout(timeout)
 
 def factory():
     global search_engine_corpus
@@ -57,15 +62,18 @@ class SearchEngineCorpus(object):
     def _scrape_text_from_sites(self, results, query):
         res = []
         i=0
-        for r in results:
-            if i >= NUM_PAGES_TO_SCRAPE:
-                break
-            try:
-                #TODO parallelize this?
-                res += self._get_contexts_from_html(urlopen(r.url).read(), query)
-            except Exception:
-                traceback.print_exc()
-            i += 1
+        try:
+            for r in results:
+                if i >= NUM_PAGES_TO_SCRAPE:
+                    break
+                try:
+                    #TODO parallelize this?
+                    res += self._get_contexts_from_html(urlopen(r.url).read(), query)
+                except Exception:
+                    traceback.print_exc()
+                i += 1
+        except Exception:
+            traceback.print_exc()
         return res
 
     def _get_contexts_from_html(self, html, query):
