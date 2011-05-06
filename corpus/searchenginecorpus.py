@@ -16,7 +16,7 @@ from urllib2 import urlopen
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
 DB_FILENAME = '/tmp/webcorpus2.sqlite'
 
-SHOULD_SCRAPE_SITES = True
+SHOULD_SCRAPE_SITES = False
 NUM_PAGES_TO_SCRAPE = 50
 CONTEXT_WORD_WIDTH = 20
 
@@ -101,9 +101,12 @@ class SearchEngineCorpus(object):
     def _get_text_from_descriptions(self, bingresults):
         """Takes a BingResultSet, returns a list of strings"""
         res = []
-        for r in bingresults:
-            try: res.append(r.description)
-            except AttributeError: pass
+        try:
+            for r in bingresults:
+                try: res.append(r.description)
+                except AttributeError: pass
+        except Exception:
+            traceback.print_exc()
         return res
 
     def _get_results_from_db(self, query):
