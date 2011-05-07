@@ -1,3 +1,4 @@
 *.pyc
 prepro-corpus/
 bing.pickle
+writeup/*.{aux,log,synctex.gz,pdf}
