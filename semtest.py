@@ -17,14 +17,14 @@ SHOULD_USE_WEB_FOR_PARING=True
 SHOULD_USE_WEB_FOR_PARING=False
 # set to false if you don't wanna use the web for initial vector enrichment.
 SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
+# which wordnet version should we use?
+WORDNET_DIR = 'wordnet/1.6/'
 
+_wn = WordNetCorpusReader(WORDNET_DIR)
 
-_wn = WordNetCorpusReader('wordnet/1.6/')
-
-
-def get_test_set(r=0.10):
+def get_test_set(filename):
     words = []
-    with open('testsets/small-testset') as f:
+    with open(filename) as f:
         for line in f:
             word = line.strip()
             words.append(word)
@@ -32,7 +32,7 @@ def get_test_set(r=0.10):
 
 def calc_correct(corpus, word, exclude_words=[]):
     print "Attempting to classify '%s'" % word
-    wn = WordNetCorpusReader('wordnet/1.6/')
+    wn = _wn
     votes = dict()
     word = WordTransformer().transform(word)
     similar_words = _get_similar_noun_conf_pairs(corpus, word)
@@ -84,9 +84,9 @@ def _has_noun_sense(word_conf_pair):
         if 'noun' in synset.lexname: return True
     return False
 
-def test_categorizer(corpus):
-    wn = WordNetCorpusReader('wordnet/1.6/')
-    test_words = get_test_set()
+def test_categorizer(corpus, test_filename):
+    wn = _wn
+    test_words = get_test_set(test_filename)
     num_correct = 0
     num_guessed = 0
     num_total = 0
@@ -117,6 +117,10 @@ def test_categorizer(corpus):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) != 3:
+        print "We need a test filename as the 2nd command line param."
+        sys.exit(2)
+
     corpus_path = sys.argv[1]
     if corpus_path.endswith('/'):
         corpus_path = corpus_path[:-1]
@@ -129,8 +133,5 @@ if __name__ == '__main__':
     except IOError:
         print "io error. did you run sembuild.py first?"
         sys.exit(1)
-    if len(sys.argv) == 3:
-        print calc_correct(corpus, sys.argv[2])
-    else:
-        test_categorizer(corpus)
+    test_categorizer(corpus, sys.argv[2])
 
