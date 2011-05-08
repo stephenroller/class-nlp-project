@@ -15,13 +15,53 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 \section{Introduction}
 
-Motivate and abstractly describe the problem you are addressing and how you are addressing it. What is the problem? Why is it important? What is your basic approach? A short discussion of how it fits into related work in the area is also desirable. Summarize the basic results and conclusions that you will present. 
+%Motivate and abstractly describe the problem you are addressing and how you are addressing it. What is the problem? Why is it important? What is your basic approach? A short discussion of how it fits into related work in the area is also desirable. Summarize the basic results and conclusions that you will present. 
+
+We describe a novel method for tagging unknown nouns with supersenses using Search Engine queries to refine an initial precomputed approximation.
+A noun's {\em supersense} is the name given in the literature to highest meaningful level of meaning in the WordNet \cite{wordnet} hierarchy---these are abstract concepts such as {\it food}, {\it person}, or {\it cognition} \cite{cj}.
+
+We provide a novel solution to the problem which uses a model built from a relatively small offline corpus to provide a first approximation, and then further refines this approximation by querying a search engine.
+This broad approach---use a rough model to construct an approximation and refine with search engine queries---could be generalized to many other tasks.
+In that sense, our contribution is not an algorithm to solve the problem of acquisition of supersenses of unknown nouns {\it per se}, but is rather a method for using search engine queries to refine first approximations from rough models, which we apply to the task of supersense acquisition for illustrative purposes.
+
+We construct a rough approximation using a simplified version of the distributional approach taken by Curran \cite{curran}, and refine using the Bing API.
+[GLOSS OVER RESULTS HERE]
+
+
 
 \section{Problem Definition and Algorithm}
 
 \subsection{Task Definition}
 
-Precisely define the problem you are addressing (i.e. formally specify the inputs and outputs). Elaborate on why this is an interesting and important problem. 
+%Precisely define the problem you are addressing (i.e. formally specify the inputs and outputs). Elaborate on why this is an interesting and important problem. 
+
+The task of supersense acquisition of unknown nouns was first described in \cite{cj}.
+The problem is, given a word,  assign to that word one of the WordNet {\it supersenses} (also called {\it lexicographer classes}).
+A listing of all the WordNet supersenses may be found in Figure \ref{fig:supersenses}.
+\begin{center}
+\begin{figure}[hbtp]
+\begin{tabular}{llllllll}
+1& person & 8& possession&  15& process&  22& body \\
+2& communication & 9& location& 16& Tops&  23& feeling \\
+3& artifact & 10& substance&  17& phenomenon& 24& shape \\
+4& act & 11& state& 18& event&  25& plant \\
+5& group & 12& time& 19& quantity&  26& relation \\
+6& food & 13&  attribute& 20& motive \\
+7& cognition& 14& object& 21& animal \\
+\end{tabular}
+\caption{List of Supersenses}
+\label{fig:supersenses}
+\end{figure}
+\end{center}
+
+Call a word {\it ambiguous} if it is attested as having more than one supersense in Wordnet.
+We follow the literature in restricting ourselves to only attempting to guess supersenses for unambiguous nouns \cite{cj}\cite{curran}.
+
+Supersense information for unknown nouns is conceivably useful for a number of tasks---parsing or POS tagging, for example, could both benefit from supersense information.
+Similarly, Word Sense Disambiguation could be aided by supersense information---one could apply selectional restrictions to nouns with guessed supersenses to help disambiguate.
+Since lexical resources like WordNet are necessarily incomplete, the utility of being able to guess nominal supersenses is clear.
+
+
 
 \subsection{Algorithm Definition}
 
@@ -34,6 +74,8 @@ Describe in reasonable detail the algorithm you are using to address this proble
 What are criteria you are using to evaluate your method? What specific hypotheses does your experiment test? Describe the experimental methodology that you used. What are the dependent and independent variables? What is the training/test data that was used, and why is it realistic or interesting? Exactly what performance data did you collect and how are you presenting and analyzing it? Comparisons to competing methods that address the same problem are particularly useful. 
 
 \subsection{Results}
+
+%Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
 
 \begin{center}
 \begin{figure}[hbtp]
@@ -61,7 +103,6 @@ No init, refinement with descriptions & 38.27 & 31.00 & 34.25 \\
 \end{figure}
 \end{center}
 
-Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
 
 \subsection{Discussion}
 
@@ -69,11 +110,29 @@ Is your hypothesis supported? What conclusions do the results support about the 
 
 \section{Related Work}
 
-Answer the following questions for each piece of related work that addresses the same or a similar problem. What is their problem and method? How is your problem and method different? Why is your problem and method better? 
+%Answer the following questions for each piece of related work that addresses the same or a similar problem. What is their problem and method? How is your problem and method different? Why is your problem and method better? 
+
+There are two papers about the particular task of supersense acquisition of nouns.
+The first, in which the task is first described, is \cite{cj}.
+[ELABORATE]
+
+The task is approached differently in \cite{curran}
+[ELABORATE]
+
+The idea of applying search engine queries to tasks in natural language processing is not novel.
+For example, \cite{bollegala} uses the results of search engine queries to calculate semantic similarity between terms.
+[PROBABLY ANOTHE PAPER OR TWO?]
+However, as far as we know, the use of search engine queries to refine an initial approximate answer provided by an offline model is not a widely used technique.
 
 \section{Future Work}
 
-What are the major shortcomings of your current method? For each shortcoming, propose additions or enhancements that would help overcome it. 
+%What are the major shortcomings of your current method? For each shortcoming, propose additions or enhancements that would help overcome it. 
+
+[SHORTCOMINGS OF METHOD, POSSIBLE ENHANCEMENTS]
+
+The general approach we take is to construct a rough first approximation of an answer from a relatively small offline corpus and then use a search engine to refine this approximation.
+This approach could be fruitful for a number of different tasks---guessing word similarity or automatically finding synonyms, for example.
+Any task whose process of constructing a solution admits refinement with a search engine  could potentially see improvement using this method.
 
 \section{Conclusion}
 
