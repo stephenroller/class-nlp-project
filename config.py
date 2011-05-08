@@ -25,6 +25,8 @@ WORDNET_DIR = 'wordnet/1.6/'
 
 
 if __name__ == '__main__':
-    import pprint
-    pprint.pprint(globals())
-
+    settings = dict(globals())
+    todel = []
+    for k in sorted(settings.keys()):
+        if k.upper() == k:
+            print "%s: %s" % (k,settings[k])
