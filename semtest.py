@@ -120,5 +120,8 @@ if __name__ == '__main__':
     except IOError:
         print "io error. did you run sembuild.py first?"
         sys.exit(1)
+    print
+    print_settings()
+    print
     test_categorizer(corpus, sys.argv[2])
 

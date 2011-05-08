@@ -22,11 +22,12 @@ SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
 # which wordnet version should we use?
 WORDNET_DIR = 'wordnet/1.6/'
 
-
-
-if __name__ == '__main__':
+def print_settings():
     settings = dict(globals())
     todel = []
     for k in sorted(settings.keys()):
         if k.upper() == k:
             print "%s: %s" % (k,settings[k])
+
+if __name__ == '__main__':
+    print_settings()
