@@ -6,11 +6,10 @@ import random
 import getopt
 from nltk.corpus import WordNetCorpusReader
 
-from corpus.indexedcorpus import IndexedCorpus
+from indexedcorpus import IndexedCorpus
 from sembuild import PREPRO_DIR
 
 DEFAULT_SEED = 31337
-TEST_DIR = "testsets/"
 
 def yield_single_sense_nouns_in_corpus(corpus):
     wn = WordNetCorpusReader('wordnet/1.6/')

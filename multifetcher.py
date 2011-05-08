@@ -12,6 +12,8 @@ def _fetch(url):
         retval = (url, f.read())
         f.close()
         return retval
+    except KeyboardInterrupt, e:
+        sys.exit(100)
     except Exception, e:
         sys.stderr.write(str(e) + '\n')
         return (url, "")

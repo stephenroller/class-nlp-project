@@ -1,4 +1,4 @@
-from corpus import offlinecorpus
+import offlinecorpus
 import gensim
 import itertools
 import operator

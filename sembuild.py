@@ -7,14 +7,11 @@ import gensim
 
 from nltk.corpus import WordNetCorpusReader
 
-from corpus.indexedcorpus import IndexedCorpus
-from corpus.searchenginecorpus import factory as search_engine_factory
+from indexedcorpus import IndexedCorpus
+from searchenginecorpus import factory as search_engine_factory
 from util import StorableDictionary, WordTransformer, STOP_WORDS, context_windows
 
-DEFAULT_CORPUS = '/u/pichotta/penn-wsj-raw-all.txt'
-#PREPRO_DIR = 'prepro-corpus/'
-PREPRO_DIR = '/tmp/prepro-corpus/'
-
+from config import *
 
 def _context_to_vector(word, large_context, ignore_word=False):
     large_context = WordTransformer().tokenize(large_context)

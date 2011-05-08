@@ -1,6 +1,6 @@
 """module to ask bing for N<=1000 snippets in which a query appears."""
 
-from BeautifulSoup import BeautifulSoup
+from dist.BeautifulSoup import BeautifulSoup
 from pybing.query import WebQuery
 import socket
 import sqlite3
