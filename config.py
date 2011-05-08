@@ -22,6 +22,20 @@ SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
 # which wordnet version should we use?
 WORDNET_DIR = 'wordnet/1.6/'
 
+## ---------- SEARCHENGINECORPUS PARAMETERS ----------
+APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
+
+SHOULD_SCRAPE_SITES = True
+NUM_PAGES_TO_SCRAPE = 50
+CONTEXT_WORD_WIDTH = 20
+
+WEB_DB_FILENAME = '/tmp/webcorpus-%s.sqlite' % (SHOULD_SCRAPE_SITES and "scrape" or "bing")
+
+URLLIB_TIMEOUT = 10
+
+
+## ---------- PRINT SETTINGS ----------
+
 def print_settings():
     settings = dict(globals())
     todel = []

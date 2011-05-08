@@ -12,21 +12,12 @@ import traceback
 from urllib2 import urlopen
 from multifetcher import ParallelFetcher
 
-#from gensim.utils import SaveLoad
-
-APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
-
-SHOULD_SCRAPE_SITES = True
-NUM_PAGES_TO_SCRAPE = 50
-CONTEXT_WORD_WIDTH = 20
-
-DB_FILENAME = '/tmp/webcorpus-%s.sqlite' % (SHOULD_SCRAPE_SITES and "scrape" or "bing")
+from config import *
 
 search_engine_corpus = None
 
 #set timeout for urllib2 calls
-timeout = 10
-socket.setdefaulttimeout(timeout)
+socket.setdefaulttimeout(URLLIB_TIMEOUT)
 
 def factory():
     global search_engine_corpus
@@ -125,13 +116,13 @@ class SearchEngineCorpus(object):
 
     def _init_conn(self):
         """initialize connection to sqlite"""
-        if not os.path.exists(DB_FILENAME):
+        if not os.path.exists(WEB_DB_FILENAME):
             return self._init_db()
-        return sqlite3.connect(DB_FILENAME)
+        return sqlite3.connect(WEB_DB_FILENAME)
 
     def _init_db(self):
-        print 'Initializing SearchEngineCorpus DB at %s...' % DB_FILENAME
-        conn = sqlite3.connect(DB_FILENAME)
+        print 'Initializing SearchEngineCorpus DB at %s...' % WEB_DB_FILENAME
+        conn = sqlite3.connect(WEB_DB_FILENAME)
         c = conn.cursor()
         # so if a search returns no results we're doomed to repeat it. oh well!
         c.execute('''CREATE TABLE search_results(

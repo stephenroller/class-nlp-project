@@ -6,8 +6,6 @@ import os
 from itertools import groupby
 from util import context_windows
 
-WINDOW_SIZE = 5
-
 class IndexedCorpus(object):
     def __init__(self, indexfile, corpus_directory=''):
         self.indexfile = indexfile
