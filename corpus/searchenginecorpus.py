@@ -10,15 +10,17 @@ import sys
 import time
 import traceback
 from urllib2 import urlopen
+from multifetcher import ParallelFetcher
 
 #from gensim.utils import SaveLoad
 
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
-DB_FILENAME = '/tmp/webcorpus2.sqlite'
 
-SHOULD_SCRAPE_SITES = False
+SHOULD_SCRAPE_SITES = True
 NUM_PAGES_TO_SCRAPE = 50
 CONTEXT_WORD_WIDTH = 20
+
+DB_FILENAME = '/tmp/webcorpus-%s.sqlite' % (SHOULD_SCRAPE_SITES and "scrape" or "bing")
 
 search_engine_corpus = None
 
@@ -61,17 +63,14 @@ class SearchEngineCorpus(object):
 
     def _scrape_text_from_sites(self, results, query):
         res = []
-        i=0
+        results = results[:NUM_PAGES_TO_SCRAPE]
         try:
+            pf = ParallelFetcher([r.url for r in results])
             for r in results:
-                if i >= NUM_PAGES_TO_SCRAPE:
-                    break
                 try:
-                    #TODO parallelize this?
-                    res += self._get_contexts_from_html(urlopen(r.url).read(), query)
-                except Exception:
+                    res += self._get_contexts_from_html(pf[r.url], query)
+                except Exception, e:
                     traceback.print_exc()
-                i += 1
         except Exception:
             traceback.print_exc()
         return res
