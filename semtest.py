@@ -123,5 +123,9 @@ if __name__ == '__main__':
     print
     print_settings()
     print
+    from datetime import datetime
+    start = datetime.now()
     test_categorizer(corpus, sys.argv[2])
+    end = datetime.now()
+    print "Testing time: %s" % (end - start)
 
