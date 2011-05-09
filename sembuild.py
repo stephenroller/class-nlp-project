@@ -154,7 +154,8 @@ class CorpusSimilarityFinder(object):
         word = wt.transform(word)
         self.sim.numBest = n
         vec = self.vector_corpus[word]
-        if(should_enrich_with_web): self._enrich_vec_with_web(vec, word)
+        if(should_enrich_with_web):
+            vec = self._enrich_vec_with_web(vec, word)
         vec = self.tfidf[vec]
 
         retval = []
