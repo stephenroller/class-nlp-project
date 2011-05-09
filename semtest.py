@@ -77,13 +77,14 @@ def test_categorizer(corpus, test_filename):
     num_correct = 0
     num_guessed = 0
     num_total = 0
+    print "total number of tests: %d" % len(test_words)
     for test_word in test_words:
         try:
+            print "Looking for '%s'" % test_word
             supersenses = list(set([x.lexname for x in wn.synsets(test_word)]))
             if len(supersenses) != 1:
                 continue
             correct_answer = supersenses[0]
-            print "Looking for '%s'" % test_word
             guess = calc_correct(corpus, test_word, test_words)
             print "%s: %s (correct: %s)" % (test_word, guess or "??", correct_answer)
             print 
@@ -98,8 +99,14 @@ def test_categorizer(corpus, test_filename):
             continue
 
     print "-" * 60
-    print "Precision: %.2f%% (%d/%d)" % (100 * float(num_correct) / num_guessed, num_correct, num_guessed)
-    print "Recall: %.2f%% (%d/%d)" % (100 * float(num_correct) / num_total, num_correct, num_total)
+    if num_guessed == 0:
+        print "Precision: 0/0"
+    else:
+        print "Precision: %.2f%% (%d/%d)" % (100 * float(num_correct) / num_guessed, num_correct, num_guessed)
+    if num_total == 0:
+        print "Recall: 0/0"
+    else:
+        print "Recall: %.2f%% (%d/%d)" % (100 * float(num_correct) / num_total, num_correct, num_total)
 
 
 

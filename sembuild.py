@@ -81,14 +81,19 @@ class VectorCorpus(object):
         msg = "completed pass #%d in %s" % (self.passes, runtime)
         pb.render(1, msg)
 
+search_corpus = None
+def parallel_hack(term):
+    search_corpus.get_contexts(term)
 
 class WebVectorCorpus(VectorCorpus):
     def __init__(self, preload_terms):
+        global search_corpus
         search_corpus = search_engine_factory()
         self.terms = preload_terms
         VectorCorpus.__init__(self, search_corpus)
-        for term in preload_terms:
-            search_corpus.get_contexts(term)
+        from multiprocessing import Pool
+        p = Pool(NUM_PROCESSES)
+        p.map(parallel_hack, preload_terms)
 
     def _words_iter(self):
         return self.terms

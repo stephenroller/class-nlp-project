@@ -2,9 +2,10 @@
 
 import sys
 import urllib2
-from multiprocessing import Pool
+from Queue import Queue
+import threading
 
-NUM_PROCESSES = 10
+from config import *
 
 def _fetch(url):
     try:
@@ -12,17 +13,48 @@ def _fetch(url):
         retval = (url, f.read())
         f.close()
         return retval
-    except KeyboardInterrupt, e:
-        sys.exit(100)
     except Exception, e:
         sys.stderr.write(str(e) + '\n')
         return (url, "")
 
+class ThreadUrl(threading.Thread):
+    """Threaded Url Grab"""
+    def __init__(self, queue, out_queue):
+        threading.Thread.__init__(self)
+        self.queue = queue
+        self.out_queue = out_queue
+
+    def run(self):
+        while True:
+            #grabs host from queue
+            host = self.queue.get()
+
+            #grabs urls of hosts and then grabs chunk of webpage
+            chunk = _fetch(host)
+            
+            #place chunk into out queue
+            self.out_queue.put(chunk)
+
+            #signals to queue job is done
+            self.queue.task_done()
+
 class ParallelFetcher(object):
     def __init__(self, urls):
         self.urls = urls
-        self.pool = Pool(NUM_PROCESSES)
-        self.results = dict(self.pool.map(_fetch, urls))
+        queue = Queue()
+        out_queue = Queue()
+
+        for i in xrange(NUM_FETCH_PROCESSES):
+            t = ThreadUrl(queue, out_queue)
+            t.setDaemon(True)
+            t.start()
+
+        for url in urls:
+            queue.put(url)
+
+        queue.join()
+        self.results = dict(r for r in out_queue.queue)
+
 
     def __getitem__(self, url):
         return self.results[url]

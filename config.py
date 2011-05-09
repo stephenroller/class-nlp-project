@@ -16,7 +16,6 @@ N = 9
 VOTE_DAMPING_COEFF = 0.7
 # set to false if you don't wanna use the web to go from N -> K vectors
 SHOULD_USE_WEB_FOR_PARING=True
-SHOULD_USE_WEB_FOR_PARING=False
 # set to false if you don't wanna use the web for initial vector enrichment.
 SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
 # which wordnet version should we use?
@@ -31,8 +30,11 @@ CONTEXT_WORD_WIDTH = 20
 
 WEB_DB_FILENAME = '/tmp/webcorpus-%s.sqlite' % (SHOULD_SCRAPE_SITES and "scrape" or "bing")
 
-URLLIB_TIMEOUT = 10
+URLLIB_TIMEOUT = 3
 
+## ---------- PARALLELISM PARAMETERS ----------
+NUM_PROCESSES = N
+NUM_FETCH_PROCESSES = NUM_PAGES_TO_SCRAPE
 
 ## ---------- PRINT SETTINGS ----------
 
@@ -45,3 +47,4 @@ def print_settings():
 
 if __name__ == '__main__':
     print_settings()
+

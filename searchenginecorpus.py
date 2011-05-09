@@ -11,6 +11,7 @@ import time
 import traceback
 from urllib2 import urlopen
 from multifetcher import ParallelFetcher
+from multiprocessing import Lock
 
 from config import *
 
@@ -29,7 +30,7 @@ class SearchEngineCorpus(object):
     def __init__(self):
         self._conn = self._init_conn()
         self._queries_made = 0
-
+        self.lock = Lock()
 
     def get_contexts(self, query):
         """returns a list of contexts in which a query appears.
@@ -59,9 +60,10 @@ class SearchEngineCorpus(object):
             pf = ParallelFetcher([r.url for r in results])
             for r in results:
                 try:
-                    res += self._get_contexts_from_html(pf[r.url], query)
+                    txt = pf[r.url]
+                    res += self._get_contexts_from_html(txt, query)
                 except Exception, e:
-                    traceback.print_exc()
+                    sys.stderr.write(str(e) + '\n')
         except Exception:
             traceback.print_exc()
         return res
@@ -101,18 +103,22 @@ class SearchEngineCorpus(object):
 
     def _get_results_from_db(self, query):
         """returns a (possibly empty) list of results if we've done this query"""
+        self.lock.acquire()
         c = self._conn.cursor()
         c.execute('''SELECT result FROM search_results WHERE word=?''', (query,))
         res = [x[0] for x in c.fetchall()]
         c.close()
+        self.lock.release()
         return res
 
     def _add_results_to_db(self, query, results):
+        self.lock.acquire()
         c = self._conn.cursor()
         c.executemany('''INSERT INTO search_results VALUES (?,?)''',
                       [(query, r) for r in results])
         c.close()
         self._conn.commit()
+        self.lock.release()
 
     def _init_conn(self):
         """initialize connection to sqlite"""
