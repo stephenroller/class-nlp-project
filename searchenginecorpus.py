@@ -114,6 +114,7 @@ class SearchEngineCorpus(object):
     def _add_results_to_db(self, query, results):
         self.lock.acquire()
         c = self._conn.cursor()
+        results.append('')
         c.executemany('''INSERT INTO search_results VALUES (?,?)''',
                       [(query, r) for r in results])
         c.close()
