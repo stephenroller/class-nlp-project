@@ -4,6 +4,7 @@ import sys
 import urllib2
 from Queue import Queue
 import threading
+import thread
 
 from config import *
 
@@ -45,9 +46,13 @@ class ParallelFetcher(object):
         out_queue = Queue()
 
         for i in xrange(NUM_FETCH_PROCESSES):
-            t = ThreadUrl(queue, out_queue)
-            t.setDaemon(True)
-            t.start()
+            try:
+                t = ThreadUrl(queue, out_queue)
+                t.setDaemon(True)
+                t.start()
+            except thread.error:
+                # too many threads. that's okay, just use fewer
+                pass
 
         for url in urls:
             queue.put(url)
