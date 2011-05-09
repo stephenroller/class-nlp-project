@@ -27,11 +27,12 @@ WORDNET_DIR = 'wordnet/1.6/'
 ## ---------- SEARCHENGINECORPUS PARAMETERS ----------
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
 
-SHOULD_SCRAPE_SITES = True
+SHOULD_SCRAPE_SITES = False
 NUM_PAGES_TO_SCRAPE = 50
 CONTEXT_WORD_WIDTH = 20
 
-WEB_DB_FILENAME = '/tmp/webcorpus-%s.sqlite' % (SHOULD_SCRAPE_SITES and "scrape" or "bing")
+WEB_SCRAPE_DB_FILENAME = '/tmp/webcorpus-scrape.sqlite'
+WEB_DESCR_DB_FILENAME = '/tmp/webcorpus-bing.sqlite'
 
 URLLIB_TIMEOUT = 3
 
