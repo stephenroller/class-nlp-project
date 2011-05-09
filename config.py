@@ -18,6 +18,9 @@ VOTE_DAMPING_COEFF = 0.7
 SHOULD_USE_WEB_FOR_PARING=True
 # set to false if you don't wanna use the web for initial vector enrichment.
 SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
+# set to True if you wanna scrape sites to get the initially enriched vector; set
+# to False if you want to use search engine Descriptions.
+SHOULD_ENRICH_BY_SCRAPING=True
 # which wordnet version should we use?
 WORDNET_DIR = 'wordnet/1.6/'
 

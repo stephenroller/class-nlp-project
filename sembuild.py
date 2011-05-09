@@ -167,7 +167,7 @@ class CorpusSimilarityFinder(object):
 
     def _enrich_vec_with_web(self, vec, word):
         webctxs = [_context_to_vector(word, c, True)
-                   for c in search_engine_factory().get_contexts(word)]
+                   for c in search_engine_factory().get_contexts(word, SHOULD_ENRICH_BY_SCRAPING)]
         print 'adding %d contexts from web to query vector.' % len(webctxs)
         webbowvec = self.vector_corpus.dictionary.doc2bow(itertools.chain(*webctxs),
                                                           allowUpdate=False)

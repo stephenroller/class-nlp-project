@@ -32,21 +32,33 @@ class SearchEngineCorpus(object):
         self._queries_made = 0
         self.lock = Lock()
 
-    def get_contexts(self, query):
+    def get_contexts(self, query, scrape_override=None):
         """returns a list of contexts in which a query appears.
 
         This returns either the descriptions from bing or contexts form the
         actual site we scrape ourselves.
+
+        scrape_override is funny. If None, we use the default behavior. If it
+        is True, we override default behavior and get contexts by scraping. If
+        it's False then we override default behavior and get contexts with
+        descriptions.
+
+        IMPORTANTLY, if scrape_override has a non-None value, we'll ignore the
+        cache.
 
         It is entirely possible that the query actually appears multiple
         times in a returned context, or not at all (if a morphologically
         similar form of the word appears, for example).
         """
         ctxs = self._get_results_from_db(query)
-        if len(ctxs) > 0:
+        if len(ctxs) > 0 and not scrape_override:
             return ctxs
         results = WebQuery(APPID, query=query).set_offset(0).set_count(50).execute()
-        if SHOULD_SCRAPE_SITES:
+        if scrape_override:
+            should_scrape = scrape_override
+        else:
+            should_scrape = SHOULD_SCRAPE_SITES
+        if should_scrape:
             text_results = self._scrape_text_from_sites(results, query)
         else:
             text_results = self._get_text_from_descriptions(results)
