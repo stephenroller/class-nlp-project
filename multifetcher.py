@@ -10,7 +10,7 @@ from config import *
 
 def _fetch(url):
     try:
-        f = urllib2.urlopen(url)
+        f = urllib2.urlopen(url, timeout=URLLIB_TIMEOUT)
         retval = (url, f.read())
         f.close()
         return retval
