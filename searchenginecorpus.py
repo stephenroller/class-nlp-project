@@ -28,29 +28,45 @@ def factory():
 
 class SearchEngineCorpus(object):
     def __init__(self):
-        self._conn = self._init_conn()
+        self._init_conns()
         self._queries_made = 0
         self.lock = Lock()
 
-    def get_contexts(self, query):
+    def get_contexts(self, query, scrape_override=None):
         """returns a list of contexts in which a query appears.
 
         This returns either the descriptions from bing or contexts form the
         actual site we scrape ourselves.
 
+        scrape_override is funny. If None, we use the default behavior. If it
+        is True, we override default behavior and get contexts by scraping. If
+        it's False then we override default behavior and get contexts with
+        descriptions.
+
+        IMPORTANTLY, if scrape_override has a non-None value, we'll ignore the
+        cache.
+
         It is entirely possible that the query actually appears multiple
         times in a returned context, or not at all (if a morphologically
         similar form of the word appears, for example).
         """
-        ctxs = self._get_results_from_db(query)
+        if scrape_override:
+            should_scrape = scrape_override
+        else:
+            should_scrape = SHOULD_SCRAPE_SITES
+        if should_scrape:
+            conn = self._scrape_conn
+        else:
+            conn = self._descr_conn
+        ctxs = self._get_results_from_db(query, conn)
         if len(ctxs) > 0:
             return ctxs
         results = WebQuery(APPID, query=query).set_offset(0).set_count(50).execute()
-        if SHOULD_SCRAPE_SITES:
+        if should_scrape:
             text_results = self._scrape_text_from_sites(results, query)
         else:
             text_results = self._get_text_from_descriptions(results)
-        self._add_results_to_db(query, text_results)
+        self._add_results_to_db(query, conn, text_results)
         return text_results
 
     def _scrape_text_from_sites(self, results, query):
@@ -101,35 +117,39 @@ class SearchEngineCorpus(object):
             traceback.print_exc()
         return res
 
-    def _get_results_from_db(self, query):
+    def _get_results_from_db(self, query, conn):
         """returns a (possibly empty) list of results if we've done this query"""
         self.lock.acquire()
-        c = self._conn.cursor()
+        c = conn.cursor()
         c.execute('''SELECT result FROM search_results WHERE word=?''', (query,))
         res = [x[0] for x in c.fetchall()]
         c.close()
         self.lock.release()
         return res
 
-    def _add_results_to_db(self, query, results):
+    def _add_results_to_db(self, query, conn, results):
         self.lock.acquire()
-        c = self._conn.cursor()
+        c = conn.cursor()
         results.append('')
         c.executemany('''INSERT INTO search_results VALUES (?,?)''',
                       [(query, r) for r in results])
         c.close()
-        self._conn.commit()
+        conn.commit()
         self.lock.release()
 
-    def _init_conn(self):
-        """initialize connection to sqlite"""
-        if not os.path.exists(WEB_DB_FILENAME):
-            return self._init_db()
-        return sqlite3.connect(WEB_DB_FILENAME)
+    def _init_conns(self):
+        """initialize connections to sqlite, stores as instance vars"""
+        self._scrape_conn = self._init_conn(WEB_SCRAPE_DB_FILENAME)
+        self._descr_conn = self._init_conn(WEB_DESCR_DB_FILENAME)
 
-    def _init_db(self):
-        print 'Initializing SearchEngineCorpus DB at %s...' % WEB_DB_FILENAME
-        conn = sqlite3.connect(WEB_DB_FILENAME)
+    def _init_conn(self, filename):
+        if not os.path.exists(filename):
+            return self._init_db(filename)
+        return sqlite3.connect(filename)
+
+    def _init_db(self, filename):
+        print 'Initializing SearchEngineCorpus DB at %s...' % filename
+        conn = sqlite3.connect(filename)
         c = conn.cursor()
         # so if a search returns no results we're doomed to repeat it. oh well!
         c.execute('''CREATE TABLE search_results(
@@ -147,7 +167,7 @@ if __name__ == '__main__':
         q = sys.argv[1]
     print "Searching...."
     t = time.time()
-    li = SearchEngineCorpus().get_contexts(q)
+    li = SearchEngineCorpus().get_contexts(q, SHOULD_ENRICH_BY_SCRAPING)
     print 'Took %f seconds.' % (time.time() - t)
     print '%d contexts returned.' % len(li)
 #    for c in li: print c

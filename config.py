@@ -18,17 +18,21 @@ VOTE_DAMPING_COEFF = 0.7
 SHOULD_USE_WEB_FOR_PARING=True
 # set to false if you don't wanna use the web for initial vector enrichment.
 SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
+# set to True if you wanna scrape sites to get the initially enriched vector; set
+# to False if you want to use search engine Descriptions.
+SHOULD_ENRICH_BY_SCRAPING=True
 # which wordnet version should we use?
 WORDNET_DIR = 'wordnet/1.6/'
 
 ## ---------- SEARCHENGINECORPUS PARAMETERS ----------
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
 
-SHOULD_SCRAPE_SITES = True
+SHOULD_SCRAPE_SITES = False
 NUM_PAGES_TO_SCRAPE = 50
 CONTEXT_WORD_WIDTH = 20
 
-WEB_DB_FILENAME = '/tmp/webcorpus-%s.sqlite' % (SHOULD_SCRAPE_SITES and "scrape" or "bing")
+WEB_SCRAPE_DB_FILENAME = '/tmp/webcorpus-scrape.sqlite'
+WEB_DESCR_DB_FILENAME = '/tmp/webcorpus-bing.sqlite'
 
 URLLIB_TIMEOUT = 3
 
