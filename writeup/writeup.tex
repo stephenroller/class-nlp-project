@@ -113,16 +113,23 @@ Is your hypothesis supported? What conclusions do the results support about the 
 %Answer the following questions for each piece of related work that addresses the same or a similar problem. What is their problem and method? How is your problem and method different? Why is your problem and method better? 
 
 There are two papers about the particular task of supersense acquisition of nouns.
-The first, in which the task is first described, is \cite{cj}.
-[ELABORATE]
+The first, in which the task is first described, is by Ciaramita \& Johnson \cite{cj}.
+They apply a multiclass perceptron classifier which uses a mix of features standardly used in NER, WSD, and lexical disambiguation---parts of speech of neighboring words, $n$-grams in surrounding contexts, and morphological features, for example.
+They train on two corpora by, for each unambiguous noun with an entry in WordNet 1.6, calculating a feature vector for each occurrence of that noun.
+One corpus is the Bllip corpus, a 40M word corpus of WSJ text; the other is comprised of the definitional glosses collected from WordNet.
+The method given in this paper is based entirely on using offline, preprocessed corpora, and augmenting it with results from search engine queries could be fruitful.
 
-The task is approached differently in \cite{curran}
-[ELABORATE]
+The task is approached differently by Curran \cite{curran}.
+He uses a more unsupervised approach---construct a distributional vector space model from a large corpus and use a $k$-nearest-neighbors voting scheme to guess the supersense label of an unknown word.
+Our basic, offline model is an impoverished version of Curran's---whereas the dimensions in his model correspond to nouns being observed standing in different relations to verbs (e.g. ``being the direct object of {\it give}''), the dimensions in our model correspond simply to nouns being observed within the local contexts of other words.
+Our general approach differs from his in that we attempt to also use a search engine---both to augment the initial vector for the unknown word with a greater number of contexts, and also to refine our guess for what the $k$-nearest neighbor vectors are.
 
-The idea of applying search engine queries to tasks in natural language processing is not novel.
-For example, \cite{bollegala} uses the results of search engine queries to calculate semantic similarity between terms.
-[PROBABLY ANOTHE PAPER OR TWO?]
-However, as far as we know, the use of search engine queries to refine an initial approximate answer provided by an offline model is not a widely used technique.
+The idea of using the web to build models for natural language processing tasks is certainly not novel.
+For example, \cite{bollegala} and \cite{gracia} use the results of search engine queries to calculate semantic similarity between terms.
+\cite{strube} and \cite{gabrilovich} also use the web to calculate semantic similarity, but restrict themselves to Wikipedia.
+However, as far as we know, there is no prior work using the web to guess supersenses of unknown words.
+Further, we believe use of search engine queries to refine an initial approximate answer provided by an offline model (in contrast to building a model from the web) is not a widely used technique.
+This is the primary contribution of the present work.
 
 \section{Future Work}
 
