@@ -15,19 +15,21 @@ N = 9
 # discounted by VOTE_DAMPING_COEFF ** n).
 VOTE_DAMPING_COEFF = 0.7
 # set to false if you don't wanna use the web to go from N -> K vectors
-SHOULD_USE_WEB_FOR_PARING=True
+SHOULD_USE_WEB_FOR_PARING = True
 # set to false if you don't wanna use the web for initial vector enrichment.
-SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT=True
+SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT = False
 # set to True if you wanna scrape sites to get the initially enriched vector; set
 # to False if you want to use search engine Descriptions.
-SHOULD_ENRICH_BY_SCRAPING=True
+SHOULD_ENRICH_BY_SCRAPING = True
+# scrape or descriptions?
+SHOULD_SCRAPE_SITES = False
+
 # which wordnet version should we use?
-WORDNET_DIR = 'wordnet/1.6/'
+WORDNET_DIR = 'wordnet/1.7.1/'
 
 ## ---------- SEARCHENGINECORPUS PARAMETERS ----------
 APPID = '335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC'
 
-SHOULD_SCRAPE_SITES = False
 NUM_PAGES_TO_SCRAPE = 50
 CONTEXT_WORD_WIDTH = 20
 

@@ -7,7 +7,8 @@ from sembuild import *
 
 from config import *
 
-_wn = WordNetCorpusReader(WORDNET_DIR)
+wn16= WordNetCorpusReader('wordnet/1.6')
+wn17= WordNetCorpusReader('wordnet/1.7.1')
 
 def get_test_set(filename):
     words = []
@@ -19,7 +20,6 @@ def get_test_set(filename):
 
 def calc_correct(corpus, word, exclude_words=[]):
     print "Attempting to classify '%s'" % word
-    wn = _wn
     votes = dict()
     word = WordTransformer().transform(word)
     similar_words = _get_similar_noun_conf_pairs(corpus, word)
@@ -39,10 +39,10 @@ def calc_correct(corpus, word, exclude_words=[]):
 
     for near_word, score in similar_words[1:]:
         print near_word
-        for synset in wn.synsets(near_word):
+        for synset in wn16.synsets(near_word):
             print "\t%s (%s)" % (str(synset), synset.lexname)
         curCoeff = 1.0
-        for supersense in filter(_is_noun_synset, wn.synsets(near_word)):
+        for supersense in filter(_is_noun_synset, wn16.synsets(near_word)):
             votes[supersense.lexname] = votes.get(supersense.lexname, 0) + (curCoeff * score)
             curCoeff *= VOTE_DAMPING_COEFF
 
@@ -67,12 +67,11 @@ def _get_similar_noun_conf_pairs(corpus, word):
     return sims[:N+1]
 
 def _has_noun_sense(word_conf_pair):
-    for synset in list(_wn.synsets(word_conf_pair[0])):
+    for synset in list(wn16.synsets(word_conf_pair[0])):
         if 'noun' in synset.lexname: return True
     return False
 
 def test_categorizer(corpus, test_filename):
-    wn = _wn
     test_words = get_test_set(test_filename)
     num_correct = 0
     num_guessed = 0
@@ -81,7 +80,7 @@ def test_categorizer(corpus, test_filename):
     for test_word in test_words:
         try:
             print "Looking for '%s'" % test_word
-            supersenses = list(set([x.lexname for x in wn.synsets(test_word)]))
+            supersenses = list(set([x.lexname for x in wn17.synsets(test_word)]))
             if len(supersenses) != 1:
                 continue
             correct_answer = supersenses[0]
