@@ -65,7 +65,21 @@ Since lexical resources like WordNet are necessarily incomplete, the utility of 
 
 \subsection{Algorithm Definition}
 
-Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols. 
+%Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols. 
+
+The approach we take has a number of steps.
+First, we construct a vector space model.
+Second, given a word with unknown supersense, we find its nearest $n$ neighbors.
+Third, we use search engine queries to refine the model and find the $k$ nearest neighbors (for $k\leq n$).
+Finally, we use a voting scheme over these $k$ nearest neighbors to form a guess of the word's supersense.
+
+[WORDS ON THE VECTOR SPACE MODEL]
+
+[WORDS ON FINDING $n$ NEAREST NEIGHBORS AND ENRICHMENT]
+
+[WORDS ON REFINEMENT]
+
+[WORDS ON VOTING]
 
 \section{Experimental Evaluation}
 
@@ -123,6 +137,12 @@ The task is approached differently by Curran \cite{curran}.
 He uses a more unsupervised approach---construct a distributional vector space model from a large corpus and use a $k$-nearest-neighbors voting scheme to guess the supersense label of an unknown word.
 Our basic, offline model is an impoverished version of Curran's---whereas the dimensions in his model correspond to nouns being observed standing in different relations to verbs (e.g. ``being the direct object of {\it give}''), the dimensions in our model correspond simply to nouns being observed within the local contexts of other words.
 Our general approach differs from his in that we attempt to also use a search engine---both to augment the initial vector for the unknown word with a greater number of contexts, and also to refine our guess for what the $k$-nearest neighbor vectors are.
+
+Ciaramita and Altun \cite{ciaramita-altun} apply an HMM to the task of WSD on the Supersense level.
+That is, instead of guessing supersenses for unknown nouns, they attempt to label individual occurrences of words with appropriate supersenses.
+This is a significantly more complicated problem than the one addressed here, and it is not at all obvious how one could use information from the web to help in the task.
+
+%Erk \cite{erk} gives an approach to the somewhat related problem of detecting unknown word senses---automatically detecting occurrences of words in text whose senses are not in a given sense inventory.
 
 The idea of using the web to build models for natural language processing tasks is certainly not novel.
 For example, \cite{bollegala} and \cite{gracia} use the results of search engine queries to calculate semantic similarity between terms.
