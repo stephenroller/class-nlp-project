@@ -72,19 +72,35 @@ Since lexical resources like WordNet are necessarily incomplete, the utility of 
 The approach we take has a number of steps.
 First, we construct a vector space model.
 Second, given a word with unknown supersense, we find its nearest $n$ neighbors.
-Third, we use search engine queries to refine the model and find the $k$ nearest neighbors (for $k\leq n$).
+Third, we use search engine queries to refine the model and find the $k$ nearest neighbors (for $k< n$).
 Finally, we use a voting scheme over these $k$ nearest neighbors to form a guess of the word's supersense.
 
+\begin{enumerate}
+\item\label{modelstep}
 We first construct a very simple distributional lexical semantic model.
 We process a corpus of raw text and, for each word $w$, count the number of times every other word appears within 5 words of $w$.
+Note we use a list of 172 stopwords to completely ignore.
+These counts form the basis of our vector space.
+We operate on the {\it tf-idf} vectors of these raw count vectors, and use cosine similarity as our distance metric.
+
 Our corpus is approximately 27M words sampled from the English Gigaword Fourth Edition corpus \cite{gigaword}, and we use the Gensim framework \cite{gensim} to construct the vector space.
-We chose to use both a small corpus and a fairly simple model for time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
+We chose to use both a small corpus and a fairly simple model due to time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
 
-[WORDS ON FINDING $n$ NEAREST NEIGHBORS AND ENRICHMENT]
+\item
+Given a word $w$ with unknown supersense, we will eventually find its $k$ nearest neighbors and use a voting scheme over those to determine supersense.
+Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
+There are two options here for which vector we use to represent $w$.
+First, we can simply use $w$'s vector as built in step \ref{modelstep}.
+Second, we can augment this vector with the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
+We measure the performance of both approaches; the latter outperforms the former.
 
-[WORDS ON REFINEMENT]
+\item
+WORDS ON REFINEMENT
 
-[WORDS ON VOTING]
+\item
+WORDS ON VOTING
+
+\end{enumerate}
 
 \section{Experimental Evaluation}
 
