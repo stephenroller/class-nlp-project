@@ -5,6 +5,8 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 \author{Stephen Roller \& Karl Pichotta}
 
+\usepackage{hyperref}
+
 
 \begin{document}
 
@@ -65,7 +67,40 @@ Since lexical resources like WordNet are necessarily incomplete, the utility of 
 
 \subsection{Algorithm Definition}
 
-Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols. 
+%Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols. 
+
+The approach we take has a number of steps.
+First, we construct a vector space model.
+Second, given a word with unknown supersense, we find its nearest $n$ neighbors.
+Third, we use search engine queries to refine the model and find the $k$ nearest neighbors (for $k< n$).
+Finally, we use a voting scheme over these $k$ nearest neighbors to form a guess of the word's supersense.
+
+\begin{enumerate}
+\item\label{modelstep}
+We first construct a very simple distributional lexical semantic model.
+We process a corpus of raw text and, for each word $w$, count the number of times every other word appears within 5 words of $w$.
+Note we use a list of 172 stopwords to completely ignore.
+These counts form the basis of our vector space.
+We operate on the {\it tf-idf} vectors of these raw count vectors, and use cosine similarity as our distance metric.
+
+Our corpus is approximately 27M words sampled from the English Gigaword Fourth Edition corpus \cite{gigaword}, and we use the Gensim framework \cite{gensim} to construct the vector space.
+We chose to use both a small corpus and a fairly simple model due to time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
+
+\item
+Given a word $w$ with unknown supersense, we will eventually find its $k$ nearest neighbors and use a voting scheme over those to determine supersense.
+Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
+There are two options here for which vector we use to represent $w$.
+First, we can simply use $w$'s vector as built in step \ref{modelstep}.
+Second, we can augment this vector with the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
+We measure the performance of both approaches; the latter outperforms the former.
+
+\item
+WORDS ON REFINEMENT
+
+\item
+WORDS ON VOTING
+
+\end{enumerate}
 
 \section{Experimental Evaluation}
 
@@ -113,16 +148,29 @@ Is your hypothesis supported? What conclusions do the results support about the 
 %Answer the following questions for each piece of related work that addresses the same or a similar problem. What is their problem and method? How is your problem and method different? Why is your problem and method better? 
 
 There are two papers about the particular task of supersense acquisition of nouns.
-The first, in which the task is first described, is \cite{cj}.
-[ELABORATE]
+The first, in which the task is first described, is by Ciaramita \& Johnson \cite{cj}.
+They apply a multiclass perceptron classifier which uses a mix of features standardly used in NER, WSD, and lexical disambiguation---parts of speech of neighboring words, $n$-grams in surrounding contexts, and morphological features, for example.
+They train on two corpora by, for each unambiguous noun with an entry in WordNet 1.6, calculating a feature vector for each occurrence of that noun.
+One corpus is the Bllip corpus, a 40M word corpus of WSJ text; the other is comprised of the definitional glosses collected from WordNet.
+The method given in this paper is based entirely on using offline, preprocessed corpora, and augmenting it with results from search engine queries could be fruitful.
 
-The task is approached differently in \cite{curran}
-[ELABORATE]
+The task is approached differently by Curran \cite{curran}.
+He uses a more unsupervised approach---construct a distributional vector space model from a large corpus and use a $k$-nearest-neighbors voting scheme to guess the supersense label of an unknown word.
+Our basic, offline model is an impoverished version of Curran's---whereas the dimensions in his model correspond to nouns being observed standing in different relations to verbs (e.g. ``being the direct object of {\it give}''), the dimensions in our model correspond simply to nouns being observed within the local contexts of other words.
+Our general approach differs from his in that we attempt to also use a search engine---both to augment the initial vector for the unknown word with a greater number of contexts, and also to refine our guess for what the $k$-nearest neighbor vectors are.
 
-The idea of applying search engine queries to tasks in natural language processing is not novel.
-For example, \cite{bollegala} uses the results of search engine queries to calculate semantic similarity between terms.
-[PROBABLY ANOTHE PAPER OR TWO?]
-However, as far as we know, the use of search engine queries to refine an initial approximate answer provided by an offline model is not a widely used technique.
+Ciaramita and Altun \cite{ciaramita-altun} apply an HMM to the task of WSD on the Supersense level.
+That is, instead of guessing supersenses for unknown nouns, they attempt to label individual occurrences of words with appropriate supersenses.
+This is a significantly more complicated problem than the one addressed here, and it is not at all obvious how one could use information from the web to help in the task.
+
+%Erk \cite{erk} gives an approach to the somewhat related problem of detecting unknown word senses---automatically detecting occurrences of words in text whose senses are not in a given sense inventory.
+
+The idea of using the web to build models for natural language processing tasks is certainly not novel.
+For example, \cite{bollegala} and \cite{gracia} use the results of search engine queries to calculate semantic similarity between terms.
+\cite{strube} and \cite{gabrilovich} also use the web to calculate semantic similarity, but restrict themselves to Wikipedia.
+However, as far as we know, there is no prior work using the web to guess supersenses of unknown words.
+Further, we believe use of search engine queries to refine an initial approximate answer provided by an offline model (in contrast to building a model from the web) is not a widely used technique.
+This is the primary contribution of the present work.
 
 \section{Future Work}
 
