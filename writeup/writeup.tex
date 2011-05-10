@@ -5,6 +5,8 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 \author{Stephen Roller \& Karl Pichotta}
 
+\usepackage{hyperref}
+
 
 \begin{document}
 
@@ -73,7 +75,10 @@ Second, given a word with unknown supersense, we find its nearest $n$ neighbors.
 Third, we use search engine queries to refine the model and find the $k$ nearest neighbors (for $k\leq n$).
 Finally, we use a voting scheme over these $k$ nearest neighbors to form a guess of the word's supersense.
 
-[WORDS ON THE VECTOR SPACE MODEL]
+We first construct a very simple distributional lexical semantic model.
+We process a corpus of raw text and, for each word $w$, count the number of times every other word appears within 5 words of $w$.
+Our corpus is approximately 27M words sampled from the English Gigaword Fourth Edition corpus \cite{gigaword}, and we use the Gensim framework \cite{gensim} to construct the vector space.
+We chose to use both a small corpus and a fairly simple model for time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
 
 [WORDS ON FINDING $n$ NEAREST NEIGHBORS AND ENRICHMENT]
 
