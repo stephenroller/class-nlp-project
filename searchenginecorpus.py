@@ -50,7 +50,7 @@ class SearchEngineCorpus(object):
         times in a returned context, or not at all (if a morphologically
         similar form of the word appears, for example).
         """
-        if scrape_override:
+        if scrape_override is not None:
             should_scrape = scrape_override
         else:
             should_scrape = SHOULD_SCRAPE_SITES
