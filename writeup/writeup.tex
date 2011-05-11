@@ -6,7 +6,7 @@ Unknown Noun Supersense Acquisition using Search Engines}
 \author{Stephen Roller \& Karl Pichotta}
 
 \usepackage{hyperref}
-
+\usepackage{multirow}
 
 \begin{document}
 
@@ -86,7 +86,7 @@ We operate on the {\it tf-idf} vectors of these raw count vectors, and use cosin
 Our corpus is approximately 27M words sampled from the English Gigaword Fourth Edition corpus \cite{gigaword}, and we use the Gensim framework \cite{gensim} to construct the vector space.
 We chose to use both a small corpus and a fairly simple model due to time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
 
-\item
+\item \label{enrichstep}
 Given a word $w$ with unknown supersense, we will eventually find its $k$ nearest neighbors and use a voting scheme over those to determine supersense.
 Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
 There are two options here for which vector we use to represent $w$.
@@ -95,7 +95,7 @@ Second, we can augment this vector with the results of a search engine query for
 We measure the performance of both approaches; the latter outperforms the former.
 
 \item
-WORDS ON REFINEMENT
+After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. We create a new vector space model using the search results as described in step \ref{modelstep}. Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. We then select the $k$-nearest neighbors of this new vector space model to the $w$ vector described in step \ref{enrichstep}.
 
 \item
 WORDS ON VOTING
@@ -106,7 +106,11 @@ WORDS ON VOTING
 
 \subsection{Methodology}
 
-What are criteria you are using to evaluate your method? What specific hypotheses does your experiment test? Describe the experimental methodology that you used. What are the dependent and independent variables? What is the training/test data that was used, and why is it realistic or interesting? Exactly what performance data did you collect and how are you presenting and analyzing it? Comparisons to competing methods that address the same problem are particularly useful. 
+% What are criteria you are using to evaluate your method? What specific hypotheses does your experiment test? Describe the experimental methodology that you used. What are the dependent and independent variables? What is the training/test data that was used, and why is it realistic or interesting? Exactly what performance data did you collect and how are you presenting and analyzing it? Comparisons to competing methods that address the same problem are particularly useful. 
+
+For evaluation, we attempt to recreate the original evaluation proposed in \cite{cj} as best as possible. They propose two evaluations: one done using a standard held-out test set, and one using only new worlds introduced between versions 1.6 and 1.7.1 of WordNet. While the former is more standard evaluation metric, \cite{cj} conclude that the latter is a more natural evaluation metric and slightly more difficult due to the nature of the changes.
+
+In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. Both \cite{cj} and \cite{curran} impose these same restrictions on their test set since these restrictions allow one to ignore the word sense disambiguation problem entirely.
 
 \subsection{Results}
 
@@ -114,29 +118,31 @@ What are criteria you are using to evaluate your method? What specific hypothese
 
 \begin{center}
 \begin{figure}[hbtp]
-\begin{tabular}{|l| l| l| l|}
+\begin{tabular}{|l|l||c|c|c|c||c|c|c|c|}
 \hline
-{\bf enrichment?} & {\bf refinement} & {\bf 1.6 P/R/A (F-score)} & {\bf 1.7 P/R/A (F-score)}  \\
+\multirow{2}{*}{{\bf Enrichment}} & \multirow{2}{*}{{\bf Refinement}} & \multicolumn{4}{c||}{{\bf 1.6 Test Set}} & \multicolumn{4}{c|}{{\bf 1.7 Test Set}}  \\
+\cline{3-10}
+& & {\bf P} & {\bf R} & {\bf A} & {\bf F} & {\bf P} & {\bf R} & {\bf A} & {\bf F} \\
 \hline \hline
-(baseline) & (baseline) & 26.11 / 26.11 / 26.11 (26.11) & 62.60 / 62.60 / 62.60 (62.60) \\
+baseline & baseline & 26.11 & 26.11 & 26.11 & 26.11 & 62.60 & 62.60 & 62.60 & 62.60 \\
 \hline\hline
-none & none & 28.75 / 87.34 / 27.60 (43.26) & 27.33 / 76.36 / 25.20 (40.26)  \\
+none & none & 28.75 & 87.34 & 27.60 & 43.26 & 27.33 & 76.36 & 25.20 & 40.26  \\
 \hline
-none & scrape & 34.91 / 52.78 / 26.60 (42.02)  & 29.03 / 32.14 / 18.00 (30.51)\\
+none & scrape & 34.91 & 52.78 & 26.60 & 42.02  & 29.03 & 32.14 & 18.00 & 30.51\\
 \hline
-none & descriptions & 34.27 / 78.89 / 31.40 (47.79) &  27.78 / 71.43 / 25.00 (40.00)\\
+none & descriptions & 34.27 & 78.89 & 31.40 & 47.79 &  27.78 & 71.43 & 25.00 & 40.00\\
 \hline\hline
-scrape & none & 31.94 / 87.93 / 30.60 (46.86) & 21.37 / 67.83 / 19.40 (32.50)  \\
+scrape & none & 31.94 & 87.93 & 30.60 & 46.86 & 21.37 & 67.83 & 19.40 & 32.50  \\
 \hline
-scrape & scrape & 38.40 / 53.53 / 28.80 (44.72) & 21.50 / 25.48 / 13.20 (23.32) \\
+scrape & scrape & 38.40 & 53.53 & 28.80 & 44.72 & 21.50 & 25.48 & 13.20 & 23.32 \\
 \hline
-scrape & descriptions & 40.92 / 79.39 / 37.00 (54.01)  & 21.17 / 62.67 / 18.80 (31.65)  \\
+scrape & descriptions & 40.92 & 79.39 & 37.00 & 54.01  & 21.17 & 62.67 & 18.80 & 31.65  \\
 \hline\hline
-descriptions & none & 38.43 / 92.08 / 37.20 (54.23) & 19.57 / 78.81 / 18.60 (31.37)  \\
+descriptions & none & 38.43 & 92.08 & 37.20 & 54.23 & 19.57 & 78.81 & 18.60 & 31.37  \\
 \hline
-descriptions & scrape & 43.26 / 59.43 / 33.40 (50.08) & 21.59 / 25.48 / 13.20 (23.32) \\
+descriptions & scrape & 43.26 & 59.43 & 33.40 & 50.08 & 21.59 & 25.48 & 13.20 & 23.32 \\
 \hline
-descriptions & descriptions & 34.41 / 82.05 / 32.00 (48.48) & 18.67 / 71.90 / 17.40 (29.64)   \\
+descriptions & descriptions & 34.41 & 82.05 & 32.00 & 48.48 & 18.67 & 71.90 & 17.40 & 29.64   \\
 \hline
 \end{tabular}
 \caption{Results on 1.6 and 1.7 testsets}
