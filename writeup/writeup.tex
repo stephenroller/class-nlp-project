@@ -116,24 +116,30 @@ What are criteria you are using to evaluate your method? What specific hypothese
 \begin{figure}[hbtp]
 \begin{tabular}{|l| l| l| l|}
 \hline
-{\bf setup} & {\bf Precision} & {\bf Recall} & {\bf F1-score}  \\
+{\bf enrichment?} & {\bf refinement} & {\bf 1.6 P/R/A (F-score)} & {\bf 1.7 P/R/A (F-score)}  \\
 \hline \hline
-most common superclass baseline & 20.00 & 20.00 & 20.00 \\
+(baseline) & (baseline) & 26.11 / 26.11 / 26.11 (26.11) & 62.60 / 62.60 / 62.60 ( 62.60) \\
+\hline\hline
+none & none & 28.75 / 87.34 / 27.60 (43.26) & 27.33 / 76.36 / 25.20 (40.26)  \\
 \hline
-No initial enrichment, No refinement & 33.33 & 30.00 & 31.58 \\
+none & scrape & 34.91 / 52.78 / 26.60 (42.02)  & 29.03 / 32.14 / 18.00 (30.51)\\
 \hline
-No init, refinement with webpages & 39.51 & 32.00 & 35.36 \\
+none & descriptions & 34.27 / 78.89 / 31.40 (47.79) &  27.78 / 71.43 / 25.00 (40.00)\\
+\hline\hline
+scrape & none & 31.94 / 87.93 / 30.60 (46.86) & 21.37 / 67.83 / 19.40 (32.50)  \\
 \hline
-No init, refinement with descriptions & 38.27 & 31.00 & 34.25 \\
+scrape & scrape & 38.40 / 53.53 / 28.80 (44.72) & 21.50 / 25.48 / 13.20 (23.32) \\
 \hline
-Initial enrichment, No refinement & 33.33 & 30.00 & 31.58 \\
+scrape & descriptions & 40.92 / 79.39 / 37.00 (54.01)  & 21.17 / 62.67 / 18.80 (31.65)  \\
+\hline\hline
+descriptions & none & - & 21.37? / 67.83? / 19.40? ( 32.50?)  \\
 \hline
-init, refinement with webpages & 39.51 & 32 & 35.36 \\
+descriptions & scrape & - & 21.59 / 25.48 / 13.20 (23.32) \\
 \hline
-No init, refinement with descriptions & 38.27 & 31.00 & 34.25 \\
+descriptions & descriptions & - & 18.67 / 71.90 / 17.40 (29.64)   \\
 \hline
 \end{tabular}
-\caption{Results on {\tt small-testset}}
+\caption{Results on 1.6 and 1.7 testsets}
 \label{fig:res1}
 \end{figure}
 \end{center}
