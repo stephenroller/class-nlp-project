@@ -44,4 +44,8 @@ def grep_for_cor(files):
     
 
 if __name__ == '__main__':
+    for line in open(sys.argv[1]):
+        if 'SHOULD' in line:
+            print line.strip()
     calc_pr(grep_for_cor(sys.argv[1:]))
+
