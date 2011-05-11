@@ -5,6 +5,7 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 \author{Stephen Roller \& Karl Pichotta}
 
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{multirow}
 
@@ -113,11 +114,9 @@ For evaluation, we attempt to recreate the original evaluation proposed in \cite
 In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. Both \cite{cj} and \cite{curran} impose these same restrictions on their test set since these restrictions allow one to ignore the word sense disambiguation problem entirely.
 
 \subsection{Results}
-
 %Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
-
-\begin{center}
 \begin{figure}[hbtp]
+\begin{center}
 \begin{tabular}{|l|l||c|c|c|c||c|c|c|c|}
 \hline
 \multirow{2}{*}{{\bf Enrichment}} & \multirow{2}{*}{{\bf Refinement}} & \multicolumn{4}{c||}{{\bf 1.6 Test Set}} & \multicolumn{4}{c|}{{\bf 1.7 Test Set}}  \\
@@ -146,9 +145,24 @@ descriptions & descriptions & 34.41 & 82.05 & 32.00 & 48.48 & 18.67 & 71.90 & 17
 \hline
 \end{tabular}
 \caption{Results on 1.6 and 1.7 testsets}
-\label{fig:res1}
-\end{figure}
+\label{fig:res}
 \end{center}
+\end{figure}
+The main results are contained in Figure \ref{fig:res}.
+This figure contains Precision, Recall, Accuracy, and F-score values for different experimental setups for both the 1.6 and 1.7 test sets.
+
+
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=120mm]{graphs/damping.png}
+\end{center}
+\caption{Effect of damping coefficient on F-score}
+\label{fig:damping}
+\end{figure}
+We use a development set of 100 held-out words from WordNet 1.6 to tune the parameters relating to voting.
+Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient values using scraping for initial enrichment and descriptions for refinement.
+
+MORE VOTING GRAPHS ALSO GO HERE
 
 
 \subsection{Discussion}
