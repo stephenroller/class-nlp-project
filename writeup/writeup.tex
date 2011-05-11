@@ -182,11 +182,22 @@ This is the primary contribution of the present work.
 
 %What are the major shortcomings of your current method? For each shortcoming, propose additions or enhancements that would help overcome it. 
 
-[SHORTCOMINGS OF METHOD, POSSIBLE ENHANCEMENTS]
+One of the primary shortcomings of the current work is the impoverished offline model we use.
+As noted above, we chose a simpler vector space model than Curran \cite{curran} and used a much smaller corpus for reasons of time and ease of implementation.
+It would be useful to compare Curran's method to the exact same method augmented with refinement using search engine queries; however, this was infeasible for us given the scope of the project.
+
+One of the primary shortcomings of the evaluation we use is the test set---since we use a different test set, comparing our performance directly with prior work is difficult.
+For example, we do not lemmatize nouns in our test set, whereas Ciaramita and Johnson \cite{cj} do not indicate if they do or not.
+It would be fruitful to obtain the exact test sets used in prior work to test with.
 
 The general approach we take is to construct a rough first approximation of an answer from a relatively small offline corpus and then use a search engine to refine this approximation.
 This approach could be fruitful for a number of different tasks---guessing word similarity or automatically finding synonyms, for example.
 Any task whose process of constructing a solution admits refinement with a search engine  could potentially see improvement using this method.
+
+We use the web in two different ways---the first is to enrich the initial query vector for the word with unknown supersense; the second is to refine our guess of what the $k$ nearest neighbors to that vector are.
+The manner in which we undertake the latter task is by calculating a set of nearest neighbors of size greater than $k$, reordering these neighbors using information from the web, and taking the $k$ nearest neighbors from this reordered list.
+That is, we essentially use information from the web to reorder list of nearest neighbors.
+It remains to be seen if there is a more intelligent way to use the web to more intelligently refine our model.
 
 \section{Conclusion}
 
