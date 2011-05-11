@@ -86,7 +86,7 @@ We operate on the {\it tf-idf} vectors of these raw count vectors, and use cosin
 Our corpus is approximately 27M words sampled from the English Gigaword Fourth Edition corpus \cite{gigaword}, and we use the Gensim framework \cite{gensim} to construct the vector space.
 We chose to use both a small corpus and a fairly simple model due to time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
 
-\item
+\item \label{enrichstep}
 Given a word $w$ with unknown supersense, we will eventually find its $k$ nearest neighbors and use a voting scheme over those to determine supersense.
 Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
 There are two options here for which vector we use to represent $w$.
@@ -95,7 +95,7 @@ Second, we can augment this vector with the results of a search engine query for
 We measure the performance of both approaches; the latter outperforms the former.
 
 \item
-WORDS ON REFINEMENT
+After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. We create a new vector space model using the search results as described in step \ref{modelstep}. Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. We then select the $k$-nearest neighbors of this new vector space model to the $w$ vector described in step \ref{enrichstep}.
 
 \item
 WORDS ON VOTING
