@@ -94,11 +94,14 @@ Given a word $w$ with unknown supersense, we will eventually find its $k$ neares
 Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
 There are two options here for which vector we use to represent $w$.
 First, we can simply use $w$'s vector as built in step \ref{modelstep}.
-Second, we can augment this vector with the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
+Second, we can augment this vector with the contexts found in the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
 We measure the performance of both approaches; the latter outperforms the former.
 
-\item
-After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. We create a new vector space model using the search results as described in step \ref{modelstep}. Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. We then select the $k$-nearest neighbors of this new vector space model to the $w$ vector described in step \ref{enrichstep}.
+\item \label{refinestep}
+After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. 
+We create a new vector space model using the search results as described in step \ref{modelstep}. 
+Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. 
+We then select the $k$ nearest neighbors to $w$ (as described in step \ref{enrichstep}) in this new vector space model.
 
 \item
 \label{item:voting}
@@ -132,8 +135,13 @@ Vote_S(N_i(w))
 \right]
 \end{equation}
 
-
 \end{enumerate}
+
+Now, steps \ref{enrichstep} and \ref{refinestep} above both use the contexts of a test word found via a search engine query.
+We use Bing's search API in our tests, as it was the least restrictive API for our purposes that we could find.
+We try two different ways of using a search engine to find contexts in which a term occurs.
+The first is to just use the {\it descriptions} of webpages returned by the Bing API (that is, the short snippets of text from the site which appear in search results).
+The second is to {\it scrape} the pages returned by the search query ourselves and manually extract any contexts in which the query term appears.
 
 \section{Experimental Evaluation}
 
@@ -148,7 +156,7 @@ While the former is more standard evaluation metric, \cite{cj} conclude that the
 In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. 
 Both \cite{cj} and \cite{curran} impose these same restrictions on their test set since these restrictions allow one to ignore the word sense disambiguation problem entirely.
 
-We did not expect to perform as well as \cite{curran} on the task, as our model has significantly fewer features, uses a smaller data set, and has no backoff model. 
+We did not expect to perform as well as Curran \cite{curran} on the task, as our model has significantly fewer features, uses a smaller data set, and has no backoff model. 
 Furthermore, this was not the precise goal of our work. 
 Rather, we aimed to test the influence of search engine results and use this task as a proxy.
 
@@ -192,6 +200,8 @@ descriptions & descriptions & 34.41 & 82.05 & 32.00 & 48.48 & 18.67 & 71.90 & 17
 \end{figure}
 The main results are contained in Figure \ref{fig:res}.
 This figure contains Precision, Recall, Accuracy, and F-score values for different experimental setups for both the 1.6 and 1.7 test sets.
+The ``enrichment'' column describes the means of enriching the initial query vector of the term with an unknown supersense---as described in Section \ref{sec:alg}, we may enrich by scraping webpages, we may enrich by using descriptions from Bing, or we may not enrich at all.
+Similarly, these are the three options for how we refine from the $n$ nearest neighbors given by the offline model to the $k$ nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
 
 
 \begin{figure}[hbtp]
@@ -202,7 +212,7 @@ This figure contains Precision, Recall, Accuracy, and F-score values for differe
 \label{fig:damping}
 \end{figure}
 We use a development set of 100 held-out words from WordNet 1.6 to tune the parameters relating to voting.
-Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient $\gamma$, as described in bullet point \ref{item:voting} of Section \ref{sec:alg}.
+Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient $\gamma$, as described in step \ref{item:voting} of Section \ref{sec:alg}.
 The numbers were gathered using scraping for initial enrichment and descriptions for refinement.
 The values collected in Figure \ref{fig:res} use $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
 
