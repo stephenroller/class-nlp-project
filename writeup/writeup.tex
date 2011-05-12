@@ -211,7 +211,7 @@ Similarly, these are the three options for how we refine from the $n$ nearest ne
 \caption{Effect of damping coefficient on F-score}
 \label{fig:damping}
 \end{figure}
-We use a development set of 100 held-out words from WordNet 1.6 to tune the parameters relating to voting.
+We use a development set of 100 held-out words from WordNet 1.6 to tune various parameters, as described below.
 Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient $\gamma$, as described in step \ref{item:voting} of Section \ref{sec:alg}.
 The numbers were gathered using scraping for initial enrichment and descriptions for refinement.
 The values collected in Figure \ref{fig:res} use $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
