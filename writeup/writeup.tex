@@ -5,8 +5,10 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 \author{Stephen Roller \& Karl Pichotta}
 
-\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[pdfborder={0 0 0}]{hyperref}
 
+\usepackage{multirow}
 
 \begin{document}
 
@@ -66,6 +68,7 @@ Since lexical resources like WordNet are necessarily incomplete, the utility of 
 
 
 \subsection{Algorithm Definition}
+\label{sec:alg}
 
 %Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols. 
 
@@ -86,63 +89,143 @@ We operate on the {\it tf-idf} vectors of these raw count vectors, and use cosin
 Our corpus is approximately 27M words sampled from the English Gigaword Fourth Edition corpus \cite{gigaword}, and we use the Gensim framework \cite{gensim} to construct the vector space.
 We chose to use both a small corpus and a fairly simple model due to time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
 
-\item
+\item \label{enrichstep}
 Given a word $w$ with unknown supersense, we will eventually find its $k$ nearest neighbors and use a voting scheme over those to determine supersense.
 Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
 There are two options here for which vector we use to represent $w$.
 First, we can simply use $w$'s vector as built in step \ref{modelstep}.
-Second, we can augment this vector with the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
+Second, we can augment this vector with the contexts found in the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
 We measure the performance of both approaches; the latter outperforms the former.
 
-\item
-WORDS ON REFINEMENT
+\item \label{refinestep}
+After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. 
+We create a new vector space model using the search results as described in step \ref{modelstep}. 
+Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. 
+We then select the $k$ nearest neighbors to $w$ (as described in step \ref{enrichstep}) in this new vector space model.
 
 \item
-WORDS ON VOTING
+\label{item:voting}
+Once we have finalized our list of $k$ nearest neighbors, we apply a voting scheme over the WordNet supersense labels of the neighbors.
+
+Each synset provides a vote for its supersense, and the amount a synset's vote counts is proportional to where it appears in the WordNet list of synsets---a synset appearing at the beginning of the list counts more than a synset appearing at the end.
+We hypothesize that a synset's vote should be proportional to the frequency of that synset's use; since WordNet synsets are listed approximately in decreasing order of frequency of use, this is a plausible way to work this hypothesis into the voting scheme.
+
+More formally, the voting scheme is as follows.
+For any vector $v$ representing a word, let $Synsets_v$ be the list of noun synsets of that word, ordered as in WordNet.
+Let $Synsets_v[i]$ be the $i$th element of this list (starting at 1).
+Let $Supersense(s)$ denote the superset of a particular synset $s$.
+Let $1_{S}(sup)$ be the indicator variable taking value 1 if supersense $sup$ is equal to supersense $S$, and 0 otherwise.
+Finally, let $\gamma$ be a damping factor such that $0< \gamma \leq 1$.
+Now, for any superset $S$ and vector $v$, define $Vote_S(v)$ as follows:
+$$Vote_S(v) = \sum_{i=1}^{|Synsets_v|}\left[ \gamma^{i-1} \cdot 1_S\left(Supersense(Synsets_v[i])\right)\right]$$
+
+Now, call the vector representing the word whose label we wish to guess $w$.
+Following Curran, we take the $Vote_S$ score for each of $w$'s $k$ nearest neighbors, and make the votes count proportional to how similar $w$ is to that vector.
+We then assign to $w$
+More formally, denote by $N_i(w)$ the $i$th neighbor of $w$ in the offline vector space model (so $N_1(w)$ is is the vector closes to $w$, $N_2(w)$ is the second-closest vector, and so on).
+Denote by $sim(v_1,v_2)$ the cosine similarity between vectors $v_1$ and $v_2$.
+The formula we use to arrive at a vote is
+\begin{equation}
+\textrm{Supersense}(w) =
+\arg\max_{s}
+\sum_{i=1}^{k}
+\left[
+d(w, N_i(w)) \cdot
+Vote_S(N_i(w))
+\right]
+\end{equation}
 
 \end{enumerate}
+
+Now, steps \ref{enrichstep} and \ref{refinestep} above both use the contexts of a test word found via a search engine query.
+We use Bing's search API in our tests, as it was the least restrictive API for our purposes that we could find.
+We try two different ways of using a search engine to find contexts in which a term occurs.
+The first is to just use the {\it descriptions} of webpages returned by the Bing API (that is, the short snippets of text from the site which appear in search results).
+The second is to {\it scrape} the pages returned by the search query ourselves and manually extract any contexts in which the query term appears.
 
 \section{Experimental Evaluation}
 
 \subsection{Methodology}
 
-What are criteria you are using to evaluate your method? What specific hypotheses does your experiment test? Describe the experimental methodology that you used. What are the dependent and independent variables? What is the training/test data that was used, and why is it realistic or interesting? Exactly what performance data did you collect and how are you presenting and analyzing it? Comparisons to competing methods that address the same problem are particularly useful. 
+% What are criteria you are using to evaluate your method? What specific hypotheses does your experiment test? Describe the experimental methodology that you used. What are the dependent and independent variables? What is the training/test data that was used, and why is it realistic or interesting? Exactly what performance data did you collect and how are you presenting and analyzing it? Comparisons to competing methods that address the same problem are particularly useful. 
+
+For evaluation, we attempt to recreate the original evaluation proposed in \cite{cj} as best as possible. 
+They propose two evaluations: one done using a standard held-out test set, and one using only new worlds introduced between versions 1.6 and 1.7.1 of WordNet. 
+While the former is more standard evaluation metric, \cite{cj} conclude that the latter is a more natural evaluation metric and slightly more difficult due to the nature of the changes.
+
+In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. 
+Both \cite{cj} and \cite{curran} impose these same restrictions on their test set since these restrictions allow one to ignore the word sense disambiguation problem entirely.
+
+We did not expect to perform as well as Curran \cite{curran} on the task, as our model has significantly fewer features, uses a smaller data set, and has no backoff model. 
+Furthermore, this was not the precise goal of our work. 
+Rather, we aimed to test the influence of search engine results and use this task as a proxy.
+
+We hypothesized that greater degrees of web influence would correlate with higher accuracies and F-scores. 
+That is, we expected the use of web scraping to outperform the use of search engine descriptions, which would outperform the use of no engine results at all.
 
 \subsection{Results}
-
 %Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
-
-\begin{center}
 \begin{figure}[hbtp]
-\begin{tabular}{|l| l| l| l|}
+\begin{center}
+\begin{tabular}{|l|l||c|c|c|c||c|c|c|c|}
 \hline
-{\bf enrichment?} & {\bf refinement} & {\bf 1.6 P/R/A (F-score)} & {\bf 1.7 P/R/A (F-score)}  \\
+\multirow{2}{*}{{\bf Enrichment}} & \multirow{2}{*}{{\bf Refinement}} & \multicolumn{4}{c||}{{\bf 1.6 Test Set}} & \multicolumn{4}{c|}{{\bf 1.7 Test Set}}  \\
+\cline{3-10}
+& & {\bf P} & {\bf R} & {\bf A} & {\bf F} & {\bf P} & {\bf R} & {\bf A} & {\bf F} \\
 \hline \hline
-(baseline) & (baseline) & 26.11 / 26.11 / 26.11 (26.11) & 62.60 / 62.60 / 62.60 ( 62.60) \\
+baseline & baseline & 26.11 & 26.11 & 26.11 & 26.11 & 62.60 & 62.60 & 62.60 & 62.60 \\
 \hline\hline
-none & none & 28.75 / 87.34 / 27.60 (43.26) & 27.33 / 76.36 / 25.20 (40.26)  \\
+none & none & 28.75 & 87.34 & 27.60 & 43.26 & 27.33 & 76.36 & 25.20 & 40.26  \\
 \hline
-none & scrape & 34.91 / 52.78 / 26.60 (42.02)  & 29.03 / 32.14 / 18.00 (30.51)\\
+none & scrape & 34.91 & 52.78 & 26.60 & 42.02  & 29.03 & 32.14 & 18.00 & 30.51\\
 \hline
-none & descriptions & 34.27 / 78.89 / 31.40 (47.79) &  27.78 / 71.43 / 25.00 (40.00)\\
+none & descriptions & 34.27 & 78.89 & 31.40 & 47.79 &  27.78 & 71.43 & 25.00 & 40.00\\
 \hline\hline
-scrape & none & 31.94 / 87.93 / 30.60 (46.86) & 21.37 / 67.83 / 19.40 (32.50)  \\
+scrape & none & 31.94 & 87.93 & 30.60 & 46.86 & 21.37 & 67.83 & 19.40 & 32.50  \\
 \hline
-scrape & scrape & 38.40 / 53.53 / 28.80 (44.72) & 21.50 / 25.48 / 13.20 (23.32) \\
+scrape & scrape & 38.40 & 53.53 & 28.80 & 44.72 & 21.50 & 25.48 & 13.20 & 23.32 \\
 \hline
-scrape & descriptions & 40.92 / 79.39 / 37.00 (54.01)  & 21.17 / 62.67 / 18.80 (31.65)  \\
+scrape & descriptions & 40.92 & 79.39 & 37.00 & 54.01  & 21.17 & 62.67 & 18.80 & 31.65  \\
 \hline\hline
-descriptions & none & - & 21.37? / 67.83? / 19.40? ( 32.50?)  \\
+descriptions & none & 38.43 & 92.08 & 37.20 & 54.23 & 19.57 & 78.81 & 18.60 & 31.37  \\
 \hline
-descriptions & scrape & - & 21.59 / 25.48 / 13.20 (23.32) \\
+descriptions & scrape & 43.26 & 59.43 & 33.40 & 50.08 & 21.59 & 25.48 & 13.20 & 23.32 \\
 \hline
-descriptions & descriptions & - & 18.67 / 71.90 / 17.40 (29.64)   \\
+descriptions & descriptions & 34.41 & 82.05 & 32.00 & 48.48 & 18.67 & 71.90 & 17.40 & 29.64   \\
 \hline
 \end{tabular}
 \caption{Results on 1.6 and 1.7 testsets}
-\label{fig:res1}
-\end{figure}
+\label{fig:res}
 \end{center}
+\end{figure}
+The main results are contained in Figure \ref{fig:res}.
+This figure contains Precision, Recall, Accuracy, and F-score values for different experimental setups for both the 1.6 and 1.7 test sets.
+The ``enrichment'' column describes the means of enriching the initial query vector of the term with an unknown supersense---as described in Section \ref{sec:alg}, we may enrich by scraping webpages, we may enrich by using descriptions from Bing, or we may not enrich at all.
+Similarly, these are the three options for how we refine from the $n$ nearest neighbors given by the offline model to the $k$ nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
+
+
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=100mm]{graphs/damping.png}
+\end{center}
+\caption{Effect of damping coefficient on F-score}
+\label{fig:damping}
+\end{figure}
+We use a development set of 100 held-out words from WordNet 1.6 to tune various parameters, as described below.
+Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient $\gamma$, as described in step \ref{item:voting} of Section \ref{sec:alg}.
+The numbers were gathered using scraping for initial enrichment and descriptions for refinement.
+The values collected in Figure \ref{fig:res} use $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
+
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=100mm]{graphs/n.png}
+\end{center}
+\caption{Effect of $n$ on F-score}
+\label{fig:n}
+\end{figure}
+Figure \ref{fig:n} shows the effect varying the value of $n$ has on the F-score.
+Recall that $n$ is the number of neighbors of the test word that we take from the offline model in order to reorder them subsequently using a search engine.
+The values collected in Figure \ref{fig:res} use $n=9$, which is near the optimal value on the curve in Figure \ref{fig:n}.
 
 
 \subsection{Discussion}
@@ -182,11 +265,22 @@ This is the primary contribution of the present work.
 
 %What are the major shortcomings of your current method? For each shortcoming, propose additions or enhancements that would help overcome it. 
 
-[SHORTCOMINGS OF METHOD, POSSIBLE ENHANCEMENTS]
+One of the primary shortcomings of the current work is the impoverished offline model we use.
+As noted above, we chose a simpler vector space model than Curran \cite{curran} and used a much smaller corpus for reasons of time and ease of implementation.
+It would be useful to compare Curran's method to the exact same method augmented with refinement using search engine queries; however, this was infeasible for us given the scope of the project.
+
+One of the primary shortcomings of the evaluation we use is the test set---since we use a different test set, comparing our performance directly with prior work is difficult.
+For example, we do not lemmatize nouns in our test set, whereas Ciaramita and Johnson \cite{cj} do not indicate if they do or not.
+It would be fruitful to obtain the exact test sets used in prior work to test with.
 
 The general approach we take is to construct a rough first approximation of an answer from a relatively small offline corpus and then use a search engine to refine this approximation.
 This approach could be fruitful for a number of different tasks---guessing word similarity or automatically finding synonyms, for example.
 Any task whose process of constructing a solution admits refinement with a search engine  could potentially see improvement using this method.
+
+We use the web in two different ways---the first is to enrich the initial query vector for the word with unknown supersense; the second is to refine our guess of what the $k$ nearest neighbors to that vector are.
+The manner in which we undertake the latter task is by calculating a set of nearest neighbors of size greater than $k$, reordering these neighbors using information from the web, and taking the $k$ nearest neighbors from this reordered list.
+That is, we essentially use information from the web to reorder list of nearest neighbors.
+It remains to be seen if there is a more intelligent way to use the web to more intelligently refine our model.
 
 \section{Conclusion}
 
