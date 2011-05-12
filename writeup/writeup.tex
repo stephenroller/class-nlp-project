@@ -6,7 +6,8 @@ Unknown Noun Supersense Acquisition using Search Engines}
 \author{Stephen Roller \& Karl Pichotta}
 
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
 \usepackage{multirow}
 
 \begin{document}
@@ -67,6 +68,7 @@ Since lexical resources like WordNet are necessarily incomplete, the utility of 
 
 
 \subsection{Algorithm Definition}
+\label{sec:alg}
 
 %Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols. 
 
@@ -99,6 +101,7 @@ We measure the performance of both approaches; the latter outperforms the former
 After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. We create a new vector space model using the search results as described in step \ref{modelstep}. Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. We then select the $k$-nearest neighbors of this new vector space model to the $w$ vector described in step \ref{enrichstep}.
 
 \item
+\label{item:voting}
 Once we have finalized our list of $k$ nearest neighbors, we apply a voting scheme over the WordNet supersense labels of the neighbors.
 
 Each synset provides a vote for its supersense, and the amount a synset's vote counts is proportional to where it appears in the WordNet list of synsets---a synset appearing at the beginning of the list counts more than a synset appearing at the end.
@@ -187,15 +190,26 @@ This figure contains Precision, Recall, Accuracy, and F-score values for differe
 
 \begin{figure}[hbtp]
 \begin{center}
-\includegraphics[width=120mm]{graphs/damping.png}
+\includegraphics[width=100mm]{graphs/damping.png}
 \end{center}
 \caption{Effect of damping coefficient on F-score}
 \label{fig:damping}
 \end{figure}
 We use a development set of 100 held-out words from WordNet 1.6 to tune the parameters relating to voting.
-Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient values using scraping for initial enrichment and descriptions for refinement.
+Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient $\gamma$, as described in bullet point \ref{item:voting} of Section \ref{sec:alg}.
+The numbers were gathered using scraping for initial enrichment and descriptions for refinement.
+The values collected in Figure \ref{fig:res} use $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
 
-MORE VOTING GRAPHS ALSO GO HERE
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=100mm]{graphs/n.png}
+\end{center}
+\caption{Effect of $n$ on F-score}
+\label{fig:n}
+\end{figure}
+Figure \ref{fig:n} shows the effect varying the value of $n$ has on the F-score.
+Recall that $n$ is the number of neighbors of the test word that we take from the offline model in order to reorder them subsequently using a search engine.
+The values collected in Figure \ref{fig:res} use $n=9$, which is near the optimal value on the curve in Figure \ref{fig:n}.
 
 
 \subsection{Discussion}
