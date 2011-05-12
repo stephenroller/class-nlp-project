@@ -113,6 +113,10 @@ For evaluation, we attempt to recreate the original evaluation proposed in \cite
 
 In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. Both \cite{cj} and \cite{curran} impose these same restrictions on their test set since these restrictions allow one to ignore the word sense disambiguation problem entirely.
 
+We did not expect to perform as well as \cite{curran} on the task, as our model has significantly fewer features, uses a smaller data set, and has no backoff model. Furthermore, this was not the precise goal of our work. Rather, we aimed to test the influence of search engine results and use this task as a proxy.
+
+We hypothesized that greater degrees of web influence would correlate with higher accuracies and F-scores. That is, we expected the use of web scraping to outperform the use of search engine descriptions, which would outperform the use of no engine results at all.
+
 \subsection{Results}
 %Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
 \begin{figure}[hbtp]
