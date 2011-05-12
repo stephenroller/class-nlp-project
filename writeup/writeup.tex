@@ -153,7 +153,8 @@ They propose two evaluations: one done using a standard held-out test set, and o
 While the former is more standard evaluation metric, \cite{cj} conclude that the latter is a more natural evaluation metric and slightly more difficult due to the nature of the changes.
 
 In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. 
-Ciaramita and Johnson also impose these same restrictions on their test set \cite{cj} since these restrictions allow one to ignore the word sense disambiguation problem entirely. While Curran uses the same test set as Ciaramita and Johnson \cite{curran}, he does not require his words appear within the corpus due to his use of a morphological backoff model.
+Ciaramita and Johnson also impose these same restrictions on their test set \cite{cj} since these restrictions allow one to ignore the word sense disambiguation problem entirely.
+While Curran uses the same test set as Ciaramita and Johnson \cite{curran}, his work does not require words appear within the corpus due to his use of a morphological backoff model.
 
 We did not expect to perform as well as Curran (Accuracy: 68\%), or even Ciaramita and Johnson (Accuracy: 53\%) \cite{curran}, on the task, as our model is comparatively impoverished, uses a smaller data set, and has no backoff model. 
 Furthermore, this was not the precise goal of our work. 
@@ -229,7 +230,7 @@ Recall that $n$ is the number of neighbors of the test word that we take from th
 We again use scraping for initial enrichment and descriptions for refinement, with $k=3$ and $\gamma=0.7$.
 
 It is not immediately obvious that this curve should decrease past a certain point, but this makes some sense---past a point, the neighbors of the test word are not very semantically related to it, and considering them as members of the eventual set of $k$ neighbors does more harm than good.
-Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but more computationally efficient.
+Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but more computationally tractable.
 
 INSERT GRAPH SHOWING EFFECT OF MODIFYING $k$ HERE
 
@@ -295,7 +296,7 @@ It would be useful to compare Curran's method to the exact same method augmented
 
 One of the primary shortcomings of the evaluation we use is the test set---since we use a different test set, comparing our performance directly with prior work is difficult.
 For example, we do not lemmatize nouns in our test set, whereas Ciaramita and Johnson \cite{cj} do not indicate if they do or not.
-It would be fruitful to obtain the exact test sets used in prior work to test with.
+It would be fruitful to obtain the exact training and test sets used in prior work to test with.
 
 The general approach we take is to construct a rough first approximation of an answer from a relatively small offline corpus and then use a search engine to refine this approximation.
 This approach could be fruitful for a number of different tasks---guessing word similarity or automatically finding synonyms, for example.
@@ -304,7 +305,8 @@ Any task whose process of constructing a solution admits refinement with a searc
 We use the web in two different ways---the first is to enrich the initial query vector for the word with unknown supersense; the second is to refine our guess of what the $k$-nearest neighbors to that vector are.
 The manner in which we undertake the latter task is by calculating a set of nearest neighbors of size greater than $k$, reordering these neighbors using information from the web, and taking the $k$-nearest neighbors from this reordered list.
 That is, we essentially use information from the web to reorder list of nearest neighbors.
-It remains to be seen if there is a more intelligent way to use the web to more intelligently refine our model.
+It remains to be seen if there is a more intelligent way to use the web to  refine our model.
+For example, including offline data in the web corpus and allowing new neighboring words suggestions in the refinement step are both experimental conditions we would wish to explore further.
 
 \section{Conclusion}
 
