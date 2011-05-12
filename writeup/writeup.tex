@@ -99,7 +99,36 @@ We measure the performance of both approaches; the latter outperforms the former
 After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. We create a new vector space model using the search results as described in step \ref{modelstep}. Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. We then select the $k$-nearest neighbors of this new vector space model to the $w$ vector described in step \ref{enrichstep}.
 
 \item
-WORDS ON VOTING
+Once we have finalized our list of $k$ nearest neighbors, we apply a voting scheme over the WordNet supersense labels of the neighbors.
+
+Each synset provides a vote for its supersense, and the amount a synset's vote counts is proportional to where it appears in the WordNet list of synsets---a synset appearing at the beginning of the list counts more than a synset appearing at the end.
+We hypothesize that a synset's vote should be proportional to the frequency of that synset's use; since WordNet synsets are listed approximately in decreasing order of frequency of use, this is a plausible way to work this hypothesis into the voting scheme.
+
+More formally, the voting scheme is as follows.
+For any vector $v$ representing a word, let $Synsets_v$ be the list of noun synsets of that word, ordered as in WordNet.
+Let $Synsets_v[i]$ be the $i$th element of this list (starting at 1).
+Let $Supersense(s)$ denote the superset of a particular synset $s$.
+Let $1_{S}(sup)$ be the indicator variable taking value 1 if supersense $sup$ is equal to supersense $S$, and 0 otherwise.
+Finally, let $\gamma$ be a damping factor such that $0< \gamma \leq 1$.
+Now, for any superset $S$ and vector $v$, define $Vote_S(v)$ as follows:
+$$Vote_S(v) = \sum_{i=1}^{|Synsets_v|}\left[ \gamma^{i-1} \cdot 1_{Supersense(Synsets_v[i])}\right]$$
+
+Now, call the vector representing the word whose label we wish to guess $w$.
+Following Curran, we take the $Vote_S$ score for each of $w$'s $k$ nearest neighbors, and make the votes count proportional to how similar $w$ is to that vector.
+We then assign to $w$
+More formally, denote by $N_i(w)$ the $i$th neighbor of $w$ in the offline vector space model (so $N_1(w)$ is is the vector closes to $w$, $N_2(w)$ is the second-closest vector, and so on).
+Denote by $sim(v_1,v_2)$ the cosine similarity between vectors $v_1$ and $v_2$.
+The formula we use to arrive at a vote is
+\begin{equation}
+\textrm{Supersense}(w) =
+\arg\max_{s}
+\sum_{i=1}^{k}
+\left[
+d(w, N_i(w)) \cdot
+Vote_S(N_i(w))
+\right]
+\end{equation}
+
 
 \end{enumerate}
 
