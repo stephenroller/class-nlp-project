@@ -117,7 +117,7 @@ Let $Supersense(s)$ denote the superset of a particular synset $s$.
 Let $1_{S}(sup)$ be the indicator variable taking value 1 if supersense $sup$ is equal to supersense $S$, and 0 otherwise.
 Finally, let $\gamma$ be a damping factor such that $0< \gamma \leq 1$.
 Now, for any superset $S$ and vector $v$, define $Vote_S(v)$ as follows:
-$$Vote_S(v) = \sum_{i=1}^{|Synsets_v|}\left[ \gamma^{i-1} \cdot 1_{Supersense(Synsets_v[i])}\right]$$
+$$Vote_S(v) = \sum_{i=1}^{|Synsets_v|}\left[ \gamma^{i-1} \cdot 1_S\left(Supersense(Synsets_v[i])\right)\right]$$
 
 Now, call the vector representing the word whose label we wish to guess $w$.
 Following Curran, we take the $Vote_S$ score for each of $w$'s $k$ nearest neighbors, and make the votes count proportional to how similar $w$ is to that vector.
