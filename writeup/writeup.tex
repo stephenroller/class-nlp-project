@@ -75,8 +75,8 @@ Since lexical resources like WordNet are necessarily incomplete, the utility of 
 The approach we take has a number of steps.
 First, we construct a vector space model.
 Second, given a word with unknown supersense, we find its nearest $n$ neighbors.
-Third, we use search engine queries to refine the model and find the $k$ nearest neighbors (for $k< n$).
-Finally, we use a voting scheme over these $k$ nearest neighbors to form a guess of the word's supersense.
+Third, we use search engine queries to refine the model and find the $k$-nearest neighbors (for $k< n$).
+Finally, we use a voting scheme over these $k$-nearest neighbors to form a guess of the word's supersense.
 
 \begin{enumerate}
 \item\label{modelstep}
@@ -90,22 +90,21 @@ Our corpus is approximately 27M words sampled from the English Gigaword Fourth E
 We chose to use both a small corpus and a fairly simple model due to time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
 
 \item \label{enrichstep}
-Given a word $w$ with unknown supersense, we will eventually find its $k$ nearest neighbors and use a voting scheme over those to determine supersense.
+Given a word $w$ with unknown supersense, we will eventually find its $k$-nearest neighbors and use a voting scheme over those to determine supersense.
 Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
 There are two options here for which vector we use to represent $w$.
 First, we can simply use $w$'s vector as built in step \ref{modelstep}.
 Second, we can augment this vector with the contexts found in the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
-We measure the performance of both approaches; the latter outperforms the former.
 
 \item \label{refinestep}
 After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. 
 We create a new vector space model using the search results as described in step \ref{modelstep}. 
 Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. 
-We then select the $k$ nearest neighbors to $w$ (as described in step \ref{enrichstep}) in this new vector space model.
+We then select the $k$-nearest neighbors to $w$ (as described in step \ref{enrichstep}) in this new vector space model.
 
 \item
 \label{item:voting}
-Once we have finalized our list of $k$ nearest neighbors, we apply a voting scheme over the WordNet supersense labels of the neighbors.
+Once we have finalized our list of $k$-nearest neighbors, we apply a voting scheme over the WordNet supersense labels of the neighbors.
 
 Each synset provides a vote for its supersense, and the amount a synset's vote counts is proportional to where it appears in the WordNet list of synsets---a synset appearing at the beginning of the list counts more than a synset appearing at the end.
 We hypothesize that a synset's vote should be proportional to the frequency of that synset's use; since WordNet synsets are listed approximately in decreasing order of frequency of use, this is a plausible way to work this hypothesis into the voting scheme.
@@ -120,7 +119,7 @@ Now, for any superset $S$ and vector $v$, define $Vote_S(v)$ as follows:
 $$Vote_S(v) = \sum_{i=1}^{|Synsets_v|}\left[ \gamma^{i-1} \cdot 1_S\left(Supersense(Synsets_v[i])\right)\right]$$
 
 Now, call the vector representing the word whose label we wish to guess $w$.
-Following Curran, we take the $Vote_S$ score for each of $w$'s $k$ nearest neighbors, and make the votes count proportional to how similar $w$ is to that vector.
+Following Curran, we take the $Vote_S$ score for each of $w$'s $k$-nearest neighbors, and make the votes count proportional to how similar $w$ is to that vector.
 We then assign to $w$
 More formally, denote by $N_i(w)$ the $i$th neighbor of $w$ in the offline vector space model (so $N_1(w)$ is is the vector closes to $w$, $N_2(w)$ is the second-closest vector, and so on).
 Denote by $sim(v_1,v_2)$ the cosine similarity between vectors $v_1$ and $v_2$.
@@ -201,7 +200,7 @@ descriptions & descriptions & 34.41 & 82.05 & 32.00 & 48.48 & 18.67 & 71.90 & 17
 The main results are contained in Figure \ref{fig:res}.
 This figure contains Precision, Recall, Accuracy, and F-score values for different experimental setups for both the 1.6 and 1.7 test sets.
 The ``enrichment'' column describes the means of enriching the initial query vector of the term with an unknown supersense---as described in Section \ref{sec:alg}, we may enrich by scraping webpages, we may enrich by using descriptions from Bing, or we may not enrich at all.
-Similarly, these are the three options for how we refine from the $n$ nearest neighbors given by the offline model to the $k$ nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
+Similarly, these are the three options for how we refine from the $n$ nearest neighbors given by the offline model to the $k$-nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
 
 
 \begin{figure}[hbtp]
@@ -301,8 +300,8 @@ The general approach we take is to construct a rough first approximation of an a
 This approach could be fruitful for a number of different tasks---guessing word similarity or automatically finding synonyms, for example.
 Any task whose process of constructing a solution admits refinement with a search engine  could potentially see improvement using this method.
 
-We use the web in two different ways---the first is to enrich the initial query vector for the word with unknown supersense; the second is to refine our guess of what the $k$ nearest neighbors to that vector are.
-The manner in which we undertake the latter task is by calculating a set of nearest neighbors of size greater than $k$, reordering these neighbors using information from the web, and taking the $k$ nearest neighbors from this reordered list.
+We use the web in two different ways---the first is to enrich the initial query vector for the word with unknown supersense; the second is to refine our guess of what the $k$-nearest neighbors to that vector are.
+The manner in which we undertake the latter task is by calculating a set of nearest neighbors of size greater than $k$, reordering these neighbors using information from the web, and taking the $k$-nearest neighbors from this reordered list.
 That is, we essentially use information from the web to reorder list of nearest neighbors.
 It remains to be seen if there is a more intelligent way to use the web to more intelligently refine our model.
 
