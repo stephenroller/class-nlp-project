@@ -214,7 +214,8 @@ Similarly, these are the three options for how we refine from the $n$ nearest ne
 We use a development set of 100 held-out words from WordNet 1.6 to tune various parameters, as described below.
 Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient $\gamma$, as described in step \ref{item:voting} of Section \ref{sec:alg}.
 The numbers were gathered using scraping for initial enrichment and descriptions for refinement.
-The values collected in Figure \ref{fig:res} use $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
+Figure \ref{fig:damping} indicates that paying more attention to synsets appearing near the beginning of a word's WordNet entry pays off, but ignoring synsets appearing near the end harms performance, which is entirely plausible.
+The values collected in Figure \ref{fig:res} use $k=3$ and $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
 
 \begin{figure}[hbtp]
 \begin{center}
@@ -225,12 +226,33 @@ The values collected in Figure \ref{fig:res} use $\gamma=0.7$, which is close to
 \end{figure}
 Figure \ref{fig:n} shows the effect varying the value of $n$ has on the F-score.
 Recall that $n$ is the number of neighbors of the test word that we take from the offline model in order to reorder them subsequently using a search engine.
-The values collected in Figure \ref{fig:res} use $n=9$, which is near the optimal value on the curve in Figure \ref{fig:n}.
+We again use scraping for initial enrichment and descriptions for refinement, with $k=3$ and $\gamma=0.7$.
 
+It is not immediately obvious that this curve should decrease past a certain point, but this makes some sense---past a point, the neighbors of the test word are not very semantically related to it, and considering them as members of the eventual set of $k$ neighbors does more harm than good.
+Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but more computationally efficient.
+
+INSERT GRAPH SHOWING EFFECT OF MODIFYING $k$ HERE
 
 \subsection{Discussion}
 
-Is your hypothesis supported? What conclusions do the results support about the strengths and weaknesses of your method compared to other methods? How can the results be explained in terms of the underlying properties of the algorithm and/or the data. 
+%Is your hypothesis supported? What conclusions do the results support about the strengths and weaknesses of your method compared to other methods? How can the results be explained in terms of the underlying properties of the algorithm and/or the data.
+
+We hypothesized that using data from the web (for both vector enrichment and refining lists of nearest neighbors) will help performance.
+This hypothesis is largely supported by the results given in Figure \ref{fig:res} on the 1.6 test set and refuted by results on the 1.7 test set.
+
+On the 1.6 test set, both types of initial vector enrichment---with descriptions and by scraping pages---outperform the algorithm without enrichment.
+Enrichment with descriptions outperforms enrichment by scraping in two of three cases.
+In two of three cases, refining with descriptions provides an improvement over no refinement; in all three cases, refining with scraping harms performance.
+By and large, using information from the web on the 1.6 test set helps more than it hurts.
+
+On the 1.7 test set, on the other hand, using information from the web harms performance across the board.
+One difference is that the 1.7 test set contains a significantly higher percentage of items with supersense {\tt noun.person}: 62.60\%, vs 26.11\% in the 1.6 test set.
+One unfortunate consequence of this fact is that baseline performance is very difficult to beat on the 1.7 test set (indeed, the baseline outperforms our algorithm in every setup).
+Because so many of the test words are proper names of well-known individuals and, when these names are mentioned on the internet, they are typically in relation to some set of things for which these individuals are well-known, using the web here ends up harming performance.
+So the fact that our algorithm works poorly on proper names is not particularly important for the 1.6 test set, but causes very poor performance on the 1.7 test set, which is comprised of a majority of proper names.
+(STEPHEN: IS THIS CLAIM SUPPORTED BY THE EVIDENCE?)
+
+COMPARISON TO RESULTS IN C+J AND CURRAN
 
 \section{Related Work}
 
