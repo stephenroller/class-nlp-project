@@ -153,14 +153,15 @@ They propose two evaluations: one done using a standard held-out test set, and o
 While the former is more standard evaluation metric, \cite{cj} conclude that the latter is a more natural evaluation metric and slightly more difficult due to the nature of the changes.
 
 In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. 
-Both \cite{cj} and \cite{curran} impose these same restrictions on their test set since these restrictions allow one to ignore the word sense disambiguation problem entirely.
+Ciaramita and Johnson also impose these same restrictions on their test set \cite{cj} since these restrictions allow one to ignore the word sense disambiguation problem entirely. While Curran uses the same test set as Ciaramita and Johnson \cite{curran}, he does not require his words appear within the corpus due to his use of a morphological backoff model.
 
-We did not expect to perform as well as Curran \cite{curran} on the task, as our model has significantly fewer features, uses a smaller data set, and has no backoff model. 
+We did not expect to perform as well as Curran (Accuracy: 68\%), or even Ciaramita and Johnson (Accuracy: 53\%) \cite{curran}, on the task, as our model is comparatively impoverished, uses a smaller data set, and has no backoff model. 
 Furthermore, this was not the precise goal of our work. 
-Rather, we aimed to test the influence of search engine results and use this task as a proxy.
+Rather, we aimed to test the influence of search engine results using this task as a proxy.
 
-We hypothesized that greater degrees of web influence would correlate with higher accuracies and F-scores. 
+We hypothesized that greater degrees of ``web influence'' would correlate with higher accuracies and F-scores. 
 That is, we expected the use of web scraping to outperform the use of search engine descriptions, which would outperform the use of no engine results at all.
+Furthermore, we hypothesized that using search query results for vector enhancement as described in step \ref{enrichstep} of the algorithm would also correlate with higher accuracies and F-scores.
 
 \subsection{Results}
 %Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
