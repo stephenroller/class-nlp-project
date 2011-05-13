@@ -255,6 +255,12 @@ Because these names typically occur on the web in the context of some set of thi
 So the fact that our algorithm works poorly on proper names is not particularly important for the 1.6 test set, but causes very poor performance on the 1.7 test set, which is comprised of a majority of proper names.
 However, performance on the 1.6 test set indicates that givan a more well-balanced set of words, using web data can, in fact, help performance.
 
+One reason we believe that scraped results often hurts performance is the relatively little amount of data collected through this method.
+While the hope is that scraping pages allows for a much greater level of contextual information than the limited descriptions from search engine results, we found that this often was the not the case.
+First, because scraping websites requires additional network calls, time constraints prevented us from scraping every site the search engine recommended.
+Second, many websites issued 403 Forbidden errors or chose not respond to ours request at all due to a systematic ban of scraping.
+We believe that forging or changing our crawler's User Agent would have helped this latter issue significantly.
+
 COMPARISON TO RESULTS IN C+J AND CURRAN
 
 \section{Related Work}
