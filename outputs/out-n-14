@@ -1,0 +1,3416 @@
+INFO:dictionary:built Dictionary(263345 unique tokens) from 1 documents (total 263345 corpus positions)
+INFO:utils:loading Dictionary object from /tmp/prepro-corpus/pentadecamegaword.dict
+INFO:utils:loading StorableDictionary object from /tmp/prepro-corpus/pentadecamegaword.id2wrd
+INFO:utils:loading StorableDictionary object from /tmp/prepro-corpus/pentadecamegaword.wrd2id
+INFO:utils:loading TfidfModel object from /tmp/prepro-corpus/pentadecamegaword.tfidf
+INFO:utils:loading SparseMatrixSimilarity object from /tmp/prepro-corpus/pentadecamegaword.sms
+INFO:dictionary:built Dictionary(11 unique tokens) from 1 documents (total 11 corpus positions)
+
+APPID: 335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC
+CONTEXT_WORD_WIDTH: 20
+DEFAULT_CORPUS: /u/pichotta/penn-wsj-raw-all.txt
+K: 3
+N: 14
+NUM_FETCH_PROCESSES: 50
+NUM_PAGES_TO_SCRAPE: 50
+NUM_PROCESSES: 14
+PREPRO_DIR: /tmp/prepro-corpus/
+SHOULD_ENRICH_BY_SCRAPING: True
+SHOULD_SCRAPE_SITES: False
+SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT: True
+SHOULD_USE_WEB_FOR_PARING: True
+URLLIB_TIMEOUT: 3
+VOTE_DAMPING_COEFF: 0.6
+WEB_DESCR_DB_FILENAME: /tmp/webcorpus-bing.sqlite
+WEB_SCRAPE_DB_FILENAME: /tmp/webcorpus-scrape.sqlite
+WORDNET_DIR: wordnet/1.6/
+
+total number of tests: 100
+Looking for 'abductions'
+Attempting to classify 'abductions'
+adding 402 contexts from web to query vector.
+Similar words: abductions, alien, abduction, rustics, tightwad, ufo, child, abductor, enslavement, contexts, hysterias
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 81.82% [[32m████████████████[m....] corpus pass #1 / ETA 0:00:01.997009
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.088239
+INFO:tfidfmodel:calculating IDF weights for 11 documents and 2981 features (4041 matrix non-zeros)
+ 81.82% [[32m████████████████[m....] corpus pass #2 / ETA 0:00:01.432509
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:09.399321
+INFO:dictionary:built Dictionary(2 unique tokens) from 1 documents (total 2 corpus positions)
+Web similar words: alien, ufo, abduction
+alien
+	Synset('foreigner.n.01') (noun.person)
+	Synset('stranger.n.01') (noun.person)
+	Synset('extraterrestrial_being.n.01') (noun.person)
+	Synset('estrange.v.02') (verb.emotion)
+	Synset('alien.s.01') (adj.all)
+	Synset('alien.s.02') (adj.all)
+ufo
+	Synset('unidentified_flying_object.n.01') (noun.cognition)
+abduction
+	Synset('abduction.n.01') (noun.act)
+	Synset('abduction.n.02') (noun.act)
+0.347060601115 noun.person
+0.11972463131 noun.act
+0.0901410356164 noun.cognition
+abductions: noun.person (correct: noun.act)
+
+Looking for 'abu_dhabi'
+Attempting to classify 'abu_dhabi'
+adding 1 contexts from web to query vector.
+Similar words: abu_dhabi, emirate
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:01.832124
+INFO:tfidfmodel:calculating IDF weights for 2 documents and 683 features (727 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:02.439010
+INFO:dictionary:built Dictionary(5 unique tokens) from 1 documents (total 5 corpus positions)
+Web similar words: 
+abu_dhabi: ?? (correct: noun.location)
+
+Looking for 'afros'
+Attempting to classify 'afros'
+adding 281 contexts from web to query vector.
+Similar words: afros, n, amp, stockmens, roll
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:03.950664
+INFO:tfidfmodel:calculating IDF weights for 5 documents and 1147 features (1266 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:03.866089
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: n, roll, stockmens
+n
+	Synset('nitrogen.n.01') (noun.substance)
+	Synset('north.n.03') (noun.relation)
+	Synset('newton.n.02') (noun.quantity)
+roll
+	Synset('rotation.n.02') (noun.event)
+	Synset('roll.n.02') (noun.communication)
+	Synset('roller.n.02') (noun.event)
+	Synset('roll.n.04') (noun.artifact)
+	Synset('coil.n.02') (noun.shape)
+	Synset('bankroll.n.01') (noun.possession)
+	Synset('bun.n.01') (noun.food)
+	Synset('peal.n.01') (noun.event)
+	Synset('paradiddle.n.01') (noun.event)
+	Synset('scroll.n.02') (noun.communication)
+	Synset('roller.n.03') (noun.artifact)
+	Synset('cast.n.07') (noun.act)
+	Synset('roll.n.13') (noun.act)
+	Synset('roll.n.14') (noun.act)
+	Synset('roll.n.15') (noun.act)
+	Synset('roll.v.01') (verb.motion)
+	Synset('wheel.v.03') (verb.motion)
+	Synset('roll.v.03') (verb.stative)
+	Synset('roll_out.v.01') (verb.contact)
+	Synset('roll.v.05') (verb.perception)
+	Synset('wind.v.03') (verb.contact)
+	Synset('roll.v.07') (verb.contact)
+	Synset('roll.v.08') (verb.change)
+	Synset('roll.v.09') (verb.body)
+	Synset('hustle.v.03') (verb.possession)
+	Synset('roll.v.11') (verb.communication)
+	Synset('seethe.v.05') (verb.change)
+stockmens
+	Synset('stockman.n.01') (noun.person)
+0.00366741302423 noun.substance
+0.00361742888133 noun.event
+0.00220044781454 noun.relation
+0.00157099143246 noun.communication
+0.00132026868872 noun.quantity
+0.00124477315694 noun.person
+0.000571785095805 noun.artifact
+0.000333728787303 noun.shape
+0.000200237272382 noun.possession
+0.000120142363429 noun.food
+2.03287799122e-05 noun.act
+afros: noun.substance (correct: noun.body)
+
+Looking for 'arbitrators'
+Attempting to classify 'arbitrators'
+adding 433 contexts from web to query vector.
+Similar words: arbitrators, arbitrator, mediators, arbitration, association, search, professional, disputes, profiles, images, labour, adjudication, dates, amp, proceedings
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:05.666990
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.166489
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3787 features (5911 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:05.885121
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.737663
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: mediators, arbitration, arbitrator
+mediators
+	Synset('mediator.n.01') (noun.person)
+arbitration
+	Synset('mediation.n.01') (noun.communication)
+	Synset('arbitration.n.02') (noun.act)
+arbitrator
+	Synset('arbiter.n.02') (noun.person)
+0.202292080969 noun.person
+0.0607004351914 noun.communication
+0.0364202611148 noun.act
+arbitrators: noun.person (correct: noun.person)
+
+Looking for 'ardor'
+Attempting to classify 'ardor'
+adding 369 contexts from web to query vector.
+Similar words: ardor, muskets, voids, synonyms, pipes, pate, noun, thesaurus, pipe, harlequins, amp, system, pies, novelists, dictionary
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.637167
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.223064
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3880 features (5355 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.852789
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.597555
+INFO:dictionary:built Dictionary(3 unique tokens) from 1 documents (total 3 corpus positions)
+Web similar words: pipe, pipes, synonyms
+pipe
+	Synset('pipe.n.01') (noun.artifact)
+	Synset('pipe.n.02') (noun.artifact)
+	Synset('pipe.n.03') (noun.shape)
+	Synset('pipe.n.04') (noun.artifact)
+	Synset('organ_pipe.n.01') (noun.artifact)
+	Synset('shriek.v.01') (verb.communication)
+	Synset('pipe.v.02') (verb.motion)
+	Synset('pipe.v.03') (verb.creation)
+	Synset('pipe.v.04') (verb.creation)
+pipes
+	Synset('bagpipe.n.01') (noun.artifact)
+	Synset('pipe.n.01') (noun.artifact)
+	Synset('pipe.n.02') (noun.artifact)
+	Synset('pipe.n.03') (noun.shape)
+	Synset('pipe.n.04') (noun.artifact)
+	Synset('organ_pipe.n.01') (noun.artifact)
+	Synset('shriek.v.01') (verb.communication)
+	Synset('pipe.v.02') (verb.motion)
+	Synset('pipe.v.03') (verb.creation)
+	Synset('pipe.v.04') (verb.creation)
+	Synset('shoot.v.02') (verb.social)
+	Synset('shoot.v.01') (verb.competition)
+	Synset('worst.v.01') (verb.competition)
+synonyms
+	Synset('synonym.n.01') (noun.communication)
+0.151863290203 noun.artifact
+0.0251300093383 noun.shape
+0.0115681746975 noun.communication
+ardor: noun.artifact (correct: noun.feeling)
+
+Looking for 'asylum'
+Attempting to classify 'asylum'
+adding 325 contexts from web to query vector.
+Similar words: asylum, seekers, sculler
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:02.396340
+INFO:tfidfmodel:calculating IDF weights for 3 documents and 652 features (706 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:02.741938
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: seekers, sculler
+seekers
+	Synset('seeker.n.01') (noun.person)
+sculler
+	Synset('sculler.n.01') (noun.person)
+0.0146143755774 noun.person
+asylum: noun.person (correct: noun.artifact)
+
+Looking for 'backwardness'
+Attempting to classify 'backwardness'
+adding 256 contexts from web to query vector.
+Similar words: backwardness, noun, scholastic, synonyms, underdevelopment, causes, poverty, reasons, miseries, dictionary, thesaurus, definition, 1, theory, encyclopedia
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:07.327137
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:16.401820
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 2987 features (4206 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:08.775886
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:20.494220
+INFO:dictionary:built Dictionary(7 unique tokens) from 1 documents (total 7 corpus positions)
+Web similar words: poverty, definition, reasons
+poverty
+	Synset('poverty.n.01') (noun.state)
+definition
+	Synset('definition.n.01') (noun.communication)
+	Synset('definition.n.02') (noun.attribute)
+reasons
+	Synset('reason.n.01') (noun.motive)
+	Synset('reason.n.02') (noun.communication)
+	Synset('reason.n.03') (noun.cognition)
+	Synset('rationality.n.01') (noun.state)
+	Synset('cause.n.02') (noun.communication)
+	Synset('reason.n.06') (noun.cognition)
+	Synset('reason.v.01') (verb.cognition)
+	Synset('argue.v.01') (verb.communication)
+	Synset('reason.v.03') (verb.cognition)
+0.0134091729045 noun.communication
+0.0111415463388 noun.state
+0.00741592887789 noun.motive
+0.00479910671711 noun.attribute
+0.00324639702559 noun.cognition
+backwardness: noun.communication (correct: noun.cognition)
+
+Looking for 'banana_split'
+Attempting to classify 'banana_split'
+adding 1 contexts from web to query vector.
+Similar words: banana_split, bows, ribbons, alabama, wild, going, neutralitys
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:07.891322
+INFO:tfidfmodel:calculating IDF weights for 7 documents and 2075 features (2548 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:05.715221
+INFO:dictionary:built Dictionary(7 unique tokens) from 1 documents (total 7 corpus positions)
+Web similar words: ribbons, bows, going
+ribbons
+	Synset('ribbon.n.01') (noun.object)
+	Synset('decoration.n.02') (noun.communication)
+	Synset('ribbon.n.03') (noun.artifact)
+	Synset('ribbon.n.04') (noun.artifact)
+bows
+	Synset('bow.n.01') (noun.artifact)
+	Synset('bow.n.02') (noun.artifact)
+	Synset('bow.n.03') (noun.artifact)
+	Synset('bow.n.04') (noun.artifact)
+	Synset('bow.n.05') (noun.shape)
+	Synset('bow.n.06') (noun.communication)
+	Synset('bow.n.07') (noun.communication)
+	Synset('bow.n.08') (noun.artifact)
+	Synset('bow.n.09') (noun.act)
+	Synset('bow.v.01') (verb.communication)
+	Synset('submit.v.06') (verb.communication)
+	Synset('bow.v.03') (verb.motion)
+	Synset('crouch.v.01') (verb.motion)
+	Synset('bow.v.05') (verb.creation)
+going
+	Synset('departure.n.01') (noun.act)
+	Synset('passing.n.02') (noun.event)
+	Synset('going.n.03') (noun.act)
+	Synset('travel.v.01') (verb.motion)
+	Synset('go.v.02') (verb.social)
+	Synset('go.v.03') (verb.motion)
+	Synset('become.v.01') (verb.change)
+	Synset('go.v.05') (verb.stative)
+	Synset('run.v.05') (verb.stative)
+	Synset('run.v.03') (verb.stative)
+	Synset('proceed.v.04') (verb.change)
+	Synset('go.v.09') (verb.change)
+	Synset('go.v.10') (verb.stative)
+	Synset('sound.v.02') (verb.perception)
+	Synset('function.v.01') (verb.contact)
+	Synset('run_low.v.01') (verb.consumption)
+	Synset('move.v.13') (verb.change)
+	Synset('survive.v.01') (verb.stative)
+	Synset('go.v.16') (verb.stative)
+	Synset('die.v.01') (verb.change)
+	Synset('belong.v.04') (verb.stative)
+	Synset('go.v.19') (verb.stative)
+	Synset('start.v.09') (verb.motion)
+	Synset('move.v.15') (verb.competition)
+	Synset('go.v.22') (verb.stative)
+	Synset('go.v.23') (verb.stative)
+	Synset('blend.v.02') (verb.stative)
+	Synset('go.v.25') (verb.stative)
+	Synset('fit.v.02') (verb.stative)
+	Synset('rifle.v.02') (verb.contact)
+	Synset('go.v.28') (verb.consumption)
+	Synset('plump.v.04') (verb.cognition)
+	Synset('fail.v.04') (verb.change)
+	Synset('going.s.01') (adj.all)
+0.0031576019472 noun.artifact
+0.00145160767715 noun.object
+0.00100201251347 noun.communication
+0.000900838573974 noun.act
+0.000389623723458 noun.event
+0.000136508236639 noun.shape
+banana_split: noun.artifact (correct: noun.food)
+
+Looking for 'bedroom'
+Attempting to classify 'bedroom'
+adding 776 contexts from web to query vector.
+Similar words: bedroom, designs, furniture, shrapnels, vibrators, ravels, design
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.097321
+INFO:tfidfmodel:calculating IDF weights for 7 documents and 1981 features (2533 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:07.931951
+INFO:dictionary:built Dictionary(14 unique tokens) from 1 documents (total 14 corpus positions)
+Web similar words: furniture, design, designs
+furniture
+	Synset('furniture.n.01') (noun.artifact)
+design
+	Synset('design.n.01') (noun.act)
+	Synset('design.n.02') (noun.cognition)
+	Synset('blueprint.n.01') (noun.cognition)
+	Synset('design.n.04') (noun.artifact)
+	Synset('purpose.n.01') (noun.cognition)
+	Synset('design.n.06') (noun.artifact)
+	Synset('invention.n.01') (noun.cognition)
+	Synset('plan.v.03') (verb.creation)
+	Synset('design.v.02') (verb.cognition)
+	Synset('design.v.03') (verb.creation)
+	Synset('design.v.04') (verb.creation)
+	Synset('design.v.05') (verb.creation)
+	Synset('design.v.06') (verb.creation)
+	Synset('design.v.07') (verb.cognition)
+designs
+	Synset('design.n.01') (noun.act)
+	Synset('design.n.02') (noun.cognition)
+	Synset('blueprint.n.01') (noun.cognition)
+	Synset('design.n.04') (noun.artifact)
+	Synset('purpose.n.01') (noun.cognition)
+	Synset('design.n.06') (noun.artifact)
+	Synset('invention.n.01') (noun.cognition)
+	Synset('plan.v.03') (verb.creation)
+	Synset('design.v.02') (verb.cognition)
+	Synset('design.v.03') (verb.creation)
+	Synset('design.v.04') (verb.creation)
+	Synset('design.v.05') (verb.creation)
+	Synset('design.v.06') (verb.creation)
+	Synset('design.v.07') (verb.cognition)
+0.257717080652 noun.artifact
+0.0302610541817 noun.cognition
+0.0266322502866 noun.act
+bedroom: noun.artifact (correct: noun.artifact)
+
+Looking for 'blocker'
+Attempting to classify 'blocker'
+adding 659 contexts from web to query vector.
+Similar words: blocker, inderal, diet, pills, soil, binder, click, tea, fat, weight, mulch, green, nutrition, extreme
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 64.29% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.083318
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.632563
+INFO:tfidfmodel:calculating IDF weights for 14 documents and 4474 features (7144 matrix non-zeros)
+ 64.29% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.297693
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:13.371016
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: soil, inderal, green
+soil
+	Synset('dirt.n.02') (noun.state)
+	Synset('soil.n.02') (noun.substance)
+	Synset('land.n.02') (noun.object)
+	Synset('dirty.v.01') (verb.contact)
+inderal
+	Synset('propranolol.n.01') (noun.artifact)
+green
+	Synset('green.n.01') (noun.attribute)
+	Synset('park.n.02') (noun.location)
+	Synset('green.n.03') (noun.object)
+	Synset('green.n.04') (noun.location)
+	Synset('greens.n.01') (noun.food)
+	Synset('green.v.01') (verb.change)
+	Synset('green.s.01') (adj.all)
+	Synset('uncured.s.01') (adj.all)
+	Synset('raw.s.12') (adj.all)
+	Synset('green.a.04') (adj.all)
+	Synset('fleeceable.s.01') (adj.all)
+0.0233156550676 noun.state
+0.0139893930405 noun.substance
+0.0131604084745 noun.artifact
+0.0101178115793 noun.object
+0.00478937709704 noun.attribute
+0.00390813171118 noun.location
+0.000620703271776 noun.food
+blocker: noun.state (correct: noun.person)
+
+Looking for 'boyishness'
+Attempting to classify 'boyishness'
+adding 82 contexts from web to query vector.
+Similar words: boyishness, edwardian, ts, sadist, affability, gregory, synonyms, peter_pan, characteristic, mariner
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.814606
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:08.728686
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 2035 features (2466 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.710110
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:07.991349
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: peter_pan, synonyms, characteristic
+peter_pan
+	Synset('peter_pan.n.01') (noun.person)
+synonyms
+	Synset('synonym.n.01') (noun.communication)
+characteristic
+	Synset('feature.n.01') (noun.cognition)
+	Synset('characteristic.n.02') (noun.attribute)
+	Synset('characteristic.n.03') (noun.communication)
+	Synset('characteristic.a.01') (adj.all)
+0.00570808071643 noun.person
+0.00427877086215 noun.communication
+0.00207730266266 noun.cognition
+0.00124638159759 noun.attribute
+boyishness: noun.person (correct: noun.attribute)
+
+Looking for 'buildups'
+Attempting to classify 'buildups'
+adding 350 contexts from web to query vector.
+Similar words: organic, carbonate, buildups, ft, illnesss, dusts, aeration, psychopathology, pigments, dyestuff, acetylene, rutabagas
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:02.878192
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:13.107642
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 3679 features (4943 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:03.417144
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:14.308696
+INFO:dictionary:built Dictionary(7 unique tokens) from 1 documents (total 7 corpus positions)
+Web similar words: carbonate, psychopathology, dusts
+carbonate
+	Synset('carbonate.n.01') (noun.substance)
+	Synset('carbonate.v.01') (verb.stative)
+	Synset('carbonate.v.02') (verb.change)
+psychopathology
+	Synset('psychiatry.n.01') (noun.cognition)
+dusts
+	Synset('dust.n.01') (noun.substance)
+	Synset('debris.n.01') (noun.substance)
+	Synset('dust.n.03') (noun.substance)
+	Synset('dust.v.01') (verb.contact)
+	Synset('dust.v.02') (verb.contact)
+	Synset('dust.v.03') (verb.contact)
+	Synset('scatter.v.03') (verb.contact)
+0.0215321340039 noun.substance
+0.00477392459288 noun.cognition
+buildups: noun.substance (correct: noun.act)
+
+Looking for 'canada'
+Attempting to classify 'canada'
+adding 200 contexts from web to query vector.
+Similar words: canada
+canada: ?? (correct: noun.location)
+
+Looking for 'centimeters'
+Attempting to classify 'centimeters'
+adding 492 contexts from web to query vector.
+Similar words: centimeters, inches, convert, inch, cm, zirconia, curies
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:08.593048
+INFO:tfidfmodel:calculating IDF weights for 7 documents and 1590 features (2016 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.366635
+INFO:dictionary:built Dictionary(5 unique tokens) from 1 documents (total 5 corpus positions)
+Web similar words: inches, cm, convert
+inches
+	Synset('inch.n.01') (noun.quantity)
+	Synset('column_inch.n.01') (noun.quantity)
+	Synset('edge.v.01') (verb.motion)
+cm
+	Synset('centimeter.n.01') (noun.quantity)
+	Synset('curium.n.01') (noun.substance)
+convert
+	Synset('convert.n.01') (noun.person)
+	Synset('convert.v.01') (verb.change)
+	Synset('convert.v.02') (verb.change)
+	Synset('convert.v.03') (verb.change)
+	Synset('change.v.06') (verb.change)
+	Synset('convert.v.05') (verb.change)
+	Synset('convert.v.06') (verb.communication)
+	Synset('commute.v.04') (verb.change)
+	Synset('convert.v.08') (verb.change)
+0.319956019521 noun.quantity
+0.057483074069 noun.substance
+0.0296558849514 noun.person
+centimeters: noun.quantity (correct: noun.quantity)
+
+Looking for 'chaucers'
+Attempting to classify 'chaucers'
+adding 44 contexts from web to query vector.
+Similar words: chaucers, old_english, dallas, bolo, downtown
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:08.438803
+INFO:tfidfmodel:calculating IDF weights for 5 documents and 1978 features (2311 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:05.445864
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: dallas, old_english, downtown
+dallas
+	Synset('dallas.n.01') (noun.location)
+old_english
+	Synset('old_english.n.01') (noun.communication)
+downtown
+	Synset('business_district.n.01') (noun.location)
+	Synset('downtown.a.01') (adj.all)
+	Synset('downtown.r.01') (adv.all)
+0.00670353963505 noun.location
+0.00145337567665 noun.communication
+chaucers: noun.location (correct: noun.person)
+
+Looking for 'churchgoer'
+Attempting to classify 'churchgoer'
+adding 145 contexts from web to query vector.
+Similar words: churchgoer, noun, churchman, definition, n, churchgoers, mf, dictionary, church, believer, 1, encyclopedia, vs, person, religion
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:05.597373
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:13.319114
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3055 features (4033 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.447428
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.778295
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: church, n, vs
+church
+	Synset('church.n.01') (noun.group)
+	Synset('church.n.02') (noun.artifact)
+	Synset('church_service.n.01') (noun.act)
+	Synset('church.v.01') (verb.motion)
+n
+	Synset('nitrogen.n.01') (noun.substance)
+	Synset('north.n.03') (noun.relation)
+	Synset('newton.n.02') (noun.quantity)
+vs
+	Synset('volt.n.01') (noun.quantity)
+	Synset('vanadium.n.01') (noun.substance)
+	Synset('five.n.01') (noun.quantity)
+0.0525087639689 noun.group
+0.0315052583814 noun.artifact
+0.0189031550288 noun.act
+0.0180691612884 noun.substance
+0.0177471044287 noun.quantity
+0.00730373952538 noun.relation
+churchgoer: noun.group (correct: noun.person)
+
+Looking for 'cinder'
+Attempting to classify 'cinder'
+adding 633 contexts from web to query vector.
+Similar words: cinder, cone, block, cones, notch, blocks, concrete, pig, harshness, volcano, doorsteps, snick
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:02.910707
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.904708
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 3736 features (5247 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:02.788661
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.957939
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: block, cone, cones
+block
+	Synset('block.n.01') (noun.artifact)
+	Synset('block.n.02') (noun.location)
+	Synset('block.n.03') (noun.shape)
+	Synset('block.n.04') (noun.group)
+	Synset('block.n.05') (noun.artifact)
+	Synset('block.n.06') (noun.quantity)
+	Synset('block.n.07') (noun.cognition)
+	Synset('pulley.n.01') (noun.artifact)
+	Synset('engine_block.n.01') (noun.artifact)
+	Synset('blockage.n.01') (noun.artifact)
+	Synset('auction_block.n.01') (noun.artifact)
+	Synset('blocking.n.01') (noun.act)
+	Synset('barricade.v.01') (verb.contact)
+	Synset('obstruct.v.01') (verb.social)
+	Synset('stop.v.03') (verb.social)
+	Synset('jam.v.04') (verb.communication)
+	Synset('block.v.05') (verb.social)
+	Synset('block.v.06') (verb.perception)
+	Synset('block.v.07') (verb.perception)
+	Synset('block.v.08') (verb.contact)
+	Synset('stuff.v.04') (verb.contact)
+	Synset('obstruct.v.02') (verb.contact)
+	Synset('block.v.11') (verb.contact)
+	Synset('parry.v.01') (verb.competition)
+	Synset('forget.v.02') (verb.cognition)
+	Synset('block.v.14') (verb.change)
+	Synset('block.v.15') (verb.change)
+	Synset('freeze.v.08') (verb.change)
+cone
+	Synset('cone.n.01') (noun.artifact)
+	Synset('cone.n.02') (noun.shape)
+	Synset('cone.n.03') (noun.plant)
+	Synset('cone.n.04') (noun.body)
+	Synset('cone.v.01') (verb.contact)
+	Synset('cone.v.02') (verb.change)
+cones
+	Synset('cone.n.01') (noun.artifact)
+	Synset('cone.n.02') (noun.shape)
+	Synset('cone.n.03') (noun.plant)
+	Synset('cone.n.04') (noun.body)
+	Synset('cone.v.01') (verb.contact)
+	Synset('cone.v.02') (verb.change)
+	Synset('swindle.v.01') (verb.social)
+	Synset('memorize.v.01') (verb.cognition)
+0.351941301834 noun.artifact
+0.157292144001 noun.shape
+0.0912300646305 noun.location
+0.0615324631333 noun.plant
+0.03691947788 noun.body
+0.032842823267 noun.group
+0.0118234163761 noun.quantity
+0.00709404982567 noun.cognition
+0.000551633314444 noun.act
+cinder: noun.artifact (correct: noun.object)
+
+Looking for 'conquistador'
+Attempting to classify 'conquistador'
+adding 319 contexts from web to query vector.
+Similar words: conquistador, lyrics, conquistadors, thesaurus, armor, synonyms, helmets, queue, game, examples, conqueror, views, use, conquistadores, spartans
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:06.125973
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:16.060941
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4121 features (5867 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:05.063479
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.173937
+INFO:dictionary:built Dictionary(6 unique tokens) from 1 documents (total 6 corpus positions)
+Web similar words: conquistadors, thesaurus, conqueror
+conquistadors
+	Synset('conquistador.n.01') (noun.person)
+thesaurus
+	Synset('thesaurus.n.01') (noun.communication)
+conqueror
+	Synset('conqueror.n.01') (noun.person)
+0.100918093696 noun.person
+0.0323622375727 noun.communication
+conquistador: noun.person (correct: noun.person)
+
+Looking for 'countys'
+Attempting to classify 'countys'
+adding 1 contexts from web to query vector.
+Similar words: countys
+countys: ?? (correct: noun.location)
+
+Looking for 'craftsman'
+Attempting to classify 'craftsman'
+adding 478 contexts from web to query vector.
+Similar words: craftsman, battery, bungalow, hardware, volt, style
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:09.918441
+INFO:tfidfmodel:calculating IDF weights for 6 documents and 2357 features (3078 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:07.037674
+INFO:dictionary:built Dictionary(14 unique tokens) from 1 documents (total 14 corpus positions)
+Web similar words: bungalow, volt, hardware
+bungalow
+	Synset('bungalow.n.01') (noun.artifact)
+volt
+	Synset('volt.n.01') (noun.quantity)
+hardware
+	Synset('hardware.n.01') (noun.artifact)
+	Synset('hardware.n.02') (noun.artifact)
+	Synset('hardware.n.03') (noun.artifact)
+0.0433917929232 noun.artifact
+0.0173253342509 noun.quantity
+craftsman: noun.artifact (correct: noun.person)
+
+Looking for 'denturists'
+Attempting to classify 'denturists'
+adding 651 contexts from web to query vector.
+Similar words: denturists, dentures, bc, oregon, dentists, review, ontario, denturist, denture, portland, arizona, implants, pa, association
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 64.29% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.604937
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:13.841390
+INFO:tfidfmodel:calculating IDF weights for 14 documents and 3530 features (5524 matrix non-zeros)
+ 64.29% [[32m████████████[m........] corpus pass #2 / ETA 0:00:05.343361
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:15.059022
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: denture, dentures, denturist
+denture
+	Synset('denture.n.01') (noun.artifact)
+dentures
+	Synset('denture.n.01') (noun.artifact)
+denturist
+	Synset('dental_technician.n.01') (noun.person)
+0.17574518919 noun.artifact
+0.0576550289989 noun.person
+denturists: noun.artifact (correct: noun.person)
+
+Looking for 'dictionary'
+Attempting to classify 'dictionary'
+adding 245 contexts from web to query vector.
+Similar words: dictionary, expunging, thesaurus, websters, bahasa_indonesia, featherbedding, definition, catalogue, speciation, entry, mccarthyism, flame
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:02.431349
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.869465
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 2478 features (3256 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:02.408318
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:09.907968
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: thesaurus, websters, definition
+thesaurus
+	Synset('thesaurus.n.01') (noun.communication)
+websters
+	Synset('webster.n.01') (noun.person)
+definition
+	Synset('definition.n.01') (noun.communication)
+	Synset('definition.n.02') (noun.attribute)
+0.401699738577 noun.communication
+0.0579949244857 noun.person
+0.0179349403828 noun.attribute
+dictionary: noun.communication (correct: noun.communication)
+
+Looking for 'doberman'
+Attempting to classify 'doberman'
+adding 1142 contexts from web to query vector.
+Similar words: doberman, pinscher, dog, labrador, muzzle, retriever, puppies, puppy, collar, dogs, crate, dot, harness, muzzles, rescue
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.993730
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:15.386200
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4452 features (7187 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:06.995957
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:16.771902
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: pinscher, puppies, rescue
+pinscher
+	Synset('pinscher.n.01') (noun.animal)
+puppies
+	Synset('puppy.n.01') (noun.animal)
+	Synset('puppy.n.02') (noun.person)
+rescue
+	Synset('rescue.n.01') (noun.act)
+	Synset('rescue.v.01') (verb.social)
+	Synset('rescue.v.02') (verb.possession)
+0.308202896267 noun.animal
+0.0355508178473 noun.act
+0.0316645346582 noun.person
+doberman: noun.animal (correct: noun.animal)
+
+Looking for 'drug_abuse'
+Attempting to classify 'drug_abuse'
+adding 1 contexts from web to query vector.
+Similar words: drug_abuse, aftercare, pharmacology, institute, communicable_diseases, neurological_disorders, slurs, compulsive, nicotine
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:09.935656
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 2346 features (3007 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.914436
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: nicotine, neurological_disorders, communicable_diseases
+nicotine
+	Synset('nicotine.n.01') (noun.substance)
+neurological_disorders
+	Synset('nervous_disorder.n.01') (noun.state)
+communicable_diseases
+	Synset('communicable_disease.n.01') (noun.state)
+0.0288454033434 noun.substance
+0.0142558650114 noun.state
+drug_abuse: noun.substance (correct: noun.act)
+
+Looking for 'emasculation'
+Attempting to classify 'emasculation'
+adding 273 contexts from web to query vector.
+Similar words: emasculation, synonyms, castration, noun, dictionary, thesaurus, definition, medical, mean, pollination, removal, masculinity, views, 1, sterilization
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:07.143634
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:17.645172
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3804 features (5406 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:07.470116
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:16.712923
+INFO:dictionary:built Dictionary(11 unique tokens) from 1 documents (total 11 corpus positions)
+Web similar words: castration, masculinity, definition
+castration
+	Synset('castration.n.01') (noun.act)
+	Synset('castration.n.02') (noun.act)
+masculinity
+	Synset('maleness.n.01') (noun.attribute)
+	Synset('masculinity.n.02') (noun.attribute)
+definition
+	Synset('definition.n.01') (noun.communication)
+	Synset('definition.n.02') (noun.attribute)
+0.0716007292271 noun.act
+0.040589616634 noun.attribute
+0.0087531125173 noun.communication
+emasculation: noun.act (correct: noun.act)
+
+Looking for 'encryption'
+Attempting to classify 'encryption'
+adding 1029 contexts from web to query vector.
+Similar words: encryption, algorithm, data, software, algorithms, clipper, virga, disk, file, key, operating_system
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 81.82% [[32m████████████████[m....] corpus pass #1 / ETA 0:00:02.140128
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:14.116516
+INFO:tfidfmodel:calculating IDF weights for 11 documents and 3431 features (4861 matrix non-zeros)
+ 81.82% [[32m████████████████[m....] corpus pass #2 / ETA 0:00:02.374690
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:15.304264
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: disk, key, data
+disk
+	Synset('disk.n.01') (noun.shape)
+	Synset('disk.n.02') (noun.artifact)
+	Synset('phonograph_record.n.01') (noun.artifact)
+	Synset('magnetic_disk.n.01') (noun.artifact)
+	Synset('harrow.v.01') (verb.creation)
+key
+	Synset('key.n.01') (noun.artifact)
+	Synset('key.n.02') (noun.cognition)
+	Synset('key.n.03') (noun.attribute)
+	Synset('key.n.04') (noun.communication)
+	Synset('kilogram.n.01') (noun.quantity)
+	Synset('key.n.06') (noun.object)
+	Synset('key.n.07') (noun.communication)
+	Synset('winder.n.01') (noun.artifact)
+	Synset('key.n.09') (noun.artifact)
+	Synset('identify.v.05') (verb.cognition)
+	Synset('key.v.02') (verb.possession)
+	Synset('key.v.03') (verb.contact)
+	Synset('key.v.04') (verb.change)
+	Synset('key.v.05') (verb.change)
+	Synset('cardinal.s.01') (adj.all)
+	Synset('operative.s.04') (adj.all)
+data
+	Synset('data.n.01') (noun.group)
+	Synset('datum.n.01') (noun.cognition)
+0.201355704991 noun.artifact
+0.103225491941 noun.shape
+0.0655011489987 noun.cognition
+0.0326340198517 noun.group
+0.0275524422526 noun.attribute
+0.0201022618675 noun.communication
+0.00991887921095 noun.quantity
+0.00595132752657 noun.object
+encryption: noun.artifact (correct: noun.act)
+
+Looking for 'fenders'
+Attempting to classify 'fenders'
+adding 561 contexts from web to query vector.
+Similar words: fenders, harmonicas, boat, portholes, fender, reflectors, rubber, custom, marine, port, struts, truck, ea, rear, stock
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.465538
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:14.127891
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4947 features (7667 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:05.584410
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:15.515255
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: fender, boat, rear
+fender
+	Synset('fender.n.01') (noun.artifact)
+	Synset('fender.n.02') (noun.artifact)
+	Synset('fender.n.03') (noun.artifact)
+	Synset('buffer.n.05') (noun.artifact)
+boat
+	Synset('boat.n.01') (noun.artifact)
+	Synset('gravy_boat.n.01') (noun.artifact)
+	Synset('boat.v.01') (verb.motion)
+rear
+	Synset('rear.n.01') (noun.group)
+	Synset('rear.n.02') (noun.location)
+	Synset('back.n.03') (noun.location)
+	Synset('buttocks.n.01') (noun.body)
+	Synset('rear.n.05') (noun.artifact)
+	Synset('rear.v.01') (verb.motion)
+	Synset('rear.v.02') (verb.social)
+	Synset('rise.v.04') (verb.stative)
+	Synset('rear.v.04') (verb.motion)
+	Synset('raise.v.09') (verb.creation)
+	Synset('rear.s.01') (adj.all)
+0.705685745424 noun.artifact
+0.0271646343172 noun.group
+0.0260780489445 noun.location
+0.00586756101251 noun.body
+fenders: noun.artifact (correct: noun.artifact)
+
+Looking for 'flotillas'
+Attempting to classify 'flotillas'
+adding 139 contexts from web to query vector.
+Similar words: flotillas, flotilla, sinking, amp, images, search, greece, y, gray, charters, emigrants, act, setting, offer, yacht
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.833895
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:14.952524
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4283 features (6048 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.512482
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:15.521214
+INFO:dictionary:built Dictionary(11 unique tokens) from 1 documents (total 11 corpus positions)
+Web similar words: y, flotilla, greece
+y
+	Synset('yttrium.n.01') (noun.substance)
+	Synset('ish.s.01') (adj.all)
+flotilla
+	Synset('flotilla.n.01') (noun.artifact)
+	Synset('flotilla.n.02') (noun.artifact)
+greece
+	Synset('greece.n.01') (noun.location)
+0.266496628523 noun.substance
+0.110737943649 noun.artifact
+0.0241901613772 noun.location
+flotillas: noun.substance (correct: noun.artifact)
+
+Looking for 'frugality'
+Attempting to classify 'frugality'
+adding 551 contexts from web to query vector.
+Similar words: frugality, synonyms, festival, indulgences, industriousness, secrets, comments, 0, art, links, living
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 81.82% [[32m████████████████[m....] corpus pass #1 / ETA 0:00:01.616816
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.051048
+INFO:tfidfmodel:calculating IDF weights for 11 documents and 2801 features (3779 matrix non-zeros)
+ 81.82% [[32m████████████████[m....] corpus pass #2 / ETA 0:00:01.625521
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.057349
+INFO:dictionary:built Dictionary(3 unique tokens) from 1 documents (total 3 corpus positions)
+Web similar words: festival, art, living
+festival
+	Synset('festival.n.01') (noun.time)
+	Synset('festival.n.02') (noun.act)
+art
+	Synset('art.n.01') (noun.artifact)
+	Synset('art.n.02') (noun.act)
+	Synset('art.n.03') (noun.cognition)
+	Synset('artwork.n.01') (noun.communication)
+living
+	Synset('life.n.02') (noun.cognition)
+	Synset('living.n.02') (noun.group)
+	Synset('animation.n.01') (noun.state)
+	Synset('support.n.06') (noun.possession)
+	Synset('dwell.v.03') (verb.stative)
+	Synset('live.v.02') (verb.stative)
+	Synset('survive.v.01') (verb.stative)
+	Synset('exist.v.02') (verb.stative)
+	Synset('be.v.11') (verb.stative)
+	Synset('know.v.05') (verb.cognition)
+	Synset('living.a.01') (adj.pert)
+	Synset('living.s.02') (adj.all)
+	Synset('living.a.03') (adj.ppl)
+	Synset('living.s.04') (adj.all)
+	Synset('surviving.s.01') (adj.all)
+	Synset('living.s.06') (adj.all)
+	Synset('living.s.07') (adj.all)
+	Synset('living.s.08') (adj.all)
+	Synset('live.s.10') (adj.all)
+0.0705547332764 noun.time
+0.0501068573445 noun.act
+0.0142183299735 noun.cognition
+0.0129566956311 noun.artifact
+0.00573235172778 noun.group
+0.00343941103667 noun.state
+0.00279864625633 noun.communication
+0.002063646622 noun.possession
+frugality: noun.time (correct: noun.attribute)
+
+Looking for 'gatts'
+Attempting to classify 'gatts'
+adding 389 contexts from web to query vector.
+Similar words: gatts, vs, g
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:02.436466
+INFO:tfidfmodel:calculating IDF weights for 3 documents and 803 features (835 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:02.889608
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: vs, g
+vs
+	Synset('volt.n.01') (noun.quantity)
+	Synset('vanadium.n.01') (noun.substance)
+	Synset('five.n.01') (noun.quantity)
+g
+	Synset('gram.n.01') (noun.quantity)
+	Synset('thousand.n.01') (noun.quantity)
+	Synset('g.n.03') (noun.quantity)
+	Synset('gigabyte.n.01') (noun.quantity)
+	Synset('gravitational_constant.n.01') (noun.quantity)
+0.00634180490673 noun.quantity
+0.0021159816999 noun.substance
+gatts: noun.quantity (correct: noun.group)
+
+Looking for 'goobers'
+Attempting to classify 'goobers'
+adding 156 contexts from web to query vector.
+Similar words: goobers, page, search, peanuts, carbohydrates, images, peanut, equivalents, alt, facts, fat, food, visit, logo, amp
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.376650
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.266469
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3633 features (5353 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.260883
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.576510
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: peanuts, carbohydrates, logo
+peanuts
+	Synset('peanut.n.01') (noun.plant)
+	Synset('peanut.n.02') (noun.plant)
+	Synset('peanut.n.03') (noun.food)
+carbohydrates
+	Synset('carbohydrate.n.01') (noun.substance)
+logo
+	Synset('logo.n.01') (noun.communication)
+0.0482828110456 noun.plant
+0.0135602327064 noun.substance
+0.0131204538047 noun.communication
+0.0108636324853 noun.food
+goobers: noun.plant (correct: noun.food)
+
+Looking for 'guilders'
+Attempting to classify 'guilders'
+adding 231 contexts from web to query vector.
+Similar words: guilders, million, 10, dollars, netherlands, pound, 20, guilder, billion
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:09.710052
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 2111 features (2625 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.509281
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: netherlands, million, guilder
+netherlands
+	Synset('netherlands.n.01') (noun.location)
+million
+	Synset('million.n.01') (noun.quantity)
+	Synset('million.s.01') (adj.all)
+guilder
+	Synset('guilder.n.01') (noun.quantity)
+	Synset('guilder.n.02') (noun.quantity)
+0.111937195063 noun.quantity
+0.0723435431719 noun.location
+guilders: noun.quantity (correct: noun.quantity)
+
+Looking for 'hebrides'
+Attempting to classify 'hebrides'
+adding 397 contexts from web to query vector.
+Similar words: hebrides, islay, amp, scotland, bull, islands, isle, les, name, isles, map, see, sea, language, scottish
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:05.226128
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.503196
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3533 features (5212 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.522504
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.966591
+INFO:dictionary:built Dictionary(3 unique tokens) from 1 documents (total 3 corpus positions)
+Web similar words: islands, scotland, sea
+islands
+	Synset('island.n.01') (noun.object)
+	Synset('island.n.02') (noun.artifact)
+scotland
+	Synset('scotland.n.01') (noun.location)
+sea
+	Synset('sea.n.01') (noun.object)
+	Synset('ocean.n.02') (noun.quantity)
+	Synset('sea.n.03') (noun.phenomenon)
+	Synset('sea.a.01') (adj.all)
+0.134546089917 noun.object
+0.0623289681971 noun.location
+0.0503412052989 noun.artifact
+0.0303864486516 noun.quantity
+0.0182318691909 noun.phenomenon
+hebrides: noun.object (correct: noun.location)
+
+Looking for 'ho'
+Attempting to classify 'ho'
+adding 532 contexts from web to query vector.
+Similar words: ho, model, bitis
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:02.046804
+INFO:tfidfmodel:calculating IDF weights for 3 documents and 1034 features (1130 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:02.223642
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: model, bitis
+model
+	Synset('model.n.01') (noun.cognition)
+	Synset('model.n.02') (noun.cognition)
+	Synset('model.n.03') (noun.person)
+	Synset('model.n.04') (noun.artifact)
+	Synset('exemplar.n.01') (noun.cognition)
+	Synset('model.n.06') (noun.person)
+	Synset('model.n.07') (noun.cognition)
+	Synset('mannequin.n.01') (noun.person)
+	Synset('model.n.09') (noun.act)
+	Synset('model.v.01') (verb.creation)
+	Synset('model.v.02') (verb.creation)
+	Synset('model.v.03') (verb.perception)
+	Synset('model.v.04') (verb.perception)
+	Synset('model.v.05') (verb.creation)
+	Synset('model.v.06') (verb.creation)
+	Synset('exemplary.s.01') (adj.all)
+	Synset('experimental.s.03') (adj.all)
+bitis
+	Synset('bitis.n.01') (noun.animal)
+0.116222071867 noun.cognition
+0.0304746885424 noun.person
+0.014133079648 noun.artifact
+0.00165268674027 noun.animal
+0.00109898827343 noun.act
+ho: noun.cognition (correct: noun.substance)
+
+Looking for 'holsters'
+Attempting to classify 'holsters'
+adding 842 contexts from web to query vector.
+Similar words: holsters, holster, leather, gun, chaps, waistband, carry, amp, concealment, shoulder, accessories, noon
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:02.402437
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.479941
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 3835 features (5910 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:03.296884
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:13.014332
+INFO:dictionary:built Dictionary(13 unique tokens) from 1 documents (total 13 corpus positions)
+Web similar words: concealment, leather, gun
+concealment
+	Synset('privacy.n.02') (noun.state)
+	Synset('screen.n.04') (noun.artifact)
+	Synset('concealment.n.03') (noun.act)
+leather
+	Synset('leather.n.01') (noun.substance)
+gun
+	Synset('gun.n.01') (noun.artifact)
+	Synset('artillery.n.01') (noun.artifact)
+	Synset('gunman.n.02') (noun.person)
+	Synset('gunman.n.01') (noun.person)
+	Synset('grease-gun.n.01') (noun.artifact)
+	Synset('accelerator.n.01') (noun.artifact)
+	Synset('gun.n.07') (noun.act)
+	Synset('gun.v.01') (verb.competition)
+0.261559723186 noun.artifact
+0.18744045496 noun.state
+0.182197466493 noun.substance
+0.0713273804712 noun.act
+0.0475162553787 noun.person
+holsters: noun.artifact (correct: noun.artifact)
+
+Looking for 'hotshot'
+Attempting to classify 'hotshot'
+adding 1 contexts from web to query vector.
+Similar words: hotshot, potentate, stylists, hotshots, crews, stanfords, blowers, vanity_fair, ore, elite, actor, crew, memphis
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 69.23% [[32m█████████████[m.......] corpus pass #1 / ETA 0:00:03.369486
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:13.930967
+INFO:tfidfmodel:calculating IDF weights for 13 documents and 3370 features (4603 matrix non-zeros)
+ 69.23% [[32m█████████████[m.......] corpus pass #2 / ETA 0:00:03.454769
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:13.680812
+INFO:dictionary:built Dictionary(8 unique tokens) from 1 documents (total 8 corpus positions)
+Web similar words: 
+hotshot: ?? (correct: noun.person)
+
+Looking for 'house_party'
+Attempting to classify 'house_party'
+adding 1 contexts from web to query vector.
+Similar words: house_party, 3, new_line, lame, 6, r, july, duo
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.980862
+INFO:tfidfmodel:calculating IDF weights for 8 documents and 1410 features (1641 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.273305
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: 3, july, r
+3
+	Synset('three.n.01') (noun.quantity)
+	Synset('three.s.01') (adj.all)
+july
+	Synset('july.n.01') (noun.time)
+r
+	Synset('roentgen.n.01') (noun.quantity)
+	Synset('radius.n.01') (noun.attribute)
+0.0278250891715 noun.quantity
+0.0101121840999 noun.time
+0.00298853181303 noun.attribute
+house_party: noun.quantity (correct: noun.event)
+
+Looking for 'ideologues'
+Attempting to classify 'ideologues'
+adding 147 contexts from web to query vector.
+Similar words: ideologues, ideologue, ideology, freeloaders, search, right_wing, images, revisionist, igniter, malthus, outpourings, partisans, idealists, serialism, napoleon
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:05.275945
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.650293
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3485 features (4636 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:05.111403
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.255005
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: right_wing, images, ideology
+right_wing
+	Synset('right.n.04') (noun.group)
+images
+	Synset('image.n.01') (noun.cognition)
+	Synset('persona.n.02') (noun.attribute)
+	Synset('picture.n.01') (noun.artifact)
+	Synset('prototype.n.01') (noun.cognition)
+	Synset('trope.n.01') (noun.communication)
+	Synset('double.n.03') (noun.person)
+	Synset('effigy.n.01') (noun.artifact)
+	Synset('visualize.v.01') (verb.creation)
+ideology
+	Synset('political_orientation.n.01') (noun.cognition)
+	Synset('ideology.n.02') (noun.cognition)
+0.0305724740028 noun.group
+0.0230775607228 noun.cognition
+0.00504082571715 noun.attribute
+0.00341647003806 noun.artifact
+0.0010888183549 noun.communication
+0.000653291012943 noun.person
+ideologues: noun.group (correct: noun.person)
+
+Looking for 'illustrators'
+Attempting to classify 'illustrators'
+adding 231 contexts from web to query vector.
+Similar words: illustrators, amp, illustration, artists, writers, sidebar, stylists, organisation, artist, art, show, quartets, web, comment, freelance
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:05.504442
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:14.339470
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3407 features (5418 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.660309
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.500876
+INFO:dictionary:built Dictionary(8 unique tokens) from 1 documents (total 8 corpus positions)
+Web similar words: illustration, writers, freelance
+illustration
+	Synset('illustration.n.01') (noun.communication)
+	Synset('exemplification.n.01') (noun.communication)
+	Synset('example.n.01') (noun.cognition)
+	Synset('illustration.n.04') (noun.artifact)
+writers
+	Synset('writer.n.01') (noun.person)
+	Synset('writer.n.02') (noun.person)
+freelance
+	Synset('freelance.n.01') (noun.person)
+	Synset('freelance.s.01') (adj.all)
+	Synset('mercenary.s.02') (adj.all)
+0.306488990784 noun.communication
+0.201305189729 noun.person
+0.0689600229263 noun.cognition
+0.0413760137558 noun.artifact
+illustrators: noun.communication (correct: noun.person)
+
+Looking for 'immortals'
+Attempting to classify 'immortals'
+adding 349 contexts from web to query vector.
+Similar words: immortals, trailer, movie, tags, 2, 1, 0, grand_jurys
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:07.580166
+INFO:tfidfmodel:calculating IDF weights for 8 documents and 1487 features (1769 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.463806
+INFO:dictionary:built Dictionary(13 unique tokens) from 1 documents (total 13 corpus positions)
+Web similar words: movie, trailer, 2
+movie
+	Synset('movie.n.01') (noun.communication)
+trailer
+	Synset('trailer.n.01') (noun.artifact)
+	Synset('camper_trailer.n.01') (noun.artifact)
+2
+	Synset('two.n.01') (noun.quantity)
+	Synset('two.s.01') (adj.all)
+0.118299201131 noun.communication
+0.078224670887 noun.artifact
+0.00404238793999 noun.quantity
+immortals: noun.communication (correct: noun.person)
+
+Looking for 'indias'
+Attempting to classify 'indias'
+adding 221 contexts from web to query vector.
+Similar words: indias
+indias: ?? (correct: noun.location)
+
+Looking for 'inhalers'
+Attempting to classify 'inhalers'
+adding 422 contexts from web to query vector.
+Similar words: inhalers, inhaler, asthma, bronchitis, nicotine, powder, corticosteroid, dry, aerosol, dose, steroid, steam, types
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 69.23% [[32m█████████████[m.......] corpus pass #1 / ETA 0:00:03.106821
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:13.025807
+INFO:tfidfmodel:calculating IDF weights for 13 documents and 4289 features (6592 matrix non-zeros)
+ 69.23% [[32m█████████████[m.......] corpus pass #2 / ETA 0:00:02.426047
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.425772
+INFO:dictionary:built Dictionary(11 unique tokens) from 1 documents (total 11 corpus positions)
+Web similar words: asthma, dose, inhaler
+asthma
+	Synset('asthma.n.01') (noun.state)
+dose
+	Synset('dose.n.01') (noun.artifact)
+	Synset('dose.n.02') (noun.quantity)
+	Synset('dose.v.01') (verb.change)
+	Synset('drug.v.01') (verb.body)
+inhaler
+	Synset('inhaler.n.01') (noun.artifact)
+0.260677471757 noun.artifact
+0.248203739524 noun.state
+0.0848799347878 noun.quantity
+inhalers: noun.artifact (correct: noun.artifact)
+
+Looking for 'interplays'
+Attempting to classify 'interplays'
+adding 82 contexts from web to query vector.
+Similar words: shampoos, brilliance, color, lasts, light, technology, eight, lotions, international_law, strand, transparencies
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 81.82% [[32m████████████████[m....] corpus pass #1 / ETA 0:00:02.049303
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.029569
+INFO:tfidfmodel:calculating IDF weights for 11 documents and 3216 features (4401 matrix non-zeros)
+ 81.82% [[32m████████████████[m....] corpus pass #2 / ETA 0:00:01.684535
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.483295
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: light, international_law, brilliance
+light
+	Synset('light.n.01') (noun.phenomenon)
+	Synset('light.n.02') (noun.artifact)
+	Synset('light.n.03') (noun.cognition)
+	Synset('luminosity.n.01') (noun.attribute)
+	Synset('light.n.05') (noun.location)
+	Synset('light.n.06') (noun.state)
+	Synset('light.n.07') (noun.attribute)
+	Synset('light.n.08') (noun.person)
+	Synset('light.n.09') (noun.state)
+	Synset('light.n.10') (noun.cognition)
+	Synset('sparkle.n.01') (noun.attribute)
+	Synset('light.n.12') (noun.cognition)
+	Synset('inner_light.n.01') (noun.motive)
+	Synset('light.n.14') (noun.communication)
+	Synset('lighter.n.02') (noun.artifact)
+	Synset('light.v.01') (verb.change)
+	Synset('light_up.v.05') (verb.consumption)
+	Synset('alight.v.01') (verb.motion)
+	Synset('ignite.v.01') (verb.weather)
+	Synset('fall.v.20') (verb.possession)
+	Synset('unhorse.v.01') (verb.motion)
+	Synset('light.a.01') (adj.all)
+	Synset('light.a.02') (adj.all)
+	Synset('light.a.03') (adj.all)
+	Synset('light.a.04') (adj.all)
+	Synset('light.a.05') (adj.all)
+	Synset('light.a.06') (adj.all)
+	Synset('unaccented.s.03') (adj.all)
+	Synset('light.s.08') (adj.all)
+	Synset('friable.s.02') (adj.all)
+	Synset('clean.s.03') (adj.all)
+	Synset('light.s.11') (adj.all)
+	Synset('light.s.12') (adj.all)
+	Synset('light.a.13') (adj.all)
+	Synset('light.a.14') (adj.all)
+	Synset('faint.s.04') (adj.all)
+	Synset('flimsy.s.03') (adj.all)
+	Synset('abstemious.s.02') (adj.all)
+	Synset('light.s.18') (adj.all)
+	Synset('light.s.19') (adj.all)
+	Synset('light.s.20') (adj.all)
+	Synset('idle.s.04') (adj.all)
+	Synset('light.s.22') (adj.all)
+	Synset('light.s.23') (adj.all)
+	Synset('diet.s.01') (adj.all)
+	Synset('light.s.25') (adj.all)
+	Synset('easy.s.13') (adj.all)
+	Synset('lightly.r.02') (adv.all)
+international_law
+	Synset('international_law.n.01') (noun.group)
+brilliance
+	Synset('glare.n.01') (noun.attribute)
+	Synset('magnificence.n.02') (noun.attribute)
+	Synset('brilliance.n.03') (noun.cognition)
+0.0399778448045 noun.phenomenon
+0.0280795587167 noun.attribute
+0.0240180351866 noun.artifact
+0.0211135987192 noun.group
+0.0188408637539 noun.cognition
+0.00518112868667 noun.location
+0.00378015148979 noun.state
+0.00111912379632 noun.person
+8.70230664018e-05 noun.motive
+5.22138398411e-05 noun.communication
+interplays: noun.phenomenon (correct: noun.act)
+
+Looking for 'introspection'
+Attempting to classify 'introspection'
+adding 507 contexts from web to query vector.
+Similar words: introspection, definition, n, psychology, thesaurus, synonyms, interaction, deep, dictionary, method, philosophy, public, noun, process, accounts
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.608760
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.171185
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3596 features (5316 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.084886
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:16.953183
+INFO:dictionary:built Dictionary(3 unique tokens) from 1 documents (total 3 corpus positions)
+Web similar words: philosophy, process, definition
+philosophy
+	Synset('doctrine.n.01') (noun.cognition)
+	Synset('philosophy.n.02') (noun.cognition)
+	Synset('philosophy.n.03') (noun.cognition)
+process
+	Synset('procedure.n.01') (noun.act)
+	Synset('process.n.02') (noun.process)
+	Synset('process.n.03') (noun.cognition)
+	Synset('summons.n.03') (noun.communication)
+	Synset('process.n.05') (noun.cognition)
+	Synset('process.n.06') (noun.body)
+	Synset('process.v.01') (verb.social)
+	Synset('process.v.02') (verb.change)
+	Synset('process.v.03') (verb.cognition)
+	Synset('sue.v.01') (verb.social)
+	Synset('work.v.06') (verb.creation)
+	Synset('serve.v.11') (verb.contact)
+	Synset('march.v.01') (verb.motion)
+definition
+	Synset('definition.n.01') (noun.communication)
+	Synset('definition.n.02') (noun.attribute)
+0.033317063418 noun.cognition
+0.0140762517303 noun.communication
+0.012817595154 noun.act
+0.00769055709243 noun.process
+0.00678459070623 noun.attribute
+0.000996696199179 noun.body
+introspection: noun.cognition (correct: noun.cognition)
+
+Looking for 'isms'
+Attempting to classify 'isms'
+adding 199 contexts from web to query vector.
+Similar words: isms, email, site
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:03.043629
+INFO:tfidfmodel:calculating IDF weights for 3 documents and 683 features (731 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:03.587353
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: email, site
+email
+	Synset('electronic_mail.n.01') (noun.communication)
+	Synset('e-mail.v.01') (verb.communication)
+site
+	Synset('site.n.01') (noun.location)
+	Synset('site.n.02') (noun.location)
+	Synset('locate.v.03') (verb.possession)
+0.00309642311186 noun.communication
+0.000226678932086 noun.location
+isms: noun.communication (correct: noun.cognition)
+
+Looking for 'karachis'
+Attempting to classify 'karachis'
+adding 40 contexts from web to query vector.
+Similar words: karachis, town, electronics, retail, heart, space, prime, market, supply
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.753340
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 2790 features (3770 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.352485
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: electronics, prime, market
+electronics
+	Synset('electronics.n.01') (noun.cognition)
+prime
+	Synset('prime.n.01') (noun.quantity)
+	Synset('flower.n.03') (noun.time)
+	Synset('prime.n.03') (noun.time)
+	Synset('prime.n.04') (noun.time)
+	Synset('prime.v.01') (verb.change)
+	Synset('prime.v.02') (verb.contact)
+	Synset('prime.v.03') (verb.change)
+	Synset('premier.s.01') (adj.all)
+	Synset('prime.s.02') (adj.all)
+	Synset('choice.s.01') (adj.all)
+	Synset('prime.a.04') (adj.pert)
+	Synset('prime.s.05') (adj.all)
+market
+	Synset('market.n.01') (noun.act)
+	Synset('market.n.02') (noun.group)
+	Synset('market.n.03') (noun.group)
+	Synset('grocery_store.n.01') (noun.artifact)
+	Synset('market.v.01') (verb.possession)
+	Synset('market.v.02') (verb.possession)
+	Synset('commercialize.v.01') (verb.change)
+0.00523146666214 noun.time
+0.00496547762305 noun.cognition
+0.00444852607325 noun.quantity
+0.0039955615066 noun.act
+0.00383573904634 noun.group
+0.000863041285425 noun.artifact
+karachis: noun.time (correct: noun.location)
+
+Looking for 'kerb'
+Attempting to classify 'kerb'
+adding 511 contexts from web to query vector.
+Similar words: kerb, crawling, crawler, drill, drills, market, weight, markets, tramlines
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.023468
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 3003 features (4082 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:09.057240
+INFO:dictionary:built Dictionary(4 unique tokens) from 1 documents (total 4 corpus positions)
+Web similar words: weight, crawling, crawler
+weight
+	Synset('weight.n.01') (noun.attribute)
+	Synset('weight.n.02') (noun.artifact)
+	Synset('weight.n.03') (noun.attribute)
+	Synset('weight.n.04') (noun.artifact)
+	Synset('weight.n.05') (noun.feeling)
+	Synset('system_of_weights.n.01') (noun.quantity)
+	Synset('weight_unit.n.02') (noun.quantity)
+	Synset('weight.n.08') (noun.quantity)
+	Synset('burden.v.01') (verb.contact)
+	Synset('slant.v.02') (verb.cognition)
+crawling
+	Synset('crawl.n.03') (noun.act)
+	Synset('crawl.v.01') (verb.motion)
+	Synset('crawl.v.02') (verb.stative)
+	Synset('crawl.v.03') (verb.stative)
+	Synset('fawn.v.01') (verb.motion)
+	Synset('crawl.v.05') (verb.motion)
+	Synset('crawling.s.01') (adj.all)
+	Synset('bumper-to-bumper.s.01') (adj.all)
+crawler
+	Synset('sycophant.n.01') (noun.person)
+0.0879735481739 noun.attribute
+0.0527841289043 noun.artifact
+0.0237011089921 noun.act
+0.00985883329983 noun.quantity
+0.00838336164951 noun.feeling
+0.00291970302351 noun.person
+kerb: noun.attribute (correct: noun.artifact)
+
+Looking for 'kilometers'
+Attempting to classify 'kilometers'
+adding 258 contexts from web to query vector.
+Similar words: kilometers, miles, east_southeast, east_northeast
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:05.271579
+INFO:tfidfmodel:calculating IDF weights for 4 documents and 986 features (1116 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:03.242718
+INFO:dictionary:built Dictionary(5 unique tokens) from 1 documents (total 5 corpus positions)
+Web similar words: miles, east_northeast, east_southeast
+miles
+	Synset('mile.n.01') (noun.quantity)
+	Synset('nautical_mile.n.02') (noun.quantity)
+	Synset('mile.n.03') (noun.quantity)
+	Synset('sea_mile.n.01') (noun.quantity)
+	Synset('nautical_mile.n.01') (noun.quantity)
+	Synset('mile.n.06') (noun.quantity)
+	Synset('mile.n.07') (noun.quantity)
+	Synset('mile.n.08') (noun.event)
+east_northeast
+	Synset('east_northeast.n.01') (noun.relation)
+east_southeast
+	Synset('east_southeast.n.01') (noun.relation)
+0.193186699713 noun.quantity
+0.00233558082255 noun.relation
+0.00222549612722 noun.event
+kilometers: noun.quantity (correct: noun.quantity)
+
+Looking for 'kurdish'
+Attempting to classify 'kurdish'
+adding 1076 contexts from web to query vector.
+Similar words: kurdish, allys, counterinsurgency, blonds, iraq
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.879277
+INFO:tfidfmodel:calculating IDF weights for 5 documents and 1432 features (1648 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:05.880265
+INFO:dictionary:built Dictionary(11 unique tokens) from 1 documents (total 11 corpus positions)
+Web similar words: iraq, allys, counterinsurgency
+iraq
+	Synset('iraq.n.01') (noun.location)
+allys
+	Synset('ally.n.01') (noun.group)
+	Synset('ally.n.02') (noun.person)
+	Synset('ally.v.01') (verb.social)
+counterinsurgency
+	Synset('counterinsurgency.n.01') (noun.act)
+0.0118760718033 noun.location
+0.00117119855713 noun.group
+0.000702719134279 noun.person
+0.000313279917464 noun.act
+kurdish: noun.location (correct: noun.communication)
+
+Looking for 'lanyards'
+Attempting to classify 'lanyards'
+adding 1651 contexts from web to query vector.
+Similar words: lanyards, custom, badge, conformance, two_weeks, badges, freeware, polyester, tussock, ers, slipcover
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 81.82% [[32m████████████████[m....] corpus pass #1 / ETA 0:00:01.891880
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.261673
+INFO:tfidfmodel:calculating IDF weights for 11 documents and 3525 features (4920 matrix non-zeros)
+ 81.82% [[32m████████████████[m....] corpus pass #2 / ETA 0:00:01.950359
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.289247
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: badge, custom, badges
+badge
+	Synset('badge.n.01') (noun.communication)
+	Synset('badge.n.02') (noun.cognition)
+	Synset('badge.v.01') (verb.contact)
+custom
+	Synset('custom.n.01') (noun.act)
+	Synset('custom.n.02') (noun.cognition)
+	Synset('customs.n.01') (noun.possession)
+	Synset('custom.n.04') (noun.act)
+	Synset('bespoke.s.01') (adj.all)
+badges
+	Synset('badge.n.01') (noun.communication)
+	Synset('badge.n.02') (noun.cognition)
+	Synset('badge.v.01') (verb.contact)
+0.444390419871 noun.communication
+0.386593841761 noun.cognition
+0.243118102074 noun.act
+0.0719757539034 noun.possession
+lanyards: noun.communication (correct: noun.artifact)
+
+Looking for 'lemurs'
+Attempting to classify 'lemurs'
+adding 783 contexts from web to query vector.
+Similar words: lemurs, madagascar, primates, mouse, flamingos, badger, species, tortoises, dwarf, parrots, mangabey, peppercorn, habitat, antananarivo, baby
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.886513
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.525138
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4716 features (7137 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.520906
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.325123
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: primates, madagascar, mouse
+primates
+	Synset('primates.n.01') (noun.animal)
+	Synset('archpriest.n.01') (noun.person)
+	Synset('primate.n.02') (noun.animal)
+madagascar
+	Synset('madagascar.n.01') (noun.location)
+mouse
+	Synset('mouse.n.01') (noun.animal)
+	Synset('mouse.n.02') (noun.artifact)
+	Synset('sneak.v.01') (verb.motion)
+	Synset('mouse.v.02') (verb.contact)
+0.178063823879 noun.animal
+0.0831536352634 noun.location
+0.0536605328321 noun.person
+0.0338599696755 noun.artifact
+lemurs: noun.animal (correct: noun.animal)
+
+Looking for 'loader'
+Attempting to classify 'loader'
+adding 359 contexts from web to query vector.
+Similar words: loader, backhoe, loaders, excavator, backhoes, front_end, front, skid, bray, compact, tractor, bucket
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:03.316562
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:14.799837
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 3483 features (5589 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:02.537434
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.769997
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: tractor, backhoe, excavator
+tractor
+	Synset('tractor.n.01') (noun.artifact)
+	Synset('tractor.n.02') (noun.artifact)
+backhoe
+	Synset('backhoe.n.01') (noun.artifact)
+excavator
+	Synset('excavator.n.01') (noun.person)
+	Synset('power_shovel.n.01') (noun.artifact)
+0.235899601877 noun.artifact
+0.046023376286 noun.person
+loader: noun.artifact (correct: noun.person)
+
+Looking for 'logistics'
+Attempting to classify 'logistics'
+adding 689 contexts from web to query vector.
+Similar words: logistics, calibers, third_party, cave_in, kwajalein, management, supply, reservist, snafus
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.303294
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 2915 features (3664 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:14.439828
+INFO:dictionary:built Dictionary(4 unique tokens) from 1 documents (total 4 corpus positions)
+Web similar words: third_party, management, supply
+third_party
+	Synset('third_party.n.01') (noun.person)
+	Synset('third_party.n.02') (noun.group)
+management
+	Synset('management.n.01') (noun.act)
+	Synset('management.n.02') (noun.group)
+supply
+	Synset('supply.n.01') (noun.quantity)
+	Synset('supply.n.02') (noun.process)
+	Synset('provision.n.02') (noun.act)
+	Synset('supply.v.01') (verb.possession)
+	Synset('issue.v.02') (verb.social)
+	Synset('provide.v.02') (verb.consumption)
+	Synset('add.v.02') (verb.communication)
+0.228980496526 noun.person
+0.181634750962 noun.group
+0.0905211609602 noun.act
+0.0466029793024 noun.quantity
+0.0279617875814 noun.process
+logistics: noun.person (correct: noun.act)
+
+Looking for 'macao'
+Attempting to classify 'macao'
+adding 274 contexts from web to query vector.
+Similar words: macao, patacas, autodidacts, hong_kong
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:07.199453
+INFO:tfidfmodel:calculating IDF weights for 4 documents and 1213 features (1343 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.325130
+INFO:dictionary:built Dictionary(14 unique tokens) from 1 documents (total 14 corpus positions)
+Web similar words: hong_kong, patacas, autodidacts
+hong_kong
+	Synset('hong_kong.n.01') (noun.location)
+patacas
+	Synset('pataca.n.01') (noun.quantity)
+autodidacts
+	Synset('autodidact.n.01') (noun.person)
+0.0260842684656 noun.location
+0.0245519373566 noun.quantity
+0.000497094413731 noun.person
+macao: noun.location (correct: noun.location)
+
+Looking for 'mail_fraud'
+Attempting to classify 'mail_fraud'
+adding 1 contexts from web to query vector.
+Similar words: mail_fraud, intrusion, conviction, prosecution, ordinary, brother, charges, charge, average, face, new_york, possible, case, led
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 64.29% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.875622
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:15.346564
+INFO:tfidfmodel:calculating IDF weights for 14 documents and 3999 features (5706 matrix non-zeros)
+ 64.29% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.394677
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:13.283454
+INFO:dictionary:built Dictionary(5 unique tokens) from 1 documents (total 5 corpus positions)
+Web similar words: led, charges, conviction
+led
+	Synset('light-emitting_diode.n.01') (noun.artifact)
+	Synset('lead.v.01') (verb.motion)
+	Synset('leave.v.07') (verb.stative)
+	Synset('lead.v.03') (verb.stative)
+	Synset('lead.v.04') (verb.motion)
+	Synset('lead.v.05') (verb.communication)
+	Synset('run.v.03') (verb.stative)
+	Synset('head.v.02') (verb.social)
+	Synset('lead.v.08') (verb.stative)
+	Synset('contribute.v.03') (verb.social)
+	Synset('conduct.v.02') (verb.creation)
+	Synset('lead.v.11') (verb.stative)
+	Synset('go.v.25') (verb.stative)
+	Synset('precede.v.04') (verb.motion)
+	Synset('run.v.23') (verb.stative)
+	Synset('moderate.v.01') (verb.communication)
+	Synset('led.a.01') (adj.all)
+charges
+	Synset('charge.n.01') (noun.act)
+	Synset('charge.n.02') (noun.communication)
+	Synset('charge.n.03') (noun.possession)
+	Synset('charge.n.04') (noun.phenomenon)
+	Synset('care.n.05') (noun.act)
+	Synset('mission.n.03') (noun.act)
+	Synset('charge.n.07') (noun.person)
+	Synset('charge.n.08') (noun.possession)
+	Synset('cathexis.n.01') (noun.motive)
+	Synset('bang.n.04') (noun.feeling)
+	Synset('charge.n.11') (noun.communication)
+	Synset('commission.n.06') (noun.communication)
+	Synset('accusation.n.02') (noun.communication)
+	Synset('charge.n.14') (noun.artifact)
+	Synset('charge.n.15') (noun.artifact)
+	Synset('charge.v.01') (verb.competition)
+	Synset('charge.v.02') (verb.communication)
+	Synset('charge.v.03') (verb.possession)
+	Synset('tear.v.03') (verb.motion)
+	Synset('appoint.v.02') (verb.social)
+	Synset('charge.v.06') (verb.communication)
+	Synset('charge.v.07') (verb.communication)
+	Synset('charge.v.08') (verb.contact)
+	Synset('charge.v.09') (verb.possession)
+	Synset('commit.v.03') (verb.possession)
+	Synset('consign.v.02') (verb.possession)
+	Synset('charge.v.12') (verb.possession)
+	Synset('charge.v.13') (verb.motion)
+	Synset('agitate.v.02') (verb.emotion)
+	Synset('charge.v.15') (verb.creation)
+	Synset('load.v.02') (verb.contact)
+	Synset('charge.v.17') (verb.competition)
+	Synset('charge.v.18') (verb.communication)
+	Synset('charge.v.19') (verb.communication)
+	Synset('charge.v.20') (verb.communication)
+	Synset('blame.v.03') (verb.cognition)
+	Synset('charge.v.22') (verb.cognition)
+	Synset('charge.v.23') (verb.change)
+	Synset('charge.v.24') (verb.change)
+	Synset('charge.v.25') (verb.change)
+conviction
+	Synset('conviction.n.01') (noun.cognition)
+	Synset('conviction.n.02') (noun.act)
+0.0170568180211 noun.artifact
+0.0120426796083 noun.act
+0.00497291109279 noun.communication
+0.00371614238247 noun.cognition
+0.00315347447176 noun.possession
+0.00175557144731 noun.phenomenon
+0.00037920343262 noun.person
+0.000136513235743 noun.motive
+8.19079414458e-05 noun.feeling
+mail_fraud: noun.artifact (correct: noun.act)
+
+Looking for 'mauritiuss'
+Attempting to classify 'mauritiuss'
+adding 2 contexts from web to query vector.
+Similar words: mauritiuss, leisure, arts, culture, ministry
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.192506
+INFO:tfidfmodel:calculating IDF weights for 5 documents and 1668 features (1990 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.268062
+INFO:dictionary:built Dictionary(5 unique tokens) from 1 documents (total 5 corpus positions)
+Web similar words: 
+mauritiuss: ?? (correct: noun.location)
+
+Looking for 'milans'
+Attempting to classify 'milans'
+adding 206 contexts from web to query vector.
+Similar words: milans, turins, re, italian, version
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.914953
+INFO:tfidfmodel:calculating IDF weights for 5 documents and 1164 features (1260 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:04.488737
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: version, italian, turins
+version
+	Synset('version.n.01') (noun.communication)
+	Synset('version.n.02') (noun.cognition)
+	Synset('adaptation.n.01') (noun.communication)
+	Synset('translation.n.01') (noun.communication)
+	Synset('interpretation.n.01') (noun.cognition)
+italian
+	Synset('italian.n.01') (noun.person)
+	Synset('italian.n.02') (noun.communication)
+	Synset('italian.a.01') (adj.pert)
+turins
+	Synset('turin.n.01') (noun.location)
+0.0137341177072 noun.communication
+0.00594731165171 noun.cognition
+0.00147900474258 noun.person
+0.000244900933467 noun.location
+milans: noun.communication (correct: noun.location)
+
+Looking for 'moldovas'
+Attempting to classify 'moldovas'
+adding 1 contexts from web to query vector.
+Similar words: moldovas, breakaway, russian, moldova, region, support, speculations, welcome, debt
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:08.075849
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 2771 features (3592 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:07.148015
+INFO:dictionary:built Dictionary(5 unique tokens) from 1 documents (total 5 corpus positions)
+Web similar words: moldova, speculations, debt
+moldova
+	Synset('moldova.n.01') (noun.location)
+speculations
+	Synset('guess.n.01') (noun.communication)
+	Synset('speculation.n.02') (noun.cognition)
+	Synset('speculation.n.03') (noun.possession)
+debt
+	Synset('debt.n.01') (noun.state)
+	Synset('debt.n.02') (noun.possession)
+0.0531668886542 noun.location
+0.000856572238263 noun.communication
+0.000720392460935 noun.possession
+0.0006867107586 noun.state
+0.000513943342958 noun.cognition
+moldovas: noun.location (correct: noun.location)
+
+Looking for 'monetary_fund'
+Attempting to classify 'monetary_fund'
+adding 1 contexts from web to query vector.
+Similar words: monetary_fund, international, imf, world_bank, international_monetary_fund
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.287516
+INFO:tfidfmodel:calculating IDF weights for 5 documents and 578 features (675 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:04.947027
+INFO:dictionary:built Dictionary(3 unique tokens) from 1 documents (total 3 corpus positions)
+Web similar words: imf, international_monetary_fund, international
+imf
+	Synset('international_monetary_fund.n.01') (noun.group)
+international_monetary_fund
+	Synset('international_monetary_fund.n.01') (noun.group)
+international
+	Synset('international.n.01') (noun.group)
+	Synset('international.a.01') (adj.all)
+	Synset('external.s.03') (adj.all)
+0.238354929257 noun.group
+monetary_fund: noun.group (correct: noun.possession)
+
+Looking for 'muhammad'
+Attempting to classify 'muhammad'
+adding 2486 contexts from web to query vector.
+Similar words: muhammad, elijah, prophet
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:02.389232
+INFO:tfidfmodel:calculating IDF weights for 3 documents and 967 features (1126 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:02.633482
+INFO:dictionary:built Dictionary(14 unique tokens) from 1 documents (total 14 corpus positions)
+Web similar words: elijah, prophet
+elijah
+	Synset('elijah.n.01') (noun.person)
+prophet
+	Synset('prophet.n.01') (noun.person)
+	Synset('prophet.n.02') (noun.person)
+0.0103300690651 noun.person
+muhammad: noun.person (correct: noun.person)
+
+Looking for 'napoleons'
+Attempting to classify 'napoleons'
+adding 56 contexts from web to query vector.
+Similar words: napoleons, tricorn, arsenic, phallus, big_brother, nobleman, seafood, versailles, bar, nephew, hair, louvre, enigma, encyclopedia
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 64.29% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.799208
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:14.250821
+INFO:tfidfmodel:calculating IDF weights for 14 documents and 4923 features (6958 matrix non-zeros)
+ 64.29% [[32m████████████[m........] corpus pass #2 / ETA 0:00:05.633357
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:15.464948
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: bar, seafood, versailles
+bar
+	Synset('barroom.n.01') (noun.artifact)
+	Synset('bar.n.02') (noun.artifact)
+	Synset('bar.n.03') (noun.artifact)
+	Synset('measure.n.08') (noun.communication)
+	Synset('bar.n.05') (noun.artifact)
+	Synset('prevention.n.01') (noun.act)
+	Synset('bar.n.07') (noun.quantity)
+	Synset('bar.n.08') (noun.object)
+	Synset('legal_profession.n.01') (noun.group)
+	Synset('cake.n.01') (noun.artifact)
+	Synset('bar.n.11') (noun.artifact)
+	Synset('bar.v.01') (verb.communication)
+	Synset('barricade.v.01') (verb.contact)
+	Synset('banish.v.03') (verb.social)
+	Synset('bar.v.04') (verb.contact)
+seafood
+	Synset('seafood.n.01') (noun.food)
+versailles
+	Synset('versailles.n.01') (noun.location)
+0.0044045165359 noun.artifact
+0.00196317536756 noun.food
+0.00138181028888 noun.location
+0.000451804429293 noun.communication
+0.000162649594545 noun.act
+9.75897567272e-05 noun.quantity
+5.85538540363e-05 noun.object
+3.51323124218e-05 noun.group
+napoleons: noun.artifact (correct: noun.person)
+
+Looking for 'neuron'
+Attempting to classify 'neuron'
+adding 696 contexts from web to query vector.
+Similar words: neuron, synapses, transmission, rna, neurons, motor, cell, doctrine, axon, theory, nerve, n
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:02.589307
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.481720
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 3463 features (4861 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:02.312334
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.307109
+INFO:dictionary:built Dictionary(5 unique tokens) from 1 documents (total 5 corpus positions)
+Web similar words: cell, axon, neurons
+cell
+	Synset('cell.n.01') (noun.artifact)
+	Synset('cell.n.02') (noun.Tops)
+	Synset('cell.n.03') (noun.artifact)
+	Synset('cell.n.04') (noun.group)
+	Synset('cell.n.05') (noun.artifact)
+	Synset('cell.n.06') (noun.artifact)
+axon
+	Synset('axon.n.01') (noun.body)
+neurons
+	Synset('nerve_cell.n.01') (noun.body)
+0.16319494976 noun.artifact
+0.140131186694 noun.body
+0.0624725461006 noun.Tops
+0.0224901165962 noun.group
+neuron: noun.artifact (correct: noun.body)
+
+Looking for 'ninas'
+Attempting to classify 'ninas'
+adding 295 contexts from web to query vector.
+Similar words: ninas, lisp, videos, milliard, rio
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.211345
+INFO:tfidfmodel:calculating IDF weights for 5 documents and 1205 features (1365 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.011280
+INFO:dictionary:built Dictionary(6 unique tokens) from 1 documents (total 6 corpus positions)
+Web similar words: videos, rio, milliard
+videos
+	Synset('video.n.01') (noun.communication)
+	Synset('video.n.02') (noun.artifact)
+	Synset('television.n.01') (noun.communication)
+rio
+	Synset('rio_de_janeiro.n.01') (noun.location)
+milliard
+	Synset('milliard.n.01') (noun.quantity)
+0.00971831861883 noun.communication
+0.00428749350831 noun.artifact
+0.00392430089414 noun.location
+0.00316444970667 noun.quantity
+ninas: noun.communication (correct: noun.person)
+
+Looking for 'nyasaland'
+Attempting to classify 'nyasaland'
+adding 605 contexts from web to query vector.
+Similar words: rhodesia, nyasaland, federation, map, noun, malawi
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.534695
+INFO:tfidfmodel:calculating IDF weights for 6 documents and 2264 features (2767 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:09.663731
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: rhodesia, malawi, federation
+rhodesia
+	Synset('zimbabwe.n.01') (noun.location)
+malawi
+	Synset('malawi.n.01') (noun.location)
+federation
+	Synset('federation.n.01') (noun.group)
+	Synset('confederation.n.02') (noun.group)
+0.382288299501 noun.location
+0.0584007263184 noun.group
+nyasaland: noun.location (correct: noun.location)
+
+Looking for 'obscurantist'
+Attempting to classify 'obscurantist'
+adding 148 contexts from web to query vector.
+Similar words: obscurantist, obscurantism, alt, 0, phrases, 1, n, 2, netherlands_antilles, obscenity
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.757203
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:09.597446
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 1781 features (2131 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.750097
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:08.813019
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: obscurantism, netherlands_antilles, phrases
+obscurantism
+	Synset('obscurantism.n.01') (noun.cognition)
+	Synset('obscurantism.n.02') (noun.act)
+netherlands_antilles
+	Synset('netherlands_antilles.n.01') (noun.location)
+phrases
+	Synset('phrase.n.01') (noun.communication)
+	Synset('phrase.n.02') (noun.communication)
+	Synset('idiom.n.04') (noun.communication)
+	Synset('formulate.v.03') (verb.communication)
+0.00925503205508 noun.cognition
+0.00555301923305 noun.act
+0.00384410037659 noun.communication
+0.00254214229062 noun.location
+obscurantist: noun.cognition (correct: noun.person)
+
+Looking for 'padre'
+Attempting to classify 'padre'
+adding 1551 contexts from web to query vector.
+Similar words: oscillation, padre, pm, intercession, comments, fr, 0, south, confession, confessional, 2, see
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:01.993930
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:08.949050
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 1996 features (2450 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:02.973944
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.323322
+INFO:dictionary:built Dictionary(13 unique tokens) from 1 documents (total 13 corpus positions)
+Web similar words: south, confession, fr
+south
+	Synset('south.n.01') (noun.location)
+	Synset('confederacy.n.01') (noun.location)
+	Synset('south.n.03') (noun.relation)
+	Synset('south.n.04') (noun.location)
+	Synset('south.a.01') (adj.all)
+	Synset('south.r.01') (adv.all)
+confession
+	Synset('confession.n.01') (noun.communication)
+	Synset('confession.n.02') (noun.communication)
+	Synset('confession.n.03') (noun.act)
+fr
+	Synset('francium.n.01') (noun.substance)
+0.273738558888 noun.location
+0.0542653530836 noun.relation
+0.00768528282642 noun.communication
+0.00172918863595 noun.act
+0.00170208653435 noun.substance
+padre: noun.location (correct: noun.person)
+
+Looking for 'pandora'
+Attempting to classify 'pandora'
+adding 988 contexts from web to query vector.
+Similar words: pandora, flying_dutchman, beads, silver, bracelet, charms, bracelets, jewellery, package, necklace, necklaces, salver, charm
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 69.23% [[32m█████████████[m.......] corpus pass #1 / ETA 0:00:03.208362
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.689758
+INFO:tfidfmodel:calculating IDF weights for 13 documents and 3694 features (6040 matrix non-zeros)
+ 69.23% [[32m█████████████[m.......] corpus pass #2 / ETA 0:00:04.672688
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:15.732159
+INFO:dictionary:built Dictionary(8 unique tokens) from 1 documents (total 8 corpus positions)
+Web similar words: charms, bracelets, charm
+charms
+	Synset('appeal.n.02') (noun.attribute)
+	Synset('spell.n.04') (noun.communication)
+	Synset('charm.n.03') (noun.artifact)
+	Synset('capture.v.02') (verb.emotion)
+	Synset('charm.v.02') (verb.social)
+	Synset('charm.v.03') (verb.competition)
+	Synset('charm.v.04') (verb.communication)
+bracelets
+	Synset('watchband.n.01') (noun.artifact)
+	Synset('bracelet.n.02') (noun.artifact)
+charm
+	Synset('appeal.n.02') (noun.attribute)
+	Synset('spell.n.04') (noun.communication)
+	Synset('charm.n.03') (noun.artifact)
+	Synset('capture.v.02') (verb.emotion)
+	Synset('charm.v.02') (verb.social)
+	Synset('charm.v.03') (verb.competition)
+	Synset('charm.v.04') (verb.communication)
+0.228592204452 noun.artifact
+0.205948218703 noun.attribute
+0.123568931222 noun.communication
+pandora: noun.artifact (correct: noun.person)
+
+Looking for 'particle_physics'
+Attempting to classify 'particle_physics'
+adding 1 contexts from web to query vector.
+Similar words: particle_physics, laboratory, geneva, 19, member, european, states, put
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:05.147845
+INFO:tfidfmodel:calculating IDF weights for 8 documents and 1847 features (2309 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:05.257123
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: laboratory, european, member
+laboratory
+	Synset('lab.n.01') (noun.artifact)
+european
+	Synset('european.n.01') (noun.person)
+	Synset('european.a.01') (adj.pert)
+member
+	Synset('member.n.01') (noun.person)
+	Synset('member.n.02') (noun.group)
+	Synset('extremity.n.01') (noun.body)
+	Synset('member.n.04') (noun.relation)
+	Synset('penis.n.01') (noun.body)
+0.0380807667971 noun.artifact
+0.0208823438734 noun.person
+0.00218329913914 noun.group
+0.00178157209754 noun.body
+0.000785987690091 noun.relation
+particle_physics: noun.artifact (correct: noun.cognition)
+
+Looking for 'peacemakers'
+Attempting to classify 'peacemakers'
+adding 160 contexts from web to query vector.
+Similar words: peacemakers, god, school, middle_east, gods, peace, biographies, store, update, throne, psalm, comments, will, things, act
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.130614
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.364700
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3941 features (5774 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.162657
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.451894
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: god, psalm, peace
+god
+	Synset('god.n.01') (noun.person)
+	Synset('deity.n.01') (noun.person)
+	Synset('god.n.03') (noun.person)
+	Synset('idol.n.01') (noun.artifact)
+psalm
+	Synset('psalm.n.01') (noun.communication)
+	Synset('psalm.n.02') (noun.communication)
+peace
+	Synset('peace.n.01') (noun.state)
+	Synset('peace.n.02') (noun.state)
+	Synset('peace.n.03') (noun.feeling)
+	Synset('peace.n.04') (noun.state)
+	Synset('peace.n.05') (noun.communication)
+0.064564306289 noun.person
+0.0227645344853 noun.communication
+0.0210660107136 noun.state
+0.00711525008082 noun.artifact
+0.00417608141899 noun.feeling
+peacemakers: noun.person (correct: noun.person)
+
+Looking for 'petitioners'
+Attempting to classify 'petitioners'
+adding 218 contexts from web to query vector.
+Similar words: petitioners, 0, v, petition, petitioner, diseases, respondent, skills, 1, grave
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.631337
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.794106
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 2557 features (3184 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.629719
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.778378
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: v, petition, petitioner
+v
+	Synset('volt.n.01') (noun.quantity)
+	Synset('vanadium.n.01') (noun.substance)
+	Synset('five.n.01') (noun.quantity)
+	Synset('five.s.01') (adj.all)
+petition
+	Synset('request.n.01') (noun.communication)
+	Synset('prayer.n.02') (noun.communication)
+	Synset('petition.v.01') (verb.communication)
+petitioner
+	Synset('petitioner.n.01') (noun.person)
+0.103055871129 noun.quantity
+0.0745610594749 noun.communication
+0.0462131798267 noun.person
+0.0454658254981 noun.substance
+petitioners: noun.quantity (correct: noun.person)
+
+Looking for 'playlets'
+Attempting to classify 'playlets'
+adding 85 contexts from web to query vector.
+Similar words: playlets, christian, dialogs, software, search, teens, animist, images, liturgy, play
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.625637
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.742813
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 2770 features (3705 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.626395
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.750969
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: play, liturgy, images
+play
+	Synset('play.n.01') (noun.communication)
+	Synset('play.n.02') (noun.communication)
+	Synset('play.n.03') (noun.act)
+	Synset('maneuver.n.03') (noun.act)
+	Synset('play.n.05') (noun.state)
+	Synset('play.n.06') (noun.act)
+	Synset('bid.n.02') (noun.act)
+	Synset('play.n.08') (noun.act)
+	Synset('playing_period.n.01') (noun.time)
+	Synset('free_rein.n.01') (noun.state)
+	Synset('shimmer.n.01') (noun.event)
+	Synset('fun.n.02') (noun.communication)
+	Synset('looseness.n.01') (noun.attribute)
+	Synset('play.n.14') (noun.act)
+	Synset('gambling.n.01') (noun.act)
+	Synset('turn.n.03') (noun.act)
+	Synset('play.n.17') (noun.act)
+	Synset('play.v.01') (verb.competition)
+	Synset('play.v.02') (verb.social)
+	Synset('play.v.03') (verb.creation)
+	Synset('act.v.03') (verb.creation)
+	Synset('play.v.05') (verb.social)
+	Synset('play.v.06') (verb.creation)
+	Synset('play.v.07') (verb.creation)
+	Synset('act.v.05') (verb.body)
+	Synset('play.v.09') (verb.motion)
+	Synset('play.v.10') (verb.competition)
+	Synset('play.v.11') (verb.social)
+	Synset('play.v.12') (verb.creation)
+	Synset('bring.v.03') (verb.creation)
+	Synset('play.v.14') (verb.creation)
+	Synset('play.v.15') (verb.competition)
+	Synset('play.v.16') (verb.body)
+	Synset('play.v.17') (verb.social)
+	Synset('play.v.18') (verb.creation)
+	Synset('toy.v.02') (verb.contact)
+	Synset('play.v.20') (verb.consumption)
+	Synset('dally.v.04') (verb.cognition)
+	Synset('play.v.22') (verb.stative)
+	Synset('dally.v.01') (verb.social)
+	Synset('play.v.24') (verb.motion)
+	Synset('act.v.09') (verb.creation)
+	Synset('play.v.26') (verb.creation)
+	Synset('play.v.27') (verb.contact)
+	Synset('meet.v.10') (verb.competition)
+	Synset('play.v.29') (verb.body)
+	Synset('make-believe.s.01') (adj.all)
+liturgy
+	Synset('eucharist.n.01') (noun.act)
+	Synset('liturgy.n.02') (noun.act)
+images
+	Synset('image.n.01') (noun.cognition)
+	Synset('persona.n.02') (noun.attribute)
+	Synset('picture.n.01') (noun.artifact)
+	Synset('prototype.n.01') (noun.cognition)
+	Synset('trope.n.01') (noun.communication)
+	Synset('double.n.03') (noun.person)
+	Synset('effigy.n.01') (noun.artifact)
+	Synset('visualize.v.01') (verb.creation)
+0.0634081443327 noun.communication
+0.0470061386962 noun.act
+0.0139520072341 noun.cognition
+0.00696826655489 noun.attribute
+0.00539339815434 noun.state
+0.00466584494555 noun.artifact
+0.000892194146812 noun.person
+0.000648552925329 noun.time
+0.000233479053119 noun.event
+playlets: noun.communication (correct: noun.communication)
+
+Looking for 'poppies'
+Attempting to classify 'poppies'
+adding 212 contexts from web to query vector.
+Similar words: poppies, ladybird, opium, lupine, irises, cleaning, zinnias, blob, pods, transplanting, poppy, chester, hollyhocks, marigolds, services
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.203505
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.205620
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4597 features (7226 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.279666
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:12.531141
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: opium, poppy, cleaning
+opium
+	Synset('opium.n.01') (noun.artifact)
+poppy
+	Synset('poppy.n.01') (noun.plant)
+cleaning
+	Synset('cleaning.n.01') (noun.act)
+	Synset('clean.v.01') (verb.contact)
+	Synset('clean.v.02') (verb.change)
+	Synset('houseclean.v.01') (verb.contact)
+	Synset('cleanse.v.01') (verb.body)
+	Synset('clean.v.05') (verb.stative)
+	Synset('clean.v.06') (verb.contact)
+	Synset('clean.v.07') (verb.contact)
+	Synset('scavenge.v.04') (verb.change)
+	Synset('clean.v.09') (verb.change)
+0.0747820585966 noun.artifact
+0.0553104281425 noun.plant
+0.0491054393351 noun.act
+poppies: noun.artifact (correct: noun.plant)
+
+Looking for 'positives'
+Attempting to classify 'positives'
+adding 241 contexts from web to query vector.
+Similar words: positives, ref, pretenses, negatives, amphetamines, chester, ecstasy, pretences, insoles, iliamna
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.849806
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:08.706910
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 2791 features (3647 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.846996
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:08.682508
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: negatives, pretenses, amphetamines
+negatives
+	Synset('negative.n.01') (noun.communication)
+	Synset('negative.n.02') (noun.artifact)
+	Synset('veto.v.01') (verb.social)
+pretenses
+	Synset('pretense.n.01') (noun.act)
+	Synset('pretense.n.02') (noun.communication)
+	Synset('pretense.n.03') (noun.cognition)
+	Synset('pretension.n.01') (noun.attribute)
+amphetamines
+	Synset('amphetamine.n.01') (noun.artifact)
+0.135380686074 noun.communication
+0.0779996305704 noun.artifact
+0.0486840941012 noun.act
+0.0175262738764 noun.cognition
+0.0105157643259 noun.attribute
+positives: noun.communication (correct: noun.artifact)
+
+Looking for 'psychopathology'
+Attempting to classify 'psychopathology'
+adding 437 contexts from web to query vector.
+Similar words: psychopathology, info, psychology, 0, 1, home, dictionary, 2, study, child, disorders, 3, rigidity, illness, blue_sky
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.786771
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.974857
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 2996 features (4219 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.832816
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.095360
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: study, psychology, 2
+study
+	Synset('survey.n.01') (noun.act)
+	Synset('study.n.02') (noun.cognition)
+	Synset('report.n.01') (noun.communication)
+	Synset('study.n.04') (noun.cognition)
+	Synset('study.n.05') (noun.artifact)
+	Synset('discipline.n.01') (noun.cognition)
+	Synset('sketch.n.01') (noun.artifact)
+	Synset('cogitation.n.01') (noun.cognition)
+	Synset('study.n.09') (noun.person)
+	Synset('study.n.10') (noun.communication)
+	Synset('analyze.v.01') (verb.cognition)
+	Synset('study.v.02') (verb.cognition)
+	Synset('study.v.03') (verb.perception)
+	Synset('learn.v.04') (verb.cognition)
+	Synset('study.v.05') (verb.cognition)
+	Synset('study.v.06') (verb.cognition)
+psychology
+	Synset('psychology.n.01') (noun.cognition)
+2
+	Synset('two.n.01') (noun.quantity)
+	Synset('two.s.01') (adj.all)
+0.048192610077 noun.cognition
+0.0285611860454 noun.act
+0.0143428537995 noun.quantity
+0.0105698579267 noun.communication
+0.00503408040762 noun.artifact
+0.000479718250608 noun.person
+psychopathology: noun.cognition (correct: noun.cognition)
+
+Looking for 'quartzite'
+Attempting to classify 'quartzite'
+adding 641 contexts from web to query vector.
+Similar words: quartzite, sandstone, green, quartz, white, pink, grey, red, stone, natural, mauve, arizona, progenies, wisterias, granite
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.080838
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.196603
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4820 features (7292 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.034991
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.214459
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: sandstone, stone, granite
+sandstone
+	Synset('sandstone.n.01') (noun.substance)
+stone
+	Synset('rock.n.01') (noun.object)
+	Synset('stone.n.02') (noun.artifact)
+	Synset('rock.n.02') (noun.substance)
+	Synset('hailstone.n.01') (noun.substance)
+	Synset('gem.n.02') (noun.substance)
+	Synset('stone.n.06') (noun.quantity)
+	Synset('stone.n.07') (noun.plant)
+	Synset('stone.v.01') (verb.contact)
+	Synset('pit.v.03') (verb.change)
+	Synset('stone.s.01') (adj.all)
+granite
+	Synset('granite.n.01') (noun.substance)
+	Synset('granite.n.02') (noun.attribute)
+0.199881330305 noun.substance
+0.0810298845172 noun.object
+0.0486179307103 noun.artifact
+0.0242199026048 noun.attribute
+0.00630088382006 noun.quantity
+0.00378053029203 noun.plant
+quartzite: noun.substance (correct: noun.substance)
+
+Looking for 'refs'
+Attempting to classify 'refs'
+adding 134 contexts from web to query vector.
+Similar words: refs, 3, 7, 2, 1, rio, l, 5, pts
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:05.825849
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 1266 features (1506 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:05.731167
+INFO:dictionary:built Dictionary(8 unique tokens) from 1 documents (total 8 corpus positions)
+Web similar words: 5, 1, pts
+5
+	Synset('five.n.01') (noun.quantity)
+	Synset('five.s.01') (adj.all)
+1
+	Synset('one.n.01') (noun.quantity)
+	Synset('one.s.01') (adj.all)
+pts
+	Synset('platinum.n.01') (noun.substance)
+0.0148452650756 noun.quantity
+0.00208007753827 noun.substance
+refs: noun.quantity (correct: noun.person)
+
+Looking for 'rotary_international'
+Attempting to classify 'rotary_international'
+adding 1 contexts from web to query vector.
+Similar words: rotary_international, glen, taipei, millennium, amounts, town, program, country
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:07.159489
+INFO:tfidfmodel:calculating IDF weights for 8 documents and 2668 features (3337 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.660466
+INFO:dictionary:built Dictionary(14 unique tokens) from 1 documents (total 14 corpus positions)
+Web similar words: program, amounts, country
+program
+	Synset('program.n.01') (noun.cognition)
+	Synset('plan.n.01') (noun.cognition)
+	Synset('program.n.03') (noun.communication)
+	Synset('course_of_study.n.01') (noun.communication)
+	Synset('broadcast.n.02') (noun.communication)
+	Synset('program.n.06') (noun.act)
+	Synset('platform.n.02') (noun.communication)
+	Synset('program.n.08') (noun.communication)
+	Synset('program.v.01') (verb.communication)
+	Synset('program.v.02') (verb.creation)
+amounts
+	Synset('sum.n.01') (noun.possession)
+	Synset('amount.n.02') (noun.attribute)
+	Synset('measure.n.03') (noun.Tops)
+	Synset('sum.n.02') (noun.cognition)
+	Synset('amount.v.01') (verb.stative)
+	Synset('total.v.01') (verb.stative)
+	Synset('come.v.14') (verb.stative)
+country
+	Synset('country.n.01') (noun.location)
+	Synset('state.n.03') (noun.group)
+	Synset('nation.n.02') (noun.group)
+	Synset('area.n.01') (noun.location)
+	Synset('country.n.05') (noun.location)
+	Synset('country.s.01') (adj.all)
+	Synset('country-style.s.01') (adj.all)
+	Synset('country.s.03') (adj.all)
+0.00344876604993 noun.cognition
+0.00180817290675 noun.possession
+0.00149134992157 noun.communication
+0.00130881563826 noun.location
+0.00108490374405 noun.attribute
+0.000933756697923 noun.group
+0.00065094224643 noun.Tops
+0.000148628554121 noun.act
+rotary_international: noun.cognition (correct: noun.group)
+
+Looking for 'saint_joseph'
+Attempting to classify 'saint_joseph'
+adding 1 contexts from web to query vector.
+Similar words: saint_joseph, church, mass, fire, town, 40, small, 30, south, sister, people, center, order, member
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 64.29% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.125454
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:12.425472
+INFO:tfidfmodel:calculating IDF weights for 14 documents and 3763 features (5339 matrix non-zeros)
+ 64.29% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.444936
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:13.133774
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: people, church, small
+people
+	Synset('people.n.01') (noun.group)
+	Synset('citizenry.n.01') (noun.group)
+	Synset('multitude.n.03') (noun.group)
+	Synset('people.n.04') (noun.group)
+	Synset('people.v.01') (verb.change)
+	Synset('dwell.v.03') (verb.stative)
+church
+	Synset('church.n.01') (noun.group)
+	Synset('church.n.02') (noun.artifact)
+	Synset('church_service.n.01') (noun.act)
+	Synset('church.v.01') (verb.motion)
+small
+	Synset('small.n.01') (noun.body)
+	Synset('small.n.02') (noun.attribute)
+	Synset('small.a.01') (adj.all)
+	Synset('minor.s.10') (adj.all)
+	Synset('humble.s.01') (adj.all)
+	Synset('insignificant.s.04') (adj.all)
+	Synset('little.s.04') (adj.all)
+	Synset('microscopic.a.02') (adj.all)
+	Synset('modest.s.02') (adj.all)
+	Synset('little.s.07') (adj.all)
+	Synset('belittled.s.01') (adj.all)
+	Synset('little.s.10') (adj.all)
+	Synset('little.s.08') (adj.all)
+	Synset('small.s.12') (adj.all)
+	Synset('small.s.13') (adj.all)
+	Synset('mean.s.06') (adj.all)
+	Synset('small.r.01') (adv.all)
+0.0318866824061 noun.group
+0.00512063764036 noun.artifact
+0.00434683216736 noun.body
+0.00307238258421 noun.act
+0.00260809930041 noun.attribute
+saint_joseph: noun.group (correct: noun.time)
+
+Looking for 'scrubland'
+Attempting to classify 'scrubland'
+adding 548 contexts from web to query vector.
+Similar words: scrubland, palmetto, scrub, vegetation, insects, halo, climate, animals, 1, information, 4, 3, images, mules, noun
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.298675
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:09.431125
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4478 features (6579 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.324499
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:09.478617
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: vegetation, scrub, images
+vegetation
+	Synset('vegetation.n.01') (noun.group)
+	Synset('vegetation.n.02') (noun.act)
+scrub
+	Synset('scrub.n.01') (noun.group)
+	Synset('scrub.n.02') (noun.act)
+	Synset('scrub.v.01') (verb.contact)
+	Synset('scrub.v.02') (verb.body)
+	Synset('cur.s.01') (adj.all)
+	Synset('scrub.s.02') (adj.all)
+images
+	Synset('image.n.01') (noun.cognition)
+	Synset('persona.n.02') (noun.attribute)
+	Synset('picture.n.01') (noun.artifact)
+	Synset('prototype.n.01') (noun.cognition)
+	Synset('trope.n.01') (noun.communication)
+	Synset('double.n.03') (noun.person)
+	Synset('effigy.n.01') (noun.artifact)
+	Synset('visualize.v.01') (verb.creation)
+0.0765965655446 noun.group
+0.0459579393268 noun.act
+0.0161141583323 noun.cognition
+0.00795106496662 noun.attribute
+0.00538891379178 noun.artifact
+0.00171743003279 noun.communication
+0.00103045801967 noun.person
+scrubland: noun.group (correct: noun.location)
+
+Looking for 'shallowness'
+Attempting to classify 'shallowness'
+adding 218 contexts from web to query vector.
+Similar words: shallowness, noun, profundity, shallow, thesaurus, 1, antonym, 2, dictionary, synonyms, depth, examples, 0, senses, superficiality
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.384005
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.870908
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 2752 features (3846 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.460443
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.990609
+INFO:dictionary:built Dictionary(9 unique tokens) from 1 documents (total 9 corpus positions)
+Web similar words: superficiality, shallow, 2
+superficiality
+	Synset('superficiality.n.01') (noun.attribute)
+	Synset('superficiality.n.02') (noun.attribute)
+shallow
+	Synset('shoal.n.01') (noun.object)
+	Synset('shallow.v.01') (verb.change)
+	Synset('shallow.v.02') (verb.change)
+	Synset('shallow.a.01') (adj.all)
+	Synset('shallow.a.02') (adj.all)
+	Synset('shallow.s.03') (adj.all)
+2
+	Synset('two.n.01') (noun.quantity)
+	Synset('two.s.01') (adj.all)
+0.18113001585 noun.attribute
+0.0274556893855 noun.object
+0.0182363316417 noun.quantity
+shallowness: noun.attribute (correct: noun.attribute)
+
+Looking for 'short_wave'
+Attempting to classify 'short_wave'
+adding 1 contexts from web to query vector.
+Similar words: short_wave, radio, kinyarwanda, swahili, transmitter, telegrams, transmissions, broadcasts, broadcast
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.165010
+INFO:tfidfmodel:calculating IDF weights for 9 documents and 2620 features (3451 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.058514
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: transmitter, transmissions, radio
+transmitter
+	Synset('sender.n.01') (noun.person)
+	Synset('transmitter.n.02') (noun.artifact)
+transmissions
+	Synset('transmission.n.01') (noun.act)
+	Synset('transmission.n.02') (noun.communication)
+	Synset('transmittance.n.01') (noun.quantity)
+	Synset('infection.n.02') (noun.event)
+	Synset('transmission.n.05') (noun.artifact)
+radio
+	Synset('radio.n.01') (noun.communication)
+	Synset('radio_receiver.n.01') (noun.artifact)
+	Synset('radio.n.03') (noun.artifact)
+	Synset('radio.v.01') (verb.communication)
+	Synset('radio.a.01') (adj.pert)
+0.0191470854923 noun.artifact
+0.0171063877642 noun.person
+0.0130451422185 noun.communication
+0.00815430935472 noun.act
+0.0029355513677 noun.quantity
+0.00176133082062 noun.event
+short_wave: noun.artifact (correct: noun.phenomenon)
+
+Looking for 'sine'
+Attempting to classify 'sine'
+adding 280 contexts from web to query vector.
+Similar words: sine, curve, die, naturalism, noun, curves, tangent, function, scimitars, esthetic
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.494989
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:05.701711
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 2818 features (3720 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.501304
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:05.725736
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: tangent, function, curve
+tangent
+	Synset('tangent.n.01') (noun.shape)
+	Synset('tangent.n.02') (noun.relation)
+function
+	Synset('function.n.01') (noun.relation)
+	Synset('function.n.02') (noun.attribute)
+	Synset('function.n.03') (noun.act)
+	Synset('function.n.04') (noun.relation)
+	Synset('function.n.05') (noun.group)
+	Synset('routine.n.03') (noun.communication)
+	Synset('function.v.01') (verb.contact)
+	Synset('serve.v.01') (verb.stative)
+	Synset('officiate.v.02') (verb.competition)
+curve
+	Synset('curve.n.01') (noun.shape)
+	Synset('curve.n.02') (noun.communication)
+	Synset('curve.n.03') (noun.act)
+	Synset('curvature.n.03') (noun.attribute)
+	Synset('bend.n.03') (noun.artifact)
+	Synset('swerve.v.01') (verb.motion)
+	Synset('wind.v.02') (verb.stative)
+	Synset('arch.v.01') (verb.motion)
+	Synset('crook.v.01') (verb.motion)
+	Synset('curl.v.01') (verb.change)
+0.0806221206486 noun.relation
+0.0663414206356 noun.shape
+0.0283665357381 noun.attribute
+0.0207214372605 noun.act
+0.0128659329683 noun.communication
+0.00537761476636 noun.group
+0.00208210264742 noun.artifact
+sine: noun.relation (correct: noun.relation)
+
+Looking for 'smith'
+Attempting to classify 'smith'
+adding 320 contexts from web to query vector.
+Similar words: smith
+smith: ?? (correct: noun.person)
+
+Looking for 'spectrometers'
+Attempting to classify 'spectrometers'
+adding 491 contexts from web to query vector.
+Similar words: spectrometers, mass, spectrometer, manufacturer, amp, distributor, x_ray, absorption, grating, wavelength
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.691817
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:07.388956
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 3512 features (4737 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.701166
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:07.482041
+INFO:dictionary:built Dictionary(6 unique tokens) from 1 documents (total 6 corpus positions)
+Web similar words: absorption, spectrometer, mass
+absorption
+	Synset('absorption.n.01') (noun.process)
+	Synset('absorption.n.02') (noun.process)
+	Synset('assimilation.n.04') (noun.process)
+	Synset('concentration.n.05') (noun.cognition)
+	Synset('preoccupation.n.02') (noun.cognition)
+	Synset('assimilation.n.01') (noun.act)
+spectrometer
+	Synset('mass_spectrometer.n.01') (noun.artifact)
+mass
+	Synset('mass.n.01') (noun.attribute)
+	Synset('batch.n.02') (noun.quantity)
+	Synset('mass.n.03') (noun.group)
+	Synset('mass.n.04') (noun.act)
+	Synset('mass.n.05') (noun.object)
+	Synset('multitude.n.03') (noun.group)
+	Synset('bulk.n.02') (noun.attribute)
+	Synset('mass.n.08') (noun.communication)
+	Synset('mass.v.01') (verb.motion)
+	Synset('mass.s.01') (adj.all)
+	Synset('aggregate.s.01') (adj.all)
+0.145382430851 noun.process
+0.0693676173687 noun.artifact
+0.0681812477045 noun.attribute
+0.0390851899981 noun.quantity
+0.0285165546227 noun.group
+0.025634779644 noun.cognition
+0.0198384938192 noun.act
+0.0084424010396 noun.object
+0.00182355862455 noun.communication
+spectrometers: noun.process (correct: noun.artifact)
+
+Looking for 'statements'
+Attempting to classify 'statements'
+adding 315 contexts from web to query vector.
+Similar words: statements, inconclusiveness, misstatement, manifestoes, method, congess
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:02.794208
+INFO:tfidfmodel:calculating IDF weights for 6 documents and 997 features (1116 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:02.796621
+INFO:dictionary:built Dictionary(6 unique tokens) from 1 documents (total 6 corpus positions)
+Web similar words: method, misstatement, inconclusiveness
+method
+	Synset('method.n.01') (noun.cognition)
+	Synset('wise.n.01') (noun.attribute)
+misstatement
+	Synset('misstatement.n.01') (noun.communication)
+inconclusiveness
+	Synset('inconclusiveness.n.01') (noun.attribute)
+0.017868258059 noun.cognition
+0.0124229473062 noun.attribute
+0.00744985183701 noun.communication
+statements: noun.cognition (correct: noun.communication)
+
+Looking for 'stickler'
+Attempting to classify 'stickler'
+adding 803 contexts from web to query vector.
+Similar words: stickler, syndrome, carpal, synonyms, deficiency, malingerers
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:04.355820
+INFO:tfidfmodel:calculating IDF weights for 6 documents and 1711 features (2130 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:04.477743
+INFO:dictionary:built Dictionary(8 unique tokens) from 1 documents (total 8 corpus positions)
+Web similar words: syndrome, carpal, synonyms
+syndrome
+	Synset('syndrome.n.01') (noun.cognition)
+	Synset('syndrome.n.02') (noun.state)
+carpal
+	Synset('carpal_bone.n.01') (noun.body)
+	Synset('carpal.a.01') (adj.pert)
+synonyms
+	Synset('synonym.n.01') (noun.communication)
+0.0902798622847 noun.cognition
+0.0541679173708 noun.state
+0.0288488809019 noun.body
+0.00358213461004 noun.communication
+stickler: noun.cognition (correct: noun.person)
+
+Looking for 'suitcase'
+Attempting to classify 'suitcase'
+adding 506 contexts from web to query vector.
+Similar words: suitcase, upright, rolling, untying, spinner, clefts, luggage, scoliosis
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:06.288473
+INFO:tfidfmodel:calculating IDF weights for 8 documents and 2965 features (3857 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:06.361617
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: luggage, rolling, upright
+luggage
+	Synset('baggage.n.01') (noun.artifact)
+rolling
+	Synset('peal.n.01') (noun.event)
+	Synset('rolling.n.02') (noun.act)
+	Synset('wheeling.n.02') (noun.act)
+	Synset('roll.v.01') (verb.motion)
+	Synset('wheel.v.03') (verb.motion)
+	Synset('roll.v.03') (verb.stative)
+	Synset('roll_out.v.01') (verb.contact)
+	Synset('roll.v.05') (verb.perception)
+	Synset('wind.v.03') (verb.contact)
+	Synset('roll.v.07') (verb.contact)
+	Synset('roll.v.08') (verb.change)
+	Synset('roll.v.09') (verb.body)
+	Synset('hustle.v.03') (verb.possession)
+	Synset('roll.v.11') (verb.communication)
+	Synset('seethe.v.05') (verb.change)
+	Synset('resonant.s.02') (adj.all)
+	Synset('rolled.s.02') (adj.all)
+	Synset('billowing.s.01') (adj.all)
+upright
+	Synset('upright.n.01') (noun.artifact)
+	Synset('upright.n.02') (noun.artifact)
+	Synset('upright.s.01') (adj.all)
+	Synset('good.s.08') (adj.all)
+	Synset('straight.s.04') (adj.all)
+	Synset('standing.a.03') (adj.all)
+	Synset('erect.a.01') (adj.all)
+0.0357846386731 noun.artifact
+0.0160765759647 noun.event
+0.0154335129261 noun.act
+suitcase: noun.artifact (correct: noun.artifact)
+
+Looking for 'tantrum'
+Attempting to classify 'tantrum'
+adding 428 contexts from web to query vector.
+Similar words: tantrum, temper, tantrums, spanish_fly, synonyms, pouts, shouter, rage, definition, impetuousness, thesaurus, see, n, barroom, child
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.127587
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:08.790779
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 2766 features (3861 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.158106
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:08.842641
+INFO:dictionary:built Dictionary(2 unique tokens) from 1 documents (total 2 corpus positions)
+Web similar words: temper, tantrums, n
+temper
+	Synset('pique.n.02') (noun.feeling)
+	Synset('temper.n.02') (noun.feeling)
+	Synset('temper.n.03') (noun.attribute)
+	Synset('temper.n.04') (noun.attribute)
+	Synset('anneal.v.01') (verb.change)
+	Synset('temper.v.02') (verb.change)
+	Synset('temper.v.03') (verb.change)
+	Synset('temper.v.04') (verb.change)
+	Synset('chasten.v.02') (verb.change)
+tantrums
+	Synset('fit.n.01') (noun.state)
+n
+	Synset('nitrogen.n.01') (noun.substance)
+	Synset('north.n.03') (noun.relation)
+	Synset('newton.n.02') (noun.quantity)
+0.689534902573 noun.feeling
+0.248232564926 noun.attribute
+0.101942889392 noun.state
+0.0142058236524 noun.substance
+0.00852349419147 noun.relation
+0.00511409651488 noun.quantity
+tantrum: noun.feeling (correct: noun.state)
+
+Looking for 'terrorists'
+Attempting to classify 'terrorists'
+adding 556 contexts from web to query vector.
+Similar words: terrorists, scimitar
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:01.792587
+INFO:tfidfmodel:calculating IDF weights for 2 documents and 802 features (832 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:01.786267
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: 
+terrorists: ?? (correct: noun.person)
+
+Looking for 'titania'
+Attempting to classify 'titania'
+adding 505 contexts from web to query vector.
+Similar words: titania, mythology, creel, thrall, priam, iliad, punches, starling, throws, thor, says, noun, hits, uranus, wizard
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.554506
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.601607
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4626 features (6465 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.534141
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.559866
+INFO:dictionary:built Dictionary(2 unique tokens) from 1 documents (total 2 corpus positions)
+Web similar words: uranus, starling, says
+uranus
+	Synset('ouranos.n.01') (noun.person)
+	Synset('uranus.n.02') (noun.object)
+starling
+	Synset('starling.n.01') (noun.animal)
+says
+	Synset('say.n.01') (noun.state)
+	Synset('state.v.01') (verb.communication)
+	Synset('allege.v.01') (verb.communication)
+	Synset('suppose.v.01') (verb.communication)
+	Synset('read.v.02') (verb.stative)
+	Synset('say.v.05') (verb.communication)
+	Synset('say.v.06') (verb.communication)
+	Synset('order.v.01') (verb.communication)
+	Synset('pronounce.v.01') (verb.communication)
+	Synset('say.v.09') (verb.communication)
+	Synset('say.v.10') (verb.communication)
+	Synset('say.v.11') (verb.communication)
+0.149488463998 noun.person
+0.0896930783987 noun.object
+0.0078568616882 noun.animal
+0.00380393816158 noun.state
+titania: noun.person (correct: noun.substance)
+
+Looking for 'tonne'
+Attempting to classify 'tonne'
+adding 349 contexts from web to query vector.
+Similar words: tonne, dollars
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:00.899377
+INFO:tfidfmodel:calculating IDF weights for 2 documents and 362 features (361 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:00.894397
+INFO:dictionary:built Dictionary(11 unique tokens) from 1 documents (total 11 corpus positions)
+Web similar words: 
+tonne: ?? (correct: noun.quantity)
+
+Looking for 'united_states_trade_representative'
+Attempting to classify 'united_states_trade_representative'
+adding 1 contexts from web to query vector.
+Similar words: united_states_trade_representative, office, counsel, ira, aide, dispute, offices, affairs, general, talks, trade
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 81.82% [[32m████████████████[m....] corpus pass #1 / ETA 0:00:01.313207
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:07.954673
+INFO:tfidfmodel:calculating IDF weights for 11 documents and 2319 features (3112 matrix non-zeros)
+ 81.82% [[32m████████████████[m....] corpus pass #2 / ETA 0:00:01.297558
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:07.873179
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: office, counsel, general
+office
+	Synset('office.n.01') (noun.artifact)
+	Synset('agency.n.01') (noun.group)
+	Synset('function.n.03') (noun.act)
+	Synset('office.n.04') (noun.state)
+	Synset('office.n.05') (noun.group)
+	Synset('office.n.06') (noun.act)
+	Synset('position.n.06') (noun.act)
+counsel
+	Synset('advocate.n.02') (noun.person)
+	Synset('guidance.n.01') (noun.communication)
+	Synset('advise.v.01') (verb.communication)
+general
+	Synset('general.n.01') (noun.person)
+	Synset('general.n.02') (noun.cognition)
+	Synset('general.v.01') (verb.communication)
+	Synset('general.a.01') (adj.all)
+	Synset('general.s.02') (adj.all)
+	Synset('general.s.03') (adj.all)
+	Synset('general.s.04') (adj.all)
+	Synset('general.a.05') (adj.all)
+	Synset('general.s.06') (adj.all)
+	Synset('cosmopolitan.s.03') (adj.all)
+0.0587051473558 noun.artifact
+0.0428312755108 noun.group
+0.0284377126615 noun.act
+0.0126803118289 noun.state
+0.00899125495926 noun.person
+0.0029992078431 noun.communication
+0.00239554513246 noun.cognition
+united_states_trade_representative: noun.artifact (correct: noun.group)
+
+Looking for 'verbosity'
+Attempting to classify 'verbosity'
+adding 186 contexts from web to query vector.
+Similar words: verbosity, synonyms, thesaurus, verbiage, quotes, dictionary, noun, definition, code, phrases, words, syntax, java, examples, images
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.913510
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.632023
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3627 features (5687 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.949767
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.649866
+INFO:dictionary:built Dictionary(12 unique tokens) from 1 documents (total 12 corpus positions)
+Web similar words: quotes, synonyms, definition
+quotes
+	Synset('quotation_mark.n.01') (noun.communication)
+	Synset('quotation.n.02') (noun.communication)
+	Synset('quote.v.01') (verb.communication)
+	Synset('quote.v.02') (verb.communication)
+synonyms
+	Synset('synonym.n.01') (noun.communication)
+definition
+	Synset('definition.n.01') (noun.communication)
+	Synset('definition.n.02') (noun.attribute)
+0.0475687217899 noun.communication
+0.00404762327671 noun.attribute
+verbosity: noun.communication (correct: noun.communication)
+
+Looking for 'volt'
+Attempting to classify 'volt'
+adding 1323 contexts from web to query vector.
+Similar words: volt, 12, gm, volts, battery, electric, wills, car, batteries, gms, hybrid, read
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 75.00% [[32m███████████████[m.....] corpus pass #1 / ETA 0:00:02.402466
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.143313
+INFO:tfidfmodel:calculating IDF weights for 12 documents and 3400 features (5072 matrix non-zeros)
+ 75.00% [[32m███████████████[m.....] corpus pass #2 / ETA 0:00:02.390945
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.099766
+INFO:dictionary:built Dictionary(10 unique tokens) from 1 documents (total 10 corpus positions)
+Web similar words: 12, volts, batteries
+12
+	Synset('twelve.n.01') (noun.quantity)
+	Synset('twelve.s.01') (adj.all)
+volts
+	Synset('volt.n.01') (noun.quantity)
+batteries
+	Synset('battery.n.01') (noun.group)
+	Synset('battery.n.02') (noun.artifact)
+	Synset('battery.n.03') (noun.group)
+	Synset('battery.n.04') (noun.group)
+	Synset('battery.n.05') (noun.artifact)
+	Synset('barrage.n.02') (noun.act)
+	Synset('battery.n.07') (noun.act)
+0.179417185485 noun.quantity
+0.0793395454884 noun.group
+0.0367297794342 noun.artifact
+0.00626339396667 noun.act
+volt: noun.quantity (correct: noun.quantity)
+
+Looking for 'watchdogs'
+Attempting to classify 'watchdogs'
+adding 154 contexts from web to query vector.
+Similar words: watchdogs, charity, dads, demolitions, bull, threads, surveillance, bs, queue, charities
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 90.00% [[32m██████████████████[m..] corpus pass #1 / ETA 0:00:00.712195
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:07.800764
+INFO:tfidfmodel:calculating IDF weights for 10 documents and 2731 features (3571 matrix non-zeros)
+ 90.00% [[32m██████████████████[m..] corpus pass #2 / ETA 0:00:00.711997
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:07.800666
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: surveillance, charity, charities
+surveillance
+	Synset('surveillance.n.01') (noun.act)
+charity
+	Synset('charity.n.01') (noun.group)
+	Synset('charity.n.02') (noun.attribute)
+	Synset('charity.n.03') (noun.act)
+	Synset("jacob's_ladder.n.01") (noun.plant)
+	Synset('charity.n.05') (noun.group)
+charities
+	Synset('charity.n.01') (noun.group)
+	Synset('charity.n.02') (noun.attribute)
+	Synset('charity.n.03') (noun.act)
+	Synset("jacob's_ladder.n.01") (noun.plant)
+	Synset('charity.n.05') (noun.group)
+0.0213314123685 noun.act
+0.00391990293749 noun.group
+0.00208210141864 noun.attribute
+0.000749556510709 noun.plant
+watchdogs: noun.act (correct: noun.animal)
+
+Looking for 'windy_city'
+Attempting to classify 'windy_city'
+adding 1 contexts from web to query vector.
+Similar words: windy_city, hole, drama, hospital, evenings, black, horns, lock, apples, long, chicago, cast, us, career, bad
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.973720
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:10.324228
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3990 features (5656 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.977309
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:10.334707
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: chicago, drama, black
+chicago
+	Synset('chicago.n.01') (noun.location)
+	Synset('michigan.n.02') (noun.act)
+drama
+	Synset('play.n.01') (noun.communication)
+	Synset('drama.n.02') (noun.event)
+	Synset('drama.n.03') (noun.communication)
+	Synset('drama.n.04') (noun.attribute)
+black
+	Synset('black.n.01') (noun.attribute)
+	Synset('total_darkness.n.01') (noun.state)
+	Synset('black.n.03') (noun.person)
+	Synset('black.n.04') (noun.artifact)
+	Synset('black.n.05') (noun.artifact)
+	Synset('blacken.v.01') (verb.change)
+	Synset('black.a.01') (adj.all)
+	Synset('black.a.02') (adj.all)
+	Synset('black.s.03') (adj.all)
+	Synset('black.s.04') (adj.all)
+	Synset('black.s.05') (adj.all)
+	Synset('black.s.06') (adj.all)
+	Synset('black.s.07') (adj.all)
+	Synset('black.s.08') (adj.all)
+	Synset('black.s.09') (adj.all)
+	Synset('black.s.10') (adj.all)
+	Synset('bootleg.s.01') (adj.all)
+	Synset('black.s.12') (adj.all)
+	Synset('black.s.13') (adj.all)
+	Synset('black.s.14') (adj.all)
+	Synset('black.s.15') (adj.all)
+0.200055778027 noun.location
+0.120033466816 noun.act
+0.00169177403674 noun.communication
+0.00148466285225 noun.attribute
+0.00074637089856 noun.event
+0.000729581597261 noun.state
+0.000437748958357 noun.person
+0.000420239000022 noun.artifact
+windy_city: noun.location (correct: noun.location)
+
+Looking for 'yangtze_rivers'
+Attempting to classify 'yangtze_rivers'
+adding 1 contexts from web to query vector.
+Similar words: yangtze_rivers, tributaries, yellow, estuary, third, dam, km, zone, sea, build, west, north, chinas, 25, case
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.678387
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.194742
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 3453 features (4653 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.671097
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.187250
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: 
+yangtze_rivers: ?? (correct: noun.object)
+
+Looking for 'yarrow'
+Attempting to classify 'yarrow'
+adding 581 contexts from web to query vector.
+Similar words: yarrow, coneflowers, var, boiler, plants, flowers, plant, common, herb, daisies, tea, use, herbs, dictionary, can
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:04.147378
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.478668
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4369 features (6767 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:04.146376
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.477063
+INFO:dictionary:built Dictionary(7 unique tokens) from 1 documents (total 7 corpus positions)
+Web similar words: plants, herb, common
+plants
+	Synset('plant.n.01') (noun.artifact)
+	Synset('plant.n.02') (noun.Tops)
+	Synset('plant.n.03') (noun.cognition)
+	Synset('plant.n.04') (noun.person)
+	Synset('plant.v.01') (verb.contact)
+	Synset('implant.v.01') (verb.contact)
+	Synset('establish.v.02') (verb.creation)
+	Synset('plant.v.04') (verb.possession)
+	Synset('plant.v.05') (verb.cognition)
+herb
+	Synset('herb.n.01') (noun.plant)
+	Synset('herb.n.02') (noun.food)
+common
+	Synset('park.n.02') (noun.location)
+	Synset('common.a.01') (adj.all)
+	Synset('common.a.02') (adj.all)
+	Synset('common.s.03') (adj.all)
+	Synset('common.s.04') (adj.all)
+	Synset('common.s.05') (adj.all)
+	Synset('common.s.06') (adj.all)
+	Synset('coarse.s.03') (adj.all)
+	Synset('coarse.s.02') (adj.all)
+	Synset('common.s.09') (adj.all)
+0.00939623545855 noun.artifact
+0.00609595188871 noun.plant
+0.00590991182253 noun.location
+0.00563774127513 noun.Tops
+0.00365757113323 noun.food
+0.00338264476508 noun.cognition
+0.00202958685905 noun.person
+yarrow: noun.artifact (correct: noun.plant)
+
+Looking for 'z'
+Attempting to classify 'z'
+adding 254 contexts from web to query vector.
+Similar words: z, lyrics, tabs, tunefulness, obliviousness, synapse, flower_child
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+100.00% [[32m████████████████████[m] completed pass #1 in 0:00:05.782193
+INFO:tfidfmodel:calculating IDF weights for 7 documents and 1667 features (1972 matrix non-zeros)
+100.00% [[32m████████████████████[m] completed pass #2 in 0:00:05.775609
+INFO:dictionary:built Dictionary(15 unique tokens) from 1 documents (total 15 corpus positions)
+Web similar words: lyrics, synapse, obliviousness
+lyrics
+	Synset('lyric.n.01') (noun.communication)
+	Synset('lyric.n.02') (noun.communication)
+	Synset('lyric.v.01') (verb.creation)
+synapse
+	Synset('synapse.n.01') (noun.body)
+obliviousness
+	Synset('obliviousness.n.01') (noun.cognition)
+0.00542874597013 noun.communication
+0.00139981019311 noun.body
+0.00126207293943 noun.cognition
+z: noun.communication (correct: noun.event)
+
+Looking for 'zoology'
+Attempting to classify 'zoology'
+adding 512 contexts from web to query vector.
+Similar words: zoology, ornithologist, birminghams, sherlock, invertebrate, copenhagens, botany, history, colleges, biology, animals, department, science, study, vertebrate
+Fetching online corpuses...
+INFO:tfidfmodel:collecting document frequencies
+INFO:tfidfmodel:PROGRESS: processing document #0
+ 60.00% [[32m████████████[m........] corpus pass #1 / ETA 0:00:03.940693
+M[K100.00% [[32m████████████████████[m] completed pass #1 in 0:00:11.616127
+INFO:tfidfmodel:calculating IDF weights for 15 documents and 4097 features (6418 matrix non-zeros)
+ 60.00% [[32m████████████[m........] corpus pass #2 / ETA 0:00:03.937064
+M[K100.00% [[32m████████████████████[m] completed pass #2 in 0:00:11.605529
+Web similar words: colleges, study, animals
+colleges
+	Synset('college.n.01') (noun.group)
+	Synset('college.n.02') (noun.group)
+	Synset('college.n.03') (noun.artifact)
+	Synset('college.n.04') (noun.artifact)
+study
+	Synset('survey.n.01') (noun.act)
+	Synset('study.n.02') (noun.cognition)
+	Synset('report.n.01') (noun.communication)
+	Synset('study.n.04') (noun.cognition)
+	Synset('study.n.05') (noun.artifact)
+	Synset('discipline.n.01') (noun.cognition)
+	Synset('sketch.n.01') (noun.artifact)
+	Synset('cogitation.n.01') (noun.cognition)
+	Synset('study.n.09') (noun.person)
+	Synset('study.n.10') (noun.communication)
+	Synset('analyze.v.01') (verb.cognition)
+	Synset('study.v.02') (verb.cognition)
+	Synset('study.v.03') (verb.perception)
+	Synset('learn.v.04') (verb.cognition)
+	Synset('study.v.05') (verb.cognition)
+	Synset('study.v.06') (verb.cognition)
+animals
+	Synset('animal.n.01') (noun.Tops)
+0.229905128479 noun.group
+0.0959166745234 noun.artifact
+0.0746120885015 noun.act
+0.0687739611797 noun.cognition
+0.0495385155082 noun.Tops
+0.0276122698064 noun.communication
+0.0012531965764 noun.person
+zoology: noun.group (correct: noun.cognition)
+
+------------------------------------------------------------
+Precision: 31.11% (28/90)
+Recall: 28.00% (28/100)
+Testing time: 0:40:30.665490
