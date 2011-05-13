@@ -5,11 +5,12 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 \author{Stephen Roller \& Karl Pichotta}
 
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{amsmath}
 
 \usepackage[pdfborder={0 0 0}]{hyperref}
-
 \usepackage{multirow}
 
 \begin{document}
@@ -111,30 +112,62 @@ Once we have finalized our list of $k$-nearest neighbors, we apply a voting sche
 Each synset provides a vote for its supersense, and the amount a synset's vote counts is proportional to where it appears in the WordNet list of synsets---a synset appearing at the beginning of the list counts more than a synset appearing at the end.
 We hypothesize that a synset's vote should be proportional to the frequency of that synset's use; since WordNet synsets are listed approximately in decreasing order of frequency of use, this is a plausible way to work this hypothesis into the voting scheme.
 
-More formally, the voting scheme is as follows.
-For any vector $v$ representing a word, let $Synsets_v$ be the list of noun synsets of that word, ordered as in WordNet.
-Let $Synsets_v[i]$ be the $i$th element of this list (starting at 1).
-Let $Supersense(s)$ denote the superset of a particular synset $s$.
-Let $1_{S}(sup)$ be the indicator variable taking value 1 if supersense $sup$ is equal to supersense $S$, and 0 otherwise.
-Finally, let $\gamma$ be a damping factor such that $0< \gamma \leq 1$.
-Now, for any superset $S$ and vector $v$, define $Vote_S(v)$ as follows:
-$$Vote_S(v) = \sum_{i=1}^{|Synsets_v|}\left[ \gamma^{i-1} \cdot 1_S\left(Supersense(Synsets_v[i])\right)\right]$$
+The pseudocode describing the procedure is given as Algorithm \ref{alg:vote}.
+This pseudocode uses a few auxiliary functions worth mentioning:
+\begin{itemize}
+\item
+$sim(v,w)$ returns the cosine similarity value (between 0 and 1) for vectors $v$ and $w$.
+\item
+$noun$-$synsets(v)$ takes a vector representing a word $v$ and returns its noun synsets in the order that they appear in WordNet.
+\item
+$supersense(s)$ takes a synset $s$ and returns its superset.
+\item
+$\gamma$ is a damping (with~$0 < \gamma \leq 1$) responsible for ensuring synsets near the beginning of a word's WordNet entry count for more.
+\end{itemize}
+\begin{algorithm}[hbtp]
+\caption{Voting Scheme for word $w$}
+\label{alg:vote}
+\begin{algorithmic}
+\FORALL{$s\in supersenses$}
+\STATE $votes[s] \gets 0$
+\ENDFOR
+\FORALL{$n \in k$-$nearest$-$neighbors(w)$} 
+\STATE $c \gets 1$
+\FORALL{$s \in noun$-$synsets(n)$}
+\STATE $votes[supersense(s)] \gets votes[supersense(s)] + (c * sim(w,n))$
+\STATE $c \gets c * \gamma$
+\ENDFOR
+\ENDFOR
+\RETURN $\arg\max_s votes[s]$
+\end{algorithmic}
+\end{algorithm}
 
-Now, call the vector representing the word whose label we wish to guess $w$.
-Following Curran, we take the $Vote_S$ score for each of $w$'s $k$-nearest neighbors, and make the votes count proportional to how similar $w$ is to that vector.
-We then assign to $w$
-More formally, denote by $N_i(w)$ the $i$th neighbor of $w$ in the offline vector space model (so $N_1(w)$ is is the vector closes to $w$, $N_2(w)$ is the second-closest vector, and so on).
-Denote by $sim(v_1,v_2)$ the cosine similarity between vectors $v_1$ and $v_2$.
-The formula we use to arrive at a vote is
-\begin{equation}
-\textrm{Supersense}(w) =
-\arg\max_{s}
-\sum_{i=1}^{k}
-\left[
-d(w, N_i(w)) \cdot
-Vote_S(N_i(w))
-\right]
-\end{equation}
+
+
+%More formally, the voting scheme is as follows.
+%For any vector $v$ representing a word, let $Synsets_v$ be the list of noun synsets of that word, ordered as in WordNet.
+%Let $Synsets_v[i]$ be the $i$th element of this list (starting at 1).
+%Let $Supersense(s)$ denote the superset of a particular synset $s$.
+%Let $1_{S}(sup)$ be the indicator variable taking value 1 if supersense $sup$ is equal to supersense $S$, and 0 otherwise.
+%Finally, let $\gamma$ be a damping factor such that $0< \gamma \leq 1$.
+%Now, for any superset $S$ and vector $v$, define $Vote_S(v)$ as follows:
+%$$Vote_S(v) = \sum_{i=1}^{|Synsets_v|}\left[ \gamma^{i-1} \cdot 1_S\left(Supersense(Synsets_v[i])\right)\right]$$
+%
+%Now, call the vector representing the word whose label we wish to guess $w$.
+%Following Curran, we take the $Vote_S$ score for each of $w$'s $k$-nearest neighbors, and make the votes count proportional to how similar $w$ is to that vector.
+%We then assign to $w$
+%More formally, denote by $N_i(w)$ the $i$th neighbor of $w$ in the offline vector space model (so $N_1(w)$ is is the vector closes to $w$, $N_2(w)$ is the second-closest vector, and so on).
+%Denote by $sim(v_1,v_2)$ the cosine similarity between vectors $v_1$ and $v_2$.
+%The formula we use to arrive at a vote is
+%\begin{equation}
+%\textrm{Supersense}(w) =
+%\arg\max_{s}
+%\sum_{i=1}^{k}
+%\left[
+%d(w, N_i(w)) \cdot
+%Vote_S(N_i(w))
+%\right]
+%\end{equation}
 
 \end{enumerate}
 
@@ -294,7 +327,38 @@ We again use scraping for initial enrichment and descriptions for refinement, wi
 It is not immediately obvious that this curve should decrease past a certain point, but this makes some sense---past a point, the neighbors of the test word are not very semantically related to it, and considering them as members of the eventual set of $k$ neighbors does more harm than good.
 Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but more computationally tractable.
 
-INSERT GRAPH SHOWING EFFECT OF MODIFYING $k$ HERE
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=100mm]{graphs/k.png}
+\end{center}
+\caption{Effect of $k$ on F-score}
+\label{fig:k}
+\end{figure}
+Figure \ref{fig:k} gives the effect of varying $k$, the number of neighbors ultimately used in the voting scheme.
+As above, we use scraping for initial enrichment and descriptions for refinement, and we set $n=24$ and $\gamma=0.7$.
+It is unclear why this graph is so much less smooth than the others---the numbers are generated on a relatively small devset of 100 words, so the numbers are to be taken with a grain of salt.
+For the experiments in Figure \ref{fig:res}, we use $k=3$, which is not unreasonable, but $k=4$ or $5$ would likely be preferable.
+
+\begin{figure}[hbtp]
+\begin{center}
+\begin{tabular}{|c|c|c|c||c|c|c|c|}
+\hline
+  \multicolumn{4}{|c||}{{\bf 1.6 Test Set}} & \multicolumn{4}{c|}{{\bf 1.7 Test Set}}  \\
+  {\bf P} & {\bf R} & {\bf A} & {\bf F} & {\bf P} & {\bf R} & {\bf A} & {\bf F} \\
+\hline \hline
+xx.xx & xx.xx & xx.xx & xx.xx & xx.xx & xx.xx & xx.xx & xx.xx \\
+\hline
+\multicolumn{3}{|c|}{{\it (increase over fig \ref{fig:res}):}} & x & \multicolumn{3}{c|}{{\it (increase over fig \ref{fig:res}):}}  & x  \\
+\hline
+\end{tabular}
+\caption{Results on 1.6 and 1.7 testsets with tuned params (enrichment by scraping, refinement by descriptions)}
+\label{fig:tunedres}
+\end{center}
+\end{figure}
+We used the results from Figure \ref{fig:res} to determine the experimental setup on which to tune these parameters.
+We then reran one configuration from Figure \ref{fig:res} (Enrichment = ``scrape'', Refinement = ``descriptions''---the one we used to tune the parameters) with the optimal values for the parameters.
+Figure \ref{fig:tunedres} gives the performance of the configuration with tuned parameters.
+
 
 \subsection{Discussion}
 
