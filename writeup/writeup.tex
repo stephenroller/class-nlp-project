@@ -7,6 +7,7 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{amsmath}
 
@@ -178,32 +179,36 @@ The first is to just use the {\it descriptions} of webpages returned by the Bing
 The second is to {\it scrape} the pages returned by the search query ourselves and manually extract any contexts in which the query term appears.
 
 \subsection{A Short Example}
-For illustrative purposes, we include the example below where we wish to identify the supersense of $dog$. Let our corpus be the sentences:
-\begin{center}
+For illustrative purposes, we include the example below where we wish to identify the supersense of $dog$. Let our corpus be the two sentences:
+\begin{quote}
 \texttt{the dog chased the cat\\ the dog played with the ball}
-\end{center}
-Step \ref{modelstep}: We strip the stopwords and create the following vector corpus:
+\end{quote}
 
-\begin{equation*}
-\begin{array}{rl}
-    v(dog) = & <chased: 1, cat: 1, played: 1, ball: 1>\\ % mag = 2
-    v(chased) = & <dog: 1, cat: 1>\\  % mag = sqrt(2)
-    v(cat) = & <dog: 1, chased: 1>\\  %     =
-    v(played) = & <dog: 1, ball: 1>\\ %     =
-    v(ball) = & <dog: 1, played: 1>   %     =
-\end{array}
-\end{equation*}
 
+\begin{enumerate}
+
+\item[{\bf Step 1:}]
+We strip the stopwords and create the following vector corpus:
+
+\begin{align}
+    v(dog) &=  \langle chased: 1, cat: 1, played: 1, ball: 1\rangle \notag\\ % mag = 2
+    v(chased)& = \langle dog: 1, cat: 1\rangle \notag\\  % mag = sqrt(2)
+    v(cat) &=  \langle dog: 1, chased: 1\rangle \notag\\  %     =
+    v(played) &=  \langle dog: 1, ball: 1\rangle \notag\\ %     =
+    v(ball)& =  \langle dog: 1, played: 1\rangle  \notag  %     =
+\end{align}
+(All values not explicitly stated have value 0.)
+
+\item[{\bf Step 2:}]
+Next, we augment the original $v(dog)$ vector with the additional information returned by the web results (querying Bing for the term ``dog'').
 Suppose our search engine queries returned the following three additional sentences:
-
-\begin{center}
+\begin{quote}
 \texttt{the dog chased the mouse\\ the cat scratched the dog\\ the dog sniffed the cat}
-\end{center}
-
-Step \ref{enrichstep}: Next, we augment the original $v(dog)$ vector with the additional information returned by the web results:
-\begin{equation*}
-    v(dog)' = ~<chased: 2, cat: 3, played: 1, ball: 1> % mag = sqrt(15)
-\end{equation*}
+\end{quote}
+Then our enriched vector $v(dog)'$ will be as follows:
+$$
+    v(dog)' = \langle chased: 2, cat: 3, played: 1, ball: 1\rangle % mag = sqrt(15)
+$$
 Note that we do not add $mouse$, $scratched$ or $sniffed$ to the vector because these words are not contained within our original vector space.
 We use cosine similarity to find the closest vectors in order (discarding $dog$ since it is the original vector):
 
@@ -221,19 +226,39 @@ $played$ & $1 / \sqrt{30}$\\
 \end{center}
 
 
-Step \ref{refinestep}: Here we may refine our results by creating an entirely new corpus from just web results.
-However, we choose to omit the refinement from the example for reasons of brevity. As such, for this example we just use the same vectors produced in the previous step.
+\item[{\bf Step 3:}]
+Here we may refine our results by creating an entirely new corpus from web results.
+That is, we query Bing for each of the terms {\it cat}, {\it chased}, {\it ball}, and {\it played}, and construct an entirely new vector space model from the contexts returned by the web search.
+We would then subsequently reorder the terms by similarity in this new corpus.
+The intuition is the web-derived corpus likely contains many more context than our initial corpus, and thus similarity between vectors may be a more reliable indicator of actual semantic similarity.
+We omit this refinement step in the example for reasons of brevity. 
 
-Step \ref{item:voting}: 
-Here we throw out the vectors $v(chased)$ and $v(played)$ because they are not nouns, leaving only the vectors $v(cat)$ and $v(ball)$ with supersenses $animal$ and $artifact$, respectively.
-We let $\gamma = 0.5$ in this example, thus we calculate the votes to be:
+\item[{\bf Step 4:}]
+We throw out the vectors $v(chased)$ and $v(played)$ because they do not contain nouns senses in WordNet.
+This leaves only the vectors $v(cat)$ and $v(ball)$.
+Suppose the WordNet entry for {\it ball} has one synset, with supersense {\it artifact},
+and the WordNet entry for {\it cat} has two synsets, with supersenses {\it animal} and {\it person} (appearing in that order in WordNet).
+We use $\gamma = 0.5$.
 
-\begin{equation*}
-\begin{array}{rll}
-    vote(animal) & = (0.5)^0 * 3 / \sqrt(30) & = 3 / \sqrt(30)\\
-    vote(artifact) & = (0.5)^1 * 2 / \sqrt(30) & = 1 / \sqrt(30)\\
-\end{array}
-\end{equation*}
+Following Algorithm \ref{alg:vote}, we initialize 
+$$vote[animal] = vote[person] = vote[artifact] = 0.$$
+$v(ball)$ votes for its lone supersense, {\it artifact}:
+$$vote[artifact]\,\, \verb!+=! \,\, (0.5)^0 * 1/\sqrt {30}.$$
+$v(cat)$ votes for its two supersenses, in order:
+\begin{align}
+vote[animal] & \,\, \texttt{+=} \,\, (0.5)^0 * 3/ \sqrt {30} \notag\\
+vote[person] & \,\, \texttt{+=} \,\, (0.5)^1 * 3/ \sqrt {30}. \notag
+\end{align}
+This results in the following $vote$ values:
+\begin{align}
+    vote(artifact) & = 1 / \sqrt{30} \notag\\
+    vote(animal) & = 3 / \sqrt{30} \notag\\
+    vote(person) & = 1.5 / \sqrt{30} \notag
+\end{align}
+
+
+\end{enumerate}
+
 Thus, for this example, we return $animal$ as the most likely supersense for the word $dog$.
 
 
