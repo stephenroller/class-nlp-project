@@ -408,16 +408,17 @@ On the 1.7 test set, on the other hand, using information from the web harms per
 One difference explaining this is that the 1.7 test set contains a significantly higher percentage of items with supersense {\it noun.person}---62.60\%, vs 26.11\% in the 1.6 test set.
 One unfortunate consequence of this fact is that baseline performance is very difficult to beat on the 1.7 test set (indeed, the baseline outperforms our algorithm in every setup).
 
-Many of the 1.7 test words are proper names of well-known individuals.
-Because these names typically occur on the web in the context of some set of things for which these individuals are well-known, using the web here ends up harming performance.
-So the fact that our algorithm works poorly on proper names is not particularly important for the 1.6 test set, but causes very poor performance on the 1.7 test set, which is comprised of a majority of proper names.
+Many of the 1.7 test words are proper names of individuals.
+These names typically occur quite infrequently in our offline corpus of newswire; therefore, the terms' neighbors in the vector space model are of fairly low quality.
+%Because these names typically occur on the web in the context of some set of things for which these individuals are well-known, using the web here ends up harming performance.
+The fact that our algorithm works poorly on proper names is not particularly important for the 1.6 test set, but causes very poor performance on the 1.7 test set, which is comprised of a majority of proper names.
 However, performance on the 1.6 test set indicates that givan a more well-balanced set of words, using web data can, in fact, help performance.
 
-One reason we believe that scraped results often hurts performance is the relatively little amount of data collected through this method.
+One reason we believe that scraped results often hurts performance is the relatively small variety of data collected through this method.
 While the hope is that scraping pages allows for a much greater level of contextual information than the limited descriptions from search engine results, we found that this often was the not the case.
-First, because scraping websites requires additional network calls, time constraints prevented us from scraping every site the search engine recommended.
-Second, many websites issued 403 Forbidden errors or chose not respond to ours request at all due to a systematic ban of scraping.
-We believe that forging or changing our crawler's User Agent would have helped this latter issue significantly.
+First, because scraping websites requires additional network calls, time constraints prevented us from scraping every site the search engine returned---of the approximately 1000 pages typically returned by the search engine, we scraped the top 50 results.
+Second, many websites issued 403 Forbidden errors or chose not respond to our request at all due to a systematic ban on scraping.
+We believe that changing our crawler's User Agent would have helped this latter issue significantly.
 
 \begin{figure}[hbtp]
 \begin{center}
@@ -426,26 +427,26 @@ We believe that forging or changing our crawler's User Agent would have helped t
     \bf{System} & \bf{WN 1.6} & \bf{WN 1.7}\\
     \hline
     \hline
-    Ciramita and Johnson baseline & 21\% & 28\%\\
-    Ciramita and Johnson perceptron & 53\% & 53\%\\
-    Curran similarity based results & 68\% & 63\%\\
+    Ciaramita and Johnson baseline & 21\% & 28\%\\
+    Ciaramita and Johnson perceptron & 53\% & 53\%\\
+    Curran similarity-based results & 68\% & 63\%\\
     \hline
     Our baseline & 26\% & 63\%\\
     Our results with optimized parameters & 43\% & 17\%\\
     \hline
 \end{tabular}
-\caption{Results compared to Ciramita and Johnson, Curran).  All measures given in accuracies.}
+\caption{Accuracy results compared to Ciaramita \& Johnson, Curran.}
 \label{fig:compareresults}
 \end{center}
 \end{figure}
 
-Figure \ref{fig:compareresults} contains our results compared to those of Ciramita and Johnson, and Curran \cite{curran}.
+Figure \ref{fig:compareresults} contains our results compared to those of Ciaramita \& Johnson \cite{cj} and Curran \cite{curran}.
 As expected, our impoverished system underperforms both other works in the area.
-Since we do not use the same exact test sets or corpuses as the prior art, comparative results should be taken with a grain of salt.
+Since we do not use the same exact test sets or corpora as them, comparative results should be taken with a grain of salt.
 
-One very interesting effect to note is that our 1.7 baseline differs dramatically from the Ciramita and Johnson baseline. 
+One very interesting effect to note is that our 1.7 baseline differs dramatically from the Ciaramita and Johnson baseline. 
 Indeed, our 1.7 baseline is as high as Curran's overall accuracy.
-Furthermore, Ciramita and Johnson report having more difficulty due to the large number of nouns in the $abstract$ category \cite{cj}, rather than a large number of proper names as we find.
+Furthermore, Ciaramita \& Johnson report having more difficulty due to the large number of nouns in the $abstract$ category, rather than a large number of proper names as we find.
 We believe this is a result of the nature of our corpus.
 
 
@@ -461,7 +462,7 @@ One corpus is the Bllip corpus, a 40M word corpus of WSJ text; the other is comp
 The method given in this paper is based entirely on using offline, preprocessed corpora, and augmenting it with results from search engine queries could be fruitful.
 
 The task is approached differently by Curran \cite{curran}.
-He uses a more unsupervised approach---construct a distributional vector space model from a large corpus and use a $k$-nearest-neighbors voting scheme to guess the supersense label of an unknown word.
+He uses a more unsupervised approach: construct a distributional vector space model from a large corpus and use a $k$-nearest-neighbors voting scheme to guess the supersense label of an unknown word.
 Our basic, offline model is an impoverished version of Curran's---whereas the dimensions in his model correspond to nouns being observed standing in different relations to verbs (e.g. ``being the direct object of {\it give}''), the dimensions in our model correspond simply to nouns being observed within the local contexts of other words.
 Our general approach differs from his in that we attempt to also use a search engine---both to augment the initial vector for the unknown word with a greater number of contexts, and also to refine our guess for what the $k$-nearest neighbor vectors are.
 
@@ -488,7 +489,7 @@ It would be useful to compare Curran's method to the exact same method augmented
 
 One of the primary shortcomings of the evaluation we use is the test set---since we use a different test set, comparing our performance directly with prior work is difficult.
 For example, we do not lemmatize nouns in our test set, whereas Ciaramita and Johnson \cite{cj} do not indicate if they do or not.
-It would be fruitful to obtain the exact training and test sets used in prior work to test with.
+It would be fruitful to obtain the exact training and test sets used in prior work for purposes of comparison.
 
 The general approach we take is to construct a rough first approximation of an answer from a relatively small offline corpus and then use a search engine to refine this approximation.
 This approach could be fruitful for a number of different tasks---guessing word similarity or automatically finding synonyms, for example.
@@ -496,7 +497,7 @@ Any task whose process of constructing a solution admits refinement with a searc
 
 We use the web in two different ways---the first is to enrich the initial query vector for the word with unknown supersense; the second is to refine our guess of what the $k$-nearest neighbors to that vector are.
 The manner in which we undertake the latter task is by calculating a set of nearest neighbors of size greater than $k$, reordering these neighbors using information from the web, and taking the $k$-nearest neighbors from this reordered list.
-That is, we essentially use information from the web to reorder list of nearest neighbors.
+That is, we essentially use information from the web to reorder the list of nearest neighbors.
 It remains to be seen if there is a more intelligent way to use the web to  refine our model.
 For example, including offline data in the web corpus and allowing new neighboring words to be introduced in the refinement step are both experimental conditions we would wish to explore further.
 
@@ -506,7 +507,7 @@ For example, including offline data in the web corpus and allowing new neighbori
 
 We give a method of guessing supersenses of unknown nouns by augmenting a prebuilt offline model with a relatively small number of very targeted search engine queries.
 Results are mixed---in particular, testing on words drawn from WordNet 1.6 yields promising results, but the algorithm performs poorly on words new to WordNet 1.7.
-However, this certainly does not discredit the potential effectiveness of the general method, as the latter performance is due in no small part to the idiosyncrasies of the second test set.
+However, this certainly does not discredit the potential effectiveness of the general method.
 
 We gather two different types of contexts from the web (using search engine descriptions and scraping the pages ourselves), and try using these contexts in two different ways (in order to enrich our initial representation of the test word and in order to refine our guess about its neighbors).
 There may be more ways to use the web than this.
