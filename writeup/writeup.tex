@@ -229,7 +229,7 @@ Furthermore, we hypothesized that using search query results for vector enhancem
 \subsection{Results}
 %Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
 \begin{figure}[hbtp]
-\begin{center}
+\makebox[\textwidth]{
 \begin{tabular}{|l|l||c|c|c|c||c|c|c|c|}
 \hline
 \multirow{2}{*}{{\bf Enrichment}} & \multirow{2}{*}{{\bf Refinement}} & \multicolumn{4}{c||}{{\bf 1.6 Test Set}} & \multicolumn{4}{c|}{{\bf 1.7 Test Set}}  \\
@@ -256,11 +256,11 @@ descriptions & scrape & 43.26 & 59.43 & 33.40 & 50.08 & 21.59 & 25.48 & 13.20 & 
 \hline
 descriptions & descriptions & 34.41 & 82.05 & 32.00 & 48.48 & 18.67 & 71.90 & 17.40 & 29.64   \\
 \hline
-\end{tabular}
+\end{tabular}}
 \caption{Results on 1.6 and 1.7 testsets}
 \label{fig:res}
-\end{center}
 \end{figure}
+
 The main results are contained in Figure \ref{fig:res}.
 This figure contains Precision, Recall, Accuracy, and F-score values for different experimental setups for both the 1.6 and 1.7 test sets.
 The ``enrichment'' column describes the means of enriching the initial query vector of the term with an unknown supersense---as described in Section \ref{sec:alg}, we may enrich by scraping webpages, we may enrich by using descriptions from Bing, or we may not enrich at all.
