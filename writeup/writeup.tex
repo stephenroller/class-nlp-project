@@ -470,8 +470,15 @@ For example, including offline data in the web corpus and allowing new neighbori
 
 \section{Conclusion}
 
-Briefly summarize the important results and conclusions presented in the paper. What are the most important points illustrated by your work? How will your results improve future research and applications in the area? 
+%Briefly summarize the important results and conclusions presented in the paper. What are the most important points illustrated by your work? How will your results improve future research and applications in the area? 
 
+We give a method of guessing supersenses of unknown nouns by augmenting a prebuilt offline model with a relatively small number of very targeted search engine queries.
+Results are mixed---in particular, testing on words drawn from WordNet 1.6 yields promising results, but the algorithm performs poorly on words new to WordNet 1.7.
+However, this certainly does not discredit the potential effectiveness of the general method, as the latter performance is due in no small part to the idiosyncrasies of the second test set.
+
+We gather two different types of contexts from the web (using search engine descriptions and scraping the pages ourselves), and try using these contexts in two different ways (in order to enrich our initial representation of the test word and in order to refine our guess about its neighbors).
+There may be more ways to use the web than this.
+More importantly, the general strategy of using a search engine to refine an approximate offline model (as compared to building a model entirely from web data) is, as far as we know, not particularly widely explored, and could potentially find fruitful applications in different tasks.
 
 
 
