@@ -1,0 +1,884 @@
+INFO:dictionary:built Dictionary(263345 unique tokens) from 1 documents (total 263345 corpus positions)
+INFO:utils:loading Dictionary object from /tmp/prepro-corpus/pentadecamegaword.dict
+INFO:utils:loading StorableDictionary object from /tmp/prepro-corpus/pentadecamegaword.id2wrd
+INFO:utils:loading StorableDictionary object from /tmp/prepro-corpus/pentadecamegaword.wrd2id
+INFO:utils:loading TfidfModel object from /tmp/prepro-corpus/pentadecamegaword.tfidf
+INFO:utils:loading SparseMatrixSimilarity object from /tmp/prepro-corpus/pentadecamegaword.sms
+HTTP Error 403: Forbidden
+timed out
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+timed out
+timed out
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error [Errno 104] Connection reset by peer>
+HTTP Error 403: Forbidden
+timed out
+HTTP Error 403: Forbidden
+<urlopen error [Errno -2] Name or service not known>
+<urlopen error [Errno -3] Temporary failure in name resolution>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+'ascii' codec can't encode character u'\xe0' in position 4: ordinal not in range(128)
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error [Errno 104] Connection reset by peer>
+'ascii' codec can't encode characters in position 5-6: ordinal not in range(128)
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+'ascii' codec can't encode character u'\xe0' in position 14: ordinal not in range(128)
+'ascii' codec can't encode characters in position 9-10: ordinal not in range(128)
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+'ascii' codec can't encode characters in position 31-32: ordinal not in range(128)
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error [Errno 104] Connection reset by peer>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error [Errno -2] Name or service not known>
+
+APPID: 335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC
+CONTEXT_WORD_WIDTH: 20
+DEFAULT_CORPUS: /u/pichotta/penn-wsj-raw-all.txt
+K: 3
+N: 9
+NUM_FETCH_PROCESSES: 4
+NUM_PAGES_TO_SCRAPE: 50
+NUM_PROCESSES: 3
+PREPRO_DIR: /tmp/prepro-corpus/
+SHOULD_ENRICH_BY_SCRAPING: True
+SHOULD_SCRAPE_SITES: False
+SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT: True
+SHOULD_USE_WEB_FOR_PARING: False
+URLLIB_TIMEOUT: 3
+VOTE_DAMPING_COEFF: 0.7
+WEB_DESCR_DB_FILENAME: /tmp/webcorpus-bing.sqlite
+WEB_SCRAPE_DB_FILENAME: /tmp/webcorpus-scrape.sqlite
+WORDNET_DIR: wordnet/1.6/
+
+total number of tests: 30
+Looking for 'undertaker'
+Attempting to classify 'undertaker'
+adding 2421 contexts from web to query vector.
+tv
+	Synset('television.n.01') (noun.communication)
+	Synset('television_receiver.n.01') (noun.artifact)
+match
+	Synset('match.n.01') (noun.artifact)
+	Synset('match.n.02') (noun.event)
+	Synset('match.n.03') (noun.artifact)
+	Synset('match.n.04') (noun.artifact)
+	Synset('match.n.05') (noun.quantity)
+	Synset('catch.n.03') (noun.person)
+	Synset('peer.n.01') (noun.person)
+	Synset('couple.n.02') (noun.group)
+	Synset('match.n.09') (noun.cognition)
+	Synset('match.v.01') (verb.stative)
+	Synset('match.v.02') (verb.possession)
+	Synset('match.v.03') (verb.contact)
+	Synset('equal.v.02') (verb.stative)
+	Synset('match.v.05') (verb.change)
+	Synset('meet.v.06') (verb.social)
+	Synset('pit.v.01') (verb.competition)
+	Synset('match.v.08') (verb.change)
+movie
+	Synset('movie.n.01') (noun.communication)
+0.358455432251 noun.artifact
+0.283007606864 noun.communication
+0.0948238179088 noun.event
+0.0387042377558 noun.person
+0.0325245695427 noun.quantity
+0.0111559273531 noun.group
+0.0078091491472 noun.cognition
+undertaker: noun.artifact (correct: noun.person)
+
+Looking for 'united_states_army'
+Attempting to classify 'united_states_army'
+adding 1 contexts from web to query vector.
+general
+	Synset('general.n.01') (noun.person)
+	Synset('general.n.02') (noun.cognition)
+	Synset('general.v.01') (verb.communication)
+	Synset('general.a.01') (adj.all)
+	Synset('general.s.02') (adj.all)
+	Synset('general.s.03') (adj.all)
+	Synset('general.s.04') (adj.all)
+	Synset('general.a.05') (adj.all)
+	Synset('general.s.06') (adj.all)
+	Synset('cosmopolitan.s.03') (adj.all)
+battalion
+	Synset('battalion.n.01') (noun.group)
+	Synset('battalion.n.02') (noun.quantity)
+beaches
+	Synset('beach.n.01') (noun.object)
+	Synset('beach.v.01') (verb.motion)
+0.173553183675 noun.person
+0.170532256365 noun.group
+0.152130588889 noun.object
+0.121487228572 noun.cognition
+0.119372579455 noun.quantity
+united_states_army: noun.person (correct: noun.group)
+
+Looking for 'universality'
+Attempting to classify 'universality'
+adding 332 contexts from web to query vector.
+pursuance
+	Synset('pursuance.n.01') (noun.act)
+philosophy
+	Synset('doctrine.n.01') (noun.cognition)
+	Synset('philosophy.n.02') (noun.cognition)
+	Synset('philosophy.n.03') (noun.cognition)
+class
+	Synset('class.n.01') (noun.group)
+	Synset('class.n.02') (noun.group)
+	Synset('class.n.03') (noun.group)
+	Synset('course.n.01') (noun.act)
+	Synset('class.n.05') (noun.group)
+	Synset('class.n.06') (noun.group)
+	Synset('class.n.07') (noun.group)
+	Synset('class.n.08') (noun.attribute)
+	Synset('classify.v.01') (verb.cognition)
+0.240172446083 noun.group
+0.202092026174 noun.cognition
+0.12342763532 noun.act
+0.00728297197877 noun.attribute
+universality: noun.group (correct: noun.attribute)
+
+Looking for 'us_navy'
+Attempting to classify 'us_navy'
+adding 1 contexts from web to query vector.
+overhauls
+	Synset('overhaul.n.01') (noun.act)
+	Synset('pass.v.07') (verb.motion)
+	Synset('overhaul.v.02') (verb.change)
+ship
+	Synset('ship.n.01') (noun.artifact)
+	Synset('transport.v.04') (verb.motion)
+two_dozen
+	Synset('twenty-four.n.01') (noun.quantity)
+0.175600886345 noun.act
+0.103591144085 noun.artifact
+0.100870989263 noun.quantity
+us_navy: noun.act (correct: noun.group)
+
+Looking for 'uterus'
+Attempting to classify 'uterus'
+adding 966 contexts from web to query vector.
+duplex
+	Synset('duplex_house.n.01') (noun.artifact)
+	Synset('duplex_apartment.n.01') (noun.artifact)
+	Synset('duplex.s.01') (adj.all)
+	Synset('duplex.s.02') (adj.all)
+hysterectomy
+	Synset('hysterectomy.n.01') (noun.act)
+prostaglandins
+	Synset('prostaglandin.n.01') (noun.body)
+0.353798407316 noun.artifact
+0.12332842499 noun.act
+0.0806769952178 noun.body
+uterus: noun.artifact (correct: noun.body)
+
+Looking for 'vacationer'
+Attempting to classify 'vacationer'
+adding 170 contexts from web to query vector.
+vacation
+	Synset('vacation.n.01') (noun.time)
+	Synset('vacation.n.02') (noun.act)
+	Synset('vacation.v.01') (verb.stative)
+billiards
+	Synset('billiards.n.01') (noun.act)
+boat
+	Synset('boat.n.01') (noun.artifact)
+	Synset('gravy_boat.n.01') (noun.artifact)
+	Synset('boat.v.01') (verb.motion)
+0.206689041108 noun.act
+0.166793835908 noun.artifact
+0.124142281711 noun.time
+vacationer: noun.act (correct: noun.person)
+
+Looking for 'valley_oaks'
+Attempting to classify 'valley_oaks'
+adding 1 contexts from web to query vector.
+buffet
+	Synset('buffet.n.01') (noun.artifact)
+	Synset('buffet.n.02') (noun.food)
+	Synset('snack_bar.n.01') (noun.artifact)
+	Synset('buffet.v.01') (verb.contact)
+	Synset('buffet.v.02') (verb.contact)
+chef
+	Synset('chef.n.01') (noun.person)
+resident
+	Synset('resident.n.01') (noun.person)
+	Synset('house_physician.n.01') (noun.person)
+	Synset('resident.a.01') (adj.all)
+	Synset('nonmigratory.a.01') (adj.all)
+0.532945497334 noun.person
+0.4263287431 noun.artifact
+0.200288671255 noun.food
+valley_oaks: noun.person (correct: noun.plant)
+
+Looking for 'var'
+Attempting to classify 'var'
+adding 248 contexts from web to query vector.
+measure
+	Synset('measure.n.01') (noun.attribute)
+	Synset('measure.n.02') (noun.act)
+	Synset('measure.n.03') (noun.Tops)
+	Synset('bill.n.01') (noun.communication)
+	Synset('measurement.n.02') (noun.act)
+	Synset('standard.n.01') (noun.communication)
+	Synset('meter.n.03') (noun.communication)
+	Synset('measure.n.08') (noun.communication)
+	Synset('measure.n.09') (noun.artifact)
+	Synset('measure.v.01') (verb.cognition)
+	Synset('quantify.v.02') (verb.change)
+	Synset('measure.v.03') (verb.stative)
+	Synset('measure.v.04') (verb.cognition)
+measures
+	Synset('measure.n.01') (noun.attribute)
+	Synset('measure.n.02') (noun.act)
+	Synset('measure.n.03') (noun.Tops)
+	Synset('bill.n.01') (noun.communication)
+	Synset('measurement.n.02') (noun.act)
+	Synset('standard.n.01') (noun.communication)
+	Synset('meter.n.03') (noun.communication)
+	Synset('measure.n.08') (noun.communication)
+	Synset('measure.n.09') (noun.artifact)
+	Synset('measure.v.01') (verb.cognition)
+	Synset('quantify.v.02') (verb.change)
+	Synset('measure.v.03') (verb.stative)
+	Synset('measure.v.04') (verb.cognition)
+measurement
+	Synset('measure.n.01') (noun.attribute)
+	Synset('measurement.n.02') (noun.act)
+0.375710189342 noun.attribute
+0.334962683686 noun.act
+0.213131120116 noun.communication
+0.146868471727 noun.Tops
+0.0172789288302 noun.artifact
+var: noun.attribute (correct: noun.quantity)
+
+Looking for 'vendor'
+Attempting to classify 'vendor'
+adding 896 contexts from web to query vector.
+cockles
+	Synset('cockle.n.01') (noun.food)
+	Synset('cockle.n.02') (noun.animal)
+	Synset('ripple.v.01') (verb.motion)
+	Synset('pucker.v.01') (verb.contact)
+mat
+	Synset('mat.n.01') (noun.artifact)
+	Synset('mat.n.02') (noun.artifact)
+	Synset('mat.n.03') (noun.artifact)
+	Synset('master_of_arts_in_teaching.n.01') (noun.communication)
+	Synset('flatness.n.02') (noun.attribute)
+	Synset('place_mat.n.01') (noun.artifact)
+	Synset('entangle.v.02') (verb.contact)
+	Synset('felt.v.03') (verb.change)
+	Synset('flat.s.17') (adj.all)
+selection
+	Synset('choice.n.02') (noun.act)
+	Synset('selection.n.02') (noun.group)
+	Synset('choice.n.01') (noun.cognition)
+	Synset('survival.n.02') (noun.process)
+	Synset('excerpt.n.01') (noun.communication)
+0.237767264247 noun.food
+0.203910729498 noun.artifact
+0.166437084973 noun.animal
+0.079905115068 noun.act
+0.0559335805476 noun.group
+0.0488456523888 noun.communication
+0.0391535063833 noun.cognition
+0.0274074544683 noun.process
+0.0207623039827 noun.attribute
+vendor: noun.food (correct: noun.person)
+
+Looking for 'vernier'
+Attempting to classify 'vernier'
+adding 697 contexts from web to query vector.
+compass
+	Synset('compass.n.01') (noun.artifact)
+	Synset('scope.n.01') (noun.attribute)
+	Synset('compass.n.03') (noun.cognition)
+	Synset('compass.n.04') (noun.artifact)
+	Synset('compass.v.01') (verb.social)
+	Synset('circumnavigate.v.01') (verb.motion)
+	Synset('get_the_picture.v.01') (verb.cognition)
+scale
+	Synset('scale.n.01') (noun.relation)
+	Synset('scale.n.02') (noun.relation)
+	Synset('scale.n.03') (noun.relation)
+	Synset('scale.n.04') (noun.plant)
+	Synset('scale.n.05') (noun.object)
+	Synset('scale.n.06') (noun.communication)
+	Synset('scale.n.07') (noun.artifact)
+	Synset('scale.n.08') (noun.artifact)
+	Synset('plate.n.13') (noun.artifact)
+	Synset('scale.n.10') (noun.animal)
+	Synset('scale.v.01') (verb.stative)
+	Synset('scale.v.02') (verb.creation)
+	Synset('scale.v.03') (verb.possession)
+	Synset('scale.v.04') (verb.motion)
+	Synset('scale.v.05') (verb.motion)
+	Synset('scale.v.06') (verb.contact)
+	Synset('scale.v.07') (verb.change)
+	Synset('scale.v.08') (verb.change)
+dial
+	Synset('dial.n.01') (noun.artifact)
+	Synset('dial.n.02') (noun.artifact)
+	Synset('dial.n.03') (noun.artifact)
+	Synset('dial.n.04') (noun.artifact)
+	Synset('dial.v.01') (verb.communication)
+	Synset('dial.v.02') (verb.cognition)
+0.16822695687 noun.artifact
+0.0986305761337 noun.relation
+0.0362620454282 noun.attribute
+0.0253834317997 noun.cognition
+0.015447619915 noun.plant
+0.0108133339405 noun.object
+0.00756933375835 noun.communication
+0.00181739703538 noun.animal
+vernier: noun.artifact (correct: noun.artifact)
+
+Looking for 'veterinarians'
+Attempting to classify 'veterinarians'
+adding 331 contexts from web to query vector.
+amp
+	Synset('ampere.n.02') (noun.quantity)
+	Synset('adenosine_monophosphate.n.01') (noun.substance)
+hospitals
+	Synset('hospital.n.01') (noun.artifact)
+	Synset('hospital.n.02') (noun.group)
+animals
+	Synset('animal.n.01') (noun.Tops)
+0.436656206846 noun.quantity
+0.305659344792 noun.substance
+0.256063938141 noun.artifact
+0.179244756699 noun.group
+0.158169254661 noun.Tops
+veterinarians: noun.quantity (correct: noun.person)
+
+Looking for 'victoria_falls'
+Attempting to classify 'victoria_falls'
+adding 1 contexts from web to query vector.
+resort
+	Synset('resort.n.01') (noun.location)
+	Synset('haunt.n.01') (noun.location)
+	Synset('recourse.n.02') (noun.attribute)
+	Synset('recourse.n.01') (noun.act)
+	Synset('fall_back.v.05') (verb.social)
+zimbabwes
+	Synset('zimbabwe.n.01') (noun.location)
+border
+	Synset('boundary_line.n.01') (noun.location)
+	Synset('margin.n.01') (noun.shape)
+	Synset('edge.n.01') (noun.location)
+	Synset('molding.n.03') (noun.artifact)
+	Synset('border.n.05') (noun.artifact)
+	Synset('surround.v.02') (verb.contact)
+	Synset('bound.v.02') (verb.stative)
+	Synset('frame.v.01') (verb.contact)
+	Synset('border.v.04') (verb.contact)
+0.535120014027 noun.location
+0.0811615340412 noun.shape
+0.0703292381763 noun.attribute
+0.0676075578563 noun.artifact
+0.0492304667234 noun.act
+victoria_falls: noun.location (correct: noun.object)
+
+Looking for 'video_game'
+Attempting to classify 'video_game'
+adding 1 contexts from web to query vector.
+consoles
+	Synset('console_table.n.01') (noun.artifact)
+	Synset('console.n.02') (noun.artifact)
+	Synset('console.n.03') (noun.artifact)
+	Synset('cabinet.n.04') (noun.artifact)
+	Synset('comfort.v.01') (verb.emotion)
+milks
+	Synset('milk.n.01') (noun.food)
+	Synset('milk.n.02') (noun.body)
+	Synset('milk.n.03') (noun.object)
+	Synset('milk.n.04') (noun.food)
+	Synset('milk.v.01') (verb.change)
+	Synset('milk.v.02') (verb.consumption)
+symbiosis
+	Synset('symbiosis.n.01') (noun.relation)
+0.536368413508 noun.artifact
+0.210879124269 noun.food
+0.149710342288 noun.relation
+0.109914658964 noun.body
+0.0769402612746 noun.object
+video_game: noun.artifact (correct: noun.act)
+
+Looking for 'volunteer_state'
+Attempting to classify 'volunteer_state'
+adding 1 contexts from web to query vector.
+volunteer_state: ?? (correct: noun.location)
+
+Looking for 'wannabees'
+Attempting to classify 'wannabees'
+adding 205 contexts from web to query vector.
+blancmange
+	Synset('blancmange.n.01') (noun.food)
+imitator
+	Synset('impersonator.n.01') (noun.person)
+	Synset('copycat.n.01') (noun.person)
+trash
+	Synset('rubbish.n.01') (noun.substance)
+	Synset('trash.n.02') (noun.group)
+	Synset('folderol.n.01') (noun.communication)
+	Synset('trash.v.01') (verb.possession)
+	Synset('pan.v.03') (verb.communication)
+0.271327278018 noun.person
+0.195091560483 noun.food
+0.136601179838 noun.substance
+0.0956208258867 noun.group
+0.0669345781207 noun.communication
+wannabees: noun.person (correct: noun.person)
+
+Looking for 'war_games'
+Attempting to classify 'war_games'
+adding 1 contexts from web to query vector.
+simulators
+	Synset('simulator.n.01') (noun.artifact)
+movie
+	Synset('movie.n.01') (noun.communication)
+reality
+	Synset('world.n.03') (noun.cognition)
+	Synset('reality.n.02') (noun.state)
+	Synset('reality.n.03') (noun.state)
+	Synset('reality.n.04') (noun.attribute)
+0.219420075417 noun.artifact
+0.174043685198 noun.communication
+0.128084584698 noun.state
+0.107634104788 noun.cognition
+0.0369184979424 noun.attribute
+war_games: noun.artifact (correct: noun.act)
+
+Looking for 'warmers'
+Attempting to classify 'warmers'
+adding 614 contexts from web to query vector.
+leg
+	Synset('leg.n.01') (noun.body)
+	Synset('leg.n.02') (noun.body)
+	Synset('leg.n.03') (noun.artifact)
+	Synset('branch.n.03') (noun.shape)
+	Synset('leg.n.05') (noun.food)
+	Synset('peg.n.04') (noun.artifact)
+	Synset('leg.n.07') (noun.artifact)
+	Synset('leg.n.08') (noun.act)
+	Synset('stage.n.07') (noun.act)
+hand
+	Synset('hand.n.01') (noun.body)
+	Synset('hired_hand.n.01') (noun.person)
+	Synset('handwriting.n.01') (noun.communication)
+	Synset('hand.n.04') (noun.cognition)
+	Synset('hand.n.05') (noun.location)
+	Synset('hand.n.06') (noun.group)
+	Synset('hand.n.07') (noun.cognition)
+	Synset('hand.n.08') (noun.artifact)
+	Synset('hand.n.09') (noun.quantity)
+	Synset('hand.n.10') (noun.person)
+	Synset('bridge_player.n.01') (noun.person)
+	Synset('hand.n.12') (noun.communication)
+	Synset('hand.n.13') (noun.animal)
+	Synset('hand.n.14') (noun.act)
+	Synset('pass.v.05') (verb.possession)
+towel
+	Synset('towel.n.01') (noun.artifact)
+	Synset('towel.v.01') (verb.contact)
+0.592105746269 noun.body
+0.349458519806 noun.artifact
+0.111413443141 noun.person
+0.0902190114558 noun.shape
+0.0738947583975 noun.communication
+0.0667738948585 noun.cognition
+0.063153308019 noun.food
+0.0382291594738 noun.act
+0.0348039660469 noun.location
+0.0243627762328 noun.group
+0.00835643224785 noun.quantity
+0.00200637938271 noun.animal
+warmers: noun.body (correct: noun.artifact)
+
+Looking for 'weeklies'
+Attempting to classify 'weeklies'
+adding 169 contexts from web to query vector.
+weekly
+	Synset('weekly.n.01') (noun.communication)
+	Synset('weekly.a.01') (adj.pert)
+	Synset('hebdomadally.r.01') (adv.all)
+tempo
+	Synset('tempo.n.01') (noun.time)
+	Synset('tempo.n.02') (noun.time)
+thesaurus
+	Synset('thesaurus.n.01') (noun.communication)
+0.263829685748 noun.communication
+0.227291947603 noun.time
+weeklies: noun.communication (correct: noun.communication)
+
+Looking for 'weltanschauung'
+Attempting to classify 'weltanschauung'
+adding 325 contexts from web to query vector.
+world
+	Synset('world.n.01') (noun.group)
+	Synset('universe.n.01') (noun.object)
+	Synset('world.n.03') (noun.cognition)
+	Synset('world.n.04') (noun.group)
+	Synset('earth.n.01') (noun.object)
+	Synset('worldly_concern.n.01') (noun.cognition)
+	Synset('world.n.07') (noun.object)
+	Synset('populace.n.01') (noun.group)
+	Synset('global.s.01') (adj.all)
+philosophy
+	Synset('doctrine.n.01') (noun.cognition)
+	Synset('philosophy.n.02') (noun.cognition)
+	Synset('philosophy.n.03') (noun.cognition)
+view
+	Synset('position.n.03') (noun.cognition)
+	Synset('view.n.02') (noun.cognition)
+	Synset('view.n.03') (noun.act)
+	Synset('view.n.04') (noun.location)
+	Synset('opinion.n.01') (noun.cognition)
+	Synset('opinion.n.03') (noun.communication)
+	Synset('view.n.07') (noun.cognition)
+	Synset('scene.n.08') (noun.artifact)
+	Synset('horizon.n.02') (noun.attribute)
+	Synset('view.n.10') (noun.attribute)
+	Synset('see.v.05') (verb.cognition)
+	Synset('view.v.02') (verb.perception)
+	Synset('watch.v.03') (verb.perception)
+0.742510270638 noun.cognition
+0.283111356529 noun.group
+0.210095661308 noun.object
+0.0677068723738 noun.act
+0.0473948106617 noun.location
+0.0232234572242 noun.communication
+0.0135415979074 noun.attribute
+0.0113794940399 noun.artifact
+weltanschauung: noun.cognition (correct: noun.cognition)
+
+Looking for 'winger'
+Attempting to classify 'winger'
+adding 603 contexts from web to query vector.
+winger: ?? (correct: noun.person)
+
+Looking for 'winter_olympic_games'
+Attempting to classify 'winter_olympic_games'
+adding 1 contexts from web to query vector.
+bidding
+	Synset('command.n.01') (noun.communication)
+	Synset('bidding.n.02') (noun.communication)
+	Synset('bid.n.04') (noun.communication)
+	Synset('offer.v.07') (verb.possession)
+	Synset('wish.v.07') (verb.communication)
+	Synset('bid.v.03') (verb.communication)
+	Synset('bid.v.04') (verb.possession)
+	Synset('bid.v.05') (verb.possession)
+	Synset('invite.v.04') (verb.communication)
+japan
+	Synset('japan.n.01') (noun.location)
+	Synset('japan.n.02') (noun.location)
+	Synset('japan.n.03') (noun.artifact)
+	Synset('japan.n.04') (noun.artifact)
+	Synset('japan.v.01') (verb.creation)
+salt_lake_city
+	Synset('salt_lake_city.n.01') (noun.location)
+0.222352743894 noun.location
+0.208338445276 noun.communication
+0.068836016573 noun.artifact
+winter_olympic_games: noun.location (correct: noun.event)
+
+Looking for 'wisteria'
+Attempting to classify 'wisteria'
+adding 498 contexts from web to query vector.
+rhododendron
+	Synset('rhododendron.n.01') (noun.plant)
+wisterias
+	Synset('wisteria.n.01') (noun.plant)
+vine
+	Synset('vine.n.01') (noun.plant)
+0.257750179619 noun.plant
+wisteria: noun.plant (correct: noun.plant)
+
+Looking for 'woodchucks'
+Attempting to classify 'woodchucks'
+adding 431 contexts from web to query vector.
+woodchuck
+	Synset('groundhog.n.01') (noun.animal)
+r
+	Synset('roentgen.n.01') (noun.quantity)
+	Synset('radius.n.01') (noun.attribute)
+burrow
+	Synset('burrow.n.01') (noun.object)
+	Synset('burrow.v.01') (verb.motion)
+0.223202750087 noun.animal
+0.0605666637421 noun.quantity
+0.0490500740707 noun.object
+0.0423966646194 noun.attribute
+woodchucks: noun.animal (correct: noun.animal)
+
+Looking for 'woodworkers'
+Attempting to classify 'woodworkers'
+adding 184 contexts from web to query vector.
+tinsmiths
+	Synset('tinsmith.n.01') (noun.person)
+dyers
+	Synset('dyer.n.01') (noun.person)
+specialties
+	Synset('forte.n.01') (noun.attribute)
+	Synset('peculiarity.n.02') (noun.attribute)
+	Synset('specialization.n.02') (noun.act)
+0.50368963182 noun.person
+0.302465011179 noun.attribute
+0.0871810914576 noun.act
+woodworkers: noun.person (correct: noun.person)
+
+Looking for 'workforces'
+Attempting to classify 'workforces'
+adding 157 contexts from web to query vector.
+sector
+	Synset('sector.n.01') (noun.shape)
+	Synset('sector.n.02') (noun.group)
+	Synset('sector.n.03') (noun.cognition)
+	Synset('sector.n.04') (noun.quantity)
+	Synset('sector.n.05') (noun.location)
+	Synset('sector.n.06') (noun.artifact)
+mobile
+	Synset('mobile.n.01') (noun.object)
+	Synset('mobile.n.02') (noun.location)
+	Synset('mobile.n.03') (noun.artifact)
+	Synset('mobile.s.01') (adj.all)
+	Synset('mobile.a.02') (adj.all)
+	Synset('mobile.s.03') (adj.all)
+	Synset('mobile.s.04') (adj.all)
+	Synset('fluid.s.05') (adj.all)
+public
+	Synset('populace.n.01') (noun.group)
+	Synset('public.n.02') (noun.group)
+	Synset('public.a.01') (adj.all)
+	Synset('community.s.01') (adj.all)
+0.454109074175 noun.group
+0.227100461721 noun.shape
+0.191089421511 noun.object
+0.188289415917 noun.location
+0.131802591142 noun.artifact
+0.111279226243 noun.cognition
+0.0778954583704 noun.quantity
+workforces: noun.group (correct: noun.group)
+
+Looking for 'wrongdoers'
+Attempting to classify 'wrongdoers'
+adding 145 contexts from web to query vector.
+joint
+	Synset('joint.n.01') (noun.body)
+	Synset('joint.n.02') (noun.artifact)
+	Synset('articulation.n.02') (noun.shape)
+	Synset('roast.n.01') (noun.food)
+	Synset('joint.n.05') (noun.artifact)
+	Synset('joint.n.06') (noun.artifact)
+	Synset('joint.v.01') (verb.stative)
+	Synset('joint.v.02') (verb.possession)
+	Synset('joint.v.03') (verb.contact)
+	Synset('joint.a.01') (adj.all)
+	Synset('joint.s.02') (adj.all)
+	Synset('joint.s.03') (adj.all)
+wrongdoing
+	Synset('error.n.05') (noun.attribute)
+	Synset('wrongdoing.n.02') (noun.act)
+quotes
+	Synset('quotation_mark.n.01') (noun.communication)
+	Synset('quotation.n.02') (noun.communication)
+	Synset('quote.v.01') (verb.communication)
+	Synset('quote.v.02') (verb.communication)
+0.201367161276 noun.artifact
+0.189207528532 noun.communication
+0.181711435318 noun.body
+0.136393994093 noun.attribute
+0.0954757958651 noun.act
+0.0890386033058 noun.shape
+0.0623270223141 noun.food
+wrongdoers: noun.artifact (correct: noun.person)
+
+Looking for 'yogi'
+Attempting to classify 'yogi'
+adding 419 contexts from web to query vector.
+wand
+	Synset('wand.n.01') (noun.artifact)
+	Synset('scepter.n.02') (noun.communication)
+bear
+	Synset('bear.n.01') (noun.animal)
+	Synset('bear.n.02') (noun.person)
+	Synset('bear.v.01') (verb.stative)
+	Synset('give_birth.v.01') (verb.body)
+	Synset('endure.v.01') (verb.cognition)
+	Synset('bear.v.04') (verb.contact)
+	Synset('bear.v.05') (verb.creation)
+	Synset('bear.v.06') (verb.possession)
+	Synset('hold.v.09') (verb.stative)
+	Synset('yield.v.10') (verb.possession)
+	Synset('wear.v.02') (verb.body)
+	Synset('behave.v.02') (verb.social)
+	Synset('bear.v.11') (verb.possession)
+	Synset('hold.v.18') (verb.contact)
+	Synset('bear.v.13') (verb.body)
+comments
+	Synset('remark.n.01') (noun.communication)
+	Synset('comment.n.02') (noun.communication)
+	Synset('gossip.n.02') (noun.communication)
+	Synset('comment.v.01') (verb.communication)
+	Synset('comment.v.02') (verb.communication)
+	Synset('gloss.v.02') (verb.communication)
+0.596610595584 noun.communication
+0.292748034 noun.artifact
+0.224471762776 noun.animal
+0.157130233943 noun.person
+yogi: noun.communication (correct: noun.person)
+
+Looking for 'yogurts'
+Attempting to classify 'yogurts'
+adding 240 contexts from web to query vector.
+yogurt
+	Synset('yogurt.n.01') (noun.food)
+sweeteners
+	Synset('sweetening.n.01') (noun.food)
+	Synset('bait.n.01') (noun.cognition)
+view
+	Synset('position.n.03') (noun.cognition)
+	Synset('view.n.02') (noun.cognition)
+	Synset('view.n.03') (noun.act)
+	Synset('view.n.04') (noun.location)
+	Synset('opinion.n.01') (noun.cognition)
+	Synset('opinion.n.03') (noun.communication)
+	Synset('view.n.07') (noun.cognition)
+	Synset('scene.n.08') (noun.artifact)
+	Synset('horizon.n.02') (noun.attribute)
+	Synset('view.n.10') (noun.attribute)
+	Synset('see.v.05') (verb.cognition)
+	Synset('view.v.02') (verb.perception)
+	Synset('watch.v.03') (verb.perception)
+0.29415923357 noun.food
+0.240934370081 noun.cognition
+0.0424553160369 noun.act
+0.0297187212259 noun.location
+0.0145621734007 noun.communication
+0.00849120330993 noun.attribute
+0.00713546496633 noun.artifact
+yogurts: noun.food (correct: noun.food)
+
+Looking for 'youngsters'
+Attempting to classify 'youngsters'
+adding 186 contexts from web to query vector.
+tuft
+	Synset('tuft.n.01') (noun.group)
+	Synset('tuft.n.02') (noun.animal)
+vacant_lot
+	Synset('vacant_lot.n.01') (noun.location)
+semicircle
+	Synset('semicircle.n.01') (noun.shape)
+0.193592265248 noun.group
+0.184859871864 noun.location
+0.152941763401 noun.shape
+0.135514585674 noun.animal
+youngsters: noun.group (correct: noun.person)
+
+Looking for 'zealot'
+Attempting to classify 'zealot'
+adding 532 contexts from web to query vector.
+info
+	Synset('information.n.01') (noun.communication)
+halo
+	Synset('aura.n.02') (noun.attribute)
+	Synset('ring.n.02') (noun.shape)
+	Synset('halo.n.03') (noun.phenomenon)
+home
+	Synset('home.n.01') (noun.location)
+	Synset('dwelling.n.01') (noun.artifact)
+	Synset('home.n.03') (noun.location)
+	Synset('home.n.04') (noun.state)
+	Synset('home.n.05') (noun.artifact)
+	Synset('base.n.12') (noun.location)
+	Synset('home_plate.n.01') (noun.artifact)
+	Synset('home.n.08') (noun.location)
+	Synset('family.n.01') (noun.group)
+	Synset('home.v.01') (verb.social)
+	Synset('home.v.02') (verb.motion)
+	Synset('home.a.01') (adj.all)
+	Synset('home.a.02') (adj.pert)
+	Synset('home.s.03') (adj.all)
+	Synset('home.s.04') (adj.all)
+	Synset('home.s.05') (adj.all)
+	Synset('home.r.01') (adv.all)
+	Synset('home.r.02') (adv.all)
+	Synset('home.r.03') (adv.all)
+0.169977173209 noun.communication
+0.0814940826244 noun.location
+0.0567040145397 noun.attribute
+0.0495283158262 noun.artifact
+0.0396928101778 noun.shape
+0.0277849671245 noun.phenomenon
+0.0160607217103 noun.state
+0.00269932549785 noun.group
+zealot: noun.communication (correct: noun.person)
+
+------------------------------------------------------------
+Precision: 32.14% (9/28)
+Recall: 30.00% (9/30)
+Testing time: 0:07:54.136217
