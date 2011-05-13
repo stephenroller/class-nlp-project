@@ -49,7 +49,7 @@ The task of supersense acquisition of unknown nouns was first described in \cite
 The problem is, given a word,  assign to that word one of the WordNet {\it supersenses} (also called {\it lexicographer classes}).
 A listing of all the WordNet supersenses may be found in Figure \ref{fig:supersenses}.
 \begin{center}
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{tabular}{llllllll}
 1& person & 8& possession&  15& process&  22& body \\
 2& communication & 9& location& 16& Tops&  23& feeling \\
@@ -127,7 +127,7 @@ $supersense(s)$ takes a synset $s$ and returns its superset.
 \item
 $\gamma$ is a damping factor (with~$0 < \gamma \leq 1$) responsible for ensuring synsets near the beginning of a word's WordNet entry count for more.
 \end{itemize}
-\begin{algorithm}[hbtp]
+\begin{algorithm}[htbp]
 \caption{Voting Scheme for word $w$}
 \label{alg:vote}
 \begin{algorithmic}
@@ -288,7 +288,7 @@ Furthermore, we hypothesized that using search query results for vector enhancem
 
 \subsection{Results}
 %Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \makebox[\textwidth]{
 \begin{tabular}{|l|l||c|c|c|c||c|c|c|c|}
 \hline
@@ -327,7 +327,7 @@ The ``enrichment'' column describes the means of enriching the initial query vec
 Similarly, these are the three options for how we refine from the $n$ nearest neighbors given by the offline model to the $k$-nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
 
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=100mm]{graphs/damping.png}
 \end{center}
@@ -340,7 +340,7 @@ The numbers were gathered using scraping for initial enrichment and descriptions
 Figure \ref{fig:damping} indicates that paying more attention to synsets appearing near the beginning of a word's WordNet entry pays off, but ignoring synsets appearing near the end harms performance, which is entirely plausible.
 The values collected in Figure \ref{fig:res} use $k=3$ and $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=100mm]{graphs/n.png}
 \end{center}
@@ -354,7 +354,7 @@ We again use scraping for initial enrichment and descriptions for refinement, wi
 It is not immediately obvious that this curve should decrease past a certain point, but this makes some sense---past a point, the neighbors of the test word are not very semantically related to it, and considering them as members of the eventual set of $k$ neighbors does more harm than good.
 Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but more computationally tractable.
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=100mm]{graphs/k.png}
 \end{center}
@@ -366,7 +366,7 @@ As above, we use scraping for initial enrichment and descriptions for refinement
 It is unclear why this graph is so much less smooth than the others---the numbers are generated on a relatively small devset of 100 words, so the numbers are to be taken with a grain of salt.
 For the experiments in Figure \ref{fig:res}, we use $k=3$, which is not unreasonable, but $k=4$ or $5$ would likely be preferable.
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \begin{tabular}{|c|c|c|c||c|c|c|c|}
 \hline
