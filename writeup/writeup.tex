@@ -25,17 +25,16 @@ Unknown Noun Supersense Acquisition using Search Engines}
 
 %Motivate and abstractly describe the problem you are addressing and how you are addressing it. What is the problem? Why is it important? What is your basic approach? A short discussion of how it fits into related work in the area is also desirable. Summarize the basic results and conclusions that you will present. 
 
-We describe a novel method for tagging unknown nouns with supersenses using Search Engine queries to refine an initial precomputed approximation.
-A noun's {\em supersense} is the name given in the literature to highest meaningful level of meaning in the WordNet \cite{wordnet} hierarchy---these are abstract concepts such as {\it food}, {\it person}, or {\it cognition} \cite{cj}.
+We describe a novel method for tagging unknown nouns with supersenses using search engine queries to refine an initial precomputed approximation.
+{\em Supersense} is the name given in the literature to highest meaningful level in the WordNet \cite{wordnet} hierarchy---these are abstract concepts such as {\it food}, {\it person}, or {\it cognition} \cite{cj}.
 
 We provide a novel solution to the problem which uses a model built from a relatively small offline corpus to provide a first approximation, and then further refines this approximation by querying a search engine.
-This broad approach---use a rough model to construct an approximation and refine with search engine queries---could be generalized to many other tasks.
-In that sense, our contribution is not an algorithm to solve the problem of acquisition of supersenses of unknown nouns {\it per se}, but is rather a method for using search engine queries to refine first approximations from rough models, which we apply to the task of supersense acquisition for illustrative purposes.
+This general approach---to use a rough offline model to construct an approximation and refine with search engine queries---could be generalized to many other tasks.
+Our primary contribution is not an algorithm for supersense acquisition for nouns {\it per se}; it is rather a method for using search engine queries to refine approximate answers from rough models, which we apply to the task of supersense acquisition.
 
 We construct a rough approximation using a simplified version of the distributional approach taken by Curran \cite{curran}, and refine this approximation using the Bing API.
-
-We find that, for one of our two test sets, the use of search engine results returned from Bing outperforms no use of search engine results.
-Our model performs significantly worse on the second test set---search engine results were actually detrimental. 
+We find that, for one of our two test sets, using the web generally helps.
+However, our method performs significantly worse on the second test set---search engine results were actually detrimental. 
 We attempt to explain this behavior and compare our results to the state of the art.
 
 
@@ -45,7 +44,7 @@ We attempt to explain this behavior and compare our results to the state of the 
 
 %Precisely define the problem you are addressing (i.e. formally specify the inputs and outputs). Elaborate on why this is an interesting and important problem. 
 
-The task of supersense acquisition of unknown nouns was first described in \cite{cj}.
+The task of supersense acquisition of unknown nouns was first described in Ciaramita \& Johnson \cite{cj}.
 The problem is, given a word,  assign to that word one of the WordNet {\it supersenses} (also called {\it lexicographer classes}).
 A listing of all the WordNet supersenses may be found in Figure \ref{fig:supersenses}.
 \begin{center}
@@ -64,12 +63,12 @@ A listing of all the WordNet supersenses may be found in Figure \ref{fig:superse
 \end{figure}
 \end{center}
 
-Call a word {\it ambiguous} if it is attested as having more than one supersense in Wordnet.
+We call a word {\it ambiguous} if it is attested as having more than one supersense in Wordnet.
 We follow the literature in restricting ourselves to only attempting to guess supersenses for unambiguous nouns \cite{cj}\cite{curran}.
 
-Supersense information for unknown nouns is conceivably useful for a number of tasks---parsing or POS tagging, for example, could both benefit from supersense information.
-Similarly, Word Sense Disambiguation could be aided by supersense information---one could apply selectional restrictions to nouns with guessed supersenses to help disambiguate.
-Since lexical resources like WordNet are necessarily incomplete, the utility of being able to guess nominal supersenses is clear.
+Supersense information for unknown nouns is conceivably useful for a number of tasks---parsing or Part of Speech tagging, for example, could both benefit from supersense information.
+Similarly, a Word Sense Disambiguation algorithm could use guessed noun supersenses when applying selectional restrictions.
+Since lexical resources like WordNet are necessarily incomplete, the utility of being able to guess nominal supersenses should be relatively clear.
 
 
 
@@ -78,26 +77,27 @@ Since lexical resources like WordNet are necessarily incomplete, the utility of 
 
 %Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols. 
 
-The approach we take has a number of steps.
+The approach we take can be decomposed into steps.
 First, we construct a vector space model.
 Second, given a word with unknown supersense, we find its nearest $n$ neighbors.
 Third, we use search engine queries to refine the model and find the $k$-nearest neighbors (for $k< n$).
 Finally, we use a voting scheme over these $k$-nearest neighbors to form a guess of the word's supersense.
+In more detail:
 
 \begin{enumerate}
 \item\label{modelstep}
 We first construct a very simple distributional lexical semantic model.
 We process a corpus of raw text and, for each word $w$, count the number of times every other word appears within 5 words of $w$.
-Note we use a list of 172 stopwords to completely ignore.
+Note we use a list of 172 stopwords.
 These counts form the basis of our vector space.
-We operate on the {\it tf-idf} vectors of these raw count vectors, and use cosine similarity as our distance metric.
+We operate on the {\it tf-idf} vectors of these raw counts, and use cosine similarity as our distance metric.
 
 Our corpus is approximately 27M words sampled from the English Gigaword Fourth Edition corpus \cite{gigaword}, and we use the Gensim framework \cite{gensim} to construct the vector space.
 We chose to use both a small corpus and a fairly simple model due to time constraints---it takes a nontrivial amount of time and disk space to handle larger corpora, and vector space models are not the focus of the current work.
 
 \item \label{enrichstep}
 Given a word $w$ with unknown supersense, we will eventually find its $k$-nearest neighbors and use a voting scheme over those to determine supersense.
-Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n > k$.
+Before we do that, we first find the $n$ nearest neighbors in the model found in step \ref{modelstep}, for some $n \geq k$.
 There are two options here for which vector we use to represent $w$.
 First, we can simply use $w$'s vector as built in step \ref{modelstep}.
 Second, we can augment this vector with the contexts found in the results of a search engine query for word $w$, and find the $n$ nearest neighbors for the enriched vector.
@@ -105,27 +105,27 @@ Second, we can augment this vector with the contexts found in the results of a s
 \item \label{refinestep}
 After establishing the $n$-nearest neighbors, we query the search engine for these $n$ terms, plus the original term. 
 We create a new vector space model using the search results as described in step \ref{modelstep}. 
-Note that this new vector space model only contains $n$-vectors created from search query results, but does not contain any of the data from the original corpus. 
-We then select the $k$-nearest neighbors to $w$ (as described in step \ref{enrichstep}) in this new vector space model.
+Note that this new vector space model only contains $n$ vectors created from search query results, and does not contain any of the data from the original corpus. 
+We then select the $k$-nearest neighbors to $w$ (as  in step \ref{enrichstep}) in this new vector space model.
 
 \item
 \label{item:voting}
 Once we have finalized our list of $k$-nearest neighbors, we apply a voting scheme over the WordNet supersense labels of the neighbors.
-
-Each synset provides a vote for its supersense, and the amount a synset's vote counts is proportional to where it appears in the WordNet list of synsets---a synset appearing at the beginning of the list counts more than a synset appearing at the end.
+For each neighbor, each of its synsets provides a vote for its supersense.
+Further, the amount a synset's vote counts is proportional to where it appears in the WordNet list of synsets---a synset appearing at the beginning of the list counts for more than a synset appearing at the end.
 We hypothesize that a synset's vote should be proportional to the frequency of that synset's use; since WordNet synsets are listed approximately in decreasing order of frequency of use, this is a plausible way to work this hypothesis into the voting scheme.
 
-The pseudocode describing the procedure is given as Algorithm \ref{alg:vote}.
-This pseudocode uses a few auxiliary functions worth mentioning:
+The pseudocode describing the procedure is given in Algorithm \ref{alg:vote}.
+This pseudocode uses a few auxiliary functions and variables worth mentioning:
 \begin{itemize}
 \item
 $sim(v,w)$ returns the cosine similarity value (between 0 and 1) for vectors $v$ and $w$.
 \item
 $noun$-$synsets(v)$ takes a vector representing a word $v$ and returns its noun synsets in the order that they appear in WordNet.
 \item
-$supersense(s)$ takes a synset $s$ and returns its superset.
+$supersense(s)$ takes a synset $s$ and returns its supersense.
 \item
-$\gamma$ is a damping factor (with~$0 < \gamma \leq 1$) responsible for ensuring synsets near the beginning of a word's WordNet entry count for more.
+$\gamma$ is a damping factor (with~$0 \leq \gamma \leq 1$) responsible for ensuring synsets near the beginning of a word's WordNet entry count for more.
 \end{itemize}
 \begin{algorithm}[htbp]
 \caption{Voting Scheme for word $w$}
@@ -181,11 +181,11 @@ The first is to just use the {\it descriptions} of webpages returned by the Bing
 The second is to {\it scrape} the pages returned by the search query ourselves and manually extract any contexts in which the query term appears.
 
 \subsection{A Short Example}
-For illustrative purposes, we include the example below where we wish to identify the supersense of $dog$. Let our corpus be the two sentences:
+For illustrative purposes, we include the example below, in which we wish to identify the supersense of {\it dog}. 
+Let our corpus be the two sentences:
 \begin{quote}
 \texttt{the dog chased the cat\\ the dog played with the ball}
 \end{quote}
-
 
 \begin{enumerate}
 
@@ -199,11 +199,12 @@ We strip the stopwords and create the following vector corpus:
     v(played) &=  \langle dog: 1, ball: 1\rangle \notag\\ %     =
     v(ball)& =  \langle dog: 1, played: 1\rangle  \notag  %     =
 \end{align}
-(All values not explicitly stated have value 0.)
+All values not explicitly stated have value 0.
+We would actually use the {\it tf-idf} vectors corresponding to the above, but for the purposes of clarity we omit that step here.
 
 \item[{\bf Step 2:}]
-Next, we augment the original $v(dog)$ vector with the additional information returned by the web results (querying Bing for the term ``dog'').
-Suppose our search engine queries returned the following three additional sentences:
+Next, we augment the original $v(dog)$ vector with the additional information returned by querying Bing for the term ``dog''.
+Suppose our search engine query returned the following three additional sentences:
 \begin{quote}
 \texttt{the dog chased the mouse\\ the cat scratched the dog\\ the dog sniffed the cat}
 \end{quote}
@@ -211,7 +212,7 @@ Then our enriched vector $v(dog)'$ will be as follows:
 $$
     v(dog)' = \langle chased: 2, cat: 3, played: 1, ball: 1\rangle % mag = sqrt(15)
 $$
-Note that we do not add $mouse$, $scratched$ or $sniffed$ to the vector because these words are not contained within our original vector space.
+Note that we do not add {\it mouse}, {\it scratched} or {\it sniffed} to the vector because these words are not contained within our original vector space.
 We use cosine similarity to find the closest vectors in order (discarding $dog$ since it is the original vector):
 
 \begin{center}
@@ -229,33 +230,34 @@ $played$ & $1 / \sqrt{30}$\\
 
 
 \item[{\bf Step 3:}]
-Here we may refine our results by creating an entirely new corpus from web results.
+Here we may refine our results by creating a new corpus from web results.
 That is, we query Bing for each of the terms {\it cat}, {\it chased}, {\it ball}, and {\it played}, and construct an entirely new vector space model from the contexts returned by the web search.
 We would then subsequently reorder the terms by similarity in this new corpus.
-The intuition is the web-derived corpus likely contains many more context than our initial corpus, and thus similarity between vectors may be a more reliable indicator of actual semantic similarity.
+The intuition is that the web-derived corpus likely contains many more contexts than our initial corpus, and thus vector similarity may be a more reliable indicator of actual semantic similarity.
 We omit this refinement step in the example for reasons of brevity. 
 
 \item[{\bf Step 4:}]
 We throw out the vectors $v(chased)$ and $v(played)$ because they do not contain nouns senses in WordNet.
 This leaves only the vectors $v(cat)$ and $v(ball)$.
 Suppose the WordNet entry for {\it ball} has one synset, with supersense {\it artifact},
-and the WordNet entry for {\it cat} has two synsets, with supersenses {\it animal} and {\it person} (appearing in that order in WordNet).
+and the WordNet entry for {\it cat} has three synsets, with supersenses {\it animal}, {\it person}, and {\it person} (appearing in that order in WordNet).
 We use $\gamma = 0.5$.
 
 Following Algorithm \ref{alg:vote}, we initialize 
 $$vote[animal] = vote[person] = vote[artifact] = 0.$$
 $v(ball)$ votes for its lone supersense, {\it artifact}:
 $$vote[artifact]\,\, \verb!+=! \,\, (0.5)^0 * 1/\sqrt {30}.$$
-$v(cat)$ votes for its two supersenses, in order:
+$v(cat)$ votes for the supersenses of its three synsets, in order:
 \begin{align}
 vote[animal] & \,\, \texttt{+=} \,\, (0.5)^0 * 3/ \sqrt {30} \notag\\
-vote[person] & \,\, \texttt{+=} \,\, (0.5)^1 * 3/ \sqrt {30}. \notag
+vote[person] & \,\, \texttt{+=} \,\, (0.5)^1 * 3/ \sqrt {30}. \notag \\
+vote[person] & \,\, \texttt{+=} \,\, (0.5)^2 * 3/ \sqrt {30}. \notag
 \end{align}
 This results in the following $vote$ values:
 \begin{align}
     vote(artifact) & = 1 / \sqrt{30} \notag\\
     vote(animal) & = 3 / \sqrt{30} \notag\\
-    vote(person) & = 1.5 / \sqrt{30} \notag
+    vote(person) & = 2.25 / \sqrt{30} \notag
 \end{align}
 
 
@@ -270,17 +272,17 @@ Thus, for this example, we return $animal$ as the most likely supersense for the
 
 % What are criteria you are using to evaluate your method? What specific hypotheses does your experiment test? Describe the experimental methodology that you used. What are the dependent and independent variables? What is the training/test data that was used, and why is it realistic or interesting? Exactly what performance data did you collect and how are you presenting and analyzing it? Comparisons to competing methods that address the same problem are particularly useful. 
 
-For evaluation, we attempt to recreate the original evaluation proposed in \cite{cj} as best as possible. 
+For evaluation, we attempt to recreate the original evaluation proposed in Ciaramita \& Johnson \cite{cj} as best as possible. 
 They propose two evaluations: one done using a standard held-out test set, and one using only new worlds introduced between versions 1.6 and 1.7.1 of WordNet. 
-While the former is more standard evaluation metric, \cite{cj} conclude that the latter is a more natural evaluation metric and slightly more difficult due to the nature of the changes.
+While the former is a more standard evaluation metric, \cite{cj} conclude that the latter is a more natural evaluation metric and slightly more difficult due to the nature of the changes.
 
-In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets may only be nouns with a single supersense, and all test words \emph{must} appear within our corpus. 
-Ciaramita and Johnson also impose these same restrictions on their test set \cite{cj} since these restrictions allow one to ignore the word sense disambiguation problem entirely.
-While Curran uses the same test set as Ciaramita and Johnson \cite{curran}, his work does not require words appear within the corpus due to his use of a morphological backoff model.
+In addition to constructing our two data sets from the different versions of WordNet, our test sets meet additional criteria: words in the test sets must be unambiguous (have a single supersense), and must appear within our corpus. 
+Ciaramita \& Johnson \cite{cj} impose these same restrictions on their test set---this allows us to ignore the word sense disambiguation problem entirely.
+While Curran \cite{curran} uses the same test set as Ciaramita \& Johnson, his work does not require words to appear within the corpus (he uses a morphological backoff model for words with no known contexts).
 
-We did not expect to perform as well as Curran (Accuracy: 68\%), or even Ciaramita and Johnson (Accuracy: 53\%) \cite{curran}, on the task, as our model is comparatively impoverished, uses a smaller data set, and has no backoff model. 
-Furthermore, this was not the precise goal of our work. 
-Rather, we aimed to test the influence of search engine results using this task as a proxy.
+We did not expect to perform as well as Curran \cite{curran} (Accuracy: 68\%), or even Ciaramita \& Johnson \cite{cj} (Accuracy: 53\%), on the task, as our model is comparatively impoverished, uses a smaller data set, and has no backoff model. 
+This was not the precise goal of our work. 
+Rather, we aimed primarily to test the effectiveness of using search engine queries to refine approximate guesses, using this task as a proxy.
 
 We hypothesized that greater degrees of ``web influence'' would correlate with higher accuracies and F-scores. 
 That is, we expected the use of web scraping to outperform the use of search engine descriptions, which would outperform the use of no engine results at all.
@@ -321,10 +323,10 @@ descriptions & descriptions & 34.41 & 82.05 & 32.00 & 48.48 & 18.67 & 71.90 & 17
 \label{fig:res}
 \end{figure}
 
-The main results are contained in Figure \ref{fig:res}.
-This figure contains Precision, Recall, Accuracy, and F-score values for different experimental setups for both the 1.6 and 1.7 test sets.
-The ``enrichment'' column describes the means of enriching the initial query vector of the term with an unknown supersense---as described in Section \ref{sec:alg}, we may enrich by scraping webpages, we may enrich by using descriptions from Bing, or we may not enrich at all.
-Similarly, these are the three options for how we refine from the $n$ nearest neighbors given by the offline model to the $k$-nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
+The main results are given in Figure \ref{fig:res}.
+This table contains Precision, Recall, Accuracy, and F-score values for different experimental setups for both the 1.6 and 1.7 test sets.
+The ``enrichment'' column describes the means of enriching the initial query vector of the test word---as described in Section \ref{sec:alg}, we may enrich by scraping webpages, we may enrich by using descriptions from Bing, or we may not enrich at all.
+Similarly, there are three options for how we refine our guess containing the $n$-nearest neighbors in the offline model to the $k$-nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
 
 
 \begin{figure}[htbp]
@@ -334,10 +336,10 @@ Similarly, these are the three options for how we refine from the $n$ nearest ne
 \caption{Effect of damping coefficient on F-score}
 \label{fig:damping}
 \end{figure}
-We use a development set of 100 held-out words from WordNet 1.6 to tune various parameters, as described below.
-Figure \ref{fig:damping} gives the performance of the algorithm with different damping coefficient $\gamma$, as described in step \ref{item:voting} of Section \ref{sec:alg}.
+We use a development set of 100 held-out words from WordNet 1.6 to examine performance while varying various parameters, as described below.
+Figure \ref{fig:damping} gives the performance of the algorithm varying the damping coefficient $\gamma$ (described in step \ref{item:voting} of Section \ref{sec:alg}).
 The numbers were gathered using scraping for initial enrichment and descriptions for refinement.
-Figure \ref{fig:damping} indicates that paying more attention to synsets appearing near the beginning of a word's WordNet entry pays off, but ignoring synsets appearing near the end harms performance, which is entirely plausible.
+Figure \ref{fig:damping} indicates that paying more attention to synsets appearing near the beginning of a word's WordNet entry pays off, but ignoring synsets appearing near the end harms performance, which is entirely expected behavior.
 The values collected in Figure \ref{fig:res} use $k=3$ and $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
 
 \begin{figure}[htbp]
@@ -352,7 +354,7 @@ Recall that $n$ is the number of neighbors of the test word that we take from th
 We again use scraping for initial enrichment and descriptions for refinement, with $k=3$ and $\gamma=0.7$.
 
 It is not immediately obvious that this curve should decrease past a certain point, but this makes some sense---past a point, the neighbors of the test word are not very semantically related to it, and considering them as members of the eventual set of $k$ neighbors does more harm than good.
-Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but more computationally tractable.
+Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but requires significantly fewer network calls than the optimal $n=22$.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -363,7 +365,8 @@ Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the 
 \end{figure}
 Figure \ref{fig:k} gives the effect of varying $k$, the number of neighbors ultimately used in the voting scheme.
 As above, we use scraping for initial enrichment and descriptions for refinement, and we set $n=24$ and $\gamma=0.7$.
-It is unclear why this graph is so much less smooth than the others---the numbers are generated on a relatively small devset of 100 words, so the numbers are to be taken with a grain of salt.
+It is unclear why this graph is so much less smooth than the others.
+The numbers are generated on a relatively small devset of 100 words, so some amount of noise is to be expected in the data.
 For the experiments in Figure \ref{fig:res}, we use $k=3$, which is not unreasonable, but $k=4$ or $5$ would likely be preferable.
 
 \begin{figure}[htbp]
@@ -382,8 +385,8 @@ For the experiments in Figure \ref{fig:res}, we use $k=3$, which is not unreason
 \label{fig:tunedres}
 \end{center}
 \end{figure}
-We used the results from Figure \ref{fig:res} to determine the experimental setup on which to tune these parameters.
-We then reran one configuration from Figure \ref{fig:res} (Enrichment = ``scrape'', Refinement = ``descriptions''---the one we used to tune the parameters) with the optimal values for the parameters.
+%We used the results from Figure \ref{fig:res} to determine the experimental setup on which to test these parameter changes.
+We  reran one configuration from Figure \ref{fig:res} (Enrichment = ``scrape'', Refinement = ``descriptions''---the setup we used to test the parameter changes) with the optimal values for the parameters.
 Figure \ref{fig:tunedres} gives the performance of the configuration with tuned parameters.
 Optimizing the values of the parameters improves performance significantly.
 
@@ -397,11 +400,12 @@ This hypothesis is largely supported by the results given in Figure \ref{fig:res
 
 On the 1.6 test set, both types of initial vector enrichment---with descriptions and by scraping pages---outperform the algorithm without enrichment.
 Enrichment by descriptions outperforms enrichment by scraping in two of three cases.
-In two of three cases, refining with descriptions provides an improvement over no refinement; in all three cases, refining with scraping harms performance.
+In two of three cases, refining with descriptions provides an improvement over no refinement.
+Contrary to expectations, in all three cases, refining with scraping harms performance.
 By and large, using information from the web on the 1.6 test set helps more than it hurts (with the exception of refining by scraping pages).
 
 On the 1.7 test set, on the other hand, using information from the web harms performance across the board.
-One difference explaining this is that the 1.7 test set contains a significantly higher percentage of items with supersense {\tt noun.person}: 62.60\%, vs 26.11\% in the 1.6 test set.
+One difference explaining this is that the 1.7 test set contains a significantly higher percentage of items with supersense {\it noun.person}---62.60\%, vs 26.11\% in the 1.6 test set.
 One unfortunate consequence of this fact is that baseline performance is very difficult to beat on the 1.7 test set (indeed, the baseline outperforms our algorithm in every setup).
 
 Many of the 1.7 test words are proper names of well-known individuals.
