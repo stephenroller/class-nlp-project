@@ -6,6 +6,8 @@ Unknown Noun Supersense Acquisition using Search Engines}
 \author{Stephen Roller \& Karl Pichotta}
 
 \usepackage{graphicx}
+\usepackage{amsmath}
+
 \usepackage[pdfborder={0 0 0}]{hyperref}
 
 \usepackage{multirow}
@@ -141,6 +143,66 @@ We use Bing's search API in our tests, as it was the least restrictive API for o
 We try two different ways of using a search engine to find contexts in which a term occurs.
 The first is to just use the {\it descriptions} of webpages returned by the Bing API (that is, the short snippets of text from the site which appear in search results).
 The second is to {\it scrape} the pages returned by the search query ourselves and manually extract any contexts in which the query term appears.
+
+\subsection{A Short Example}
+For illustrative purposes, we include the example below where we wish to identify the supersense of $dog$. Let our corpus be the sentences:
+\begin{center}
+\texttt{the dog chased the cat\\ the dog played with the ball}
+\end{center}
+Step \ref{modelstep}: We strip the stopwords and create the following vector corpus:
+
+\begin{equation*}
+\begin{array}{rl}
+    v(dog) = & <chased: 1, cat: 1, played: 1, ball: 1>\\ % mag = 2
+    v(chased) = & <dog: 1, cat: 1>\\  % mag = sqrt(2)
+    v(cat) = & <dog: 1, chased: 1>\\  %     =
+    v(played) = & <dog: 1, ball: 1>\\ %     =
+    v(ball) = & <dog: 1, played: 1>   %     =
+\end{array}
+\end{equation*}
+
+Suppose our search engine queries returned the following three additional sentences:
+
+\begin{center}
+\texttt{the dog chased the mouse\\ the cat scratched the dog\\ the dog sniffed the cat}
+\end{center}
+
+Step \ref{enrichstep}: Next, we augment the original $v(dog)$ vector with the additional information returned by the web results:
+\begin{equation*}
+    v(dog)' = ~<chased: 2, cat: 3, played: 1, ball: 1> % mag = sqrt(15)
+\end{equation*}
+Note that we do not add $mouse$, $scratched$ or $sniffed$ to the vector because these words are not contained within our original vector space.
+We use cosine similarity to find the closest vectors in order (discarding $dog$ since it is the original vector):
+
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+\bf{word} & \bf{sim($dog$, word)}\\
+\hline
+$cat$ & $3 / \sqrt{30}$\\
+$chased$ & $2 / \sqrt{30}$\\
+$ball$ & $1 / \sqrt{30}$\\
+$played$ & $1 / \sqrt{30}$\\
+\hline
+\end{tabular}
+\end{center}
+
+
+Step \ref{refinestep}: Here we may refine our results by creating an entirely new corpus from just web results.
+However, we choose to omit the refinement from the example for reasons of brevity. As such, for this example we just use the same vectors produced in the previous step.
+
+Step \ref{item:voting}: 
+Here we throw out the vectors $v(chased)$ and $v(played)$ because they are not nouns, leaving only the vectors $v(cat)$ and $v(ball)$ with supersenses $animal$ and $artifact$, respectively.
+We let $\gamma = 0.5$ in this example, thus we calculate the votes to be:
+
+\begin{equation*}
+\begin{array}{rll}
+    vote(animal) & = (0.5)^0 * 3 / \sqrt(30) & = 3 / \sqrt(30)\\
+    vote(artifact) & = (0.5)^1 * 2 / \sqrt(30) & = 1 / \sqrt(30)\\
+\end{array}
+\end{equation*}
+Thus, for this example, we return $animal$ as the most likely supersense for the word $dog$.
+
 
 \section{Experimental Evaluation}
 
