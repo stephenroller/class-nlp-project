@@ -1,0 +1,1394 @@
+INFO:dictionary:built Dictionary(263345 unique tokens) from 1 documents (total 263345 corpus positions)
+INFO:utils:loading Dictionary object from /tmp/prepro-corpus/pentadecamegaword.dict
+INFO:utils:loading StorableDictionary object from /tmp/prepro-corpus/pentadecamegaword.id2wrd
+INFO:utils:loading StorableDictionary object from /tmp/prepro-corpus/pentadecamegaword.wrd2id
+INFO:utils:loading TfidfModel object from /tmp/prepro-corpus/pentadecamegaword.tfidf
+INFO:utils:loading SparseMatrixSimilarity object from /tmp/prepro-corpus/pentadecamegaword.sms
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+timed out
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+u'http://www.sherlock-holmes.com/'
+u'http://pembertonholmes.com/'
+u'http://www.rachelholmes.com/'
+u'http://www.katieholmes.net/'
+u'http://www.holmesfarmwalkers.com/'
+HTTP Error 403: Forbidden
+HTTP Error 500: Internal Server Error
+<urlopen error timed out>
+HTTP Error 404: Not Found
+<urlopen error timed out>
+HTTP Error 500: Server Error
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 503: Service Unavailable
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+'ascii' codec can't encode character u'\xe9' in position 6: ordinal not in range(128)
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+u'http://harvardsportsanalysis.wordpress.com/2011/03/17/an-advanced-statistical-analysis-of-jimmy-chitwoods-basketball-performance-in-hoosiers/'
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error [Errno 104] Connection reset by peer>
+<urlopen error timed out>
+'ascii' codec can't encode character u'\xe1' in position 5: ordinal not in range(128)
+Traceback (most recent call last):
+  File "/v/filer4b/v20q001/pichotta/class/388/nlp-project/searchenginecorpus.py", line 76, in _scrape_text_from_sites
+    pf = ParallelFetcher([r.url for r in results])
+  File "/u/pichotta/.pylibs/pybing-0.1dev_r34-py2.6.egg/pybing/resultset.py", line 116, in __iter__
+    for result in query.get_search_results():
+  File "/u/pichotta/.pylibs/pybing-0.1dev_r34-py2.6.egg/pybing/query/query.py", line 77, in get_search_results
+    return [BingResult(result) for result in response['Results']]
+KeyError: 'Results'
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+timed out
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+[Errno 104] Connection reset by peer
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 404: Not Found
+HTTP Error 403: Forbidden
+HTTP Error 400: Bad Request
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 503: Service Temporarily Unavailable
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error [Errno 104] Connection reset by peer>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 500: Internal Server Error
+<urlopen error [Errno -2] Name or service not known>
+<urlopen error timed out>
+<urlopen error timed out>
+'ascii' codec can't encode character u'\xb5' in position 4: ordinal not in range(128)
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 404: Page not found
+'ascii' codec can't encode character u'\xbd' in position 24: ordinal not in range(128)
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error [Errno 104] Connection reset by peer>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+'ascii' codec can't encode characters in position 5-6: ordinal not in range(128)
+'ascii' codec can't encode characters in position 4-8: ordinal not in range(128)
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+
+APPID: 335CBE48CCCAF4A34652A3DDE7D2CE78FD3390DC
+CONTEXT_WORD_WIDTH: 20
+DEFAULT_CORPUS: /u/pichotta/penn-wsj-raw-all.txt
+K: 3
+N: 9
+NUM_FETCH_PROCESSES: 4
+NUM_PAGES_TO_SCRAPE: 50
+NUM_PROCESSES: 3
+PREPRO_DIR: /tmp/prepro-corpus/
+SHOULD_ENRICH_BY_SCRAPING: True
+SHOULD_SCRAPE_SITES: False
+SHOULD_USE_WEB_FOR_INIT_VEC_ENRICHMENT: True
+SHOULD_USE_WEB_FOR_PARING: False
+URLLIB_TIMEOUT: 3
+VOTE_DAMPING_COEFF: 0.7
+WEB_DESCR_DB_FILENAME: /tmp/webcorpus-bing.sqlite
+WEB_SCRAPE_DB_FILENAME: /tmp/webcorpus-scrape.sqlite
+WORDNET_DIR: wordnet/1.6/
+
+total number of tests: 322
+Looking for 'graffito'
+Attempting to classify 'graffito'
+adding 22 contexts from web to query vector.
+graffiti
+	Synset('graffito.n.01') (noun.artifact)
+	Synset('graffito.n.01') (noun.artifact)
+plural
+	Synset('plural.n.01') (noun.communication)
+	Synset('plural.a.01') (adj.all)
+italian
+	Synset('italian.n.01') (noun.person)
+	Synset('italian.n.02') (noun.communication)
+	Synset('italian.a.01') (adj.pert)
+0.534790042043 noun.artifact
+0.371292494237 noun.communication
+0.156153813004 noun.person
+graffito: noun.artifact (correct: noun.artifact)
+
+Looking for 'gram'
+Attempting to classify 'gram'
+adding 412 contexts from web to query vector.
+lupins
+	Synset('lupine.n.01') (noun.plant)
+stain
+	Synset('stain.n.01') (noun.attribute)
+	Synset('stain.n.02') (noun.substance)
+	Synset('dirt.n.02') (noun.state)
+	Synset('mark.n.06') (noun.communication)
+	Synset('blot.n.02') (noun.act)
+	Synset('stain.v.01') (verb.change)
+	Synset('spot.v.03') (verb.contact)
+	Synset('stain.v.03') (verb.change)
+tugriks
+	Synset('tugrik.n.01') (noun.quantity)
+0.229420900345 noun.plant
+0.191162571311 noun.attribute
+0.133813799918 noun.substance
+0.130974203348 noun.quantity
+0.0936696599424 noun.state
+0.0655687619597 noun.communication
+0.0458981333718 noun.act
+gram: noun.plant (correct: noun.quantity)
+
+Looking for 'grama'
+Attempting to classify 'grama'
+adding 339 contexts from web to query vector.
+grass
+	Synset('grass.n.01') (noun.plant)
+	Synset('marijuana.n.01') (noun.plant)
+	Synset('eatage.n.01') (noun.food)
+	Synset('cannabis.n.02') (noun.artifact)
+	Synset('grass.v.01') (verb.competition)
+	Synset('grass.v.02') (verb.contact)
+	Synset('grass.v.03') (verb.contact)
+	Synset('grass.v.04') (verb.contact)
+	Synset('grass.v.05') (verb.consumption)
+	Synset('denounce.v.04') (verb.communication)
+gram
+	Synset('gram.n.01') (noun.quantity)
+blue
+	Synset('blue.n.01') (noun.attribute)
+	Synset('blue.n.02') (noun.artifact)
+	Synset('blue.n.03') (noun.group)
+	Synset('blue_sky.n.01') (noun.object)
+	Synset('bluing.n.01') (noun.substance)
+	Synset('amobarbital_sodium.n.01') (noun.artifact)
+	Synset('blue.n.07') (noun.animal)
+	Synset('blue.v.01') (verb.change)
+	Synset('blue.s.01') (adj.all)
+	Synset('blue.s.02') (adj.all)
+	Synset('blue.a.03') (adj.pert)
+	Synset('blue.s.04') (adj.all)
+	Synset('blasphemous.s.02') (adj.all)
+	Synset('blue.s.06') (adj.all)
+	Synset('aristocratic.s.01') (adj.all)
+	Synset('blue.s.08') (adj.all)
+	Synset('blue.s.09') (adj.all)
+	Synset('blue.s.10') (adj.all)
+	Synset('blue.s.11') (adj.all)
+0.313759854436 noun.plant
+0.113641570631 noun.artifact
+0.0904366639256 noun.food
+0.0861321613193 noun.quantity
+0.0579859986901 noun.attribute
+0.0284131393582 noun.group
+0.0198891975507 noun.object
+0.0139224382855 noun.substance
+0.00682199475989 noun.animal
+grama: noun.plant (correct: noun.plant)
+
+Looking for 'grand_duchy'
+Attempting to classify 'grand_duchy'
+adding 1 contexts from web to query vector.
+luxembourgs
+	Synset('luxembourg.n.01') (noun.location)
+	Synset('luxembourg.n.02') (noun.location)
+luxembourg
+	Synset('luxembourg.n.01') (noun.location)
+	Synset('luxembourg.n.02') (noun.location)
+grand_duke
+	Synset('grand_duke.n.01') (noun.person)
+1.15388550162 noun.location
+0.107341006398 noun.person
+grand_duchy: noun.location (correct: noun.location)
+
+Looking for 'grandfather'
+Attempting to classify 'grandfather'
+adding 1137 contexts from web to query vector.
+clocks
+	Synset('redstem_storksbill.n.01') (noun.plant)
+	Synset('clock.n.01') (noun.artifact)
+	Synset('clock.v.01') (verb.change)
+clock
+	Synset('clock.n.01') (noun.artifact)
+	Synset('clock.v.01') (verb.change)
+0.469006377459 noun.artifact
+0.329606622458 noun.plant
+grandfather: noun.artifact (correct: noun.person)
+
+Looking for 'grantee'
+Attempting to classify 'grantee'
+adding 50 contexts from web to query vector.
+grantor
+	Synset('grantor.n.01') (noun.person)
+estate
+	Synset('estate.n.01') (noun.possession)
+	Synset('estate.n.02') (noun.possession)
+	Synset('estate.n.03') (noun.group)
+buyer
+	Synset('buyer.n.01') (noun.person)
+0.307582989335 noun.person
+0.165308406949 noun.possession
+0.0476477172971 noun.group
+grantee: noun.person (correct: noun.person)
+
+Looking for 'great_depression'
+Attempting to classify 'great_depression'
+adding 1 contexts from web to query vector.
+canasta
+	Synset('canasta.n.01') (noun.act)
+crisis
+	Synset('crisis.n.01') (noun.state)
+	Synset('crisis.n.02') (noun.event)
+truckers
+	Synset('teamster.n.02') (noun.person)
+0.0504578463733 noun.act
+0.0440114922822 noun.state
+0.0430367551744 noun.person
+0.0308080445975 noun.event
+great_depression: noun.act (correct: noun.state)
+
+Looking for 'grocery_store'
+Attempting to classify 'grocery_store'
+adding 1 contexts from web to query vector.
+butcher
+	Synset('butcher.n.01') (noun.person)
+	Synset('butcher.n.02') (noun.person)
+	Synset('butcher.n.03') (noun.person)
+	Synset('bungler.n.01') (noun.person)
+	Synset('butcher.v.01') (verb.contact)
+	Synset('butch.s.01') (adj.all)
+	Synset('butch.s.02') (adj.all)
+pie
+	Synset('pie.n.01') (noun.food)
+	Synset('proto-indo_european.n.01') (noun.communication)
+type
+	Synset('type.n.01') (noun.cognition)
+	Synset('character.n.05') (noun.person)
+	Synset('type.n.03') (noun.group)
+	Synset('type.n.04') (noun.communication)
+	Synset('type.n.05') (noun.artifact)
+	Synset('type.n.06') (noun.communication)
+	Synset('type.v.01') (verb.communication)
+	Synset('type.v.02') (verb.cognition)
+0.563210951179 noun.person
+0.164630139127 noun.communication
+0.154445141554 noun.food
+0.110588647425 noun.cognition
+0.0541884372383 noun.group
+0.0265523342468 noun.artifact
+grocery_store: noun.person (correct: noun.artifact)
+
+Looking for 'gynecology'
+Attempting to classify 'gynecology'
+adding 197 contexts from web to query vector.
+obstetrics
+	Synset('obstetrics.n.01') (noun.cognition)
+orthopedics
+	Synset('orthopedics.n.01') (noun.cognition)
+otolaryngology
+	Synset('otology.n.01') (noun.cognition)
+1.16763077676 noun.cognition
+gynecology: noun.cognition (correct: noun.cognition)
+
+Looking for 'hair_care'
+Attempting to classify 'hair_care'
+adding 1 contexts from web to query vector.
+products
+	Synset('merchandise.n.01') (noun.artifact)
+	Synset('product.n.02') (noun.artifact)
+	Synset('product.n.03') (noun.phenomenon)
+	Synset('product.n.04') (noun.cognition)
+	Synset('product.n.05') (noun.substance)
+	Synset('intersection.n.04') (noun.group)
+techniques
+	Synset('technique.n.01') (noun.cognition)
+	Synset('proficiency.n.02') (noun.cognition)
+skin
+	Synset('skin.n.01') (noun.body)
+	Synset('skin.n.02') (noun.substance)
+	Synset('skin.n.03') (noun.artifact)
+	Synset('hide.n.02') (noun.animal)
+	Synset('skin.n.05') (noun.state)
+	Synset('skin.n.06') (noun.artifact)
+	Synset('clamber.v.01') (verb.motion)
+	Synset('skin.v.02') (verb.contact)
+	Synset('bark.v.03') (verb.contact)
+	Synset('skin.v.04') (verb.contact)
+	Synset('stub.v.01') (verb.body)
+0.290423490601 noun.artifact
+0.208901386425 noun.cognition
+0.0989768166348 noun.substance
+0.0954749584198 noun.body
+0.0656007055938 noun.phenomenon
+0.032747910738 noun.animal
+0.0229235375166 noun.state
+0.0225010420187 noun.group
+hair_care: noun.artifact (correct: noun.act)
+
+Looking for 'hairdresser'
+Attempting to classify 'hairdresser'
+adding 328 contexts from web to query vector.
+3
+	Synset('three.n.01') (noun.quantity)
+	Synset('three.s.01') (adj.all)
+hair
+	Synset('hair.n.01') (noun.body)
+	Synset("hair's-breadth.n.01") (noun.quantity)
+	Synset('hair.n.03') (noun.plant)
+	Synset('haircloth.n.01') (noun.artifact)
+	Synset('hair.n.05') (noun.animal)
+2
+	Synset('two.n.01') (noun.quantity)
+	Synset('two.s.01') (adj.all)
+0.425098462403 noun.quantity
+0.163515463471 noun.body
+0.080122577101 noun.plant
+0.0560858039707 noun.artifact
+0.0392600627795 noun.animal
+hairdresser: noun.quantity (correct: noun.person)
+
+Looking for 'hairstylists'
+Attempting to classify 'hairstylists'
+adding 398 contexts from web to query vector.
+therapist
+	Synset('therapist.n.01') (noun.person)
+browsing
+	Synset('browse.n.01') (noun.communication)
+	Synset('browse.n.02') (noun.act)
+	Synset('shop.v.03') (verb.possession)
+	Synset('crop.v.05') (verb.contact)
+	Synset('browse.v.03') (verb.contact)
+	Synset('browse.v.04') (verb.consumption)
+contractor
+	Synset('contractor.n.01') (noun.person)
+	Synset('contractor.n.02') (noun.person)
+0.792957654595 noun.person
+0.290841013193 noun.communication
+0.203588709235 noun.act
+hairstylists: noun.person (correct: noun.person)
+
+Looking for 'handlebar'
+Attempting to classify 'handlebar'
+adding 463 contexts from web to query vector.
+risers
+	Synset('riser.n.01') (noun.artifact)
+teardrop
+	Synset('teardrop.n.01') (noun.shape)
+	Synset('tear.n.01') (noun.body)
+mustache
+	Synset('mustache.n.01') (noun.body)
+0.367234966159 noun.body
+0.231701150537 noun.artifact
+0.21766680479 noun.shape
+handlebar: noun.body (correct: noun.artifact)
+
+Looking for 'hangers'
+Attempting to classify 'hangers'
+adding 932 contexts from web to query vector.
+joist
+	Synset('joist.n.01') (noun.artifact)
+clothespins
+	Synset('clothespin.n.01') (noun.artifact)
+girders
+	Synset('girder.n.01') (noun.artifact)
+0.63274294883 noun.artifact
+hangers: noun.artifact (correct: noun.artifact)
+
+Looking for 'hankss'
+Attempting to classify 'hankss'
+adding 1 contexts from web to query vector.
+click
+	Synset('chink.n.03') (noun.event)
+	Synset('suction_stop.n.01') (noun.communication)
+	Synset('pawl.n.01') (noun.artifact)
+	Synset('click.n.04') (noun.act)
+	Synset('snap.v.04') (verb.motion)
+	Synset('click.v.02') (verb.perception)
+	Synset('chatter.v.01') (verb.perception)
+	Synset('snap.v.10') (verb.contact)
+	Synset('click.v.05') (verb.communication)
+	Synset('cluck.v.01') (verb.communication)
+	Synset('click.v.07') (verb.cognition)
+instance
+	Synset('case.n.02') (noun.event)
+	Synset('example.n.01') (noun.cognition)
+	Synset('exemplify.v.02') (verb.communication)
+ms
+	Synset('multiple_sclerosis.n.01') (noun.state)
+	Synset('master_of_science.n.01') (noun.communication)
+	Synset('manuscript.n.01') (noun.communication)
+	Synset('meter.n.01') (noun.quantity)
+	Synset('molarity.n.01') (noun.attribute)
+	Synset('thousand.n.01') (noun.quantity)
+0.426274880767 noun.event
+0.377713821679 noun.communication
+0.165077611804 noun.state
+0.126890024543 noun.artifact
+0.117120952904 noun.cognition
+0.08882301718 noun.act
+0.0843662150647 noun.quantity
+0.0396351345941 noun.attribute
+hankss: noun.event (correct: noun.artifact)
+
+Looking for 'hard_hat'
+Attempting to classify 'hard_hat'
+adding 1 contexts from web to query vector.
+rip
+	Synset('rake.n.01') (noun.person)
+	Synset('rip.n.02') (noun.object)
+	Synset('rip.n.03') (noun.event)
+	Synset('rent.n.04') (noun.act)
+	Synset('rend.v.01') (verb.contact)
+	Synset('rip.v.02') (verb.motion)
+	Synset('rip.v.03') (verb.contact)
+glamour
+	Synset('glamor.n.01') (noun.attribute)
+	Synset('hex.v.01') (verb.communication)
+models
+	Synset('model.n.01') (noun.cognition)
+	Synset('model.n.02') (noun.cognition)
+	Synset('model.n.03') (noun.person)
+	Synset('model.n.04') (noun.artifact)
+	Synset('exemplar.n.01') (noun.cognition)
+	Synset('model.n.06') (noun.person)
+	Synset('model.n.07') (noun.cognition)
+	Synset('mannequin.n.01') (noun.person)
+	Synset('model.n.09') (noun.act)
+	Synset('model.v.01') (verb.creation)
+	Synset('model.v.02') (verb.creation)
+	Synset('model.v.03') (verb.perception)
+	Synset('model.v.04') (verb.perception)
+	Synset('model.v.05') (verb.creation)
+	Synset('model.v.06') (verb.creation)
+0.427501320346 noun.person
+0.382546828622 noun.cognition
+0.261099308729 noun.attribute
+0.202896666527 noun.object
+0.142027666569 noun.event
+0.110136447934 noun.act
+0.0637655818164 noun.artifact
+hard_hat: noun.person (correct: noun.artifact)
+
+Looking for 'hardiness'
+Attempting to classify 'hardiness'
+adding 337 contexts from web to query vector.
+petals
+	Synset('petal.n.01') (noun.plant)
+zones
+	Synset('zone.n.01') (noun.location)
+	Synset('zone.n.02') (noun.location)
+	Synset('zone.n.03') (noun.location)
+	Synset('zone.v.01') (verb.social)
+	Synset('partition.v.02') (verb.change)
+plant
+	Synset('plant.n.01') (noun.artifact)
+	Synset('plant.n.02') (noun.Tops)
+	Synset('plant.n.03') (noun.cognition)
+	Synset('plant.n.04') (noun.person)
+	Synset('plant.v.01') (verb.contact)
+	Synset('implant.v.01') (verb.contact)
+	Synset('establish.v.02') (verb.creation)
+	Synset('plant.v.04') (verb.possession)
+	Synset('plant.v.05') (verb.cognition)
+0.299153059423 noun.location
+0.207722842693 noun.plant
+0.120019413531 noun.artifact
+0.0840135894716 noun.Tops
+0.0588095126301 noun.cognition
+0.0411666588411 noun.person
+hardiness: noun.location (correct: noun.attribute)
+
+Looking for 'harmonica'
+Attempting to classify 'harmonica'
+adding 1267 contexts from web to query vector.
+ball_game
+	Synset('baseball.n.01') (noun.act)
+ringer
+	Synset('ringer.n.01') (noun.person)
+	Synset('ringer.n.02') (noun.person)
+beginners
+	Synset('novice.n.01') (noun.person)
+	Synset('founder.n.02') (noun.person)
+0.370477194339 noun.person
+0.175790160894 noun.act
+harmonica: noun.person (correct: noun.artifact)
+
+Looking for 'headlamps'
+Attempting to classify 'headlamps'
+adding 381 contexts from web to query vector.
+headlamp
+	Synset('headlight.n.01') (noun.artifact)
+teardrop
+	Synset('teardrop.n.01') (noun.shape)
+	Synset('tear.n.01') (noun.body)
+feline
+	Synset('feline.n.01') (noun.animal)
+	Synset('feline.a.01') (adj.pert)
+0.308528780937 noun.artifact
+0.232480421662 noun.shape
+0.162736295164 noun.body
+0.0608738362789 noun.animal
+headlamps: noun.artifact (correct: noun.artifact)
+
+Looking for 'heaven'
+Attempting to classify 'heaven'
+adding 345 contexts from web to query vector.
+manna
+	Synset('manna.n.01') (noun.plant)
+	Synset('miraculous_food.n.01') (noun.food)
+bluestone
+	Synset('bluestone.n.01') (noun.substance)
+0.327945053577 noun.plant
+0.255974084139 noun.substance
+0.229561537504 noun.food
+heaven: noun.plant (correct: noun.location)
+
+Looking for 'hereford'
+Attempting to classify 'hereford'
+adding 360 contexts from web to query vector.
+accommodation
+	Synset('adjustment.n.01') (noun.event)
+	Synset('accommodation.n.02') (noun.communication)
+	Synset('accommodation.n.03') (noun.cognition)
+	Synset('accommodation.n.04') (noun.artifact)
+	Synset('accommodation.n.05') (noun.act)
+	Synset('accommodation.n.06') (noun.act)
+bed
+	Synset('bed.n.01') (noun.artifact)
+	Synset('bed.n.02') (noun.artifact)
+	Synset('bed.n.03') (noun.object)
+	Synset('bed.n.04') (noun.object)
+	Synset('seam.n.03') (noun.location)
+	Synset('bed.n.06') (noun.artifact)
+	Synset('bed.v.01') (verb.possession)
+	Synset('bed.v.02') (verb.contact)
+	Synset('love.v.04') (verb.contact)
+amp
+	Synset('ampere.n.02') (noun.quantity)
+	Synset('adenosine_monophosphate.n.01') (noun.substance)
+0.121017816634 noun.artifact
+0.0712128952146 noun.event
+0.0507768131793 noun.quantity
+0.0498490266502 noun.communication
+0.0430717071891 noun.object
+0.0355437692255 noun.substance
+0.0348943186551 noun.cognition
+0.0290669674397 noun.act
+0.0124147861898 noun.location
+hereford: noun.artifact (correct: noun.animal)
+
+Looking for 'hindquarter'
+Attempting to classify 'hindquarter'
+adding 306 contexts from web to query vector.
+amputation
+	Synset('amputation.n.01') (noun.state)
+	Synset('amputation.n.02') (noun.act)
+baste
+	Synset('baste.n.01') (noun.artifact)
+	Synset('baste.v.01') (verb.change)
+	Synset('clobber.v.01') (verb.contact)
+	Synset('baste.v.03') (verb.contact)
+deer
+	Synset('deer.n.01') (noun.animal)
+0.259899497032 noun.state
+0.198972970247 noun.artifact
+0.181929647923 noun.act
+0.15200394392 noun.animal
+hindquarter: noun.state (correct: noun.food)
+
+Looking for 'hinds'
+Attempting to classify 'hinds'
+adding 466 contexts from web to query vector.
+aas
+	Synset('associate_in_applied_science.n.01') (noun.communication)
+	Synset('alcoholics_anonymous.n.01') (noun.group)
+	Synset('associate_in_arts.n.01') (noun.communication)
+0.287380571812 noun.communication
+0.135011006892 noun.group
+hinds: noun.communication (correct: noun.animal)
+
+Looking for 'hindsight'
+Attempting to classify 'hindsight'
+adding 268 contexts from web to query vector.
+lyrics
+	Synset('lyric.n.01') (noun.communication)
+	Synset('lyric.n.02') (noun.communication)
+	Synset('lyric.v.01') (verb.creation)
+bias
+	Synset('bias.n.01') (noun.cognition)
+	Synset('diagonal.n.01') (noun.shape)
+	Synset('bias.v.01') (verb.competition)
+	Synset('bias.v.02') (verb.cognition)
+	Synset('bias.s.01') (adj.all)
+proverb
+	Synset('proverb.n.01') (noun.communication)
+0.452299135923 noun.communication
+0.147118747234 noun.cognition
+0.102983123064 noun.shape
+hindsight: noun.communication (correct: noun.cognition)
+
+Looking for 'hippo'
+Attempting to classify 'hippo'
+adding 355 contexts from web to query vector.
+noun
+	Synset('noun.n.01') (noun.communication)
+	Synset('noun.n.02') (noun.communication)
+2
+	Synset('two.n.01') (noun.quantity)
+	Synset('two.s.01') (adj.all)
+queue
+	Synset('queue.n.01') (noun.group)
+	Synset('queue.n.02') (noun.communication)
+	Synset('queue.n.03') (noun.body)
+	Synset('line_up.v.03') (verb.motion)
+0.450931310654 noun.communication
+0.124015174806 noun.quantity
+0.120239600539 noun.group
+0.0589174042642 noun.body
+hippo: noun.communication (correct: noun.animal)
+
+Looking for 'holmes'
+Attempting to classify 'holmes'
+adding 247 contexts from web to query vector.
+sherlock
+	Synset('private_detective.n.01') (noun.person)
+antimicrobial
+	Synset('disinfectant.n.01') (noun.artifact)
+	Synset('antimicrobial.s.01') (adj.all)
+thespians
+	Synset('actor.n.01') (noun.person)
+0.427304014564 noun.person
+0.185381531715 noun.artifact
+holmes: noun.person (correct: noun.person)
+
+Looking for 'holy_sees'
+Attempting to classify 'holy_sees'
+adding 1 contexts from web to query vector.
+cardinals
+	Synset('cardinal.n.01') (noun.person)
+	Synset('cardinal_number.n.01') (noun.quantity)
+	Synset('cardinal.n.03') (noun.attribute)
+	Synset('cardinal.n.04') (noun.animal)
+taipei
+	Synset('taipei.n.01') (noun.location)
+nuncio
+	Synset('nuncio.n.01') (noun.person)
+0.119512807578 noun.person
+0.0598610565066 noun.location
+0.0420038063079 noun.quantity
+0.0294026644155 noun.attribute
+0.0205818650909 noun.animal
+holy_sees: noun.person (correct: noun.location)
+
+Looking for 'homeboy'
+Attempting to classify 'homeboy'
+adding 270 contexts from web to query vector.
+lyrics
+	Synset('lyric.n.01') (noun.communication)
+	Synset('lyric.n.02') (noun.communication)
+	Synset('lyric.v.01') (verb.creation)
+slang
+	Synset('slang.n.01') (noun.communication)
+	Synset('cant.n.03') (noun.communication)
+	Synset('slang.v.01') (verb.communication)
+	Synset('gull.v.02') (verb.communication)
+	Synset('slang.v.03') (verb.communication)
+jesus
+	Synset('jesus.n.01') (noun.person)
+0.404614613205 noun.communication
+0.0906501412392 noun.person
+homeboy: noun.communication (correct: noun.person)
+
+Looking for 'honeysuckle'
+Attempting to classify 'honeysuckle'
+adding 887 contexts from web to query vector.
+lonicera
+	Synset('lonicera.n.01') (noun.plant)
+clover
+	Synset('clover.n.01') (noun.plant)
+family
+	Synset('family.n.01') (noun.group)
+	Synset('family.n.02') (noun.group)
+	Synset('class.n.01') (noun.group)
+	Synset('family.n.04') (noun.group)
+	Synset('kin.n.01') (noun.person)
+	Synset('family.n.06') (noun.group)
+	Synset('family.n.07') (noun.group)
+0.823100537062 noun.plant
+0.185058041118 noun.group
+0.0157633434452 noun.person
+honeysuckle: noun.plant (correct: noun.plant)
+
+Looking for 'honoree'
+Attempting to classify 'honoree'
+adding 203 contexts from web to query vector.
+noun
+	Synset('noun.n.01') (noun.communication)
+	Synset('noun.n.02') (noun.communication)
+dictionary
+	Synset('dictionary.n.01') (noun.communication)
+clue
+	Synset('hint.n.02') (noun.communication)
+	Synset('clue.n.02') (noun.communication)
+	Synset('clue.v.01') (verb.contact)
+0.667616587132 noun.communication
+honoree: noun.communication (correct: noun.person)
+
+Looking for 'hoosiers'
+Attempting to classify 'hoosiers'
+adding 592 contexts from web to query vector.
+0
+	Synset('zero.n.02') (noun.quantity)
+	Synset('zero.s.01') (adj.all)
+movie
+	Synset('movie.n.01') (noun.communication)
+1
+	Synset('one.n.01') (noun.quantity)
+	Synset('one.s.01') (adj.all)
+0.443239286542 noun.quantity
+0.181022182107 noun.communication
+hoosiers: noun.quantity (correct: noun.person)
+
+Looking for 'hoss'
+Attempting to classify 'hoss'
+adding 502 contexts from web to query vector.
+hoss
+	Synset('holmium.n.01') (noun.substance)
+0.401616275311 noun.substance
+hoss: noun.substance (correct: noun.substance)
+
+Looking for 'hostelry'
+Attempting to classify 'hostelry'
+adding 145 contexts from web to query vector.
+synonyms
+	Synset('synonym.n.01') (noun.communication)
+inn
+	Synset('hostel.n.01') (noun.artifact)
+definition
+	Synset('definition.n.01') (noun.communication)
+	Synset('definition.n.02') (noun.attribute)
+0.315057337284 noun.communication
+0.162764072418 noun.artifact
+0.0810015931726 noun.attribute
+hostelry: noun.communication (correct: noun.artifact)
+
+Looking for 'humanness'
+Attempting to classify 'humanness'
+adding 211 contexts from web to query vector.
+human
+	Synset('person.n.01') (noun.Tops)
+	Synset('homo.n.02') (noun.animal)
+	Synset('human.a.01') (adj.pert)
+	Synset('human.a.02') (adj.pert)
+	Synset('human.a.03') (adj.all)
+humanoid
+	Synset('android.n.01') (noun.artifact)
+spirituality
+	Synset('spiritualty.n.01') (noun.possession)
+	Synset('spirituality.n.02') (noun.attribute)
+0.145506709814 noun.Tops
+0.106615722179 noun.artifact
+0.104082487524 noun.possession
+0.10185469687 noun.animal
+0.0728577412665 noun.attribute
+humanness: noun.Tops (correct: noun.attribute)
+
+Looking for 'hustler'
+Attempting to classify 'hustler'
+adding 1 contexts from web to query vector.
+cardsharp
+	Synset('cardsharp.n.01') (noun.person)
+pimp
+	Synset('pimp.n.01') (noun.person)
+	Synset('pander.v.02') (verb.consumption)
+magazine
+	Synset('magazine.n.01') (noun.communication)
+	Synset('magazine.n.02') (noun.artifact)
+	Synset('magazine.n.03') (noun.group)
+	Synset('magazine.n.04') (noun.artifact)
+	Synset('magazine.n.05') (noun.artifact)
+	Synset('cartridge_holder.n.01') (noun.artifact)
+0.737939432263 noun.person
+0.170554209115 noun.artifact
+0.117528758943 noun.communication
+0.0575890918821 noun.group
+hustler: noun.person (correct: noun.person)
+
+Looking for 'hyena'
+Attempting to classify 'hyena'
+adding 408 contexts from web to query vector.
+armadillo
+	Synset('armadillo.n.01') (noun.animal)
+disease
+	Synset('disease.n.01') (noun.state)
+noun
+	Synset('noun.n.01') (noun.communication)
+	Synset('noun.n.02') (noun.communication)
+0.222773641348 noun.animal
+0.188099130988 noun.state
+0.181115660071 noun.communication
+hyena: noun.animal (correct: noun.animal)
+
+Looking for 'iaea'
+Attempting to classify 'iaea'
+adding 274 contexts from web to query vector.
+international_atomic_energy_agency
+	Synset('international_atomic_energy_agency.n.01') (noun.group)
+inspectors
+	Synset('inspector.n.01') (noun.person)
+	Synset('examiner.n.02') (noun.person)
+veiling
+	Synset('gauze.n.02') (noun.artifact)
+	Synset('veil.v.01') (verb.contact)
+0.49689168632 noun.person
+0.47255563736 noun.group
+0.226369440556 noun.artifact
+iaea: noun.person (correct: noun.group)
+
+Looking for 'icbms'
+Attempting to classify 'icbms'
+adding 226 contexts from web to query vector.
+megaton
+	Synset('megaton.n.01') (noun.quantity)
+	Synset('megaton.n.02') (noun.quantity)
+icbm
+	Synset('intercontinental_ballistic_missile.n.01') (noun.artifact)
+launchers
+	Synset('launcher.n.01') (noun.artifact)
+	Synset('catapult.n.01') (noun.artifact)
+0.405373349786 noun.artifact
+0.327833387256 noun.quantity
+icbms: noun.artifact (correct: noun.artifact)
+
+Looking for 'igloo'
+Attempting to classify 'igloo'
+adding 270 contexts from web to query vector.
+n
+	Synset('nitrogen.n.01') (noun.substance)
+	Synset('north.n.03') (noun.relation)
+	Synset('newton.n.02') (noun.quantity)
+hudson_bay
+	Synset('hudson_bay.n.01') (noun.object)
+m
+	Synset('meter.n.01') (noun.quantity)
+	Synset('molarity.n.01') (noun.attribute)
+	Synset('thousand.n.01') (noun.quantity)
+	Synset('thousand.s.01') (adj.all)
+0.257947933972 noun.quantity
+0.160558387637 noun.substance
+0.147442534566 noun.object
+0.112390871346 noun.relation
+0.0842228367925 noun.attribute
+igloo: noun.quantity (correct: noun.artifact)
+
+Looking for 'igloos'
+Attempting to classify 'igloos'
+adding 186 contexts from web to query vector.
+igloo
+	Synset('igloo.n.01') (noun.artifact)
+snow
+	Synset('snow.n.01') (noun.phenomenon)
+	Synset('snow.n.02') (noun.substance)
+	Synset('cocaine.n.01') (noun.artifact)
+	Synset('snow.v.01') (verb.weather)
+	Synset('bamboozle.v.01') (verb.communication)
+constructs
+	Synset('concept.n.01') (noun.cognition)
+	Synset('construct.v.01') (verb.creation)
+	Synset('manufacture.v.01') (verb.creation)
+	Synset('construct.v.03') (verb.contact)
+	Synset('reconstruct.v.01') (verb.cognition)
+0.485411878526 noun.artifact
+0.152396053076 noun.phenomenon
+0.106677237153 noun.substance
+0.0929535552859 noun.cognition
+igloos: noun.artifact (correct: noun.artifact)
+
+Looking for 'iguazu_falls'
+Attempting to classify 'iguazu_falls'
+adding 1 contexts from web to query vector.
+argentine
+	Synset('argentine.n.01') (noun.animal)
+	Synset('argentine.a.01') (adj.pert)
+guests
+	Synset('guest.n.01') (noun.person)
+	Synset('guest.n.02') (noun.person)
+	Synset('node.n.06') (noun.artifact)
+border
+	Synset('boundary_line.n.01') (noun.location)
+	Synset('margin.n.01') (noun.shape)
+	Synset('edge.n.01') (noun.location)
+	Synset('molding.n.03') (noun.artifact)
+	Synset('border.n.05') (noun.artifact)
+	Synset('surround.v.02') (verb.contact)
+	Synset('bound.v.02') (verb.stative)
+	Synset('frame.v.01') (verb.contact)
+	Synset('border.v.04') (verb.contact)
+0.401668578386 noun.animal
+0.31854121387 noun.person
+0.223426429033 noun.location
+0.179251029038 noun.artifact
+0.104965436459 noun.shape
+iguazu_falls: noun.animal (correct: noun.object)
+
+Looking for 'illness'
+Attempting to classify 'illness'
+adding 445 contexts from web to query vector.
+cave_ins
+	Synset('cave_in.n.01') (noun.event)
+	Synset('collapse.v.01') (verb.motion)
+0.197178170085 noun.event
+illness: noun.event (correct: noun.state)
+
+Looking for 'immunology'
+Attempting to classify 'immunology'
+adding 329 contexts from web to query vector.
+allergy
+	Synset('allergy.n.01') (noun.state)
+virology
+	Synset('virology.n.01') (noun.cognition)
+microbiology
+	Synset('microbiology.n.01') (noun.cognition)
+0.221047513187 noun.cognition
+0.185914009809 noun.state
+immunology: noun.cognition (correct: noun.cognition)
+
+Looking for 'impresarios'
+Attempting to classify 'impresarios'
+adding 141 contexts from web to query vector.
+impresario
+	Synset('showman.n.01') (noun.person)
+impress
+	Synset('impress.n.01') (noun.act)
+	Synset('affect.v.05') (verb.emotion)
+	Synset('impress.v.02') (verb.emotion)
+	Synset('impress.v.03') (verb.cognition)
+	Synset('impress.v.04') (verb.contact)
+	Synset('print.v.04') (verb.creation)
+	Synset('shanghai.v.01') (verb.contact)
+	Synset('impress.v.07') (verb.change)
+buddy
+	Synset('buddy.n.01') (noun.person)
+0.433723628521 noun.person
+0.159984514117 noun.act
+impresarios: noun.person (correct: noun.person)
+
+Looking for 'impulsiveness'
+Attempting to classify 'impulsiveness'
+adding 229 contexts from web to query vector.
+noun
+	Synset('noun.n.01') (noun.communication)
+	Synset('noun.n.02') (noun.communication)
+hyperactivity
+	Synset('hyperactivity.n.01') (noun.state)
+obsession
+	Synset('compulsion.n.02') (noun.motive)
+	Synset('obsession.n.02') (noun.cognition)
+0.200209078193 noun.communication
+0.113387517631 noun.state
+0.0885846614838 noun.motive
+0.0620092630386 noun.cognition
+impulsiveness: noun.communication (correct: noun.attribute)
+
+Looking for 'inexorability'
+Attempting to classify 'inexorability'
+adding 71 contexts from web to query vector.
+apis
+	Synset('apis.n.01') (noun.animal)
+synonyms
+	Synset('synonym.n.01') (noun.communication)
+inflexibility
+	Synset('inflexibility.n.01') (noun.attribute)
+	Synset('inflexibility.n.02') (noun.attribute)
+0.207229197025 noun.animal
+0.184773926437 noun.attribute
+0.134713351727 noun.communication
+inexorability: noun.animal (correct: noun.attribute)
+
+Looking for 'innuendo'
+Attempting to classify 'innuendo'
+adding 343 contexts from web to query vector.
+innuendoes
+	Synset('insinuation.n.01') (noun.communication)
+insinuation
+	Synset('insinuation.n.01') (noun.communication)
+mccarthyism
+	Synset('mccarthyism.n.01') (noun.act)
+0.265720076859 noun.communication
+0.0700197890401 noun.act
+innuendo: noun.communication (correct: noun.communication)
+
+Looking for 'innuendoes'
+Attempting to classify 'innuendoes'
+adding 63 contexts from web to query vector.
+innuendo
+	Synset('insinuation.n.01') (noun.communication)
+innuendos
+	Synset('insinuation.n.01') (noun.communication)
+insinuation
+	Synset('insinuation.n.01') (noun.communication)
+0.773770824075 noun.communication
+innuendoes: noun.communication (correct: noun.communication)
+
+Looking for 'inspector_general'
+Attempting to classify 'inspector_general'
+adding 1 contexts from web to query vector.
+police
+	Synset('police.n.01') (noun.group)
+	Synset('patrol.v.01') (verb.social)
+office
+	Synset('office.n.01') (noun.artifact)
+	Synset('agency.n.01') (noun.group)
+	Synset('function.n.03') (noun.act)
+	Synset('office.n.04') (noun.state)
+	Synset('office.n.05') (noun.group)
+	Synset('office.n.06') (noun.act)
+	Synset('position.n.06') (noun.act)
+0.213892798759 noun.group
+0.0619109682739 noun.artifact
+0.0480255143984 noun.act
+0.0212354621179 noun.state
+inspector_general: noun.group (correct: noun.person)
+
+Looking for 'insularity'
+Attempting to classify 'insularity'
+adding 131 contexts from web to query vector.
+noun
+	Synset('noun.n.01') (noun.communication)
+	Synset('noun.n.02') (noun.communication)
+thesaurus
+	Synset('thesaurus.n.01') (noun.communication)
+dictionary
+	Synset('dictionary.n.01') (noun.communication)
+1.01711723208 noun.communication
+insularity: noun.communication (correct: noun.state)
+
+Looking for 'interconnectedness'
+Attempting to classify 'interconnectedness'
+adding 276 contexts from web to query vector.
+noun
+	Synset('noun.n.01') (noun.communication)
+	Synset('noun.n.02') (noun.communication)
+phrases
+	Synset('phrase.n.01') (noun.communication)
+	Synset('phrase.n.02') (noun.communication)
+	Synset('idiom.n.04') (noun.communication)
+	Synset('formulate.v.03') (verb.communication)
+ts
+	Synset('metric_ton.n.01') (noun.quantity)
+	Synset('terabyte.n.01') (noun.quantity)
+0.210232208185 noun.communication
+0.0701960336417 noun.quantity
+interconnectedness: noun.communication (correct: noun.state)
+
+Looking for 'interest_group'
+Attempting to classify 'interest_group'
+adding 1 contexts from web to query vector.
+fortitude
+	Synset('fortitude.n.01') (noun.attribute)
+representation
+	Synset('representation.n.01') (noun.cognition)
+	Synset('representation.n.02') (noun.artifact)
+	Synset('representation.n.03') (noun.act)
+	Synset('representation.n.04') (noun.state)
+	Synset('representation.n.05') (noun.communication)
+	Synset('representation.n.06') (noun.act)
+equivalent
+	Synset('equivalent.n.01') (noun.cognition)
+	Synset('equivalent.n.02') (noun.attribute)
+	Synset('like.a.02') (adj.all)
+	Synset('equivalent.s.02') (adj.all)
+0.252788540721 noun.attribute
+0.199556596577 noun.cognition
+0.074511077255 noun.artifact
+0.0700478637274 noun.act
+0.036510427855 noun.state
+0.0255572994985 noun.communication
+interest_group: noun.attribute (correct: noun.group)
+
+Looking for 'interlocutors'
+Attempting to classify 'interlocutors'
+adding 289 contexts from web to query vector.
+kashmir
+	Synset('kashmir.n.01') (noun.location)
+interlocutor
+	Synset('interlocutor.n.01') (noun.person)
+	Synset('interlocutor.n.02') (noun.person)
+0.246204212308 noun.location
+0.153103765845 noun.person
+interlocutors: noun.location (correct: noun.person)
+
+Looking for 'internal_combustion'
+Attempting to classify 'internal_combustion'
+adding 1 contexts from web to query vector.
+farm
+	Synset('farm.n.01') (noun.artifact)
+	Synset('farm.v.01') (verb.social)
+	Synset('farm.v.02') (verb.possession)
+	Synset('grow.v.07') (verb.creation)
+	Synset('farm.s.01') (adj.all)
+kph
+	Synset('kilometers_per_hour.n.01') (noun.time)
+tractors
+	Synset('tractor.n.01') (noun.artifact)
+	Synset('tractor.n.02') (noun.artifact)
+0.578271062672 noun.artifact
+0.221545130014 noun.time
+internal_combustion: noun.artifact (correct: noun.process)
+
+Looking for 'iron_ore'
+Attempting to classify 'iron_ore'
+adding 1 contexts from web to query vector.
+coal
+	Synset('coal.n.01') (noun.substance)
+	Synset('ember.n.01') (noun.object)
+	Synset('char.v.01') (verb.weather)
+	Synset('coal.v.02') (verb.possession)
+	Synset('coal.v.03') (verb.contact)
+lower
+	Synset('lower_HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+timed out
+<urlopen error timed out>
+timed out
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 500: Internal Server Error
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error [Errno -2] Name or service not known>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error [Errno -2] Name or service not known>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 503: Service Unavailable
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+'ascii' codec can't encode character u'\xe1' in position 5: ordinal not in range(128)
+HTTP Error 403: Forbidden
+<urlopen error [Errno 104] Connection reset by peer>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 410: Gone
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error [Errno -3] Temporary failure in name resolution>
+'ascii' codec can't encode characters in position 5-6: ordinal not in range(128)
+'ascii' codec can't encode character u'\xa6' in position 4: ordinal not in range(128)
+HTTP Error 406: Not Acceptable
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 502: Bad Gateway
+HTTP Error 502: Bad Gateway
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error [Errno -2] Name or service not known>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 404: Not Found
+HTTP Error 403: Forbidden
+HTTP Error 400: Bad Request
+u'http://www.lotterypost.com/news'
+u'http://www.lotterymethod.com/'
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 500: Internal Server Error
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+HTTP Error 404: Not Found
+<urlopen error timed out>
+<urlopen error [Errno -3] Temporary failure in name resolution>
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+<urlopen error timed out>
+
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+HTTP Error 403: Forbidden
+'ascii' codec can't encode character u'\xe8' in position 7: ordinal not in range(128)
