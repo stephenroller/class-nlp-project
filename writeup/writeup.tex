@@ -407,12 +407,12 @@ Contrary to expectations, in all three cases, refining with scraping harms perfo
 By and large, using information from the web on the 1.6 test set helps more than it hurts (with the exception of refining by scraping pages).
 
 On the 1.7 test set, on the other hand, using information from the web harms performance across the board.
-One difference explaining this is that the 1.7 test set contains a significantly higher percentage of items with supersense {\it noun.person}---62.60\%, vs 26.11\% in the 1.6 test set.
+The 1.7 test set contains a significantly higher percentage of items with supersense {\it noun.person}---62.60\%, vs 26.11\% in the 1.6 test set.
 One unfortunate consequence of this fact is that baseline performance is very difficult to beat on the 1.7 test set (indeed, the baseline outperforms our algorithm in every setup).
 
 Many of the 1.7 test words are proper names of individuals.
 These names typically occur quite infrequently in our offline corpus of newswire; therefore, the terms' neighbors in the vector space model are of fairly low quality.
-%Because these names typically occur on the web in the context of some set of things for which these individuals are well-known, using the web here ends up harming performance.
+Further, the results from the search engine are often of low quality, in particular because proper names are very much associated with company websites containing those names, and this yields very poor results.
 The fact that our algorithm works poorly on proper names is not particularly important for the 1.6 test set, but causes very poor performance on the 1.7 test set, which is comprised of a majority of proper names.
 However, performance on the 1.6 test set indicates that givan a more well-balanced set of words, using web data can, in fact, help performance.
 
@@ -449,7 +449,7 @@ Since we do not use the same exact test sets or corpora as them, comparative res
 One very interesting effect to note is that our 1.7 baseline differs dramatically from the Ciaramita and Johnson baseline. 
 Indeed, our 1.7 baseline is as high as Curran's overall accuracy.
 Furthermore, Ciaramita \& Johnson report having more difficulty due to the large number of nouns in the $abstract$ category, rather than a large number of proper names as we find.
-We believe this is a result of the nature of our corpus.
+We believe this is a result of the nature of our corpus---they use a different corpus, and the overlaps between the words added to WordNet 1.7.1 and the different corpora could vary widely.
 
 
 \section{Related Work}
