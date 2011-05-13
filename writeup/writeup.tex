@@ -32,11 +32,11 @@ We provide a novel solution to the problem which uses a model built from a relat
 This broad approach---use a rough model to construct an approximation and refine with search engine queries---could be generalized to many other tasks.
 In that sense, our contribution is not an algorithm to solve the problem of acquisition of supersenses of unknown nouns {\it per se}, but is rather a method for using search engine queries to refine first approximations from rough models, which we apply to the task of supersense acquisition for illustrative purposes.
 
-We construct a rough approximation using a simplified version of the distributional approach taken by Curran \cite{curran}, and refine using the Bing API.
+We construct a rough approximation using a simplified version of the distributional approach taken by Curran \cite{curran}, and refine this approximation using the Bing API.
 
-We find that, for one our two test sets, the use of search engine results returned from Bing outperforms no use of search engine results.
-Our model performs significantly worse on the second test set with search engine results were actually detrimental. We attempt to explain this behavior and compare our results to the state of the art.
-
+We find that, for one of our two test sets, the use of search engine results returned from Bing outperforms no use of search engine results.
+Our model performs significantly worse on the second test set---search engine results were actually detrimental. 
+We attempt to explain this behavior and compare our results to the state of the art.
 
 
 \section{Problem Definition and Algorithm}
@@ -49,7 +49,7 @@ The task of supersense acquisition of unknown nouns was first described in \cite
 The problem is, given a word,  assign to that word one of the WordNet {\it supersenses} (also called {\it lexicographer classes}).
 A listing of all the WordNet supersenses may be found in Figure \ref{fig:supersenses}.
 \begin{center}
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{tabular}{llllllll}
 1& person & 8& possession&  15& process&  22& body \\
 2& communication & 9& location& 16& Tops&  23& feeling \\
@@ -127,7 +127,7 @@ $supersense(s)$ takes a synset $s$ and returns its superset.
 \item
 $\gamma$ is a damping factor (with~$0 < \gamma \leq 1$) responsible for ensuring synsets near the beginning of a word's WordNet entry count for more.
 \end{itemize}
-\begin{algorithm}[hbtp]
+\begin{algorithm}[htbp]
 \caption{Voting Scheme for word $w$}
 \label{alg:vote}
 \begin{algorithmic}
@@ -288,7 +288,7 @@ Furthermore, we hypothesized that using search query results for vector enhancem
 
 \subsection{Results}
 %Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant? 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \makebox[\textwidth]{
 \begin{tabular}{|l|l||c|c|c|c||c|c|c|c|}
 \hline
@@ -327,7 +327,7 @@ The ``enrichment'' column describes the means of enriching the initial query vec
 Similarly, these are the three options for how we refine from the $n$ nearest neighbors given by the offline model to the $k$-nearest neighbors as given by the search engine data---we may reorder by using descriptions, reorder by scraping sites ourselves, or not reorder at all.
 
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=100mm]{graphs/damping.png}
 \end{center}
@@ -340,7 +340,7 @@ The numbers were gathered using scraping for initial enrichment and descriptions
 Figure \ref{fig:damping} indicates that paying more attention to synsets appearing near the beginning of a word's WordNet entry pays off, but ignoring synsets appearing near the end harms performance, which is entirely plausible.
 The values collected in Figure \ref{fig:res} use $k=3$ and $\gamma=0.7$, which is close to the optimum of the curve in figure \ref{fig:damping}.
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=100mm]{graphs/n.png}
 \end{center}
@@ -354,7 +354,7 @@ We again use scraping for initial enrichment and descriptions for refinement, wi
 It is not immediately obvious that this curve should decrease past a certain point, but this makes some sense---past a point, the neighbors of the test word are not very semantically related to it, and considering them as members of the eventual set of $k$ neighbors does more harm than good.
 Note the values collected in Figure \ref{fig:res} use $n=9$, which is below the optimal value on the curve in Figure \ref{fig:n}, but more computationally tractable.
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=100mm]{graphs/k.png}
 \end{center}
@@ -366,25 +366,26 @@ As above, we use scraping for initial enrichment and descriptions for refinement
 It is unclear why this graph is so much less smooth than the others---the numbers are generated on a relatively small devset of 100 words, so the numbers are to be taken with a grain of salt.
 For the experiments in Figure \ref{fig:res}, we use $k=3$, which is not unreasonable, but $k=4$ or $5$ would likely be preferable.
 
-\begin{figure}[hbtp]
+\begin{figure}[htbp]
 \begin{center}
 \begin{tabular}{|c|c|c|c||c|c|c|c|}
 \hline
   \multicolumn{4}{|c||}{{\bf 1.6 Test Set}} & \multicolumn{4}{c|}{{\bf 1.7 Test Set}}  \\
   {\bf P} & {\bf R} & {\bf A} & {\bf F} & {\bf P} & {\bf R} & {\bf A} & {\bf F} \\
 \hline \hline
-xx.xx & xx.xx & xx.xx & xx.xx & xx.xx & xx.xx & xx.xx & xx.xx \\
+45.57 & 89.26 & 43.20 & 60.35 & xx.xx & xx.xx & xx.xx & xx.xx \\
 \hline
-\multicolumn{3}{|c|}{{\it (increase over fig \ref{fig:res}):}} & x & \multicolumn{3}{c|}{{\it (increase over fig \ref{fig:res}):}}  & x  \\
+\multicolumn{3}{|c|}{{\it (increase over fig \ref{fig:res}):}} & 6.34 & \multicolumn{3}{c|}{{\it (increase over fig \ref{fig:res}):}}  & x  \\
 \hline
 \end{tabular}
-\caption{Results on 1.6 and 1.7 testsets with tuned params (enrichment by scraping, refinement by descriptions)}
+\caption{Results on 1.6 and 1.7 testsets with tuned params (using enrichment by scraping, refinement by descriptions, $\gamma=0.6$, $k=5$, $n=20$)}
 \label{fig:tunedres}
 \end{center}
 \end{figure}
 We used the results from Figure \ref{fig:res} to determine the experimental setup on which to tune these parameters.
 We then reran one configuration from Figure \ref{fig:res} (Enrichment = ``scrape'', Refinement = ``descriptions''---the one we used to tune the parameters) with the optimal values for the parameters.
 Figure \ref{fig:tunedres} gives the performance of the configuration with tuned parameters.
+Optimizing the values of the parameters improves performance significantly.
 
 
 \subsection{Discussion}
@@ -395,12 +396,12 @@ We hypothesized that using data from the web (for both vector enrichment and ref
 This hypothesis is largely supported by the results given in Figure \ref{fig:res} on the 1.6 test set and refuted by results on the 1.7 test set.
 
 On the 1.6 test set, both types of initial vector enrichment---with descriptions and by scraping pages---outperform the algorithm without enrichment.
-Enrichment with descriptions outperforms enrichment by scraping in two of three cases.
+Enrichment by descriptions outperforms enrichment by scraping in two of three cases.
 In two of three cases, refining with descriptions provides an improvement over no refinement; in all three cases, refining with scraping harms performance.
-By and large, using information from the web on the 1.6 test set helps more than it hurts.
+By and large, using information from the web on the 1.6 test set helps more than it hurts (with the exception of refining by scraping pages).
 
 On the 1.7 test set, on the other hand, using information from the web harms performance across the board.
-One difference is that the 1.7 test set contains a significantly higher percentage of items with supersense {\tt noun.person}: 62.60\%, vs 26.11\% in the 1.6 test set.
+One difference explaining this is that the 1.7 test set contains a significantly higher percentage of items with supersense {\tt noun.person}: 62.60\%, vs 26.11\% in the 1.6 test set.
 One unfortunate consequence of this fact is that baseline performance is very difficult to beat on the 1.7 test set (indeed, the baseline outperforms our algorithm in every setup).
 
 Many of the 1.7 test words are proper names of well-known individuals.
@@ -483,7 +484,7 @@ We use the web in two different ways---the first is to enrich the initial query 
 The manner in which we undertake the latter task is by calculating a set of nearest neighbors of size greater than $k$, reordering these neighbors using information from the web, and taking the $k$-nearest neighbors from this reordered list.
 That is, we essentially use information from the web to reorder list of nearest neighbors.
 It remains to be seen if there is a more intelligent way to use the web to  refine our model.
-For example, including offline data in the web corpus and allowing new neighboring words suggestions in the refinement step are both experimental conditions we would wish to explore further.
+For example, including offline data in the web corpus and allowing new neighboring words to be introduced in the refinement step are both experimental conditions we would wish to explore further.
 
 \section{Conclusion}
 
