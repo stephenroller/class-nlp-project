@@ -414,7 +414,25 @@ First, because scraping websites requires additional network calls, time constra
 Second, many websites issued 403 Forbidden errors or chose not respond to ours request at all due to a systematic ban of scraping.
 We believe that forging or changing our crawler's User Agent would have helped this latter issue significantly.
 
-COMPARISON TO RESULTS IN C+J AND CURRAN
+\begin{figure}[hbtp]
+\begin{center}
+\begin{tabular}{|l|r|r|}
+    \hline
+    \bf{System} & \bf{WN 1.6 Acc.} & \bf{WN 1.7 Acc.}\\
+    \hline
+    Ciramita and Johnson baseline & 21\% & 28\%\\
+    Ciramita and Johnson perceptron & 53\% & 53\%\\
+    Curran similarity based results & 68\% & 63\%\\
+    Our results with optimized parameters & xx\% & xx\%\\
+    \hline
+\end{tabular}
+\caption{Results compared to Ciramita and Johnson, Curran).  All measures given in accuracies.}
+\label{fig:compareresults}
+\end{center}
+\end{figure}
+
+Figure \ref{fig:compareresults} contains our results compared to those of Ciramita and Johnson, and Curran \cite{curran}.
+
 
 \section{Related Work}
 
